@@ -1,0 +1,1965 @@
+{
+  "_meta": {
+    "document": "species.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.1-draft",
+    "notes": [
+      "Transcribed from Unbound Species Mechanics Desktop App Reference document.",
+      "Every species is built from: biology_type + morphotype + core_traits + additional_traits + size + diet.",
+      "This system is universe-agnostic. Biology types and morphotypes define the framework.",
+      "Named species (e.g. Ciretose world) populate specific instances of this framework.",
+      "Fields marked NEEDS_DEFINITION are explicitly flagged in the source document as incomplete.",
+      "Trait mechanical effects are defined in the traits section and referenced by id throughout.",
+      "Equipment slots are determined by morphotype, not by species directly.",
+      "Species base pools: 8 HP, 8 SP, 8 MP per rules. Trait and stat bonuses stack on top."
+    ]
+  },
+  "size_categories": {
+    "tiny": {
+      "name": "Tiny",
+      "description": "Insects, small creatures. Rarely playable without traits.",
+      "size_modifier": -2,
+      "carry_capacity_multiplier": 0.25,
+      "notes": "NEEDS_DEFINITION: full mechanical impact"
+    },
+    "small": {
+      "name": "Small",
+      "description": "Halflings, gnomes, small beastfolk.",
+      "size_modifier": -1,
+      "carry_capacity_multiplier": 0.5,
+      "notes": "NEEDS_DEFINITION: full mechanical impact"
+    },
+    "medium": {
+      "name": "Medium",
+      "description": "Standard humanoid reference size.",
+      "size_modifier": 0,
+      "carry_capacity_multiplier": 1,
+      "notes": "Baseline. All stat formulas assume Medium unless noted."
+    },
+    "large": {
+      "name": "Large",
+      "description": "Minotaurs, large beastfolk, centaurs.",
+      "size_modifier": 1,
+      "carry_capacity_multiplier": 2,
+      "notes": "NEEDS_DEFINITION: full mechanical impact"
+    },
+    "huge": {
+      "name": "Huge",
+      "description": "Giants, large monsters, mammoths.",
+      "size_modifier": 2,
+      "carry_capacity_multiplier": 4,
+      "notes": "NEEDS_DEFINITION: full mechanical impact"
+    }
+  },
+  "diet_types": {
+    "herbivore": {
+      "name": "Herbivore",
+      "description": "Plant matter only.",
+      "notes": "NEEDS_DEFINITION: mechanical effects"
+    },
+    "carnivore": {
+      "name": "Carnivore",
+      "description": "Meat only.",
+      "notes": "NEEDS_DEFINITION: mechanical effects"
+    },
+    "omnivore": {
+      "name": "Omnivore",
+      "description": "Plants and meat.",
+      "notes": "NEEDS_DEFINITION: mechanical effects"
+    },
+    "photosynthetic": {
+      "name": "Photosynthetic",
+      "description": "Sunlight; plant biology types.",
+      "notes": "NEEDS_DEFINITION: mechanical effects"
+    },
+    "parasitic": {
+      "name": "Parasitic",
+      "description": "Feeds on host organisms.",
+      "notes": "NEEDS_DEFINITION: mechanical effects"
+    },
+    "undefined": {
+      "name": "Undefined",
+      "description": "Not yet defined in source.",
+      "notes": "NEEDS_DEFINITION"
+    }
+  },
+  "traits": {
+    "anatomy_defense": {
+      "acid_spit": {
+        "name": "Acid Spit",
+        "category": "anatomy_defense",
+        "effect": "NEEDS_DEFINITION: ranged acid attack, likely deals acid damage on hit."
+      },
+      "antlers": {
+        "name": "Antlers",
+        "category": "anatomy_defense",
+        "effect": "Natural weapon. Can be used as a Reach melee attack. May grant bonus to Block or Shove."
+      },
+      "attuned": {
+        "name": "Attuned",
+        "category": "anatomy_defense",
+        "effect": "Innate connection to magical energies. Likely grants starting Affinity or bonus to Affinity rolls."
+      },
+      "blessed": {
+        "name": "Blessed",
+        "category": "anatomy_defense",
+        "effect": "Divine resonance. Likely grants bonus to saves vs unholy or shadow effects."
+      },
+      "bristles": {
+        "name": "Bristles",
+        "category": "anatomy_defense",
+        "effect": "Melee attackers take minor piercing damage on hit. Bonus to resist grapple."
+      },
+      "cold_blooded": {
+        "name": "Cold-Blooded",
+        "category": "anatomy_defense",
+        "effect": "Penalty in cold environments. Bonus in warm. NEEDS_DEFINITION: specific modifiers."
+      },
+      "defense": {
+        "name": "Defense",
+        "category": "anatomy_defense",
+        "effect": "Passive defensive bonus. NEEDS_DEFINITION: specific value."
+      },
+      "dense_bones": {
+        "name": "Dense Bones",
+        "category": "anatomy_defense",
+        "effect": "+BDY to carry capacity calculations. Penalty to swimming. Resistant to knockback."
+      },
+      "elemental_fire": {
+        "name": "Elemental (Fire)",
+        "category": "anatomy_defense",
+        "effect": "Innate fire affinity. Likely grants Fire Resistance and access to Fire Affinity without separate purchase."
+      },
+      "energy_absorbing_heat": {
+        "name": "Energy Absorbing (Heat)",
+        "category": "anatomy_defense",
+        "effect": "Absorb heat-based damage. NEEDS_DEFINITION: specific absorption formula."
+      },
+      "exoskeleton": {
+        "name": "Exoskeleton",
+        "category": "anatomy_defense",
+        "effect": "Natural armor. Grants flat DR vs physical damage. Does not stack with worn heavy armor (replaces instead)."
+      },
+      "fang_claw": {
+        "name": "Fang/Claw",
+        "category": "anatomy_defense",
+        "effect": "Natural unarmed weapons. Attacks deal piercing or slashing damage without a weapon. Grants Unarmed Attack proficiency."
+      },
+      "fur": {
+        "name": "Fur",
+        "category": "anatomy_defense",
+        "effect": "Cold resistance. Penalty in extreme heat. Cosmetic variation."
+      },
+      "heat_resist": {
+        "name": "Heat Resist",
+        "category": "anatomy_defense",
+        "effect": "Reduce fire and heat damage taken. NEEDS_DEFINITION: specific value."
+      },
+      "high_perception": {
+        "name": "High Perception",
+        "category": "anatomy_defense",
+        "effect": "+R to all Awareness and Notice checks. NEEDS_DEFINITION: whether this is a passive or active bonus."
+      },
+      "hollow_bones": {
+        "name": "Hollow Bones",
+        "category": "anatomy_defense",
+        "effect": "Reduced body weight for flight calculations. -BDY penalty to resist knockback and grapple."
+      },
+      "horn": {
+        "name": "Horn",
+        "category": "anatomy_defense",
+        "effect": "Natural weapon. Bonus to Bash attacks. Can be used as Charge attack."
+      },
+      "hooves": {
+        "name": "Hooves",
+        "category": "anatomy_defense",
+        "effect": "Natural weapon (kick). Bonus SPD on open terrain. Penalty to climbing."
+      },
+      "memory": {
+        "name": "Memory",
+        "category": "anatomy_defense",
+        "effect": "Enhanced recall. Bonus to remembering locations, faces, information. NEEDS_DEFINITION: mechanical expression."
+      },
+      "parasitic": {
+        "name": "Parasitic",
+        "category": "anatomy_defense",
+        "effect": "NEEDS_DEFINITION: feeding mechanic and associated bonuses/penalties."
+      },
+      "poison_resist": {
+        "name": "Poison Resist",
+        "category": "anatomy_defense",
+        "effect": "Reduce poison damage and resist Poisoned status application."
+      },
+      "rapid_regen": {
+        "name": "Rapid Regen",
+        "category": "anatomy_defense",
+        "effect": "+HPR per rank. Likely doubles baseline HPR or adds flat HPR."
+      },
+      "scales": {
+        "name": "Scales",
+        "category": "anatomy_defense",
+        "effect": "Natural armor vs slashing and piercing. Less effective vs bludgeoning."
+      },
+      "shell": {
+        "name": "Shell",
+        "category": "anatomy_defense",
+        "effect": "High natural DR. Can retract into shell for defensive stance. NEEDS_DEFINITION: retraction mechanics."
+      },
+      "thick_hide": {
+        "name": "Thick Hide",
+        "category": "anatomy_defense",
+        "effect": "Flat DR vs physical damage. Stacks with worn armor up to a limit."
+      },
+      "tusks": {
+        "name": "Tusks",
+        "category": "anatomy_defense",
+        "effect": "Natural weapon. Bonus to Bash and Charge attacks."
+      }
+    },
+    "movement_locomotion": {
+      "aerodynamic": {
+        "name": "Aerodynamic",
+        "category": "movement",
+        "effect": "Reduced air resistance. Bonus to SPD and maneuverability during flight or running."
+      },
+      "aerokinetic_membranes": {
+        "name": "Aerokinetic Membranes",
+        "category": "movement",
+        "effect": "Wing-like membranes allowing gliding. NEEDS_DEFINITION: glide ratio and distance."
+      },
+      "amphibious": {
+        "name": "Amphibious",
+        "category": "movement",
+        "effect": "Can breathe both air and water. No movement penalty in water."
+      },
+      "avian_wings": {
+        "name": "Avian Wings",
+        "category": "movement",
+        "effect": "Full flight capability. SPD in air = Size SPD * FPR. Requires FPR >= 1.0 for sustained flight."
+      },
+      "burrower": {
+        "name": "Burrower",
+        "category": "movement",
+        "effect": "Can dig through soft terrain. Movement speed underground at reduced rate. NEEDS_DEFINITION: dig speed."
+      },
+      "digitigrade": {
+        "name": "Digitigrade",
+        "category": "movement",
+        "effect": "Walks on toes. +SPD. Unique footwear slot requirement."
+      },
+      "endurance": {
+        "name": "Endurance",
+        "category": "movement",
+        "effect": "Reduced SP cost for sustained movement. Bonus to travel speed over long distances."
+      },
+      "gas_bladder": {
+        "name": "Gas Bladder",
+        "category": "movement",
+        "effect": "Internal buoyancy organ. Bonus to swimming. Some variants allow limited hovering."
+      },
+      "heavy_set": {
+        "name": "Heavy-Set",
+        "category": "movement",
+        "effect": "Increased carry capacity. Penalty to SPD. Bonus to resist knockback and Shove."
+      }
+    },
+    "sensory": {
+      "groundsense": {
+        "name": "Groundsense",
+        "category": "sensory",
+        "effect": "Detect vibrations through ground contact. Perceive movement within range even when blind."
+      },
+      "heat_vision": {
+        "name": "Heat Vision",
+        "category": "sensory",
+        "effect": "See heat signatures. No penalty in darkness. Penalty vs cold-blooded or disguised targets."
+      },
+      "keen_hearing": {
+        "name": "Keen Hearing",
+        "category": "sensory",
+        "effect": "+R to Notice checks involving sound. Penalty from loud noise or silence effects."
+      },
+      "keen_sight": {
+        "name": "Keen Sight",
+        "category": "sensory",
+        "effect": "+R to Notice checks involving vision. Bonus to ranged attack at long range."
+      },
+      "keen_smell": {
+        "name": "Keen Smell",
+        "category": "sensory",
+        "effect": "+R to tracking and detecting hidden creatures. Cannot be fooled by disguise alone."
+      },
+      "lateral_line": {
+        "name": "Lateral Line",
+        "category": "sensory",
+        "effect": "Aquatic pressure sense. Detect movement in water within range. Replaces sight in murky water."
+      }
+    },
+    "behavioral_special": {
+      "aggressive": {
+        "name": "Aggressive",
+        "category": "behavioral",
+        "effect": "Bonus to initiative and first attack. Penalty to social rolls vs non-aggressive cultures."
+      },
+      "ambusher": {
+        "name": "Ambusher",
+        "category": "behavioral",
+        "effect": "Bonus to attacks from stealth or surprise. Crit range expands when undetected."
+      },
+      "broad_back": {
+        "name": "Broad Back",
+        "category": "behavioral",
+        "effect": "Increased carry capacity. Bonus to mounted rider stability."
+      },
+      "camouflage": {
+        "name": "Camouflage",
+        "category": "behavioral",
+        "effect": "Passive concealment in natural environments. Bonus to Stealth rolls in matching terrain."
+      },
+      "fearsome_displays": {
+        "name": "Fearsome Displays",
+        "category": "behavioral",
+        "effect": "Intimidation bonus. May inflict Feared status on failed save. Costs SP or AP."
+      },
+      "flighty": {
+        "name": "Flighty",
+        "category": "behavioral",
+        "effect": "Bonus to flee or disengage. Penalty to hold ground or tank roles."
+      },
+      "herd_mentality": {
+        "name": "Herd Mentality",
+        "category": "behavioral",
+        "effect": "Bonus when allies are nearby. Penalty when isolated. NEEDS_DEFINITION: specific modifiers."
+      },
+      "hibernate": {
+        "name": "Hibernate",
+        "category": "behavioral",
+        "effect": "Can enter deep rest for extended periods. Full HP/SP/MP restore on wake. NEEDS_DEFINITION: in-game duration rules."
+      },
+      "hive_mind": {
+        "name": "Hive-Mind",
+        "category": "behavioral",
+        "effect": "Shared sensory information with others of same type within range. NEEDS_DEFINITION: range and scope."
+      },
+      "ink_cloud": {
+        "name": "Ink Cloud",
+        "category": "behavioral",
+        "effect": "Release obscuring cloud in water or air. Concealment for self and nearby allies."
+      },
+      "ki_sight": {
+        "name": "Ki-Sight",
+        "category": "behavioral",
+        "effect": "Perceive life energy and magical aura. See through illusions. NEEDS_DEFINITION: specific effect."
+      },
+      "mimicry": {
+        "name": "Mimicry",
+        "category": "behavioral",
+        "effect": "Copy sounds, voices, or appearances. Bonus to Deception using mimicry."
+      },
+      "pack_coordination": {
+        "name": "Pack Coordination",
+        "category": "behavioral",
+        "effect": "Bonus to attacks when flanking with allies. Bonus to group movement."
+      },
+      "pounce": {
+        "name": "Pounce",
+        "category": "behavioral",
+        "effect": "Charge attack with bonus damage. Knocks target Prone on hit. NEEDS_DEFINITION: AP/SP cost."
+      },
+      "rooter": {
+        "name": "Rooter",
+        "category": "behavioral",
+        "effect": "Can dig for food and materials. Bonus to Foraging. Bonus to finding buried objects."
+      },
+      "spore_cloud": {
+        "name": "Spore Cloud",
+        "category": "behavioral",
+        "effect": "Release spores in radius. Effects vary: may cause Confused, Poisoned, or sleep. NEEDS_DEFINITION: specific status."
+      },
+      "stealthy": {
+        "name": "Stealthy",
+        "category": "behavioral",
+        "effect": "+R to Stealth rolls. May move at full speed without Stealth penalty."
+      },
+      "territorial": {
+        "name": "Territorial",
+        "category": "behavioral",
+        "effect": "Bonus to defense rolls when protecting a claimed area. Penalty to retreat from defended zone."
+      },
+      "tool_user": {
+        "name": "Tool User",
+        "category": "behavioral",
+        "effect": "Can use standard equipment and tools. Required for most weapon and armor types. Standard for humanoids."
+      },
+      "trap_setter": {
+        "name": "Trap Setter",
+        "category": "behavioral",
+        "effect": "Bonus to setting and detecting traps. Bonus to Engineering or Foraging for trap materials."
+      },
+      "tribal": {
+        "name": "Tribal",
+        "category": "behavioral",
+        "effect": "Bonus to social rolls within tribal culture. Access to tribal knowledge networks."
+      },
+      "trunk": {
+        "name": "Trunk",
+        "category": "behavioral",
+        "effect": "Prehensile appendage. Can manipulate objects without hands. Bonus to grapple. Separate equipment slot."
+      },
+      "venomous": {
+        "name": "Venomous",
+        "category": "behavioral",
+        "effect": "Natural attacks inflict Poisoned on hit. NEEDS_DEFINITION: stack count and save DC."
+      }
+    },
+    "flora_specific": {
+      "aerial_roots": {
+        "name": "Aerial Roots",
+        "category": "flora",
+        "effect": "Can anchor to surfaces. Bonus to climbing and resist knockback."
+      },
+      "alkaloid_compounds": {
+        "name": "Alkaloid Compounds",
+        "category": "flora",
+        "effect": "Natural toxins in body. Melee attackers risk Poisoned. May be harvested as alchemical ingredient."
+      },
+      "capitula": {
+        "name": "Flower Head (Capitula)",
+        "category": "flora",
+        "effect": "NEEDS_DEFINITION: sensory or social mechanical effect."
+      },
+      "climbing_vines": {
+        "name": "Climbing Vines",
+        "category": "flora",
+        "effect": "Can use vine-based grapple or restraint. Bonus to climbing."
+      },
+      "compound_leaves": {
+        "name": "Compound Leaves",
+        "category": "flora",
+        "effect": "NEEDS_DEFINITION."
+      },
+      "hollow_stems": {
+        "name": "Hollow Stems",
+        "category": "flora",
+        "effect": "Can store liquids internally. Bonus to Alchemy involving liquid reagents."
+      },
+      "mycorrhizal_symbiosis": {
+        "name": "Mycorrhizal Symbiosis",
+        "category": "flora",
+        "effect": "Connection to fungal networks. Detect other plant life. Share information through root contact."
+      },
+      "nitrogen_fixing_roots": {
+        "name": "Nitrogen-Fixing Roots",
+        "category": "flora",
+        "effect": "Can fertilize terrain. Bonus to growing food or herbs in adjacent area."
+      },
+      "rapid_growth": {
+        "name": "Rapid Growth",
+        "category": "flora",
+        "effect": "Heal faster when in sunlight or near water. Accelerated natural regeneration."
+      },
+      "thorny_stems": {
+        "name": "Thorny Stems",
+        "category": "flora",
+        "effect": "Melee attackers take piercing damage on grapple or unarmed strike. Natural armor vs grabs."
+      }
+    }
+  },
+  "morphotypes": {
+    "humanoid": {
+      "name": "Humanoid",
+      "limbs": "2 legs, 2 arms",
+      "locomotion": [
+        "walk",
+        "run"
+      ],
+      "examples": [
+        "Elves",
+        "Humans",
+        "Orcs"
+      ],
+      "notes": "Most versatile. Standard equipment slots.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "hands",
+        "wrist",
+        "fingers",
+        "legs",
+        "feet",
+        "trinket",
+        "focus"
+      ]
+    },
+    "bipedal_beast": {
+      "name": "Bipedal Beast",
+      "limbs": "2 legs, 2 arms (clawed)",
+      "locomotion": [
+        "walk",
+        "run"
+      ],
+      "examples": [
+        "Minotaurs",
+        "Lizardfolk"
+      ],
+      "notes": "Heavier build. Natural weapons. May have unique head/hoof slot.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "hands",
+        "wrist",
+        "fingers",
+        "legs",
+        "feet",
+        "trinket",
+        "focus"
+      ]
+    },
+    "tauric": {
+      "name": "Tauric",
+      "limbs": "4 legs, 2 arms",
+      "locomotion": [
+        "walk",
+        "run"
+      ],
+      "examples": [
+        "Centaurs"
+      ],
+      "notes": "Upper humanoid torso on quadruped base. Cannot use climbing gear easily.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "hands",
+        "wrist",
+        "fingers",
+        "quadruped_body",
+        "trinket",
+        "focus"
+      ]
+    },
+    "hexapod": {
+      "name": "Hexapod",
+      "limbs": "4 legs, 2 wings (or arms)",
+      "locomotion": [
+        "walk",
+        "fly"
+      ],
+      "examples": [
+        "Gryphons"
+      ],
+      "notes": "Six-limbed. Complex slot system. Wings occupy back slot.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back_wings",
+        "forelegs",
+        "hindlegs",
+        "trinket",
+        "focus"
+      ]
+    },
+    "arachnid": {
+      "name": "Arachnid",
+      "limbs": "8 legs, optional arms",
+      "locomotion": [
+        "walk",
+        "climb"
+      ],
+      "examples": [
+        "Spiderfolk"
+      ],
+      "notes": "Climbing ability. Low jump height. Optional arm slots if species has them.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "optional_arms",
+        "trinket",
+        "focus"
+      ]
+    },
+    "scorpoid": {
+      "name": "Scorpoid",
+      "limbs": "8 legs, 2 claws",
+      "locomotion": [
+        "walk",
+        "climb"
+      ],
+      "examples": [
+        "Scorpionfolk"
+      ],
+      "notes": "Offensive appendages. Claws are natural weapons.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "claws",
+        "trinket",
+        "focus"
+      ]
+    },
+    "serpentine_hybrid": {
+      "name": "Serpentine Hybrid",
+      "limbs": "2 arms, limbless tail",
+      "locomotion": [
+        "slither",
+        "climb",
+        "swim"
+      ],
+      "examples": [
+        "Naga"
+      ],
+      "notes": "Flexible. Can constrict. No leg slots. Tail may occupy unique slot.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "hands",
+        "wrist",
+        "fingers",
+        "tail",
+        "trinket",
+        "focus"
+      ]
+    },
+    "quadruped": {
+      "name": "Quadruped",
+      "limbs": "4 legs",
+      "locomotion": [
+        "walk",
+        "run"
+      ],
+      "examples": [
+        "Wolves",
+        "Lions"
+      ],
+      "notes": "Strong endurance. Manipulation limited without Tool User trait.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "back",
+        "trinket"
+      ]
+    },
+    "theropod": {
+      "name": "Theropod",
+      "limbs": "2 legs, small arms",
+      "locomotion": [
+        "walk_bipedal",
+        "run"
+      ],
+      "examples": [
+        "Raptors",
+        "Wyverns"
+      ],
+      "notes": "Manipulation limited. Small arms may not hold standard weapons.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "small_arms",
+        "legs",
+        "trinket",
+        "focus"
+      ]
+    },
+    "serpentine": {
+      "name": "Serpentine",
+      "limbs": "none",
+      "locomotion": [
+        "slither",
+        "swim"
+      ],
+      "examples": [
+        "Snakes",
+        "Sea Serpents"
+      ],
+      "notes": "Can coil. No manipulation. No standard equipment slots.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "trinket"
+      ]
+    },
+    "amphibian": {
+      "name": "Amphibian",
+      "limbs": "4 legs",
+      "locomotion": [
+        "walk",
+        "swim"
+      ],
+      "examples": [
+        "Frogs",
+        "Salamanders"
+      ],
+      "notes": "Can breathe underwater.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "trinket",
+        "focus"
+      ]
+    },
+    "chelonian": {
+      "name": "Chelonian",
+      "limbs": "4 legs",
+      "locomotion": [
+        "walk",
+        "swim"
+      ],
+      "examples": [
+        "Tortoises",
+        "Turtlefolk"
+      ],
+      "notes": "Natural armor from shell. Shell occupies back/torso region.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "legs",
+        "trinket"
+      ]
+    },
+    "molluscoid": {
+      "name": "Molluscoid",
+      "limbs": "variable (tentacles)",
+      "locomotion": [
+        "crawl",
+        "swim"
+      ],
+      "examples": [
+        "Octopus folk",
+        "Cephalids"
+      ],
+      "notes": "Variable appendage count. Tentacles can manipulate multiple objects.",
+      "equipment_slots": [
+        "head",
+        "torso_optional",
+        "tentacles",
+        "trinket",
+        "focus"
+      ]
+    },
+    "crustacean": {
+      "name": "Crustacean",
+      "limbs": "6 or more legs",
+      "locomotion": [
+        "walk",
+        "swim"
+      ],
+      "examples": [
+        "Lobsters",
+        "Crabs"
+      ],
+      "notes": "Heavy natural armor. Claws as natural weapons.",
+      "equipment_slots": [
+        "head",
+        "carapace",
+        "claws",
+        "legs",
+        "trinket"
+      ]
+    },
+    "pisciform": {
+      "name": "Pisciform",
+      "limbs": "fins",
+      "locomotion": [
+        "swim"
+      ],
+      "examples": [
+        "Fishfolk",
+        "Sharks"
+      ],
+      "notes": "Must remain in water or have Amphibious trait. No leg slots.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "fins",
+        "trinket",
+        "focus"
+      ]
+    },
+    "cetacean": {
+      "name": "Cetacean",
+      "limbs": "flippers",
+      "locomotion": [
+        "swim"
+      ],
+      "examples": [
+        "Whale folk",
+        "Delphinids"
+      ],
+      "notes": "High aquatic speed. Limited surface capability without traits.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "trinket"
+      ]
+    },
+    "wyvern": {
+      "name": "Wyvern",
+      "limbs": "2 legs, 2 wings",
+      "locomotion": [
+        "fly",
+        "run"
+      ],
+      "examples": [
+        "Wyverns",
+        "Wyvernkin"
+      ],
+      "notes": "Poor ground mobility. Aerial dominant. Wings replace arms.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back_wings",
+        "legs",
+        "tail",
+        "trinket",
+        "focus"
+      ]
+    },
+    "true_dragon": {
+      "name": "True Dragon",
+      "limbs": "4 legs, 2 wings",
+      "locomotion": [
+        "fly",
+        "run"
+      ],
+      "examples": [
+        "Dragons"
+      ],
+      "notes": "Highly versatile. Six-limbed. Humanoid variant can use standard slots.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back_wings",
+        "forelegs",
+        "hindlegs",
+        "tail",
+        "trinket",
+        "focus"
+      ]
+    },
+    "chimeric": {
+      "name": "Chimeric",
+      "limbs": "variable",
+      "locomotion": [
+        "mixed"
+      ],
+      "examples": [
+        "Manticores",
+        "Chimeras"
+      ],
+      "notes": "Combine abilities of multiple types. Slots determined per species.",
+      "equipment_slots": [
+        "NEEDS_DEFINITION: per species"
+      ]
+    },
+    "amorphous": {
+      "name": "Amorphous",
+      "limbs": "none fixed",
+      "locomotion": [
+        "flow",
+        "crawl"
+      ],
+      "examples": [
+        "Oozes",
+        "Slimes"
+      ],
+      "notes": "Can pass through gaps. No standard equipment slots.",
+      "equipment_slots": [
+        "trinket_internal"
+      ]
+    },
+    "crystalline": {
+      "name": "Crystalline",
+      "limbs": "variable",
+      "locomotion": [
+        "walk",
+        "run"
+      ],
+      "examples": [
+        "Crystal Golems",
+        "Shardkin"
+      ],
+      "notes": "Brittle RP drawback. Resistant to slashing; weak to blunt.",
+      "equipment_slots": [
+        "head",
+        "neck",
+        "torso",
+        "back",
+        "legs",
+        "trinket",
+        "focus"
+      ]
+    }
+  },
+  "biology_types": {
+    "fauna": {
+      "primate": {
+        "name": "Primate",
+        "description": "Apes, Monkeys, Humans",
+        "size_range": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "diet": "omnivore",
+        "core_traits": [
+          "tool_user",
+          "high_perception",
+          "social"
+        ]
+      },
+      "canidae": {
+        "name": "Canidae",
+        "description": "Dogs and Wolves",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "omnivore",
+        "core_traits": [
+          "fur",
+          "fang_claw",
+          "keen_smell"
+        ]
+      },
+      "felidae": {
+        "name": "Felidae",
+        "description": "Cats",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "carnivore",
+        "core_traits": [
+          "fur",
+          "fang_claw",
+          "keen_sight"
+        ]
+      },
+      "ursidae": {
+        "name": "Ursidae",
+        "description": "Bears",
+        "size_range": [
+          "small",
+          "huge"
+        ],
+        "diet": "omnivore",
+        "core_traits": [
+          "fur",
+          "fang_claw",
+          "thick_hide",
+          "hibernate"
+        ]
+      },
+      "suidae": {
+        "name": "Suidae",
+        "description": "Boars and Pigs",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "omnivore",
+        "core_traits": [
+          "fur",
+          "tusks",
+          "thick_hide",
+          "rooter",
+          "aggressive"
+        ]
+      },
+      "rodentia": {
+        "name": "Rodentia",
+        "description": "Mice, Rats, Beavers",
+        "size_range": [
+          "tiny",
+          "medium"
+        ],
+        "diet": "omnivore",
+        "core_traits": [
+          "fur",
+          "fang_claw",
+          "gnawing",
+          "burrower",
+          "resourceful"
+        ]
+      },
+      "mammutidae": {
+        "name": "Mammutidae",
+        "description": "Mammoths and Elephants",
+        "size_range": [
+          "medium",
+          "huge"
+        ],
+        "diet": "herbivore",
+        "core_traits": [
+          "thick_hide",
+          "tusks",
+          "trunk",
+          "memory"
+        ]
+      },
+      "rhinoceridae": {
+        "name": "Rhinoceridae",
+        "description": "Rhinos",
+        "size_range": [
+          "medium",
+          "huge"
+        ],
+        "diet": "herbivore",
+        "core_traits": [
+          "thick_hide",
+          "horn",
+          "territorial"
+        ]
+      },
+      "cervidae": {
+        "name": "Cervidae",
+        "description": "Deer, Elk, Moose",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "herbivore",
+        "core_traits": [
+          "antlers",
+          "hooves",
+          "keen_hearing",
+          "flighty"
+        ]
+      },
+      "equidae": {
+        "name": "Equidae",
+        "description": "Horses, Donkeys, Zebras",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "herbivore",
+        "core_traits": [
+          "hooves",
+          "endurance",
+          "herd_mentality"
+        ]
+      },
+      "bovidae": {
+        "name": "Bovidae",
+        "description": "Cattle, Goats, Sheep",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "herbivore",
+        "core_traits": [
+          "hooves",
+          "horn",
+          "fur",
+          "stubborn"
+        ]
+      },
+      "avian": {
+        "name": "Avian",
+        "description": "Birds",
+        "size_range": [
+          "tiny",
+          "large"
+        ],
+        "diet": "herbivore",
+        "core_traits": [
+          "avian_wings",
+          "hollow_bones",
+          "keen_sight"
+        ]
+      },
+      "raptor": {
+        "name": "Raptor",
+        "description": "Birds of Prey",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "carnivore",
+        "core_traits": [
+          "fang_claw",
+          "keen_sight",
+          "avian_wings",
+          "ambusher",
+          "stealthy"
+        ]
+      },
+      "mycetes": {
+        "name": "Mycetes",
+        "description": "Fungoids, Sporespawn",
+        "size_range": [
+          "any"
+        ],
+        "diet": "decomposer",
+        "core_traits": [
+          "spore_cloud",
+          "rapid_regen",
+          "hive_mind"
+        ]
+      },
+      "reptilia": {
+        "name": "Reptilia",
+        "description": "Lizards, Turtles, Crocodilians",
+        "size_range": [
+          "tiny",
+          "huge"
+        ],
+        "diet": "carnivore",
+        "core_traits": [
+          "scales",
+          "cold_blooded",
+          "fang_claw",
+          "heat_vision"
+        ]
+      },
+      "amphibian_bio": {
+        "name": "Amphibian",
+        "description": "Frogs, Salamanders",
+        "size_range": [
+          "tiny",
+          "large"
+        ],
+        "diet": "carnivore",
+        "core_traits": [
+          "amphibious",
+          "rapid_regen"
+        ]
+      },
+      "fish": {
+        "name": "Fish",
+        "description": "Aquatic Vertebrates",
+        "size_range": [
+          "any"
+        ],
+        "diet": [
+          "herbivore",
+          "carnivore",
+          "omnivore"
+        ],
+        "core_traits": [
+          "scales",
+          "amphibious",
+          "lateral_line"
+        ]
+      },
+      "cephalopod": {
+        "name": "Cephalopod",
+        "description": "Squid, Octopus",
+        "size_range": [
+          "any"
+        ],
+        "diet": "carnivore",
+        "core_traits": [
+          "ink_cloud",
+          "camouflage",
+          "keen_sight"
+        ]
+      },
+      "insecta_arachnida": {
+        "name": "Insecta/Arachnida",
+        "description": "Insects and Spiders",
+        "size_range": [
+          "tiny",
+          "large"
+        ],
+        "diet": "carnivore",
+        "core_traits": [
+          "exoskeleton",
+          "groundsense"
+        ]
+      },
+      "draconic": {
+        "name": "Draconic",
+        "description": "Dragon-blooded",
+        "size_range": [
+          "small",
+          "huge"
+        ],
+        "diet": "carnivore",
+        "core_traits": [
+          "thick_hide",
+          "elemental_fire",
+          "energy_absorbing_heat",
+          "high_perception"
+        ]
+      },
+      "fey": {
+        "name": "Fey",
+        "description": "Fey creatures",
+        "size_range": [
+          "small",
+          "medium"
+        ],
+        "diet": "omnivore",
+        "core_traits": [
+          "magic_resistance",
+          "immortality",
+          "shapeshifting"
+        ]
+      },
+      "stonekin": {
+        "name": "Stonekin",
+        "description": "Stone-based creatures",
+        "size_range": [
+          "small",
+          "large"
+        ],
+        "diet": "herbivore",
+        "core_traits": [
+          "stone_skin",
+          "earth_sense"
+        ]
+      }
+    },
+    "flora": {
+      "asteraceae": {
+        "name": "Asteraceae",
+        "description": "Daisy Family",
+        "diet": "photosynthetic",
+        "core_traits": [
+          "capitula",
+          "rapid_growth"
+        ]
+      },
+      "fabaceae": {
+        "name": "Fabaceae",
+        "description": "Pea Family",
+        "diet": "photosynthetic",
+        "core_traits": [
+          "nitrogen_fixing_roots",
+          "climbing_vines"
+        ]
+      },
+      "orchidaceae": {
+        "name": "Orchidaceae",
+        "description": "Orchid Family",
+        "diet": "photosynthetic",
+        "core_traits": [
+          "aerial_roots",
+          "mycorrhizal_symbiosis"
+        ]
+      },
+      "rosaceae": {
+        "name": "Rosaceae",
+        "description": "Rose Family",
+        "diet": "photosynthetic",
+        "core_traits": [
+          "thorny_stems"
+        ]
+      },
+      "solanaceae": {
+        "name": "Solanaceae",
+        "description": "Nightshade Family",
+        "diet": "photosynthetic",
+        "core_traits": [
+          "alkaloid_compounds"
+        ]
+      }
+    }
+  },
+  "species": {
+    "silverpeak_elf": {
+      "name": "Silverpeak Elf",
+      "biology_type": "fey",
+      "morphotype": "humanoid",
+      "size": "medium",
+      "diet": "omnivore",
+      "core_traits": [
+        "attuned",
+        "blessed",
+        "stealthy",
+        "mimicry",
+        "ki_sight",
+        "memory"
+      ],
+      "additional_traits": [
+        "tool_user",
+        "keen_sight"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "magic",
+        "martial",
+        "hybrid"
+      ],
+      "lore": "Mountain-dwelling mystics blending magic and martial skill.",
+      "gm_notes": "Flexible build. Works in both magic and martial roles."
+    },
+    "ironhide_minotaur": {
+      "name": "Ironhide Minotaur",
+      "biology_type": "bovidae",
+      "morphotype": "bipedal_beast",
+      "size": "large",
+      "diet": "herbivore",
+      "core_traits": [
+        "hooves",
+        "horn",
+        "thick_hide",
+        "territorial",
+        "tribal"
+      ],
+      "additional_traits": [
+        "leader",
+        "digitigrade"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "neck",
+        "arms",
+        "hands",
+        "torso",
+        "back",
+        "legs",
+        "hooves"
+      ],
+      "suggested_roles": [
+        "melee_tank"
+      ],
+      "lore": "Guardians of ancient labyrinths and herders of colossal stonebeasts.",
+      "gm_notes": "Great for melee tank roles."
+    },
+    "skyclaw_aarakocra": {
+      "name": "Skyclaw Aarakocra",
+      "biology_type": "avian",
+      "morphotype": "hexapod",
+      "size": "medium",
+      "diet": "omnivore",
+      "core_traits": [
+        "avian_wings",
+        "hollow_bones",
+        "keen_sight",
+        "aerodynamic"
+      ],
+      "additional_traits": [
+        "tribal",
+        "tool_user"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "neck",
+        "arms_wings",
+        "legs",
+        "fang_claw",
+        "torso",
+        "back"
+      ],
+      "suggested_roles": [
+        "aerial_scout",
+        "archer"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "steppe_centaur": {
+      "name": "Steppe Centaur",
+      "biology_type": "equidae",
+      "morphotype": "tauric",
+      "size": "large",
+      "diet": "herbivore",
+      "core_traits": [
+        "hooves",
+        "endurance",
+        "keen_sight"
+      ],
+      "additional_traits": [
+        "tribal",
+        "broad_back"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "neck",
+        "arms",
+        "hands",
+        "torso",
+        "back",
+        "quadruped_lower"
+      ],
+      "suggested_roles": [
+        "cavalry",
+        "archer",
+        "support"
+      ],
+      "lore": null,
+      "gm_notes": "Cannot use climbing gear easily."
+    },
+    "shadow_weaver": {
+      "name": "Shadow Weaver",
+      "biology_type": "insecta_arachnida",
+      "morphotype": "arachnid",
+      "size": "medium",
+      "diet": "Carnivore",
+      "core_traits": [
+        "exoskeleton",
+        "groundsense"
+      ],
+      "additional_traits": [
+        "venomous",
+        "stealthy"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "neck",
+        "octopod_legs_x8",
+        "optional_arms",
+        "trinket",
+        "focus"
+      ],
+      "suggested_roles": [
+        "rogue",
+        "ambusher",
+        "support"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "shellback_guardian": {
+      "name": "Shellback Guardian",
+      "biology_type": "reptilia",
+      "morphotype": "chelonian",
+      "size": "large",
+      "diet": "herbivore",
+      "core_traits": [
+        "exoskeleton",
+        "thick_hide",
+        "amphibious"
+      ],
+      "additional_traits": [
+        "territorial",
+        "disciplined"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "tank",
+        "defender"
+      ],
+      "lore": null,
+      "gm_notes": "Slow but extremely resilient."
+    },
+    "inkwraith_cephalid": {
+      "name": "Inkwraith Cephalid",
+      "biology_type": "cephalopod",
+      "morphotype": "molluscoid",
+      "size": "medium",
+      "diet": "herbivore",
+      "core_traits": [
+        "ink_cloud",
+        "camouflage",
+        "keen_sight"
+      ],
+      "additional_traits": [
+        "stealthy",
+        "trap_setter"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "tentacles",
+        "torso_optional"
+      ],
+      "suggested_roles": [
+        "rogue",
+        "controller",
+        "support"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "coralhammer_crabfolk": {
+      "name": "Coralhammer Crabfolk",
+      "biology_type": "insecta_arachnida",
+      "morphotype": "crustacean",
+      "size": "large",
+      "diet": "omnivore",
+      "core_traits": [
+        "exoskeleton",
+        "amphibious",
+        "poison_resist"
+      ],
+      "additional_traits": [
+        "heavy_set",
+        "thick_hide"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "claws",
+        "legs_6",
+        "torso",
+        "back",
+        "carapace"
+      ],
+      "suggested_roles": [
+        "tank",
+        "melee"
+      ],
+      "lore": null,
+      "gm_notes": "Natural armor very high."
+    },
+    "tidebreaker_merfolk": {
+      "name": "Tidebreaker Merfolk",
+      "biology_type": "fish",
+      "morphotype": "pisciform",
+      "size": "medium",
+      "diet": "omnivore",
+      "core_traits": [
+        "scales",
+        "amphibious",
+        "lateral_line"
+      ],
+      "additional_traits": [
+        "keen_hearing",
+        "tool_user"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "caudal_fin",
+        "fins",
+        "torso",
+        "back"
+      ],
+      "suggested_roles": [
+        "scout",
+        "archer",
+        "support"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "highland_wolfkin": {
+      "name": "Highland Wolfkin",
+      "biology_type": "canidae",
+      "morphotype": "bipedal_beast",
+      "size": "medium",
+      "diet": "Carnivore",
+      "core_traits": [
+        "keen_smell",
+        "fur",
+        "fang_claw",
+        "tribal",
+        "territorial"
+      ],
+      "additional_traits": [
+        "pack_coordination",
+        "digitigrade"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "melee_skirmisher",
+        "tracker",
+        "hunter"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "ashen_lionborn": {
+      "name": "Ashen Lionborn",
+      "biology_type": "felidae",
+      "morphotype": "bipedal_beast",
+      "size": "medium",
+      "diet": "Carnivore",
+      "core_traits": [
+        "keen_sight",
+        "fang_claw",
+        "stealthy",
+        "ambusher"
+      ],
+      "additional_traits": [
+        "pounce",
+        "fearsome_displays"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "striker",
+        "leader",
+        "duelist"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "stonefist_dwarf": {
+      "name": "Stonefist Dwarf",
+      "biology_type": "stonekin",
+      "morphotype": "humanoid",
+      "size": "small",
+      "diet": "omnivore",
+      "core_traits": [
+        "exoskeleton",
+        "thick_hide",
+        "energy_absorbing_heat",
+        "groundsense"
+      ],
+      "additional_traits": [
+        "heavy_set",
+        "tool_user"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "tank",
+        "defensive_fighter",
+        "crafter"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "talonstrike_raptorfolk": {
+      "name": "Talonstrike Raptorfolk",
+      "biology_type": "raptor",
+      "morphotype": "humanoid",
+      "size": "medium",
+      "diet": "Carnivore",
+      "core_traits": [
+        "fang_claw",
+        "keen_sight",
+        "avian_wings",
+        "hollow_bones"
+      ],
+      "additional_traits": [
+        "ambusher",
+        "tool_user"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "archer",
+        "scout",
+        "light_skirmisher"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "emberborn_dragonkin": {
+      "name": "Emberborn Dragonkin",
+      "biology_type": "draconic",
+      "morphotype": "true_dragon",
+      "size": "large",
+      "diet": "Carnivore",
+      "core_traits": [
+        "thick_hide",
+        "elemental_fire",
+        "energy_absorbing_heat",
+        "high_perception"
+      ],
+      "additional_traits": [
+        "fearsome_displays",
+        "dense_bones"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "heavy_melee",
+        "elemental_blaster"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "vineshadow_sylvan": {
+      "name": "Vineshadow Sylvan",
+      "biology_type": "asteraceae",
+      "morphotype": "humanoid",
+      "size": "medium",
+      "diet": "photosynthetic",
+      "core_traits": [
+        "capitula",
+        "rapid_growth"
+      ],
+      "additional_traits": [
+        "mycorrhizal_symbiosis",
+        "thorny_stems"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "support_caster",
+        "healer",
+        "crowd_control"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "frostborn_ursan": {
+      "name": "Frostborn Ursan",
+      "biology_type": "ursidae",
+      "morphotype": "humanoid",
+      "size": "large",
+      "diet": "omnivore",
+      "core_traits": [
+        "thick_hide",
+        "fur",
+        "hibernate",
+        "fang_claw",
+        "territorial"
+      ],
+      "additional_traits": [
+        "fearsome_displays",
+        "tool_user"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "tank",
+        "heavy_hitter",
+        "survivalist"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "moonfang_lupine": {
+      "name": "Moonfang Lupine",
+      "biology_type": "canidae",
+      "morphotype": "humanoid",
+      "size": "medium",
+      "diet": "Carnivore",
+      "core_traits": [
+        "keen_smell",
+        "fur",
+        "fang_claw",
+        "tribal",
+        "territorial"
+      ],
+      "additional_traits": [
+        "stealthy",
+        "keen_hearing"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "scout",
+        "tracker",
+        "agile_melee"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "emberwing_wyvernkin": {
+      "name": "Emberwing Wyvernkin",
+      "biology_type": "draconic",
+      "morphotype": "wyvern",
+      "size": "large",
+      "diet": "Carnivore",
+      "core_traits": [
+        "thick_hide",
+        "elemental_fire",
+        "energy_absorbing_heat",
+        "high_perception"
+      ],
+      "additional_traits": [
+        "aerodynamic",
+        "fearsome_displays"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "striker",
+        "mobile_skirmisher"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "marshscale_lizardfolk": {
+      "name": "Marshscale Lizardfolk",
+      "biology_type": "reptilia",
+      "morphotype": "humanoid",
+      "size": "medium",
+      "diet": "omnivore",
+      "core_traits": [
+        "cold_blooded",
+        "heat_vision",
+        "thick_hide",
+        "fang_claw",
+        "stealthy"
+      ],
+      "additional_traits": [
+        "amphibious",
+        "tool_user"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "skirmisher",
+        "ambusher",
+        "survivalist"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "cresthorn_cervan": {
+      "name": "Cresthorn Cervan",
+      "biology_type": "cervidae",
+      "morphotype": "humanoid",
+      "size": "medium",
+      "diet": "herbivore",
+      "core_traits": [
+        "keen_hearing",
+        "hooves",
+        "territorial",
+        "ambusher"
+      ],
+      "additional_traits": [
+        "antlers",
+        "endurance"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "archer",
+        "skirmisher",
+        "pathfinder"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "sunfeather_harpy": {
+      "name": "Sunfeather Harpy",
+      "biology_type": "avian",
+      "morphotype": "humanoid",
+      "size": "medium",
+      "diet": "omnivore",
+      "core_traits": [
+        "avian_wings",
+        "hollow_bones",
+        "keen_sight"
+      ],
+      "additional_traits": [
+        "aerodynamic",
+        "tool_user"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "scout",
+        "archer",
+        "messenger"
+      ],
+      "lore": null,
+      "gm_notes": "Winged humanoid variant."
+    },
+    "sandcoil_boa": {
+      "name": "Sandcoil Boa",
+      "biology_type": "reptilia",
+      "morphotype": "serpentine",
+      "size": "large",
+      "diet": "Carnivore",
+      "core_traits": [
+        "cold_blooded",
+        "heat_vision",
+        "thick_hide",
+        "fang_claw"
+      ],
+      "additional_traits": [
+        "venomous",
+        "groundsense"
+      ],
+      "equipment_slots_override": [
+        "head",
+        "thick_tail_long_torso",
+        "back"
+      ],
+      "suggested_roles": [
+        "ambusher",
+        "controller"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "bogrunner": {
+      "name": "Bogrunner",
+      "biology_type": "amphibian_bio",
+      "morphotype": "amphibian",
+      "size": "medium",
+      "diet": "omnivore",
+      "core_traits": [
+        "amphibious",
+        "rapid_regen",
+        "keen_sight"
+      ],
+      "additional_traits": [
+        "ambusher",
+        "stealthy"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "skirmisher",
+        "ambusher"
+      ],
+      "lore": null,
+      "gm_notes": "Can breathe underwater."
+    },
+    "tideclaw_otterfolk": {
+      "name": "Tideclaw Otterfolk",
+      "biology_type": "amphibian_bio",
+      "morphotype": "humanoid",
+      "size": "small",
+      "diet": "omnivore",
+      "core_traits": [
+        "amphibious",
+        "tool_user"
+      ],
+      "additional_traits": [
+        "amphibious",
+        "tool_user"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "scout",
+        "skirmisher"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "ashfang_naga": {
+      "name": "Ashfang Naga",
+      "biology_type": "reptilia",
+      "morphotype": "serpentine_hybrid",
+      "size": "medium",
+      "diet": "Carnivore",
+      "core_traits": [
+        "cold_blooded",
+        "heat_vision",
+        "scales"
+      ],
+      "additional_traits": [
+        "venomous"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "scout",
+        "archer",
+        "messenger"
+      ],
+      "lore": null,
+      "gm_notes": null
+    },
+    "steelhorn_minotaur": {
+      "name": "Steelhorn Minotaur",
+      "biology_type": "bovidae",
+      "morphotype": "bipedal_beast",
+      "size": "large",
+      "diet": "herbivore",
+      "core_traits": [
+        "hooves",
+        "horn",
+        "thick_hide"
+      ],
+      "additional_traits": [
+        "NEEDS_DEFINITION"
+      ],
+      "equipment_slots_override": null,
+      "suggested_roles": [
+        "NEEDS_DEFINITION"
+      ],
+      "lore": "Distinct from Ironhide Minotaur.",
+      "gm_notes": null
+    }
+  }
+}

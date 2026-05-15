@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "File": "CraftRecipes.json",
+    "version": "0.1",
+    "last_updated": "2026-05-14",
+    "description": "Comprehensive list of crafting recipes for character development and gameplay."
+  },
+  "recipes": {
+    "Processing": {
+      "Mining": {
+        "Crush Stone": {
+          "name": "Crush Stone",
+          "id": "",
+          "description": "A basic recipe for crushing stone into smaller fragments.",
+          "Requirements": [
+            {
+              "type": "item",
+              "item": "hammer",
+              "quantity": 1
+            },
+            {
+              "type": "item",
+              "item": "ore",
+              "quantity": 1
+            }
+          ]
+        }
+      },
+      "Metalworking": {
+        "Smelt": {
+          "name": "Smelt Metal",
+          "id": "",
+          "description": "A basic recipe for smelting ore into metal ingots.",
+          "Requirements": [
+            {
+              "type": "item",
+              "item": "furnace",
+              "quantity": 1
+            },
+            {
+              "type": "item",
+              "item": "ore",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    }
+  }
+}

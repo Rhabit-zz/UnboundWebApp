@@ -1,0 +1,1012 @@
+{
+  "_meta": {
+    "document": "professions.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.1-draft",
+    "source": "Unbound Knowledge Crafting and Profession Systems document.",
+    "notes": [
+      "Profession Skills use the same XP pool as combat skills.",
+      "level cost: R+1 XP to raise from R to R+1. (R1=1, R2=2, R3=3, R4=4, R5=5 = 15 XP total to max.)",
+      "Skill level may never exceed the governing stat level.",
+      "Recipe memory: level squared (crafting recipes). level cubed (tool recipes).",
+      "Missing tags can be bridged by skill level: R1=10%, R2=20%, R3=30%, R4=40%, R5=50% of recipe tags.",
+      "Affinity Styles function as Profession Skills for spell formula work.",
+      "Knowledge Tags are earned through play — not purchased with XP.",
+      "Tag tiers: T1=common, T2=uncommon, T3=rare, T4=epic, T5=world-unique."
+    ]
+  },
+  "level_framework": {
+    "1": {
+      "title": "Novice",
+      "tier_access": "common",
+      "tag_bridge_percent": 10,
+      "pattern_writing": false,
+      "recipe_memory": 1,
+      "tool_memory": 1
+    },
+    "2": {
+      "title": "Skilled",
+      "tier_access": "uncommon",
+      "tag_bridge_percent": 20,
+      "pattern_writing": "common",
+      "recipe_memory": 4,
+      "tool_memory": 8
+    },
+    "3": {
+      "title": "Professional",
+      "tier_access": "rare",
+      "tag_bridge_percent": 30,
+      "pattern_writing": "uncommon",
+      "recipe_memory": 9,
+      "tool_memory": 27
+    },
+    "4": {
+      "title": "Master",
+      "tier_access": "epic",
+      "tag_bridge_percent": 40,
+      "pattern_writing": "epic",
+      "recipe_memory": 16,
+      "tool_memory": 64
+    },
+    "5": {
+      "title": "Artisan",
+      "tier_access": "legendary",
+      "tag_bridge_percent": 50,
+      "pattern_writing": "legendary",
+      "recipe_memory": 25,
+      "tool_memory": 125
+    }
+  },
+  "professions": {
+    "physical_crafting": {
+      "smithing": {
+        "name": "Smithing",
+        "governing_stat": "BDY",
+        "category": "physical_crafting",
+        "description": "Weapons, armor, metal tools.",
+        "associated_crafter_style": "weapon_crafter_style",
+        "required_tools": [
+          "forge",
+          "anvil",
+          "hammer",
+          "tongs"
+        ],
+        "learned_actions": [
+          "pound",
+          "quench",
+          "pour",
+          "grind",
+          "polish",
+          "repair_metal"
+        ],
+        "output_categories": [
+          "weapons_metal",
+          "armor_metal",
+          "tools_metal"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Craft common metal items. Use basic toolkits. Identify quality and materials. Salvage basic components."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Craft uncommon items. Reduce mundane craft time by 50%. Repair damaged items. Apply 1 Modular Upgrade."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Craft rare items. Combine two material types. Apply 2 Modular Upgrades. Reduce material cost by 25%."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Multi-profession crafting (secondary at level 2+). Apply 3 Modular Upgrades. Create Custom Templates. 1 reroll per project."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Craft epic items (legendary if assisted). Field-ready crafting without workshop. Instill signature traits. Reduce DC by 2 for all related checks."
+          }
+        }
+      },
+      "carpentry": {
+        "name": "Carpentry",
+        "governing_stat": "BDY",
+        "category": "physical_crafting",
+        "description": "Wooden gear, bows, furniture.",
+        "associated_crafter_style": "projectile_crafter_style",
+        "required_tools": [
+          "saw",
+          "chisel",
+          "plane",
+          "hammer"
+        ],
+        "learned_actions": [
+          "cut",
+          "carve",
+          "notch",
+          "polish"
+        ],
+        "output_categories": [
+          "weapons_wood",
+          "bows",
+          "furniture",
+          "structures_wood"
+        ],
+        "levels": {
+          "1": {
+            "capabilities": "Craft common wood items. Basic tools. Identify timber quality. Salvage lumber."
+          },
+          "2": {
+            "capabilities": "Craft uncommon items. Reduce craft time by 50%. Repair wooden items. Apply 1 Modular Upgrade."
+          },
+          "3": {
+            "capabilities": "Craft rare items. Combine wood types. Apply 2 Modular Upgrades. Reduce material cost by 25%."
+          },
+          "4": {
+            "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project."
+          },
+          "5": {
+            "capabilities": "Craft epic items. Field-ready. Instill signature traits. DC -2."
+          }
+        }
+      },
+      "tailoring": {
+        "name": "Tailoring",
+        "governing_stat": "MND",
+        "category": "physical_crafting",
+        "description": "Cloth armor, robes, pouches.",
+        "associated_crafter_style": "armor_crafter_style",
+        "required_tools": [
+          "needle",
+          "thread",
+          "scissors",
+          "loom"
+        ],
+        "learned_actions": [
+          "sew",
+          "hem",
+          "measure",
+          "cut"
+        ],
+        "output_categories": [
+          "armor_cloth",
+          "robes",
+          "pouches",
+          "bags"
+        ],
+        "levels": {
+          "1": {
+            "Description": "Gain the Cut, Sew, and Measure Knowledge Tags at Tier 1. Gain +L when crafting with Weaved material"
+          },
+          "2": {},
+          "3": {},
+          "4": {},
+          "5": {}
+        }
+      },
+      "leatherworking": {
+        "name": "Leatherworking",
+        "governing_stat": "BDY",
+        "category": "physical_crafting",
+        "description": "Leather armor, straps, bindings.",
+        "associated_crafter_style": "armor_crafter_style",
+        "required_tools": [
+          "awl",
+          "leather_knife",
+          "stitching_horse",
+          "curing_rack"
+        ],
+        "output_categories": [
+          "armor_leather",
+          "straps",
+          "bindings",
+          "pouches_leather"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Craft common leather items. Basic repair. Identify hides."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Craft uncommon items. Reduce craft time by 50%. Apply 1 Modular Upgrade."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Craft rare items. Combine hide types. Reduce material cost by 25%."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Legendary leather goods. Field crafting. Signature traits. DC -2."
+          }
+        }
+      },
+      "engineering": {
+        "name": "Engineering",
+        "governing_stat": "MND",
+        "category": "physical_crafting",
+        "description": "Traps, machines, crossbows.",
+        "associated_crafter_style": "projectile_crafter_style",
+        "required_tools": [
+          "precision_tools",
+          "drafting_board",
+          "workshop"
+        ],
+        "output_categories": [
+          "traps",
+          "machines",
+          "crossbows",
+          "mechanical_devices"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Build simple traps and basic mechanisms. Identify mechanical components."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Build uncommon devices. Reduce craft time by 50%. Repair mechanisms. Apply 1 Modular Upgrade."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Build rare devices. Combine mechanism types. Reduce material cost by 25%."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Build epic machines. Field assembly. Signature traits. DC -2."
+          }
+        }
+      },
+      "enchanting": {
+        "name": "Enchanting",
+        "governing_stat": "MND",
+        "category": "physical_crafting",
+        "description": "Adds magical properties to base items. Requires a base item.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "enchanting_table",
+          "arcane_focus",
+          "base_item"
+        ],
+        "output_categories": [
+          "enchanted_weapons",
+          "enchanted_armor",
+          "enchanted_accessories"
+        ],
+        "special_rules": "Requires base item. Enchantment quality is capped by the base item tier and the crafter's level.",
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Apply minor enchantments to common items. Identify existing enchantments."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Apply uncommon enchantments. Repair faded enchantments. Stack 1 effect."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Apply rare enchantments. Combine two effect types. Reduce material cost by 25%."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Apply epic enchantments. Custom enchantment templates. 1 reroll per project."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Apply legendary enchantments. Instill unique properties. DC -2."
+          }
+        }
+      }
+    },
+    "alchemical_magical": {
+      "alchemy": {
+        "name": "Alchemy",
+        "governing_stat": "MND",
+        "category": "alchemical_magical",
+        "description": "Potions, bombs, enhancers.",
+        "associated_crafter_style": "consumable_crafter_style",
+        "required_tools": [
+          "alembic",
+          "mortar_pestle",
+          "alchemist_supplies",
+          "flame_source"
+        ],
+        "output_categories": [
+          "potions",
+          "bombs",
+          "enhancers",
+          "poisons",
+          "reagents"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Brew common potions and reagents. Identify basic ingredients. Salvage components."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Brew uncommon formulas. Reduce brew time by 50%. Stack 1 effect modifier."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Brew rare formulas. Combine two reagent types. Reduce material cost by 25%."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Multi-profession crafting. Custom Formula Templates. 1 reroll per project."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Legendary formulas. Field-ready without lab. Signature properties. DC -2."
+          }
+        }
+      },
+      "crystallography": {
+        "name": "Crystallography",
+        "governing_stat": "MND",
+        "category": "alchemical_magical",
+        "description": "Crystal cutting, mana storage, focus items.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "crystal_lathe",
+          "focus_calibration_tools",
+          "mana_meter"
+        ],
+        "output_categories": [
+          "focus_items",
+          "mana_crystals",
+          "crystal_components",
+          "arcane_storage"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Cut and identify common crystals. Craft basic focus items."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Craft mana storage crystals. Reduce craft time by 50%."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Craft rare focus items. Attune crystals to specific affinities."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Craft epic resonance items. Custom crystal templates. 1 reroll per project."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Legendary focus items. Field-ready. Signature attunement. DC -2."
+          }
+        }
+      },
+      "bookbinding": {
+        "name": "Bookbinding",
+        "governing_stat": "MND",
+        "category": "alchemical_magical",
+        "description": "Spellbooks, codices, recipe collections.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "binding_press",
+          "paper_materials",
+          "ink",
+          "needle_thread"
+        ],
+        "output_categories": [
+          "spellbooks",
+          "recipe_books",
+          "codices",
+          "scrolls"
+        ],
+        "special_rules": "Master Codex is a high-tier crafted item that provides organization bonuses and reduced lookup time.",
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Bind common books. Create basic recipe journals."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Bind uncommon tomes. Create organized profession journals."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Bind rare codices. Reduce recipe lookup time."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Create unified codex volumes. Apply organization bonuses."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Create Master Codex. Maximum organization bonus. Legendary tome properties."
+          }
+        }
+      },
+      "runic_scribing": {
+        "name": "Runic Scribing",
+        "governing_stat": null,
+        "governing_stat_options": [
+          "MND",
+          "SPT"
+        ],
+        "category": "alchemical_magical",
+        "description": "Rune inscription for items and structures.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "scribing_tools",
+          "runic_ink",
+          "stable_surface"
+        ],
+        "output_categories": [
+          "runed_items",
+          "runed_structures",
+          "ward_glyphs",
+          "enchanted_surfaces"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Inscribe common runes on surfaces. Identify existing runes."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Inscribe uncommon runes. Runes persist longer."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Inscribe rare runes. Combine two rune effects."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Inscribe epic rune sets. Create custom rune templates."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Inscribe legendary runes. Permanent structural wards. DC -2."
+          }
+        }
+      }
+    },
+    "gathering": {
+      "foraging": {
+        "name": "Foraging",
+        "governing_stat": "SPT",
+        "category": "gathering",
+        "description": "Herbs, plants, forest materials.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "gathering_kit",
+          "herb_pouch"
+        ],
+        "output_categories": [
+          "herbs",
+          "plants",
+          "forest_materials",
+          "fungi"
+        ],
+        "knowledge_tag_examples": [
+          "Herb Identification",
+          "Toxin Handling",
+          "Wood Working"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Gather common plants and herbs. Identify basic materials."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Gather uncommon materials. Identify quality variations."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Gather rare materials. Reduce gather time. Identify exceptional specimens."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Gather epic tier materials. Cultivate rare specimens in field."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Gather legendary materials. Field cultivation of any material. DC -2."
+          }
+        }
+      },
+      "mining": {
+        "name": "Mining",
+        "governing_stat": "BDY",
+        "category": "gathering",
+        "description": "Ores, gems, underground materials.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "pickaxe",
+          "chisel",
+          "lantern"
+        ],
+        "output_categories": [
+          "ores",
+          "gems",
+          "stone",
+          "underground_materials"
+        ],
+        "knowledge_tag_examples": [
+          "Iron Working",
+          "Stone Working",
+          "Gem Cutting",
+          "Arcane Crystal Conductivity"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Mine common ores and stone. Identify basic minerals."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Mine uncommon materials. Identify gem quality."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Mine rare materials. Identify exceptional veins."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Mine epic tier materials. Locate hidden deposits."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Mine legendary materials. Sense deposits through terrain. DC -2."
+          }
+        }
+      },
+      "hunting": {
+        "name": "Hunting",
+        "governing_stat": null,
+        "governing_stat_options": [
+          "BDY",
+          "SPT"
+        ],
+        "category": "gathering",
+        "description": "Animal materials, tracking, field dressing.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "hunting_weapon",
+          "field_dressing_kit"
+        ],
+        "output_categories": [
+          "hides",
+          "bones",
+          "meat",
+          "animal_components",
+          "monster_parts"
+        ],
+        "knowledge_tag_examples": [
+          "Field Dressing",
+          "Toxin Handling",
+          "Bone Crafting"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Hunt common animals. Basic field dressing. Identify animal tracks."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Hunt uncommon creatures. Preserve quality materials."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Hunt rare beasts. Extract rare components without damage."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Hunt epic creatures. Extract exceptional parts."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Hunt legendary creatures. Full extraction of all materials. DC -2."
+          }
+        }
+      },
+      "fishing": {
+        "name": "Fishing",
+        "governing_stat": "SPT",
+        "category": "gathering",
+        "description": "Aquatic materials, rare water-based components.",
+        "associated_crafter_style": null,
+        "required_tools": [
+          "fishing_rod",
+          "net",
+          "bait"
+        ],
+        "output_categories": [
+          "fish",
+          "aquatic_materials",
+          "water_components",
+          "rare_catches"
+        ],
+        "knowledge_tag_examples": [
+          "Aquatic Biology",
+          "Net Weaving",
+          "Bait Crafting"
+        ],
+        "levels": {
+          "1": {
+            "title": "Novice",
+            "dc": 4,
+            "capabilities": "Catch common fish. Identify basic aquatic materials."
+          },
+          "2": {
+            "title": "Skilled",
+            "dc": 6,
+            "capabilities": "Catch uncommon aquatic life. Identify quality variations."
+          },
+          "3": {
+            "title": "Professional",
+            "dc": 8,
+            "capabilities": "Catch rare aquatic creatures. Extract rare components."
+          },
+          "4": {
+            "title": "Master",
+            "dc": 10,
+            "capabilities": "Catch epic aquatic life. Access deep-water materials."
+          },
+          "5": {
+            "title": "Artisan",
+            "dc": 12,
+            "capabilities": "Catch legendary aquatic creatures. DC -2."
+          }
+        }
+      }
+    }
+  },
+  "crafter_combat_styles": {
+    "weapon_crafter_style": {
+      "name": "Weapon Crafter Style",
+      "governing_stat": "BDY",
+      "associated_professions": [
+        "smithing",
+        "carpentry",
+        "engineering"
+      ],
+      "notes": "Bonus scales with associated Profession Skill level, not Style level alone.",
+      "levels": {
+        "1": {
+          "name": "Weapon Intuition",
+          "effect": "+level to attack rolls with weapons in associated profession categories."
+        },
+        "2": {
+          "name": "Stress Reading",
+          "effect": "Once per round, identify a structural weakness. Next attack against that target deals +Profession level bonus damage."
+        },
+        "3": {
+          "name": "Edge Knowledge",
+          "effect": "Critical hit range expands by 1 with self-category weapons. Critical success triggers the weapon's crafted critical bonus if applicable."
+        },
+        "4": {
+          "name": "Breaking Point",
+          "ap_cost": 3,
+          "sp_cost": "2R",
+          "effect": "Strike targeting a held item or armor piece. Inflict Structural Flaw on a failed BDY save."
+        },
+        "5": {
+          "name": "Master's Touch",
+          "effect": "While wielding a weapon in associated category, gain +Profession level to all attack and damage rolls. Field repair any weapon in associated category as a 2 AP action."
+        }
+      }
+    },
+    "armor_crafter_style": {
+      "name": "Armor Crafter Style",
+      "governing_stat": null,
+      "governing_stat_options": [
+        "BDY",
+        "MND"
+      ],
+      "associated_professions": [
+        "smithing",
+        "tailoring",
+        "leatherworking"
+      ],
+      "notes": "Bonus scales with associated Profession Skill level.",
+      "levels": {
+        "1": {
+          "name": "Construction Awareness",
+          "effect": "+level to Defense rolls while wearing armor in associated profession categories."
+        },
+        "2": {
+          "name": "Load Management",
+          "effect": "Reduce AP penalty from armor weight by Profession level."
+        },
+        "3": {
+          "name": "Stress Distribution",
+          "effect": "When armor takes a critical hit, reduce damage by Profession level. May trigger once per round."
+        },
+        "4": {
+          "name": "Field Repair",
+          "ap_cost": 2,
+          "sp_cost": "1R",
+          "effect": "Restore Profession level HP to worn armor between or during combat. Requires basic tools."
+        },
+        "5": {
+          "name": "Second Skin",
+          "effect": "Armor in associated category no longer imposes movement penalties. Gain +Profession level to all Defense rolls while wearing associated armor."
+        }
+      }
+    },
+    "consumable_crafter_style": {
+      "name": "Consumable Crafter Style",
+      "governing_stat": "MND",
+      "associated_professions": [
+        "alchemy",
+        "cooking"
+      ],
+      "notes": "Bonus scales with associated Profession Skill level.",
+      "levels": {
+        "1": {
+          "name": "Precise Application",
+          "effect": "Potions and oils in associated category restore or deal +Profession level bonus effect value."
+        },
+        "2": {
+          "name": "Efficient Dosing",
+          "effect": "Reduce AP cost of applying consumables in associated category by 1 (minimum 1)."
+        },
+        "3": {
+          "name": "Optimized Timing",
+          "effect": "May delay a consumable effect by up to level rounds. Triggering the delay costs 0 AP."
+        },
+        "4": {
+          "name": "Compound Effect",
+          "effect": "When applying two consumables in the same round, the second costs 0 AP. Both effects apply."
+        },
+        "5": {
+          "name": "Master Formulator",
+          "effect": "Consumables in associated category last +Profession level rounds, or have their effect multiplied by 1.5. Choose per item at time of use."
+        }
+      }
+    },
+    "projectile_crafter_style": {
+      "name": "Projectile Crafter Style",
+      "governing_stat": null,
+      "governing_stat_options": [
+        "MND",
+        "BDY"
+      ],
+      "associated_professions": [
+        "engineering",
+        "carpentry",
+        "smithing"
+      ],
+      "notes": "Bonus scales with associated Profession Skill level.",
+      "levels": {
+        "1": {
+          "name": "Trajectory Knowledge",
+          "effect": "+level to ranged attack rolls with projectile weapons in associated categories."
+        },
+        "2": {
+          "name": "Material Optimization",
+          "effect": "Ammunition in associated categories gains +Profession level to penetration (reduces target armor DR)."
+        },
+        "3": {
+          "name": "Precision Construction",
+          "effect": "Once per round, designate a shot as a Precision Strike. Deal Profession level bonus damage and ignore cover bonuses."
+        },
+        "4": {
+          "name": "Custom Load",
+          "ap_cost": 1,
+          "effect": "Apply a prepared material coating to ammunition (fire, acid, paralytic, etc.) without breaking action economy."
+        },
+        "5": {
+          "name": "Master Fletcher",
+          "effect": "Ranged attacks with associated category weapons may apply the weapon's crafted critical bonus on any hit that exceeds target Defense by Profession level or more."
+        }
+      }
+    }
+  },
+  "knowledge_tag_system": {
+    "description": "Knowledge Tags represent working understanding of materials, techniques, and processes. Earned through play. Never purchased with XP.",
+    "domains": {
+      "material": {
+        "description": "Working knowledge of a substance — what it is, how it behaves, how it responds to tools, heat, alchemical processes, or magical forces.",
+        "examples": [
+          "Iron Working",
+          "Toxin Handling",
+          "Arcane Crystal Conductivity",
+          "Void Tempering"
+        ]
+      },
+      "technique": {
+        "description": "Working knowledge of a process or method — how to shape, combine, or encode something.",
+        "examples": [
+          "Edge Geometry",
+          "Distillation",
+          "Thermal Infusion",
+          "Sympathetic Resonance"
+        ]
+      },
+      "formula": {
+        "description": "Working knowledge of a specific magical structure or spell logic. Applies to Affinity Style practitioners writing or analyzing spell formulas.",
+        "examples": [
+          "Combustion Logic",
+          "Planar Binding Structure",
+          "Temporal Loop"
+        ]
+      }
+    },
+    "tag_tiers": {
+      "T1": {
+        "name": "Common",
+        "access": "Village trainers, common gathering, basic recipes",
+        "examples": [
+          "Iron Working",
+          "Herb Identification",
+          "Basic Combustion"
+        ]
+      },
+      "T2": {
+        "name": "Uncommon",
+        "access": "Guild trainers, uncommon materials, exploration",
+        "examples": [
+          "Alloy Tempering",
+          "Toxin Concentration",
+          "Elemental Binding"
+        ]
+      },
+      "T3": {
+        "name": "Rare",
+        "access": "Specialist trainers (Rapport required), rare materials, dungeon content",
+        "examples": [
+          "Mythril Resonance",
+          "Soul Ash Refinement",
+          "Planar Ignition"
+        ]
+      },
+      "T4": {
+        "name": "Epic",
+        "access": "Grandmaster access or unique discovery only",
+        "examples": [
+          "Void Tempering",
+          "Celestial Formula Structure",
+          "Living Metal Weaving"
+        ]
+      },
+      "T5": {
+        "name": "Legendary",
+        "access": "World-unique. Found in isolated cultures, lost ruins, boss-tier content",
+        "examples": [
+          "Kulthari War-Forging",
+          "Aetheric Core Inscription",
+          "Dragon-Breath Distillation"
+        ]
+      }
+    },
+    "how_gained": [
+      "Completing a recipe or formula that contains tags not yet possessed — craft must fully succeed.",
+      "Profession Trainer instruction with working demonstration — requires materials, coin, and completion of demonstration craft.",
+      "Gathering and examining new materials — sufficient engagement may resolve into T1 tag.",
+      "Deconstruction of found items — extracts Pattern and associated tags if knowledge threshold is met."
+    ]
+  },
+  "recipe_system": {
+    "recipe_fields": {
+      "required_tags": "Knowledge Tags the crafter must possess or partially bridge with skill level.",
+      "materials": "Raw and refined components required, including quantities.",
+      "crafting_dc": "The difficulty number the crafting roll must meet or exceed.",
+      "required_skills": "The Profession Skill(s) governing this recipe.",
+      "tool_requirement": "Tools and workstation required.",
+      "time_requirement": "In-world time the craft takes to complete.",
+      "functional_material": "The material used to calculate item stats (Hardness, Ductility, Density).",
+      "critical_success_effect": "Bonus applied when the roll exceeds DC by 10 or more.",
+      "optional_upgrades": "Additions that modify weight, DC, or enhance item stats."
+    },
+    "outcome_table": {
+      "critical_success": "Roll exceeds DC by 10+. Theoretical recipe or formula works exactly as intended.",
+      "success": "Roll meets DC. Output functions. Minor unintended properties possible on theoretical crafts.",
+      "partial_failure": "Roll within 3 of DC. Item or formula fails but reveals information about why.",
+      "failure": "Roll fails. Materials partially lost (physical) or mana partially returned (magical). Something is learned.",
+      "critical_failure": "Output appears functional but behaves dangerously or unexpectedly when used. Crafter cannot know until tested."
+    },
+    "pattern_writing": {
+      "description": "Encoding a construction into reproducible form. Gated by Profession Skill level.",
+      "level_1": "Cannot write patterns. May salvage basic components only.",
+      "level_2": "May write patterns for Common-tier items.",
+      "level_3": "May write patterns for Uncommon and Rare-tier items.",
+      "level_4": "May write patterns for Epic-tier items.",
+      "level_5": "May write patterns for Legendary-tier items."
+    }
+  },
+  "npc_trainer_archetypes": {
+    "village_craftsperson": {
+      "name": "Village Craftsperson",
+      "access": "Open. No Rapport required.",
+      "offers": "T1-T2 tags and recipes. Basic materials.",
+      "notes": "The entry point. Limited stock but reliable."
+    },
+    "guild_trainer": {
+      "name": "Guild Trainer",
+      "access": "Guild membership or fee.",
+      "offers": "T2-T3 tags and recipes. Demonstration crafts.",
+      "notes": "Consistent breadth expansion. Materials cost extra."
+    },
+    "rapport_gated_specialist": {
+      "name": "Rapport-Gated Specialist",
+      "access": "Minimum Opinion value required.",
+      "offers": "T3 tags. Techniques unavailable elsewhere in region.",
+      "notes": "Higher Rapport unlocks higher tier offerings."
+    },
+    "recipe_vendor": {
+      "name": "Recipe Vendor",
+      "access": "Open. Coin only.",
+      "offers": "Sells recipes without teaching tags.",
+      "notes": "Tags must be gained through successful crafting from the recipe."
+    },
+    "grandmaster": {
+      "name": "Grandmaster",
+      "access": "High Rapport required. May require quest.",
+      "offers": "T4-T5 tags. Unique techniques. Commission work.",
+      "notes": "Teaching method is personal. Some teach only through proximity to their work."
+    }
+  }
+}

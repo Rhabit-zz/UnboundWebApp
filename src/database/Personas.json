@@ -1,0 +1,459 @@
+{
+  "personas": [
+    {
+      "name": "The Warrior",
+      "stat": "SPT",
+      "theme": [
+        "courage",
+        "strength",
+        "honor"
+      ],
+      "spirit forms": [
+        "Falcon",
+        "Wolf",
+        "Tiger",
+        "Ram",
+        "Hawk",
+        "Lynx",
+        "Jackal",
+        "Boar",
+        "Komodo Dragon"
+      ],
+      "Ranks": [
+        {
+          "1": "First time an ally is hit within 15 ft each round, gain R stacks of Empower."
+        },
+        {
+          "2": "Max SP + R²; SPR +R."
+        },
+        {
+          "3": "+R damage to enemies that damaged an ally last round."
+        },
+        {
+          "4": "Gain 1 DT when an ally within 15 ft is hit (once per round)."
+        },
+        {
+          "5": "When using a DT to protect an ally, restore 1 SP and gain 1 Empower."
+        }
+      ]
+    },
+    {
+      "name": "The Sensualist",
+      "stat": "BDY",
+      "theme": [
+        "Stable",
+        "Resilient",
+        "Grounder"
+      ],
+      "spirit forms": [
+        "Bear",
+        "Bull",
+        "Beaver",
+        "Ox",
+        "Elk",
+        "Cow",
+        "Badger",
+        "Tortoise",
+        "Sheep",
+        "Mouse"
+      ],
+      "Ranks": [
+        {
+          "1": "When hit, gain R stacks of Regenerate."
+        },
+        {
+          "2": "Max HP + R²; HPR +R."
+        },
+        {
+          "3": "Gain 2R DR against the damage type last taken until end of combat."
+        },
+        {
+          "4": "First time you fall below 50% HP each round, gain 2 Regenerate automatically."
+        },
+        {
+          "5": "Rejuvenate stacks applied by you give double HPR, last 1 extra round, and fall off first."
+        }
+      ]
+    },
+    {
+      "name": "The Messenger",
+      "stat": "MND",
+      "theme": [
+        "adaptable",
+        "Clever",
+        "Communicative"
+      ],
+      "spirit forms": [
+        "Fox",
+        "Parrot",
+        "Monkey",
+        "Magpie",
+        "Squirrel",
+        "Raccoon",
+        "Hummingbird",
+        "Cat",
+        "Ferret",
+        "Crow"
+      ],
+      "Ranks": [
+        {
+          "1": "Moving toward an ally or away from enemies grants R stacks of Quicken."
+        },
+        {
+          "2": "Max MP + R²; MPR +R."
+        },
+        {
+          "3": "+R to Initiative and movement-related rolls."
+        },
+        {
+          "4": "Allies gain a stack of Quicken if you moved with 10 ft of them this turn."
+        },
+        {
+          "5": "While you have a stack of Quicken moves cost -R SP after extra-movement calculations.  If SP cost would be reduced below 0, gain MP equal to the difference."
+        }
+      ]
+    },
+    {
+      "name": "The Nuturer",
+      "stat": "SPT",
+      "theme": [
+        "Nurturing",
+        "Protective",
+        "Intuitive"
+      ],
+      "spirit forms": [
+        "Crab",
+        "Deer",
+        "Swan",
+        "Sea Turtle",
+        "Penguin",
+        "Rabbit",
+        "Seal",
+        "Kangaroo",
+        "Duck",
+        "Starfish"
+      ],
+      "Ranks": [
+        {
+          "1": "Healing a target grants them R stacks of Rejuvenate."
+        },
+        {
+          "2": "Max SP + R²; SPR +R."
+        },
+        {
+          "3": "Allies healed by you recover 1 DT."
+        },
+        {
+          "4": "Allies gain +2 to all Saves while Rejuvenate stacks are active."
+        },
+        {
+          "5": "Healing allies within 10 ft also heals you for half of that amount."
+        }
+      ]
+    },
+    {
+      "name": "The Creator",
+      "stat": "BDY",
+      "theme": [
+        "Confident",
+        "Charismatic",
+        "Creative"
+      ],
+      "spirit forms": [
+        "Lion",
+        "Peacock",
+        "Cheetah",
+        "Golden Eagle",
+        "Panther",
+        "Phoenix",
+        "Rooster",
+        "Tiger",
+        "Stag",
+        "Sun Bear"
+      ],
+      "Ranks": [
+        {
+          "1": "When enemies enter range, gain R stacks of Determination."
+        },
+        {
+          "2": "Max HP + R²; HPR +R."
+        },
+        {
+          "3": "When Determination stacks are spent, double HP gain."
+        },
+        {
+          "4": "Defeating or downing an enemy grants 1 stack of Determination (once/round)."
+        },
+        {
+          "5": "Allies within 10 ft gain 1 Determination when you spend one."
+        }
+      ]
+    },
+    {
+      "name": "The Analyst",
+      "stat": "MND",
+      "theme": [
+        "Precise",
+        "Methodical",
+        "Cautious"
+      ],
+      "spirit forms": [
+        "Owl",
+        "Praying Mantis",
+        "Weasel",
+        "Ant",
+        "Goat",
+        "Mole",
+        "Shrew",
+        "Falcon",
+        "Fox",
+        "Sandpiper"
+      ],
+      "Ranks": [
+        {
+          "1": "Attacking a target under a status effect gives R stacks of Hindered."
+        },
+        {
+          "2": "Max MP + R²; MPR +R."
+        },
+        {
+          "3": "Hindered gives +R to accuracy rolls against affected targets."
+        },
+        {
+          "4": "Gain 2 DT the first time you apply a debuff each round."
+        },
+        {
+          "5": "Your debuffs last +1 round and must be cleansed twice in one round before removed."
+        }
+      ]
+    },
+    {
+      "name": "The Diplomat",
+      "stat": "SPT",
+      "theme": [
+        "Harmonious",
+        "Judicious",
+        "Mediating"
+      ],
+      "spirit forms": [
+        "Dove",
+        "Swan",
+        "Koala",
+        "Snake",
+        "Crane",
+        "Heron",
+        "Pangolin",
+        "Otter",
+        "Horse",
+        "Chinchilla"
+      ],
+      "Ranks": [
+        {
+          "1": "When two allies are within 10 ft of each other, gain R stacks of Balance."
+        },
+        {
+          "2": "Max SP + R²; SPR +R."
+        },
+        {
+          "3": "Balance grants +R to all saves or resistances while active."
+        },
+        {
+          "4": "Allies gain +1 to saves while adjacent to you."
+        },
+        {
+          "5": "Reactions taken on behalf of allies refund 1 SP or 1 DT (1/round)."
+        }
+      ]
+    },
+    {
+      "name": "The Reformer",
+      "stat": "BDY",
+      "theme": [
+        "Intense",
+        "Transformative",
+        "Strategic"
+      ],
+      "spirit forms": [
+        "Scorpion",
+        "Snake",
+        "Eagle",
+        "Jaguar",
+        "Raven",
+        "Lobster",
+        "Dragonfly",
+        "Spider",
+        "Panther",
+        "Wasp"
+      ],
+      "Ranks": [
+        {
+          "1": "On crit or successful status infliction, gain R stacks of Determined."
+        },
+        {
+          "2": "Max HP + R²; HPR +R."
+        },
+        {
+          "3": "Corrupt adds +R decay damage to all stacks you apply."
+        },
+        {
+          "4": "Gain +1 AP when removing a buff from an enemy (1/round)."
+        },
+        {
+          "5": "Attacks ignore 2R points of resistance if target has a status effect."
+        }
+      ]
+    },
+    {
+      "name": "The Explorer",
+      "stat": "MND",
+      "theme": [
+        "Free",
+        "Bold",
+        "Insightful"
+      ],
+      "spirit forms": [
+        "Horse",
+        "Falcon",
+        "Leopard",
+        "Coyote",
+        "Hyena",
+        "Gazelle",
+        "Owl",
+        "Lynx",
+        "Wolf",
+        "Wandering Albatross"
+      ],
+      "Ranks": [
+        {
+          "1": "First time you move more than 10 ft in a turn, gain R stacks of Focus."
+        },
+        {
+          "2": "Max MP + R²; MPR +R."
+        },
+        {
+          "3": "Focus adds +R to skill checks and saves this round."
+        },
+        {
+          "4": "Gain +1 AP if no enemies were within 10 ft at the start of your turn."
+        },
+        {
+          "5": "All movement-based abilities have their cost reduced by 1 AP or 1 MP."
+        }
+      ]
+    },
+    {
+      "name": "The Architect",
+      "stat": "BDY",
+      "theme": [
+        "Disciplined",
+        "Strategic",
+        "Builder"
+      ],
+      "spirit forms": [
+        "Goat",
+        "Beaver",
+        "Ant",
+        "Elephant",
+        "Turtle",
+        "Buffalo",
+        "Rhino",
+        "Ox",
+        "Badger",
+        "Stag Beetle"
+      ],
+      "Ranks": [
+        {
+          "1": "First DT spent: gain R stacks of Fortify."
+        },
+        {
+          "2": "Max HP + R²; HPR +R."
+        },
+        {
+          "3": "Fortify grants +R to Defense or Resistance until end of turn."
+        },
+        {
+          "4": "Reduce incoming structure or terrain damage by R."
+        },
+        {
+          "5": "Allies in terrain you’ve modified gain +1 to Defense and Saves."
+        }
+      ]
+    },
+    {
+      "name": "The Visionary",
+      "stat": "SPT",
+      "theme": [
+        "Innovative",
+        "Detached",
+        "Revolutionary"
+      ],
+      "spirit forms": [
+        "Crow",
+        "Octopus",
+        "Hawk",
+        "Electric Eel",
+        "Heron",
+        "Bat",
+        "Jellyfish",
+        "Lemur",
+        "Starling",
+        "Dragonfly"
+      ],
+      "Ranks": [
+        {
+          "1": "1 AP: Delay target, reducing their initiative by R for R rounds.  Skip additional turns this round."
+        },
+        {
+          "2": "Max  SP + R²; SPR +R."
+        },
+        {
+          "3": "Delay reduces enemy DTs by R."
+        },
+        {
+          "4": "When delay reduces enemy DT, gain that many DT."
+        },
+        {
+          "5": "1 AP: This character transfers up to R DT to an ally in Rx10ft."
+        }
+      ]
+    },
+    {
+      "name": "The Dreamer",
+      "stat": "MND",
+      "theme": [
+        "Empathic",
+        "Elusive",
+        "Imaginative"
+      ],
+      "spirit forms": [
+        "Dolphin",
+        "Jellyfish",
+        "Seahorse",
+        "Whale",
+        "Butterfly",
+        "Cat",
+        "Axolotl",
+        "Narwhal",
+        "Koi Fish",
+        "Moth"
+      ],
+      "Ranks": [
+        {
+          "1": "Gaining or giving a stack of any status grants R stacks of Concentration."
+        },
+        {
+          "2": "Max MP + R²; MPR +R."
+        },
+        {
+          "3": "Concentration grants +R to all MND-based effects."
+        },
+        {
+          "4": "Once per turn, you may float 5 ft without triggering reactions or terrain effects."
+        },
+        {
+          "5": "You may spend 1 DT to nullify a hit or status effect once per round."
+        }
+      ]
+    }
+  ]
+}

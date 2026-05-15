@@ -1,0 +1,1324 @@
+{
+  "Meta": {
+    "Version": 1,
+    "Author": "Your Name",
+    "Description": "A collection of materials for various animals.  A farmer collects liquids, gases, and solids from animals, Hunter's field dress animals, and Cooks butcher animals for a wide variety of materials.  These materials can be used for crafting, alchemy, and other purposes."
+  },
+  "Material Tags": {
+    "Meat": {
+      "Tier 1": [
+        "Common Meat"
+      ],
+      "Tier 2": [
+        "Uncommon Meat"
+      ],
+      "Tier 3": [
+        "Rare Meat"
+      ],
+      "Tier 4": [
+        "Epic Meat"
+      ],
+      "Tier 5": [
+        "Legendary Meat"
+      ]
+    },
+    "Skin": {
+      "Tier 1": [
+        "Common Skin"
+      ],
+      "Tier 2": [
+        "Uncommon Skin"
+      ],
+      "Tier 3": [
+        "Rare Skin"
+      ],
+      "Tier 4": [
+        "Epic Skin"
+      ],
+      "Tier 5": [
+        "Legendary Skin"
+      ]
+    },
+    "Scale": {
+      "Tier 1": [
+        "Common Scale"
+      ],
+      "Tier 2": [
+        "Uncommon Scale"
+      ],
+      "Tier 3": [
+        "Rare Scale"
+      ],
+      "Tier 4": [
+        "Epic Scale"
+      ],
+      "Tier 5": [
+        "Legendary Scale"
+      ]
+    },
+    "Fur": {
+      "Tier 1": [
+        "Common Fur"
+      ],
+      "Tier 2": [
+        "Uncommon Fur"
+      ],
+      "Tier 3": [
+        "Rare Fur"
+      ],
+      "Tier 4": [
+        "Epic Fur"
+      ],
+      "Tier 5": [
+        "Legendary Fur"
+      ]
+    },
+    "Wool": {
+      "Tier 1": [
+        "Common Wool"
+      ],
+      "Tier 2": [
+        "Uncommon Wool"
+      ],
+      "Tier 3": [
+        "Rare Wool"
+      ],
+      "Tier 4": [
+        "Epic Wool"
+      ],
+      "Tier 5": [
+        "Legendary Wool"
+      ]
+    },
+    "Hair": {
+      "Tier 1": [
+        "Common Hair"
+      ],
+      "Tier 2": [
+        "Uncommon Hair"
+      ],
+      "Tier 3": [
+        "Rare Hair"
+      ],
+      "Tier 4": [
+        "Epic Hair"
+      ],
+      "Tier 5": [
+        "Legendary Hair"
+      ]
+    },
+    "Webbing": {
+      "Tier 1": [
+        "Common Webbing"
+      ],
+      "Tier 2": [
+        "Uncommon Webbing"
+      ],
+      "Tier 3": [
+        "Rare Webbing"
+      ],
+      "Tier 4": [
+        "Epic Webbing"
+      ],
+      "Tier 5": [
+        "Legendary Webbing"
+      ]
+    },
+    "Bone": {
+      "Tier 1": [
+        "Common Bone"
+      ],
+      "Tier 2": [
+        "Uncommon Bone"
+      ],
+      "Tier 3": [
+        "Rare Bone"
+      ],
+      "Tier 4": [
+        "Epic Bone"
+      ],
+      "Tier 5": [
+        "Legendary Bone"
+      ]
+    },
+    "Organ": {
+      "Tier 1": [
+        "Common Organ"
+      ],
+      "Tier 2": [
+        "Uncommon Organ"
+      ],
+      "Tier 3": [
+        "Rare Organ"
+      ],
+      "Tier 4": [
+        "Epic Organ"
+      ],
+      "Tier 5": [
+        "Legendary Organ"
+      ]
+    },
+    "Exoskeleton": {
+      "Tier 1": [
+        "Common Exoskeleton"
+      ],
+      "Tier 2": [
+        "Uncommon Exoskeleton"
+      ],
+      "Tier 3": [
+        "Rare Exoskeleton"
+      ],
+      "Tier 4": [
+        "Epic Exoskeleton"
+      ],
+      "Tier 5": [
+        "Legendary Exoskeleton"
+      ]
+    },
+    "Feather": {
+      "Tier 1": [
+        "Common Feather"
+      ],
+      "Tier 2": [
+        "Uncommon Feather"
+      ],
+      "Tier 3": [
+        "Rare Feather"
+      ],
+      "Tier 4": [
+        "Epic Feather"
+      ],
+      "Tier 5": [
+        "Legendary Feather"
+      ]
+    },
+    "Horn": {
+      "Tier 1": [
+        "Common Horn"
+      ],
+      "Tier 2": [
+        "Uncommon Horn"
+      ],
+      "Tier 3": [
+        "Rare Horn"
+      ],
+      "Tier 4": [
+        "Epic Horn"
+      ],
+      "Tier 5": [
+        "Legendary Horn"
+      ]
+    },
+    "Claw": {
+      "Tier 1": [
+        "Common Claw"
+      ],
+      "Tier 2": [
+        "Uncommon Claw"
+      ],
+      "Tier 3": [
+        "Rare Claw"
+      ],
+      "Tier 4": [
+        "Epic Claw"
+      ],
+      "Tier 5": [
+        "Legendary Claw"
+      ]
+    },
+    "Tooth": {
+      "Tier 1": [
+        "Common Tooth"
+      ],
+      "Tier 2": [
+        "Uncommon Tooth"
+      ],
+      "Tier 3": [
+        "Rare Tooth"
+      ],
+      "Tier 4": [
+        "Epic Tooth"
+      ],
+      "Tier 5": [
+        "Legendary Tooth"
+      ]
+    },
+    "Shell": {
+      "Tier 1": [
+        "Common Shell"
+      ],
+      "Tier 2": [
+        "Uncommon Shell"
+      ],
+      "Tier 3": [
+        "Rare Shell"
+      ],
+      "Tier 4": [
+        "Epic Shell"
+      ],
+      "Tier 5": [
+        "Legendary Shell"
+      ]
+    },
+    "Fin": {
+      "Tier 1": [
+        "Common Fin"
+      ],
+      "Tier 2": [
+        "Uncommon Fin"
+      ],
+      "Tier 3": [
+        "Rare Fin"
+      ],
+      "Tier 4": [
+        "Epic Fin"
+      ],
+      "Tier 5": [
+        "Legendary Fin"
+      ]
+    },
+    "Eye": {
+      "Tier 1": [
+        "Common Eye"
+      ],
+      "Tier 2": [
+        "Uncommon Eye"
+      ],
+      "Tier 3": [
+        "Rare Eye"
+      ],
+      "Tier 4": [
+        "Epic Eye"
+      ],
+      "Tier 5": [
+        "Legendary Eye"
+      ]
+    },
+    "Ear": {
+      "Tier 1": [
+        "Common Ear"
+      ],
+      "Tier 2": [
+        "Uncommon Ear"
+      ],
+      "Tier 3": [
+        "Rare Ear"
+      ],
+      "Tier 4": [
+        "Epic Ear"
+      ],
+      "Tier 5": [
+        "Legendary Ear"
+      ]
+    },
+    "Nose": {
+      "Tier 1": [
+        "Common Nose"
+      ],
+      "Tier 2": [
+        "Uncommon Nose"
+      ],
+      "Tier 3": [
+        "Rare Nose"
+      ],
+      "Tier 4": [
+        "Epic Nose"
+      ],
+      "Tier 5": [
+        "Legendary Nose"
+      ]
+    },
+    "Gland": {
+      "Tier 1": [
+        "Common Gland"
+      ],
+      "Tier 2": [
+        "Uncommon Gland"
+      ],
+      "Tier 3": [
+        "Rare Gland"
+      ],
+      "Tier 4": [
+        "Epic Gland"
+      ],
+      "Tier 5": [
+        "Legendary Gland"
+      ]
+    },
+    "Sinew": {
+      "Tier 1": [
+        "Common Sinew"
+      ],
+      "Tier 2": [
+        "Uncommon Sinew"
+      ],
+      "Tier 3": [
+        "Rare Sinew"
+      ],
+      "Tier 4": [
+        "Epic Sinew"
+      ],
+      "Tier 5": [
+        "Legendary Sinew"
+      ]
+    },
+    "Tendon": {
+      "Tier 1": [
+        "Common Tendon"
+      ],
+      "Tier 2": [
+        "Uncommon Tendon"
+      ],
+      "Tier 3": [
+        "Rare Tendon"
+      ],
+      "Tier 4": [
+        "Epic Tendon"
+      ],
+      "Tier 5": [
+        "Legendary Tendon"
+      ]
+    },
+    "Cartilage": {
+      "Tier 1": [
+        "Common Cartilage"
+      ],
+      "Tier 2": [
+        "Uncommon Cartilage"
+      ],
+      "Tier 3": [
+        "Rare Cartilage"
+      ],
+      "Tier 4": [
+        "Epic Cartilage"
+      ],
+      "Tier 5": [
+        "Legendary Cartilage"
+      ]
+    },
+    "Marrow": {
+      "Tier 1": [
+        "Common Marrow"
+      ],
+      "Tier 2": [
+        "Uncommon Marrow"
+      ],
+      "Tier 3": [
+        "Rare Marrow"
+      ],
+      "Tier 4": [
+        "Epic Marrow"
+      ],
+      "Tier 5": [
+        "Legendary Marrow"
+      ]
+    },
+    "Fecis": {
+      "Tier 1": [
+        "Common Fecis"
+      ],
+      "Tier 2": [
+        "Uncommon Fecis"
+      ],
+      "Tier 3": [
+        "Rare Fecis"
+      ],
+      "Tier 4": [
+        "Epic Fecis"
+      ],
+      "Tier 5": [
+        "Legendary Fecis"
+      ]
+    },
+    "Ashes": {
+      "Tier 1": [
+        "Common Ashes"
+      ],
+      "Tier 2": [
+        "Uncommon Ashes"
+      ],
+      "Tier 3": [
+        "Rare Ashes"
+      ],
+      "Tier 4": [
+        "Epic Ashes"
+      ],
+      "Tier 5": [
+        "Legendary Ashes"
+      ]
+    }
+  },
+  "Organs": {
+    "Liver": {
+      "Tier 1": [
+        "Common Liver"
+      ],
+      "Tier 2": [
+        "Uncommon Liver"
+      ],
+      "Tier 3": [
+        "Rare Liver"
+      ],
+      "Tier 4": [
+        "Epic Liver"
+      ],
+      "Tier 5": [
+        "Legendary Liver"
+      ]
+    },
+    "Heart": {
+      "Tier 1": [
+        "Common Heart"
+      ],
+      "Tier 2": [
+        "Uncommon Heart"
+      ],
+      "Tier 3": [
+        "Rare Heart"
+      ],
+      "Tier 4": [
+        "Epic Heart"
+      ],
+      "Tier 5": [
+        "Legendary Heart"
+      ]
+    },
+    "Brain": {
+      "Tier 1": [
+        "Common Brain"
+      ],
+      "Tier 2": [
+        "Uncommon Brain"
+      ],
+      "Tier 3": [
+        "Rare Brain"
+      ],
+      "Tier 4": [
+        "Epic Brain"
+      ],
+      "Tier 5": [
+        "Legendary Brain"
+      ]
+    },
+    "Lung": {
+      "Tier 1": [
+        "Common Lung"
+      ],
+      "Tier 2": [
+        "Uncommon Lung"
+      ],
+      "Tier 3": [
+        "Rare Lung"
+      ],
+      "Tier 4": [
+        "Epic Lung"
+      ],
+      "Tier 5": [
+        "Legendary Lung"
+      ]
+    },
+    "Gill": {
+      "Tier 1": [
+        "Common Gill"
+      ],
+      "Tier 2": [
+        "Uncommon Gill"
+      ],
+      "Tier 3": [
+        "Rare Gill"
+      ],
+      "Tier 4": [
+        "Epic Gill"
+      ],
+      "Tier 5": [
+        "Legendary Gill"
+      ]
+    },
+    "Kidney": {
+      "Tier 1": [
+        "Common Kidney"
+      ],
+      "Tier 2": [
+        "Uncommon Kidney"
+      ],
+      "Tier 3": [
+        "Rare Kidney"
+      ],
+      "Tier 4": [
+        "Epic Kidney"
+      ],
+      "Tier 5": [
+        "Legendary Kidney"
+      ]
+    },
+    "Intestine": {
+      "Tier 1": [
+        "Common Intestine"
+      ],
+      "Tier 2": [
+        "Uncommon Intestine"
+      ],
+      "Tier 3": [
+        "Rare Intestine"
+      ],
+      "Tier 4": [
+        "Epic Intestine"
+      ],
+      "Tier 5": [
+        "Legendary Intestine"
+      ]
+    },
+    "Stomach": {
+      "Tier 1": [
+        "Common Stomach"
+      ],
+      "Tier 2": [
+        "Uncommon Stomach"
+      ],
+      "Tier 3": [
+        "Rare Stomach"
+      ],
+      "Tier 4": [
+        "Epic Stomach"
+      ],
+      "Tier 5": [
+        "Legendary Stomach"
+      ]
+    },
+    "Bladder": {
+      "Tier 1": [
+        "Common Bladder"
+      ],
+      "Tier 2": [
+        "Uncommon Bladder"
+      ],
+      "Tier 3": [
+        "Rare Bladder"
+      ],
+      "Tier 4": [
+        "Epic Bladder"
+      ],
+      "Tier 5": [
+        "Legendary Bladder"
+      ]
+    },
+    "Uterus": {
+      "Tier 1": [
+        "Common Uterus"
+      ],
+      "Tier 2": [
+        "Uncommon Uterus"
+      ],
+      "Tier 3": [
+        "Rare Uterus"
+      ],
+      "Tier 4": [
+        "Epic Uterus"
+      ],
+      "Tier 5": [
+        "Legendary Uterus"
+      ]
+    },
+    "Testes": {
+      "Tier 1": [
+        "Common Testes"
+      ],
+      "Tier 2": [
+        "Uncommon Testes"
+      ],
+      "Tier 3": [
+        "Rare Testes"
+      ],
+      "Tier 4": [
+        "Epic Testes"
+      ],
+      "Tier 5": [
+        "Legendary Testes"
+      ]
+    },
+    "Pancreas": {
+      "Tier 1": [
+        "Common Pancreas"
+      ],
+      " Tier 2": [
+        "Uncommon Pancreas"
+      ],
+      " Tier 3": [
+        "Rare Pancreas"
+      ],
+      " Tier 4": [
+        "Epic Pancreas"
+      ],
+      " Tier 5": [
+        "Legendary Pancreas"
+      ]
+    },
+    "Spleen": {
+      " Tier 1": [
+        "Common Spleen"
+      ],
+      " Tier 2": [
+        "Uncommon Spleen"
+      ],
+      " Tier 3": [
+        "Rare Spleen"
+      ],
+      " Tier 4": [
+        "Epic Spleen"
+      ],
+      " Tier 5": [
+        "Legendary Spleen"
+      ]
+    },
+    "Hypothalamus": {
+      "Tier 1": [
+        "Common Hypothalamus"
+      ],
+      "Tier 2": [
+        "Uncommon Hypothalamus"
+      ],
+      "Tier 3": [
+        "Rare Hypothalamus"
+      ],
+      "Tier 4": [
+        "Epic Hypothalamus"
+      ],
+      "Tier 5": [
+        "Legendary Hypothalamus"
+      ]
+    },
+    "Cerebellum": {
+      "Tier 1": [
+        "Common Cerebellum"
+      ],
+      "Tier 2": [
+        "Uncommon Cerebellum"
+      ],
+      "Tier 3": [
+        "Rare Cerebellum"
+      ],
+      "Tier 4": [
+        "Epic Cerebellum"
+      ],
+      "Tier 5": [
+        "Legendary Cerebellum"
+      ]
+    },
+    "Cerebrum": {
+      "Tier 1": [
+        "Common Cerebrum"
+      ],
+      "Tier 2": [
+        "Uncommon Cerebrum"
+      ],
+      "Tier 3": [
+        "Rare Cerebrum"
+      ],
+      "Tier 4": [
+        "Epic Cerebrum"
+      ],
+      "Tier 5": [
+        "Legendary Cerebrum"
+      ]
+    },
+    "Spinal Cord": {
+      "Tier 1": [
+        "Common Spinal Cord"
+      ],
+      "Tier 2": [
+        "Uncommon Spinal Cord"
+      ],
+      "Tier 3": [
+        "Rare Spinal Cord"
+      ],
+      "Tier 4": [
+        "Epic Spinal Cord"
+      ],
+      "Tier 5": [
+        "Legendary Spinal Cord"
+      ]
+    },
+    "Nerve": {
+      "Tier 1": [
+        "Common Nerve"
+      ],
+      "Tier 2": [
+        "Uncommon Nerve"
+      ],
+      "Tier 3": [
+        "Rare Nerve"
+      ],
+      "Tier 4": [
+        "Epic Nerve"
+      ],
+      "Tier 5": [
+        "Legendary Nerve"
+      ]
+    },
+    "Blood Vessel": {
+      "Tier 1": [
+        "Common Blood Vessel"
+      ],
+      "Tier 2": [
+        "Uncommon Blood Vessel"
+      ],
+      "Tier 3": [
+        "Rare Blood Vessel"
+      ],
+      "Tier 4": [
+        "Epic Blood Vessel"
+      ],
+      "Tier 5": [
+        "Legendary Blood Vessel"
+      ]
+    }
+  },
+  "Liquids": {
+    "Blood": {
+      "Tier 1": [
+        "Common Blood"
+      ],
+      "Tier 2": [
+        "Uncommon Blood"
+      ],
+      "Tier 3": [
+        "Rare Blood"
+      ],
+      "Tier 4": [
+        "Epic Blood"
+      ],
+      "Tier 5": [
+        "Legendary Blood"
+      ]
+    },
+    "Milk": {
+      "Tier 1": [
+        "Common Milk"
+      ],
+      "Tier 2": [
+        "Uncommon Milk"
+      ],
+      "Tier 3": [
+        "Rare Milk"
+      ],
+      "Tier 4": [
+        "Epic Milk"
+      ],
+      "Tier 5": [
+        "Legendary Milk"
+      ]
+    },
+    "Venom": {
+      "Tier 1": [
+        "Common Venom"
+      ],
+      "Tier 2": [
+        "Uncommon Venom"
+      ],
+      "Tier 3": [
+        "Rare Venom"
+      ],
+      "Tier 4": [
+        "Epic Venom"
+      ],
+      "Tier 5": [
+        "Legendary Venom"
+      ]
+    },
+    "Saliva": {
+      "Tier 1": [
+        "Common Saliva"
+      ],
+      "Tier 2": [
+        "Uncommon Saliva"
+      ],
+      "Tier 3": [
+        "Rare Saliva"
+      ],
+      "Tier 4": [
+        "Epic Saliva"
+      ],
+      "Tier 5": [
+        "Legendary Saliva"
+      ]
+    },
+    "Urine": {
+      "Tier 1": [
+        "Common Urine"
+      ],
+      "Tier 2": [
+        "Uncommon Urine"
+      ],
+      "Tier 3": [
+        "Rare Urine"
+      ],
+      "Tier 4": [
+        "Epic Urine"
+      ],
+      "Tier 5": [
+        "Legendary Urine"
+      ]
+    },
+    "Sweat": {
+      "Tier 1": [
+        "Common Sweat"
+      ],
+      "Tier 2": [
+        "Uncommon Sweat"
+      ],
+      "Tier 3": [
+        "Rare Sweat"
+      ],
+      "Tier 4": [
+        "Epic Sweat"
+      ],
+      "Tier 5": [
+        "Legendary Sweat"
+      ]
+    },
+    "Tears": {
+      "Tier 1": [
+        "Common Tears"
+      ],
+      "Tier 2": [
+        "Uncommon Tears"
+      ],
+      "Tier 3": [
+        "Rare Tears"
+      ],
+      "Tier 4": [
+        "Epic Tears"
+      ],
+      "Tier 5": [
+        "Legendary Tears"
+      ]
+    },
+    "Mucus": {
+      "Tier 1": [
+        "Common Mucus"
+      ],
+      "Tier 2": [
+        "Uncommon Mucus"
+      ],
+      "Tier 3": [
+        "Rare Mucus"
+      ],
+      "Tier 4": [
+        "Epic Mucus"
+      ],
+      "Tier 5": [
+        "Legendary Mucus"
+      ]
+    }
+  },
+  "Gases": {
+    "Breath": {
+      "Tier 1": [
+        "Common Breath"
+      ],
+      "Tier 2": [
+        "Uncommon Breath"
+      ],
+      "Tier 3": [
+        "Rare Breath"
+      ],
+      "Tier 4": [
+        "Epic Breath"
+      ],
+      "Tier 5": [
+        "Legendary Breath"
+      ]
+    },
+    "Vocalization": {
+      "Tier 1": [
+        "Common Vocalization"
+      ],
+      "Tier 2": [
+        "Uncommon Vocalization"
+      ],
+      "Tier 3": [
+        "Rare Vocalization"
+      ],
+      "Tier 4": [
+        "Epic Vocalization"
+      ],
+      "Tier 5": [
+        "Legendary Vocalization"
+      ]
+    },
+    "Scent": {
+      "Tier 1": [
+        "Common Scent"
+      ],
+      "Tier 2": [
+        "Uncommon Scent"
+      ],
+      "Tier 3": [
+        "Rare Scent"
+      ],
+      "Tier 4": [
+        "Epic Scent"
+      ],
+      "Tier 5": [
+        "Legendary Scent"
+      ]
+    },
+    "Pheromones": {
+      "Tier 1": [
+        "Common Pheromones"
+      ],
+      "Tier 2": [
+        "Uncommon Pheromones"
+      ],
+      "Tier 3": [
+        "Rare Pheromones"
+      ],
+      "Tier 4": [
+        "Epic Pheromones"
+      ],
+      "Tier 5": [
+        "Legendary Pheromones"
+      ]
+    },
+    "Toxic Fumes": {
+      "Tier 1": [
+        "Common Toxic Fumes"
+      ],
+      "Tier 2": [
+        "Uncommon Toxic Fumes"
+      ],
+      "Tier 3": [
+        "Rare Toxic Fumes"
+      ],
+      "Tier 4": [
+        "Epic Toxic Fumes"
+      ],
+      "Tier 5": [
+        "Legendary Toxic Fumes"
+      ]
+    }
+  },
+  "Species": [
+    {
+      "name": "Mammal",
+      "materials": [
+        "Meat",
+        "Skin",
+        "Bone",
+        "Hair",
+        "Milk",
+        "Blood",
+        "Breath"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Lung",
+        "Kidney",
+        "Intestine",
+        "Stomach",
+        "Bladder",
+        "Uterus",
+        "Testes",
+        "Pancreas",
+        "Spleen",
+        "Hypothalamus",
+        "Cerebellum",
+        "Cerebrum",
+        "Spinal Cord",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Breath",
+        "Vocalization",
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood",
+        "Milk",
+        "Venom",
+        "Saliva",
+        "Urine",
+        "Sweat",
+        "Tears"
+      ]
+    },
+    {
+      "name": "Avian",
+      "materials": [
+        "Meat",
+        "Skin",
+        "Bone",
+        "Feather",
+        "Blood",
+        "Breath"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Lung",
+        "Kidney",
+        "Intestine",
+        "Stomach",
+        "Bladder",
+        "Spinal Cord",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Breath",
+        "Vocalization",
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood",
+        "Venom",
+        "Saliva",
+        "Urine",
+        "Tears"
+      ]
+    },
+    {
+      "name": "Reptile",
+      "materials": [
+        "Meat",
+        "Skin",
+        "Bone",
+        "Scales",
+        "Blood",
+        "Tail"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Lung",
+        "Kidney",
+        "Intestine",
+        "Stomach",
+        "Bladder",
+        "Spinal Cord",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Breath",
+        "Vocalization",
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood",
+        "Venom",
+        "Saliva",
+        "Urine",
+        "Tears"
+      ]
+    },
+    {
+      "name": "Amphibian",
+      "materials": [
+        "Meat",
+        "Skin",
+        "Bone",
+        "Mucus",
+        "Blood",
+        "Tail"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Lung",
+        "Kidney",
+        "Intestine",
+        "Stomach",
+        "Bladder",
+        "Spinal Cord",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Breath",
+        "Vocalization",
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood",
+        "Venom",
+        "Saliva",
+        "Urine",
+        "Sweat",
+        "Tears"
+      ]
+    },
+    {
+      "name": "Fish",
+      "materials": [
+        "Meat",
+        "Skin",
+        "Bone",
+        "Scale",
+        "Blood",
+        "Fin",
+        "Tail"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Gill",
+        "Kidney",
+        "Intestine",
+        "Stomach",
+        "Bladder",
+        "Spinal Cord",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Breath",
+        "Scent"
+      ],
+      "liquids": [
+        "Blood",
+        "Saliva",
+        "Urine"
+      ]
+    },
+    {
+      "name": "Insect",
+      "materials": [
+        "Meat",
+        "Exoskeleton",
+        "Wings",
+        "Blood"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Lung",
+        "Kidney",
+        "Stomach",
+        "Bladder",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Breath",
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood",
+        "Venom",
+        "Saliva",
+        "Urine"
+      ]
+    },
+    {
+      "name": "Arachnid",
+      "materials": [
+        "Meat",
+        "Exoskeleton",
+        "Venom",
+        "Blood"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Lung",
+        "Kidney",
+        "Stomach",
+        "Bladder",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Breath",
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood",
+        "Venom",
+        "Saliva",
+        "Urine"
+      ]
+    },
+    {
+      "name": "Crustacean",
+      "materials": [
+        "Meat",
+        "Exoskeleton",
+        "Shell",
+        "Blood"
+      ],
+      "organs": [
+        "Liver",
+        "Heart",
+        "Brain",
+        "Lung",
+        "Kidney",
+        "Intestine",
+        "Stomach",
+        "Bladder",
+        "Nerve",
+        "Blood Vessel"
+      ],
+      "gases": [
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood"
+      ]
+    },
+    {
+      "name": "Cephalopod",
+      "materials": [
+        "Meat",
+        "skin"
+      ],
+      "organs": [
+        "Heart",
+        "Brain"
+      ],
+      "gases": [
+        "Scent",
+        "Pheromones"
+      ],
+      "liquids": [
+        "Blood",
+        "Ink"
+      ]
+    },
+    {
+      "name": "Undead",
+      "materials": [
+        "Flesh",
+        "Bone",
+        "Blood"
+      ],
+      "organs": [
+        "N/A"
+      ],
+      "gases": [
+        "Vocalization",
+        "Scent"
+      ],
+      "liquids": [
+        "Blood",
+        "Venom"
+      ]
+    }
+  ]
+}

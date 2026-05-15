@@ -1,0 +1,2014 @@
+{
+  "_meta": {
+    "document": "affinities.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.1-draft",
+    "notes": [
+      "Three domains: emotional, primal_elemental, arcane.",
+      "L in all effect text = current level of this affinity.",
+      "Opposing affinities are mutually exclusive unless a Bridge Affinity is taken.",
+      "Primal unlock rule: character must have MND + SPT > total number of Arcane Elemental Affinities known.",
+      "Emotional level 2 always follows: Max pool +L², pool regen +L for governing stat pool.",
+      "Affinity Styles are separate skills that require an Affinity as a prerequisite — see affinity_styles section.",
+      "Bridge Affinities are Tier 2 Emotional Affinities that resolve conflicts between opposing pairs.",
+      "Arcane affinities represent schools of magical philosophy rather than primal forces."
+    ]
+  },
+  "domains": {
+    "emotional": {
+      "description": "Metaphysical alignments tied to moral forces. Channeled by clerics, monks, mystics, zealots. Opposing alignments are mutually exclusive unless a Bridge Affinity is learned.",
+      "opposing_pairs": [
+        [
+          "chastity",
+          "lust"
+        ],
+        [
+          "temperance",
+          "gluttony"
+        ],
+        [
+          "charity",
+          "greed"
+        ],
+        [
+          "patience",
+          "wrath"
+        ],
+        [
+          "diligence",
+          "sloth"
+        ],
+        [
+          "generosity",
+          "envy"
+        ],
+        [
+          "humility",
+          "pride"
+        ]
+      ],
+      "tier_structure": "Tier 1 = core virtue/vice. Tier 2 = Radiance/Shadow/Balance/Order/Chaos/Creation. Bridge = resolves opposing pair conflict.",
+      "affinities": {
+        "chastity": {
+          "name": "Chastity",
+          "alignment": "virtue",
+          "theme": "Virtue of Survival: clarity, restraint, quality.",
+          "opposing": "lust",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L MP",
+              "effect": "Gain L stacks of Clarity."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Gain L MP when hit."
+            },
+            "4": {
+              "effect": "Spend L Clarity to reduce next MP cost by L."
+            },
+            "5": {
+              "effect": "If you have no Clarity stacks, gain 1 at the start of your turn."
+            }
+          }
+        },
+        "lust": {
+          "name": "Lust",
+          "alignment": "vice",
+          "theme": "Vice of Survival: passion, desire, pursuit.",
+          "opposing": "chastity",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "SP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L SP",
+              "effect": "Gain L stacks of Invigorate."
+            },
+            "2": {
+              "effect": "Max SP +L²; SPR +L.",
+              "pool_bonus": {
+                "pool": "SP",
+                "formula": "L_squared",
+                "regen": "SPR"
+              }
+            },
+            "3": {
+              "effect": "Gain L SP on hit."
+            },
+            "4": {
+              "effect": "Dealing damage gains 1 Invigorate."
+            },
+            "5": {
+              "effect": "At Max Invigorate, next attack costs 0 SP."
+            }
+          }
+        },
+        "temperance": {
+          "name": "Temperance",
+          "alignment": "virtue",
+          "theme": "Virtue of Pleasure: self-discipline, poise.",
+          "opposing": "gluttony",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L MP",
+              "effect": "Gain L stacks of Fortify."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Damage reduced converts to MP restored."
+            },
+            "4": {
+              "effect": "+L Fortify stack limit."
+            },
+            "5": {
+              "effect": "While Fortify is active, reduce magic damage taken by L."
+            }
+          }
+        },
+        "gluttony": {
+          "name": "Gluttony",
+          "alignment": "vice",
+          "theme": "Vice of Pleasure: indulgence, appetite.",
+          "opposing": "temperance",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "SP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L SP",
+              "effect": "Gain L stacks of Regenerate."
+            },
+            "2": {
+              "effect": "Max SP +L²; SPR +L.",
+              "pool_bonus": {
+                "pool": "SP",
+                "formula": "L_squared",
+                "regen": "SPR"
+              }
+            },
+            "3": {
+              "effect": "Overhealing converts to MP or SP."
+            },
+            "4": {
+              "effect": "+L to healing received while Regenerating."
+            },
+            "5": {
+              "effect": "Overflow Regen stores up to L bonus stacks."
+            }
+          }
+        },
+        "charity": {
+          "name": "Charity",
+          "alignment": "virtue",
+          "theme": "Virtue of Power: aid, altruism.",
+          "opposing": "greed",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L MP",
+              "effect": "Target ally gains L stacks of Barrier."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Reducing damage restores MP."
+            },
+            "4": {
+              "effect": "Ally hit within 10 ft — transfer L MP to them."
+            },
+            "5": {
+              "effect": "Lose MP instead of HP when hit."
+            }
+          }
+        },
+        "greed": {
+          "name": "Greed",
+          "alignment": "vice",
+          "theme": "Vice of Power: control, hoarding.",
+          "opposing": "charity",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "SP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L SP",
+              "effect": "Gain L stacks of Harden."
+            },
+            "2": {
+              "effect": "Max SP +L²; SPR +L.",
+              "pool_bonus": {
+                "pool": "SP",
+                "formula": "L_squared",
+                "regen": "SPR"
+              }
+            },
+            "3": {
+              "effect": "Reducing damage restores SP."
+            },
+            "4": {
+              "effect": "SP beyond Max converts to Temp Shield."
+            },
+            "5": {
+              "effect": "Gain L SP when Harden reduces damage."
+            }
+          }
+        },
+        "patience": {
+          "name": "Patience",
+          "alignment": "virtue",
+          "theme": "Virtue of Love: reconciliation, healing.",
+          "opposing": "wrath",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "HP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L HP",
+              "effect": "Gain L stacks of Hasten."
+            },
+            "2": {
+              "effect": "Max HP +L²; HPR +L.",
+              "pool_bonus": {
+                "pool": "HP",
+                "formula": "L_squared",
+                "regen": "HPR"
+              }
+            },
+            "3": {
+              "effect": "Within 5 ft of an ally, take half their incoming damage."
+            },
+            "4": {
+              "effect": "Damage taken on behalf of another is reduced by L."
+            },
+            "5": {
+              "effect": "Allies within 5 ft gain +L to healing received."
+            }
+          }
+        },
+        "wrath": {
+          "name": "Wrath",
+          "alignment": "vice",
+          "theme": "Vice of Love: vengeance, passion.",
+          "opposing": "patience",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "HP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L HP",
+              "effect": "Gain L stacks of Empower."
+            },
+            "2": {
+              "effect": "Max HP +L²; HPR +L.",
+              "pool_bonus": {
+                "pool": "HP",
+                "formula": "L_squared",
+                "regen": "HPR"
+              }
+            },
+            "3": {
+              "effect": "Heal for half of damage dealt."
+            },
+            "4": {
+              "effect": "+L damage vs enemies that damaged you last turn."
+            },
+            "5": {
+              "effect": "At Max Empower, gain +1 AP per round."
+            }
+          }
+        },
+        "diligence": {
+          "name": "Diligence",
+          "alignment": "virtue",
+          "theme": "Virtue of Expression: momentum, discipline.",
+          "opposing": "sloth",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "SP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L SP",
+              "effect": "Gain L stacks of Focus or Alert (your choice)."
+            },
+            "2": {
+              "effect": "Max SP +L²; SPR +L.",
+              "pool_bonus": {
+                "pool": "SP",
+                "formula": "L_squared",
+                "regen": "SPR"
+              }
+            },
+            "3": {
+              "effect": "On hit, spend Focus stacks to gain L SP."
+            },
+            "4": {
+              "effect": "No AP spent during upkeep grants +1 AP next turn."
+            },
+            "5": {
+              "effect": "Hitting 3 or more targets in a round restores L SP."
+            }
+          }
+        },
+        "sloth": {
+          "name": "Sloth",
+          "alignment": "vice",
+          "theme": "Vice of Expression: energy preservation.",
+          "opposing": "diligence",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L MP",
+              "effect": "Gain L stacks of Bolstered."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Gain L MP when hit."
+            },
+            "4": {
+              "effect": "First action each turn costs -L SP."
+            },
+            "5": {
+              "effect": "If no AP is used during a turn, regain +1 AP at round end."
+            }
+          }
+        },
+        "kindness": {
+          "name": "Kindness",
+          "alignment": "virtue",
+          "theme": "Virtue of Perception: joy, compassion.",
+          "opposing": "envy",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "SP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L SP",
+              "effect": "Target ally gains L stacks of Inspiration."
+            },
+            "2": {
+              "effect": "Max SP +L²; SPR +L.",
+              "pool_bonus": {
+                "pool": "SP",
+                "formula": "L_squared",
+                "regen": "SPR"
+              }
+            },
+            "3": {
+              "effect": "SP beyond Max converts to HP."
+            },
+            "4": {
+              "effect": "Inspired allies gain +L Temp HP."
+            },
+            "5": {
+              "effect": "Inspiration stacks can be shared — 1 per ally within 10 ft."
+            }
+          }
+        },
+        "envy": {
+          "name": "Envy",
+          "alignment": "vice",
+          "theme": "Vice of Perception: ambition, contrast.",
+          "opposing": "kindness",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L MP",
+              "effect": "Gain L stacks of Ambition."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "MP beyond Max converts to HP."
+            },
+            "4": {
+              "effect": "When an enemy has an active buff, gain L MP."
+            },
+            "5": {
+              "effect": "On hit, steal 1 beneficial effect from the target."
+            }
+          }
+        },
+        "humility": {
+          "name": "Humility",
+          "alignment": "virtue",
+          "theme": "Virtue of Wisdom: growth, learning.",
+          "opposing": "pride",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "SP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L SP",
+              "effect": "Gain L stacks of Flow."
+            },
+            "2": {
+              "effect": "Max SP +L²; SPR +L.",
+              "pool_bonus": {
+                "pool": "SP",
+                "formula": "L_squared",
+                "regen": "SPR"
+              }
+            },
+            "3": {
+              "effect": "If SP cost would go below 0, restore the difference as SP."
+            },
+            "4": {
+              "effect": "Evading an effect gains 1 Flow stack."
+            },
+            "5": {
+              "effect": "While Flow is active, gain a free reroll on one defense per round."
+            }
+          }
+        },
+        "pride": {
+          "name": "Pride",
+          "alignment": "vice",
+          "theme": "Vice of Wisdom: legacy, self-mastery.",
+          "opposing": "humility",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "cost": "1 AP, L MP",
+              "effect": "Gain L stacks of Concentration."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "If MP cost would go below 0, restore the difference as MP."
+            },
+            "4": {
+              "effect": "At Max Concentration, gain +R to healing and damage."
+            },
+            "5": {
+              "effect": "On attack hit, gain 1 Concentration stack."
+            }
+          }
+        },
+        "radiance": {
+          "name": "Radiance",
+          "alignment": "Light",
+          "theme": "Heavenly energy: divine, high vibration.",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "effect": "+L to Radiant healing and damage."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Overhealing converts to shield."
+            },
+            "4": {
+              "effect": "Shielded allies gain +L to Defense rolls."
+            },
+            "5": {
+              "effect": "Radiant overhealing converts to 1 AP per application. This AP is not lost at end of round."
+            }
+          }
+        },
+        "shadow": {
+          "name": "Shadow",
+          "alignment": "Shadow",
+          "theme": "Abyssal energy: selfish, low vibration.",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "effect": "+L to Shadow healing and damage."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Shadow damage heals self for half."
+            },
+            "4": {
+              "effect": "+L vs debuffed enemies."
+            },
+            "5": {
+              "effect": "Shadow healing damage ignores shields and barriers."
+            }
+          }
+        },
+        "balance_emotional": {
+          "name": "Balance",
+          "alignment": [
+            "Light",
+            "Shadow"
+          ],
+          "theme": "Balance of heavenly and abyssal force.",
+          "requirements": [
+            {
+              "type": "affinity_level",
+              "affinity": "radiance",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "shadow",
+              "minimum_level": 2
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "effect": "+L Radiant or Shadow heal or damage bonus — choose per use."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Radiant or Shadow heal x2, or convert damage to heal."
+            },
+            "4": {
+              "effect": "When hit by Radiant or Shadow damage, gain +L AP."
+            },
+            "5": {
+              "effect": "Immune to Radiant and Shadow statuses."
+            }
+          }
+        },
+        "order": {
+          "name": "Order",
+          "alignment": "order",
+          "theme": "Structured, stabilizing force.",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "effect": "On hit: apply L stacks of Slow."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "+L to Initiative and Reactions."
+            },
+            "4": {
+              "effect": "Resisting an effect restores L MP."
+            },
+            "5": {
+              "effect": "Once per round, stabilize effects on allies or self within 10 ft."
+            }
+          }
+        },
+        "chaos": {
+          "name": "Chaos",
+          "alignment": "chaos",
+          "theme": "Generative, destabilizing force.",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "effect": "On hit: gain L stacks of Haste."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Roll an extra d6 for movement or initiative."
+            },
+            "4": {
+              "effect": "AoE or random effect grants 1 Haste."
+            },
+            "5": {
+              "effect": "First attack each round costs 0 AP."
+            }
+          }
+        },
+        "creation": {
+          "name": "Creation",
+          "alignment": [
+            "order_tier2",
+            "chaos_tier2"
+          ],
+          "theme": "Sacred interplay of creation and entropy.",
+          "requirements": [
+            {
+              "type": "affinity_level",
+              "affinity": "order",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "chaos",
+              "minimum_level": 2
+            }
+          ],
+          "governing_pool": "MP",
+          "levels": {
+            "1": {
+              "effect": "Buff or Debuff application generates 1 Mirror stack. Hold up to L."
+            },
+            "2": {
+              "effect": "Max MP +L²; MPR +L.",
+              "pool_bonus": {
+                "pool": "MP",
+                "formula": "L_squared",
+                "regen": "MPR"
+              }
+            },
+            "3": {
+              "effect": "Store up to L buffs or debuffs. Reapply later."
+            },
+            "4": {
+              "effect": "+L to switching targets or actions."
+            },
+            "5": {
+              "effect": "Once per round, reverse any single effect on yourself."
+            }
+          }
+        }
+      },
+      "bridge_affinities": {
+        "description": "Tier 2 Emotional Affinities. Resolve conflict between opposing pairs, allowing a character to hold both affinities simultaneously.",
+        "loss": {
+          "name": "Loss",
+          "alignment": [
+            "gluttony",
+            "charity"
+          ],
+          "requirement_level": [
+            {
+              "type": "affinity_level",
+              "affinity": "gluttony",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "charity",
+              "minimum_level": 2
+            }
+          ],
+          "levels": {
+            "1": "Hold both Gluttony and Charity without conflict. Gain +L to exploration or research rolls.",
+            "2": "Gain +L when encountering new cultures, technologies, or magical phenomena.",
+            "3": "Once per long rest, ask GM a logical question about your situation and receive a useful hint. +L to next action.",
+            "4": "Improvise tools or solutions in half the normal time. +L to these attempts when driven by curiosity.",
+            "5": "Once per session, open or access any sealed knowledge. +L to resist consequences of forbidden knowledge."
+          }
+        },
+        "change": {
+          "name": "change",
+          "alignment": [
+            "lust",
+            "chastity"
+          ],
+          "requirement_level": [
+            {
+              "type": "affinity_level",
+              "affinity": "lust",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "chastity",
+              "minimum_level": 2
+            }
+          ],
+          "levels": {
+            "1": "If you would gain 1 mark for lust or chastity gain both instead. Gain +L SP when defending an ally from harm.",
+            "2": "Allies adjacent gain +L to rolls resisting Fear or Charm.",
+            "3": "Once per long rest, reroll a failed social action using either Lust or Chastity. Add +L to result.",
+            "4": "SP healing or buff you apply grants target +L to their next emotional check.",
+            "5": "All SP healing or morale effects you apply this round are doubled. Targets gain +L to next social or emotional roll."
+          }
+        },
+        "detachment": {
+          "name": "Detachment",
+          "alignment": [
+            "greed",
+            "temperance"
+          ],
+          "requirement_level": [
+            {
+              "type": "affinity_level",
+              "affinity": "greed",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "temperance",
+              "minimum_level": 2
+            }
+          ],
+          "levels": {
+            "1": "If you would gain 1 mark for greed or temperance gain both instead. Gain +L to resist temptation or material attachment.",
+            "2": "Gain +L when disengaging from combat or conversation without consequence.",
+            "3": "Once per long rest, become undetectable by non-divine senses for L rounds if not attacking.",
+            "4": "No longer require mundane nourishment or comfort. Reduce upkeep costs by L% (minimum 1).",
+            "5": "Once per session, become immune to emotional influence, psychic damage, or fear for L rounds."
+          }
+        },
+        "Love": {
+          "name": "Love",
+          "alignment": [
+            "wrath",
+            "forgiveness"
+          ],
+          "requirement_level": [
+            {
+              "type": "affinity_level",
+              "affinity": "wrath",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "forgiveness",
+              "minimum_level": 2
+            }
+          ],
+          "levels": {
+            "1": "If you would gain 1 mark for wrath or forgiveness gain both instead. Gain +L SP when resisting provocation or holding action.",
+            "2": "When acting with intent after a delay, gain +L to the first action taken.",
+            "3": "Once per long rest, when an ally falls, gain +L to all rolls for one round and ignore fear penalties.",
+            "4": "While focused on a single task, gain +L to resist distractions, fear, or pain effects.",
+            "5": "Cannot be forced to act against your nature. Once per session, spend L SP to auto-succeed on a discipline check."
+          }
+        },
+        "discovery": {
+          "name": "Discovery",
+          "alignment": [
+            "sloth",
+            "diligence"
+          ],
+          "requirement_level": [
+            {
+              "type": "affinity_level",
+              "affinity": "sloth",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "diligence",
+              "minimum_level": 2
+            }
+          ],
+          "levels": {
+            "1": "If you would gain 1 mark for sloth or diligence gain both instead. Gain +L SP when choosing reflection over escalation.",
+            "2": "Gain +L to memory-based rolls, insight from loss, or understanding ancient sorrow.",
+            "3": "Once per long rest, after doing nothing for a round (except defending), gain +L to all rolls for one round.",
+            "4": "Immune to demoralization or despair-based effects while focused. Gain +L to resist despair.",
+            "5": "Once per session, enter a trance. You act last, but all actions gain +L and you may reflect before reacting."
+          }
+        },
+        "perception": {
+          "name": "Perception",
+          "alignment": [
+            "envy",
+            "kindness"
+          ],
+          "requirement_level": 1,
+          "levels": {
+            "1": "If you would gain 1 mark for envy or kindness gain both instead. Gain +L to rolls to observation. ",
+            "2": "When losing to or aiding a rival, gain +L SP and insight into their tactics.",
+            "3": "Once per long rest, when you achieve a victory, grant +L to an ally's next action if they supported you.",
+            "4": "Transfer your success to an ally within range once per scene. They gain full effect plus +L.",
+            "5": "Once per session, declare an NPC or ally a successor to a skill. They gain +L to all actions reflecting your tutelage for the session."
+          }
+        },
+        "judgement": {
+          "name": "Justice",
+          "alignment": [
+            "pride",
+            "humility"
+          ],
+          "requirement_level": [
+            {
+              "type": "affinity_level",
+              "affinity": "pride",
+              "minimum_level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "humility",
+              "minimum_level": 2
+            }
+          ],
+          "levels": {
+            "1": "Hold both Pride and Humility without conflict. Gain +L to Insight rolls when mediating disputes.",
+            "2": "When you assist an ally, grant +L to their next action if it furthers fairness or redemption.",
+            "3": "Once per long rest, declare a binding judgment. Accepted parties gain +L to cooperative actions for one scene.",
+            "4": "Enemies that exploit the weak suffer –L to social defense rolls against you.",
+            "5": "Once per scene, treat any failure in a social or judgment roll as mixed success if you accept L SP cost."
+          }
+        }
+      }
+    },
+    "primal_elemental": {
+      "description": "Alignment with the natural and alchemical forces of the world. Unlock rule: character must have MND + SPT > total Arcane Elemental Affinities known.",
+      "unlock_rule": "MND * SPT > count of Arcane Elemental Affinities known.",
+      "tier_structure": "Tier 1 = base elements (Earth, Water, Fire, Air). Tier 2 = combinations and derived elements. Tier 3 = triple-element combinations. Tier 4 = Aether (all four Tier 1 at R4). Void requires four elementals at R5.",
+      "tier1": {
+        "earth": {
+          "name": "Earth",
+          "alignment": "earth",
+          "theme": "Stability, resilience, grounding.",
+          "requirements": [
+            {
+              "type": "unlock_rule",
+              "description": "MND + SPT > Arcane Elemental total"
+            },
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "status_applied": "Crushed",
+          "levels": {
+            "1": {
+              "effect": "On Hit: Apply L stacks of Crushed."
+            },
+            "2": {
+              "effect": "MPR +L. Resist Earth L. Regain L MP when hit by Earth damage."
+            },
+            "3": {
+              "effect": "Earthen defense grants +L Block. Regain L HP when Blocking."
+            },
+            "4": {
+              "effect": "Reduce push/pull distance by L ft. +L to saves vs forced movement or knockdown."
+            },
+            "5": {
+              "effect": "Ignore L Crushed per round. Earth damage reduced by L. Immune to terrain penalties. Adjacent allies gain +L Block."
+            }
+          }
+        },
+        "water": {
+          "name": "Water",
+          "alignment": "water",
+          "theme": "Flow, adaptability, renewal.",
+          "requirements": [
+            {
+              "type": "unlock_rule",
+              "description": "MND + SPT > Arcane Elemental total"
+            },
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "status_applied": "Chilled",
+          "levels": {
+            "1": {
+              "effect": "On Hit: Apply L stacks of Chilled."
+            },
+            "2": {
+              "effect": "MPR +L. Resist Water L. Regain L MP when hit by Water damage."
+            },
+            "3": {
+              "effect": "-L stacks when receiving Burned. Gain L MP when healing others."
+            },
+            "4": {
+              "effect": "No penalty on wet or icy terrain. -L Chilled stacks received. +L vs Grapple and Restrain."
+            },
+            "5": {
+              "effect": "Water damage reduced by L. Start of turn: remove 1 Burned or Bleeding. Allies healed by you in 5 ft gain +L MP."
+            }
+          }
+        },
+        "fire": {
+          "name": "Fire",
+          "alignment": "fire",
+          "theme": "Destruction, passion, transformation.",
+          "requirements": [
+            {
+              "type": "unlock_rule",
+              "description": "MND + SPT > Arcane Elemental total"
+            },
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "status_applied": "Burned",
+          "levels": {
+            "1": {
+              "effect": "On Hit: Apply L stacks of Burned."
+            },
+            "2": {
+              "effect": "MPR +L. Resist Fire L. Regain L MP when hit by Fire damage."
+            },
+            "3": {
+              "effect": "Burned ignores L resistance. Gain L SP when applying Burned."
+            },
+            "4": {
+              "effect": "+L Initiative. -L Chilled stacks received. Gain +L MP when gaining Haste."
+            },
+            "5": {
+              "effect": "Fire damage reduced by L. Burned lasts +1 turn. Burned stacks reduce enemy MPR by L."
+            }
+          }
+        },
+        "air": {
+          "name": "Air",
+          "alignment": "air",
+          "theme": "Mobility, freedom, communication.",
+          "requirements": [
+            {
+              "type": "unlock_rule",
+              "description": "MND + SPT > Arcane Elemental total"
+            },
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "status_applied": "Weathered",
+          "levels": {
+            "1": {
+              "effect": "On Hit: Apply L stacks of Weathered."
+            },
+            "2": {
+              "effect": "MPR +L. Resist Air L. Regain L MP when hit by Air damage."
+            },
+            "3": {
+              "effect": "+L to Jump, Balance, Evasion. Ignore fall damage up to 10×L ft. Free stand from Prone."
+            },
+            "4": {
+              "effect": "+5×L ft move speed. Permanent Haste. Haste stacks trigger an additional AP."
+            },
+            "5": {
+              "effect": "Resist being moved by L ft. Weathered reduces SP by L. First move each turn costs 0 AP. +L Dodge and Deflect."
+            }
+          }
+        }
+      },
+      "tier2": {
+        "blood": {
+          "name": "Blood",
+          "alignment": "water",
+          "theme": "All life has water in it.",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "water",
+            "level": 2
+          },
+          "status_applied": "Bleeding",
+          "levels": {
+            "1": "Spend HP for MP at 2:1 ratio. On Hit: apply L stacks of regenerate.",
+            "2": "+L^2 HP, +L HPR.",
+            "3": "Immune to Bleeding. On Hit: heal L and apply a Bleeding stack.",
+            "4": "Bleeding damage from enemies or allies heals you for half, rounded up.",
+            "5": "Blood Funnel: Heal all allies, including you in 6 spaces for L HP, and apply L Regenerate to them."
+          }
+        },
+        "fire_tier2": {
+          "name": "fire_tier2",
+          "alignment": "fire",
+          "theme": "The heart of the flame beats within you.",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "fire",
+            "level": 2
+          },
+          "status_applied": "Burned",
+          "levels": {
+            "1": "Burned stacks deal +1 damage.",
+            "2": "MPR +L. Gain L MP when Burned is applied.",
+            "3": "Burned reduces healing received by L. On hit: Apply 1 Vulnerable stack.",
+            "4": "+L Fire resistance. Burned ticks you apply restore L MP.",
+            "5": "Burned damage on you heals you instead."
+          }
+        },
+        "earth_tier2": {
+          "name": "earth_tier2",
+          "alignment": "earth",
+          "theme": "The strength of the mountain is in your bones.",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "earth",
+            "level": 2
+          },
+          "status_applied": "Crushed",
+          "levels": {
+            "1": "+L defense against Prone, Grappled, or any forced Movement.",
+            "2": "MPR +L. Regain L MP when Crusted is applied.",
+            "3": "Crushed also reduces Block and Defense by L.",
+            "4": "Immune to terrain hazards.",
+            "5": "Count as 1 size larger for movement and force checks."
+          }
+        },
+        "air_tier2": {
+          "name": "air_tier2",
+          "alignment": "air",
+          "theme": "The swiftness of the wind is in your limbs.",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "air",
+            "level": 2
+          },
+          "status_applied": "Haste",
+          "levels": {
+            "1": "+L to Performance.",
+            "2": "MPR +L. Regain L MP after movement ability.",
+            "3": "Haste grants +1 Dodge per stack. Apply Off-balance ",
+            "4": "On hits: Apply 1 stack of Off-balance.",
+            "5": "Immune to fall damage. Can act while airborne."
+          }
+        },
+        "water_tier2": {
+          "name": "water_tier2",
+          "alignment": "water",
+          "theme": "The depth of the ocean is in your soul.",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "water",
+            "level": 2
+          },
+          "status_applied": "Chilled",
+          "levels": {
+            "1": "Chilled stacks do +1 damage.",
+            "2": "MPR +L. Regain L MP when Chilled is applied.",
+            "3": "Chilled reduces healing received by L. On hit: Apply 1 Vulnerable stack.",
+            "4": "+L Cold resistance. Chilled ticks you apply restore L MP.",
+            "5": "Chilled damage on you heals you instead."
+          }
+        },
+        "ice_tier2": {
+          "name": "ice_tier2",
+          "alignment": "ice",
+          "theme": "The relentless chill of ice is in your veins.",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "ice",
+            "level": 2
+          },
+          "status_applied": "Slowed",
+          "levels": {
+            "1": "Applying Chilled stacks also applies Slow.",
+            "2": "MPR +L. Regain L MP when Slow is applied.",
+            "3": "+L cold resist. 2 AP L MP.Summon an L*5 ft ice wall with 1 HP and Lx10 Barrier stacks.",
+            "4": "Slowed foes take +L damage from ice effects.",
+            "5": "2 AP L MP. Incase yourself in ice, gaining +Lx20 Barrier stacks."
+          }
+        },
+        "steam_tier2": {
+          "name": "Steam_tier2",
+          "alignment": [
+            "water",
+            "fire"
+          ],
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "water",
+              "level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "fire",
+              "level": 2
+            }
+          ],
+          "status_applied": "Focused",
+          "levels": {
+            "1": "1 AP: Gain L stacks of Focused.",
+            "2": "+L^2 Max MP. +L MPR.",
+            "3": "3 AP 2L MP: -L MPR while sustained. Create an L*10 ft diameter steam cloud with it center within L*20 ft for 3L turns, that obscures vision.",
+            "4": "Deal L fire damage to enemies in the steam cloud when created. While in the cloud, gain +L to attack rolls and SP regeneration.  2AP L MP: Deal L fire and cold damage. Apply L Burned and Chilled to all characters in the cloud.",
+            "5": ""
+          }
+        },
+        "ice": {
+          "name": "Ice",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "water",
+              "level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "air",
+              "level": 2
+            }
+          ],
+          "status_applied": "Slowed",
+          "levels": {
+            "1": "Slow stacks you apply count double when determining movement penalty.",
+            "2": "+L MPR. Resist Ice L. Ice damage taken reduces Burned stacks by L.",
+            "3": "Cannot be knocked Prone on icy terrain. Slow stacks last +1 turn.",
+            "4": "Adjacent allies gain +L to defense vs Slowed or Immobilized foes.",
+            "5": "Ignore all movement penalties from snow, frost, chill. Ice damage heals you for L if not a critical hit."
+          }
+        },
+        "lightning": {
+          "name": "Lightning",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "fire",
+              "level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "air",
+              "level": 2
+            }
+          ],
+          "status_applied": "Burned+Haste",
+          "levels": {
+            "1": "When you gain Haste, immediately move 5×L ft as a free action.",
+            "2": "+L MPR. Resist Lightning L. Regain L SP when struck by Lightning damage.",
+            "3": "Haste grants an extra +1 AP when triggered.",
+            "4": "Lightning damage ignores shields and barriers.",
+            "5": "Haste stacks cannot be removed by enemy effects. Lightning damage you take grants +R MP instead. Move actions cost -1 AP but double SP cost."
+          }
+        },
+        "magma": {
+          "name": "Magma",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "earth",
+              "level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "fire",
+              "level": 2
+            }
+          ],
+          "status_applied": "Burned+Crushed",
+          "levels": {
+            "1": "Burned and Crushed you apply deal +L damage if target has both.",
+            "2": "+L MPR. Resist Fire and Earth L. Regain HP equal to Fire or Earth damage resisted.",
+            "3": "When you Block or Deflect, deal Fire damage equal to Crushed stacks on attacker.",
+            "4": "Crushed and Burned stacks reduce target's Block and Dodge rolls by L.",
+            "5": "Double Burned and Crushed stacks you apply."
+          }
+        },
+        "dust": {
+          "name": "Dust",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "earth",
+              "level": 2
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "air",
+              "level": 2
+            }
+          ],
+          "status_applied": "Blind+Crushed",
+          "levels": {
+            "1": "On hit: Apply +L Blind if target has Crushed or Weathered stacks.",
+            "2": "+L MPR. Resist Wind and Earth L. Gain L SP when you dodge or deflect.",
+            "3": "Enemies within 5×L ft have -L to Perception and Ranged attack rolls.",
+            "4": "Move through hindering terrain at full speed.",
+            "5": "While obscured, attacks deal +L damage and enemies take -L to defense against your attacks."
+          }
+        }
+      },
+      "tier3": {
+        "glacier": {
+          "name": "Glacier",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "ice",
+            "level": 3
+          },
+          "levels": {
+            "1": "Halve Slow and Burned stacks applied to you.",
+            "2": "+L MPR. Regain L MP on hit of target with Chilled or Slow stacks.",
+            "3": "+L to attack rolls vs targets with both Chilled and Slow.",
+            "4": "Ice effects reduce enemy Dodge by L and Speed by L×5 ft.",
+            "5": "Immune to Chilled and Slow. Targets you Freeze gain Burned ×L when they act."
+          }
+        },
+        "glassveil": {
+          "name": "Glassveil",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "steam",
+            "level": 3
+          },
+          "levels": {
+            "1": "Obscuring effects grant +L Stealth. +L attack while Obscured.",
+            "2": "+L MPR. Gain L MP when fog or concealment prevents damage to you or ally.",
+            "3": "Steam terrain effects heal allies in them for L HP per round.",
+            "4": "Steam illusions count as +L higher tier for resistance purposes.",
+            "5": "Always considered in cover. +L Defense when obscured."
+          }
+        },
+        "obsidian_core": {
+          "name": "Obsidian Core",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "magma",
+            "level": 3
+          },
+          "levels": {
+            "1": "Burned and Crushed stacks you apply reduce target max HP by L.",
+            "2": "+L MPR. Gain L MP when Burned or Crushed enemy is incapacitated.",
+            "3": "Enemies take +L Fire damage if they end their turn Crushed.",
+            "4": "Gain +L to Earth and Fire Resistance. Standing in lava grants +L Regen.",
+            "5": "Your Burned and Crushed stacks are immune to cleansing for 1 round after applied."
+          }
+        },
+        "stormwake": {
+          "name": "Stormwake",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "lightning",
+            "level": 3
+          },
+          "levels": {
+            "1": "Burned stacks you apply increase Haste by L instead of lowering it.",
+            "2": "+L MPR. Regain L MP when target gains both Haste and Burned from your ability.",
+            "3": "Burned stacks on enemies cause them to lose 1 AP if they attempt movement.",
+            "4": "Haste grants +L to Initiative and Evasion rolls.",
+            "5": "Burned stacks applied by Haste-triggered effects deal +L bonus damage."
+          }
+        },
+        "sandstrider": {
+          "name": "Sandstrider",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "dust",
+            "level": 3
+          },
+          "levels": {
+            "1": "Ignore movement penalties from rough, sandy, or broken terrain.",
+            "2": "+L MPR. Gain L MP when enemies miss due to terrain penalties.",
+            "3": "Crushed and Slow stacks applied within terrain you control gain +1 additional stack.",
+            "4": "Create Dust terrain in 10×L ft radius once per short rest as a free action.",
+            "5": "Always count as concealed when standing on natural ground."
+          }
+        },
+        "seabinder": {
+          "name": "Seabinder",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "upwell",
+            "level": 3
+          },
+          "levels": {
+            "1": "Walk across shallow water and swim without penalty.",
+            "2": "+L MPR. Gain L MP when removing Slow, Crushed, or Encumber from an ally.",
+            "3": "Water and Earth damage you deal heals you for L HP.",
+            "4": "Resist movement manipulation while touching water or stone.",
+            "5": "Immune to being Prone, Grappled, or Restrained when standing on natural terrain."
+          }
+        },
+        "thermaflux": {
+          "name": "Thermaflux",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "water",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "earth",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "fire",
+              "level": 3
+            }
+          ],
+          "levels": {
+            "1": "+L to Resistance vs Fire and Earth. Burned and Crushed you receive deal -L damage.",
+            "2": "+L MPR. Regain L MP when taking Fire or Earth damage.",
+            "3": "Your Burned and Crushed stacks gain +L duration and reduce enemy movement by 5×L ft.",
+            "4": "+L to checks resisting terrain-based or environmental damage.",
+            "5": "Regen L HP per round on natural terrain. Your Fire and Earth effects are not resisted by terrain protections."
+          }
+        },
+        "spiraflux": {
+          "name": "Spiraflux",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "water",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "earth",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "air",
+              "level": 3
+            }
+          ],
+          "levels": {
+            "1": "When you apply Slow or Crushed, also reduce target's Dodge by L.",
+            "2": "+L MPR. Gain L MP when successfully resisting forced movement or status effects.",
+            "3": "Allies within 10×L ft ignore the first Slow or Crushed stack each round.",
+            "4": "+L to all Awareness and Balance checks.",
+            "5": "Once per round, when an ally within 10 ft succeeds a Defense roll, you gain L MP and +1 Focus."
+          }
+        },
+        "ecoflux": {
+          "name": "Ecoflux",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "water",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "air",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "fire",
+              "level": 3
+            }
+          ],
+          "levels": {
+            "1": "+L to resist Burned, Encumber, and Slowed.",
+            "2": "+L MPR. Gain L HP when an ability affects at least two targets.",
+            "3": "On AoE spell activation, gain +L Temp HP.",
+            "4": "+L to Diplomacy and Nature-related skills.",
+            "5": "Environmental AoE effects persist 1 extra turn. Allies inside heal L per round."
+          }
+        },
+        "volcanflux": {
+          "name": "Volcanflux",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "earth",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "air",
+              "level": 3
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "fire",
+              "level": 3
+            }
+          ],
+          "levels": {
+            "1": "Crushed and Burned you apply also reduce MP regeneration by L.",
+            "2": "+L MPR. Gain L HP when enemies fail movement-based checks.",
+            "3": "Ignore terrain damage. Move across lava, rockslides, or debris at full speed.",
+            "4": "Enemies in direct contact with terrain take +L environmental damage each round.",
+            "5": "Gain Tremor Sense. Burned and Crushed stacks you apply spread to 1 adjacent enemy per round."
+          }
+        }
+      },
+      "tier4": {
+        "aether": {
+          "name": "Aether",
+          "prerequisite": [
+            {
+              "type": "affinity_level",
+              "affinity": "water",
+              "level": 4
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "earth",
+              "level": 4
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "fire",
+              "level": 4
+            },
+            {
+              "type": "affinity_level",
+              "affinity": "air",
+              "level": 4
+            }
+          ],
+          "levels": {
+            "1": {
+              "effect": "All stacking effects (Burned, Bleeding, etc.) you apply gain +1 stack on application."
+            },
+            "2": {
+              "effect": "+L MPR. Regain L MP per round if you have 3 or more different elemental affinities."
+            },
+            "3": {
+              "effect": "AoE abilities gain +L to range or radius."
+            },
+            "4": {
+              "effect": "When casting an affinity-based ability, ignore 1 point of its cost for each Tier 1 Affinity you know."
+            },
+            "5": {
+              "effect": "Immune to non-critical environmental damage. Stacking effects you apply can no longer be resisted or cleansed by base resistances."
+            }
+          }
+        }
+      }
+    },
+    "arcane": {
+      "description": "Schools of magical philosophy and technique. Shape spellcasting through disciplined study, experimentation, and ritual rather than primal or emotional resonance.",
+      "unlock_rule": "Each arcane affinity known counts toward the MND+SPT > Arcane Elemental total check for primal affinities.",
+      "affinities": {
+        "necromancy": {
+          "name": "Necromancy",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "Animate Corpse — 6 AP, 3R MP: Animate a medium or two small corpses for 3R turns. Max 3 medium or 6 small active.",
+            "2": "+R Max MP and MPR. Double summoned corpse duration.",
+            "3": "Animate Corpse AP cost -3.",
+            "4": "Increase limits to 1 Large, 2 Medium, or 4 Small per summon.",
+            "5": "Raise limit to 3 Large, 6 Medium, or 12 Small active at once."
+          }
+        },
+        "transmutation": {
+          "name": "Transmutation",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "Transmute Matter — 6 AP, 3L MP: Transform an object into another of similar mass or size.",
+            "2": "+L Max MP and MPR. +L to skill checks for altering properties (weight, density, form).",
+            "3": "May animate objects to perform simple tasks (1 AP actions).",
+            "4": "Transmuted objects persist 2× as long and resist dispelling.",
+            "5": "Transmute living matter (plants, non-sapient creatures) with extended rituals."
+          }
+        },
+        "evocation": {
+          "name": "Evocation",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "On Elemental Affinity Hit: Restore L MP.",
+            "2": "+L Max MP and MPR. All Affinity spell ranges increase by 10×L ft.",
+            "3": "Gain +L to Affinity AoE sizes or cone lengths.",
+            "4": "Empowered Cast: once per turn, double affinity damage dice.",
+            "5": "All elemental spells ignore 1 point of Resistance per level in this skill."
+          }
+        },
+        "illusions": {
+          "name": "Illusions",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "Create sensory phantasms for up to L×10 minutes (sight, sound, smell).",
+            "2": "+L Max MP and MPR. Illusions may mimic physical presence but deal no damage.",
+            "3": "Illusory Assault: target rolls defense vs false damage or suffers penalty.",
+            "4": "Create illusions that persist while unattended or across areas.",
+            "5": "Illusions are semi-autonomous and may mimic up to L commands."
+          }
+        },
+        "abjuration": {
+          "name": "Abjuration",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "Energy Shields gain +L Damage Resistance.",
+            "2": "+L Max MP and MPR. Gain resistance to dispel or counterspells.",
+            "3": "Warded Stance: passive shield resists elemental splash effects.",
+            "4": "Reflexive Ward: once per round, reduce incoming spell damage by L×2.",
+            "5": "Maintain passive barrier even while unconscious."
+          }
+        },
+        "conjuration": {
+          "name": "Conjuration",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "Summon Object — 6 AP, 3L MP: Conjure a Medium or smaller item for L hours.",
+            "2": "+L Max MP and MPR. Conjured items may include minor enchantments.",
+            "3": "Reduce AP cost by -2. Duration doubled.",
+            "4": "Create large or complex objects (tents, carts, siege tools).",
+            "5": "Conjured objects function as real and persist up to L days."
+          }
+        },
+        "divination": {
+          "name": "Divination",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "Astral Eye — 6 AP, 3L MP: Summon a floating sensor for L hours.",
+            "2": "+L Max MP and MPR. +L to Detect, Insight, and Arcana checks.",
+            "3": "Eye gains the ability to relay emotional states or magical auras.",
+            "4": "Precognitive Insight: Reroll 1 failed roll per encounter.",
+            "5": "Maintain perfect awareness of all targets within line of sight."
+          }
+        },
+        "enchanting": {
+          "name": "Enchanting",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "Ritual Enchant — Spend L hours and 30 MP×L/hour to give +L weapon or armor bonus.",
+            "2": "+L Max MP and MPR. May enchant up to L items.",
+            "3": "Half MP cost. Not interrupted unless damaged by a critical hit.",
+            "4": "May bind enchantments to other characters' gear.",
+            "5": "May combine two enchantments into one item."
+          }
+        },
+        "augment": {
+          "name": "Augment",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "1 AP, 2L MP: Weapon gains one Affinity for 2L turns, applying On Hit triggers.",
+            "2": "+L Max MP and MPR. May apply L Augments simultaneously.",
+            "3": "On Hit triggers apply stacks equal to Affinity skill level.",
+            "4": "Augments last indefinitely but count against enchantment limit.",
+            "5": "Augmented weapons apply +L to Affinity skill checks."
+          }
+        },
+        "temporal": {
+          "name": "Temporal",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 4
+            }
+          ],
+          "levels": {
+            "1": "3 AP, 3L MP: Apply L² Haste stacks in 15×L ft radius.",
+            "2": "2 AP, 3L MP: Apply L² Slow stacks to a single target.",
+            "3": "+L Max MP and MPR. Dodge no longer causes double damage on failure.",
+            "4": "Echo Step: once per round, repeat one movement-based action.",
+            "5": "May act during another character's turn once per round at -1 AP cost."
+          }
+        },
+        "dream_magic": {
+          "name": "Dream Magic",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. When you sleep, gain visions that may reveal hidden truths. +L to resist Illusion and Fear effects.",
+            "2": "Cast minor illusionary effects during rest or meditation. Regain L MP if unbothered during full rest.",
+            "3": "+L to resist sleep and unconscious states. Dreams you shape may interact with other dreamers.",
+            "4": "While unconscious or meditating, send a short telepathic message to a known target. +L to control shared dreamscapes.",
+            "5": "Project yourself into the Dreamscape once per long rest for L minutes. Actions can influence waking world NPCs (GM discretion)."
+          }
+        },
+        "umbramancy": {
+          "name": "Umbramancy",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 1
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. On Hit with Shadow abilities: +L Shadow damage. Shadows controlled within 10×L ft.",
+            "2": "+L to stealth and darkness-based perception. Regain L MP when attacking from concealment.",
+            "3": "Create pockets of magical darkness (15 ft radius) obscuring sight for non-umbramancers. +L shadow damage.",
+            "4": "Shadow may act as independent echo (no damage; can manipulate switches or distract).",
+            "5": "Enter or exit shadows for teleportation within 10×L ft once per turn. Cannot pass through solid walls."
+          }
+        },
+        "void": {
+          "name": "Void",
+          "prerequisite": {
+            "type": "affinity_level",
+            "affinity": "Arcane",
+            "level": 5,
+            "description": "Requires mastery of 5 different Arcane affinities."
+          },
+          "levels": {
+            "1": {
+              "effect": "On hit with Affinity abilities, apply +L Null (prevents regeneration for 1 round)."
+            },
+            "2": {
+              "effect": "+L MPR. Regain L MP when a status effect ends."
+            },
+            "3": {
+              "effect": "Stacking effects you apply do not decay naturally."
+            },
+            "4": {
+              "effect": "Ignore line of sight and cover for Affinity effects."
+            },
+            "5": {
+              "effect": "Targets killed while a stacking effect is active cannot be resurrected for L rounds."
+            }
+          }
+        },
+        "teleportation": {
+          "name": "Teleportation",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 3
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Once per day, teleport self and carried items up to 10×L ft in line of sight.",
+            "2": "+L to Initiative and Reflex. Teleport a willing ally within 5×L ft to nearby safe square as a reaction.",
+            "3": "Once per combat, delay a teleport up to L turns, activating as free action later.",
+            "4": "Teleport no longer triggers opportunity attacks. Regain L MP when teleporting into danger.",
+            "5": "Once per rest, Mass Teleport up to L allies (100×L ft range). Arrival must be known or visible location."
+          }
+        },
+        "metamagic": {
+          "name": "Metamagic",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 2
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Choose one metamagic trait: Empower, Extend, or Quicken. Apply 1 metamagic per turn for free.",
+            "2": "Maintain 2 metamagic effects simultaneously. +L to spell effectiveness checks.",
+            "3": "Regain L MP when a spell with metamagic hits 2+ targets or deals 20+ damage.",
+            "4": "Reduce MP cost of metamagic by L.",
+            "5": "Apply all 3 base metamagic traits to one spell once per long rest without cost."
+          }
+        },
+        "psionics": {
+          "name": "Psionics",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 2
+            },
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 2
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Substitute SPT for MND on any magic attack rolls or checks.",
+            "2": "+L to resist Charm, Fear, and Illusion effects.",
+            "3": "Communicate telepathically with one creature within 10×L ft.",
+            "4": "Control the emotions of a target for L rounds with a successful opposed roll.",
+            "5": "Dominate a target (charm + command effect) for 1 round once per rest."
+          }
+        },
+        "thaumaturgy": {
+          "name": "Thaumaturgy",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 2
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Amplify voice, eyes, or other sensory elements for roleplay or minor illusions.",
+            "2": "Minor environmental effects gain +L range and intensity.",
+            "3": "Spend L MP to generate a minor divine or infernal manifestation for up to 1 minute.",
+            "4": "Disrupt enemy magic with dramatic gestures, imposing -L to their spell success for 1 round.",
+            "5": "Once per rest, perform a Major Manifestation — a highly cinematic effect tied to your mythic presence (GM determines final impact; must be scene-defining)."
+          }
+        },
+        "chronomancy": {
+          "name": "Chronomancy",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 3
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Your spells may be delayed by 1 round without losing effectiveness.",
+            "2": "+L to Initiative and Temporal magic rolls. Spells may be queued and auto-triggered under set conditions.",
+            "3": "Delay an enemy's action by L ticks with a successful opposed MND check.",
+            "4": "Take 1 additional reaction per round, usable only for time-based effects or parries.",
+            "5": "Once per rest, rewind your own position to L ticks ago (position, HP, and active conditions only)."
+          }
+        },
+        "sigilry": {
+          "name": "Sigilry",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 2
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Carve magical sigils that hold 1 spell for delayed activation.",
+            "2": "Sigils may affect up to L targets. Triggering range increased to 10×L ft.",
+            "3": "Embed L sigils into weapons, armor, or surfaces for persistent field effects.",
+            "4": "Sigils can be triggered remotely or set to automatic conditional logic.",
+            "5": "Combine two different spells into one sigil, activating simultaneously."
+          }
+        },
+        "runecraft": {
+          "name": "Runecraft",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 2
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Craft temporary runes granting +L to spell rolls or damage of chosen element.",
+            "2": "Runes grant Resistance L to a chosen energy type while active.",
+            "3": "Up to L runes active at once. Apply runes as bonus action.",
+            "4": "Create semi-permanent runic glyphs empowering areas (shrines, battlegrounds, fortifications).",
+            "5": "Once per rest, inscribe a Master Rune granting +L to all allies' MP regen and damage resistances in 20 ft radius."
+          }
+        },
+        "binding_magic": {
+          "name": "Binding Magic",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 3
+            },
+            {
+              "type": "special",
+              "description": "Successful capture of 1 spirit"
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Bind minor spirits into trinkets or relics, granting +L to 1 skill or resistance.",
+            "2": "Bound spirits may speak to you. +L to negotiations with ethereal beings.",
+            "3": "Forcibly bind a hostile spirit for L rounds with an opposed MND roll.",
+            "4": "Channel a bound spirit to reroll one failed spell check per rest.",
+            "5": "Host up to L spirits. Spirits grant passive bonuses or unique once-per-day effects (GM defined)."
+          }
+        },
+        "mysticism": {
+          "name": "Mysticism",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "SPT",
+              "value": 2
+            },
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 2
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. In sacred or spiritually aligned locations, regain L MP per round.",
+            "2": "Attune to ley lines or power centers, detecting their flow and influence.",
+            "3": "Spend L MP to suppress or enhance emotional energies in 10×L ft zone.",
+            "4": "Harmonize with a spiritual aura to gain Resistance L to mental effects.",
+            "5": "Once per rest, enter a trance gaining visions of nearby threats, allies, or spiritual truths."
+          }
+        },
+        "arcanoturgy": {
+          "name": "Arcanoturgy",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "MND",
+              "value": 3
+            },
+            {
+              "type": "special",
+              "description": "Access to at least 3 different magical traditions"
+            }
+          ],
+          "levels": {
+            "1": "+L MPR. Substitute one component of a spell (verbal, somatic, material) with another.",
+            "2": "Choose 1 spell from another Arcane Domain and treat it as from your primary Domain.",
+            "3": "+L to cast hybrid spells using elements from two different Domains.",
+            "4": "Spend L MP to convert any affinity ability into an Arcane Domain spell temporarily.",
+            "5": "Once per day, replicate any spell cast within 100 ft in the last L rounds."
+          }
+        }
+      }
+    }
+  }
+}

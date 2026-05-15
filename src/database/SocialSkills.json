@@ -1,0 +1,164 @@
+"social": {
+
+      "charm": {
+        "name": "Charm",
+        "subtitle": "Light-Hearted Appeal Style",
+        "skill_type": "social",
+        "governing_stat": "SPT",
+        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 2 }],
+        "ranks": {
+          "1": { "effect": "+R to sway unfriendly NPCs." },
+          "2": { "effect": "Remove -R from jealousy or rivalry penalties." },
+          "3": { "effect": "Sway multiple targets with a single roll." },
+          "4": { "effect": "Once per session, establish fast trust with a stranger." },
+          "5": { "effect": "Gain a favor from target despite unfavorable odds." }
+        }
+      },
+
+      "deception": {
+        "name": "Deception",
+        "subtitle": "Manipulative Misdirection Style",
+        "skill_type": "social",
+        "governing_stat": "highest",
+        "requirements": [{ "type": "stat_min", "stat": "any", "value": 2, "description": "MND or SPT 2+" }],
+        "ranks": {
+          "1": { "effect": "+R to lie convincingly." },
+          "2": { "effect": "Redirect blame or suspicion with +R advantage." },
+          "3": { "effect": "Mimic speech and mannerisms with 95% accuracy." },
+          "4": { "effect": "Bluff to escape or reroll 1 opposed check." },
+          "5": { "effect": "Enemies believe even conflicting falsehoods." }
+        }
+      },
+
+      "diplomacy": {
+        "name": "Diplomacy",
+        "subtitle": "Bridgebuilding Social Style",
+        "skill_type": "social",
+        "governing_stat": "SPT",
+        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 3 }],
+        "ranks": {
+          "1": { "effect": "+R to negotiate between hostile parties." },
+          "2": { "effect": "Increase Rapport by R." },
+          "3": { "effect": "Allies gain +R morale during parley." },
+          "4": { "effect": "Reduce hostility by 1 Rank per day." },
+          "5": { "effect": "Auto-succeed diplomacy vs neutral NPCs." }
+        }
+      },
+
+      "empathy": {
+        "name": "Empathy",
+        "subtitle": "Emotional Insight Style",
+        "skill_type": "social",
+        "governing_stat": "SPT",
+        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 3 }],
+        "ranks": {
+          "1": { "effect": "+R to detect lies or motives." },
+          "2": { "effect": "Reroll a failed social check if the target is emotional." },
+          "3": { "effect": "Counsel reduces 1 ally's mental strain by R." },
+          "4": { "effect": "Shift an NPC's mood by 1 stage." },
+          "5": { "effect": "Allies cannot betray you unless magically compelled." }
+        }
+      },
+
+      "intimidation": {
+        "name": "Intimidation",
+        "subtitle": "Dominance Projection Style",
+        "skill_type": "social",
+        "governing_stat": "highest",
+        "requirements": [{ "type": "stat_min", "stat": "any", "value": 2, "description": "BDY or SPT 2+" }],
+        "ranks": {
+          "1": { "effect": "+R to intimidation rolls." },
+          "2": { "effect": "Intimidated targets suffer -R SPD for 1 round." },
+          "3": { "effect": "+R initiative on intimidation at first contact." },
+          "4": { "effect": "+R defense when still and glaring." },
+          "5": { "effect": "Auto-win contests vs lower-ranked NPCs." }
+        }
+      },
+
+      "leadership": {
+        "name": "Leadership",
+        "subtitle": "Command Presence Style",
+        "skill_type": "social",
+        "governing_stat": "SPT",
+        "requirements": [
+          { "type": "stat_min", "stat": "SPT", "value": 3 },
+          { "type": "skill_min", "skill_category": "any_combat", "minimum_rank": 1 }
+        ],
+        "ranks": {
+          "1": { "effect": "+R to group persuasion." },
+          "2": { "effect": "Allies within 30 ft gain +R morale in danger." },
+          "3": { "effect": "+R to ally follow-up after instructions." },
+          "4": { "ap_cost": 2, "effect": "Allies gain +R AP or MP." },
+          "5": { "uses": "1/day", "effect": "Remove all fear and hesitation from allies." }
+        }
+      },
+
+      "persuasion": {
+        "name": "Persuasion",
+        "subtitle": "Charismatic Negotiation Style",
+        "skill_type": "social",
+        "governing_stat": "SPT",
+        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 2 }],
+        "ranks": {
+          "1": { "effect": "+R to persuasion checks in 1-on-1 settings." },
+          "2": { "effect": "Reroll 1 failed persuasion check per day." },
+          "3": { "effect": "Allies following your lead gain +R morale." },
+          "4": { "effect": "Influenced targets remain affected for +1d6 rounds." },
+          "5": { "effect": "Once per day, gain a free social favor from a non-hostile NPC." }
+        }
+      }
+    },
+
+    "mystical": {
+
+      "arcane_theory": {
+        "name": "Arcane Theory",
+        "subtitle": "Foundational Magical Knowledge",
+        "skill_type": "mystical",
+        "governing_stat": "MND",
+        "requirements": [{ "type": "stat_min", "stat": "MND", "value": 2 }],
+        "ranks": {
+          "1": { "effect": "+R to identify spells, glyphs, or wards." },
+          "2": { "effect": "Reduce time to decipher magic scrolls or runes by 50%." },
+          "3": { "effect": "Detect nearby active spells or ambient mana flow." },
+          "4": { "effect": "+R to memorize or counter known spells." },
+          "5": { "effect": "Auto-identify any spell of Rank R or lower with a glance." }
+        }
+      },
+
+      "channeling": {
+        "name": "Channeling",
+        "subtitle": "Energy Focusing Style",
+        "skill_type": "mystical",
+        "governing_stat": "MND",
+        "requirements": [
+          { "type": "stat_min", "stat": "MND", "value": 3 },
+          { "type": "equipment", "description": "Magical Focus Item" }
+        ],
+        "ranks": {
+          "1": { "effect": "+R to maintain or empower ongoing magical effects." },
+          "2": { "effect": "Delay or redirect your own spell activation by 1 round." },
+          "3": { "mp_cost": "R additional", "effect": "Spend +R MP to amplify next spell by +R effect." },
+          "4": { "uses": "1/rest", "effect": "Double range or area for 1 spell." },
+          "5": { "uses": "1/session", "effect": "Ignore max MP limit for 1 spell." }
+        }
+      },
+
+      "elemental_harmony": {
+        "name": "Elemental Harmony",
+        "subtitle": "Balance of the Four",
+        "skill_type": "mystical",
+        "governing_stat": "MND",
+        "requirements": [
+          { "type": "stat_min", "stat": "MND", "value": 2 },
+          { "type": "affinity", "description": "Any Elemental Affinity" }
+        ],
+        "ranks": {
+          "1": { "effect": "+R to resist your primary element." },
+          "2": { "effect": "Use a secondary element's effect at reduced power." },
+          "3": { "effect": "Change element-based abilities to an alternate element." },
+          "4": { "uses": "1/day", "effect": "Retain a spell effect without upkeep." },
+          "5": { "effect": "Channel two elemental effects simultaneously." }
+        }
+      }
+    },

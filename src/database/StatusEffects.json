@@ -1,0 +1,452 @@
+{
+  "Status_Effects": {
+    "State_Changes": {
+      "Bound": {
+        "Name": "Bind",
+        "Effect": "Can not take actions that require arms and hands.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Charmed": {
+        "Name": "Charmed",
+        "Effect": "Can not take actions that require arms and hands.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Feared": {
+        "Name": "Feared",
+        "Effect": "Use all AP to move away from the enemy that applied the fear stack up to a specified range.  SP costs still apply.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Remove 1 stack."
+      },
+      "Frozen": {
+        "Name": "Frozen",
+        "Effect": "Target can not take Actions and immune to damage instead reducing Stacks by Damage taken.  One stack still prevents all damage taken for the action that removes the last stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Grappled": {
+        "Name": "Grappled",
+        "Effect": "Attacker binds or roots target but can’t take further action with appendages used except to make unarmed constraining attacks against the target and may release as free reaction.  Constrain: 2AP: Squeeze target for STR physical damage.",
+        "Upkeep": "Upkeep:  May maintain Grapple.  Target Upkeep: Make opposing STR or SPT checks.  If Target succeeds, break grapple and take turn as normal",
+        "EndofTurn": "N/A"
+      },
+      "Pacified": {
+        "Name": "Pacified",
+        "Effect": "Can not attack.  Remove 1 stack when damaged.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Paralyzed": {
+        "Name": "Paralyzed",
+        "Effect": "Can't use SP. Lose stacks equal to damage taken.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Rooted": {
+        "Name": "Rooted",
+        "Effect": "Can not take actions that require legs and feet.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Asleep": {
+        "Name": "Asleep",
+        "Effect": "Can't activate verbal components or make sound based attacks. Lose stacks equal to damage taken.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Stunned": {
+        "Name": "Stunned",
+        "Effect": "Cannot take actions. Lose stacks equal to damage taken.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      }
+    },
+    "Action_Status_Effects": {
+      "Crippled": {
+        "Name": "Crippled",
+        "Effect": "Move SPD/2.",
+        "Upkeep": "N/A",
+        "EndofTurn": "If no move taken, remove 1 stack."
+      },
+      "Hasten": {
+        "Name": "Hasten",
+        "Effect": "Increase initiative by stacks. If this would cause the turn of the active Character to move above a Character who has already acted this round, that Character does not take another Turn.",
+        "Upkeep": "Gain an AP and lose a stack.",
+        "EndofTurn": "N/A"
+      },
+      "Hindered": {
+        "Name": "Hindered",
+        "Effect": "Reduce SPD by 5 per stack. Lose a stack on Move.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Momentum": {
+        "Name": "Momentum",
+        "Effect": "Move SPD×2. Lose a stack when spending AP on a non-move action.",
+        "Upkeep": "N/A",
+        "EndofTurn": "If no move taken, remove 1 stack."
+      },
+      "Anticipated": {
+        "Name": "Anticipated",
+        "Effect": "Defenses cost one less HP, SP, or MP. On defend: Remove a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Quickened": {
+        "Name": "Quickened",
+        "Effect": "Increase SPD by 5 per stack. On move: Remove a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Slowed": {
+        "Name": "Slowed",
+        "Effect": "Decrease initiative by stacks. If this would drop a Character below another Character's initiative, pause the Character's turn until the other Character's turn is complete.",
+        "Upkeep": "Gain 1 less AP then remove a stack.",
+        "EndofTurn": "N/A"
+      },
+      "Off-balanced": {
+        "Name": "Off-balanced",
+        "Effect": "Defenses cost 1 extra of each used pool: HP, SP, or MP. On defend remove a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      }
+    },
+    "Resource_Pool_Effects": {
+      "Baffled": {
+        "Name": "Baffled",
+        "Effect": "Reduce Max MP by 2 per stack. If MP hits 0, character is unconscious and all stacks are removed.  On MP use: Remove a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Bleeding": {
+        "Name": "Bleeding",
+        "Effect": "Lose 1 HP per stack per AP spent then remove a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Bolstered": {
+        "Name": "Bolstered",
+        "Effect": "Increase current and Max HP by 4 per stack.  When removing stacks, if current becomes less than Max HP, reduce current HP to Max HP.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Concentration": {
+        "Name": "Concentration",
+        "Effect": "Increase current and Max MP by 4 per stack.  When removing stacks, if current becomes less than Max MP, reduce current MP to Max MP.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Clarity": {
+        "Name": "Clarity",
+        "Effect": "Gain MP equal to stacks per AP spent then remove a stack for each AP spent.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Confused": {
+        "Name": "Confused",
+        "Effect": "Lose MP equal to stacks per AP spent then remove a stack for each AP spent.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Demoralized": {
+        "Name": "Demoralized",
+        "Effect": "Reduce Max SP by 2 per stack. If SP hits 0, character is unconscious and all stacks are removed.  On SP use: Remove a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Depressed": {
+        "Name": "Depressed",
+        "Effect": "Reduce MPR equal to stacks.",
+        "Upkeep": "After MPR triggers remove 1 stack (even if no MP is gained).",
+        "EndofTurn": "N/A"
+      },
+      "Determined": {
+        "Name": "Determined",
+        "Effect": "Gain HP equal to AP spent then remove a stack for each AP spent.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Enfeebled": {
+        "Name": "Enfeebled",
+        "Effect": "Reduce Max HP by 2 per stack. If HP hits 0, character is unconscious and all stacks are removed.  After being hit: Remove a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Exhausted": {
+        "Name": "Exhausted",
+        "Effect": "Lose SP equal to AP spent then remove a stack for each AP spent.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Fatigued": {
+        "Name": "Fatigued",
+        "Effect": "Reduce SPR equal to stacks.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Flow": {
+        "Name": "Flow",
+        "Effect": "SP costs are reduced by 1. On SP use: lose a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "If no actions taken, remove 1 stack."
+      },
+      "Focused": {
+        "Name": "Focused",
+        "Effect": "MP costs are reduced by 1. On MP use: lose a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "If no actions taken, remove 1 stack."
+      },
+      "Inspired": {
+        "Name": "Inspired",
+        "Effect": "Gain SP equal to AP spent then remove a stack for each AP spent.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Invigorated": {
+        "Name": "Invigorated",
+        "Effect": "Increase current and Max SP by 4 per stack.  When removing stacks, if current becomes less than Max SP, reduce current SP to Max SP.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Regenerating": {
+        "Name": "Regenerating",
+        "Effect": "Gain HPR equal to stacks.",
+        "Upkeep": "After HPR triggers remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Rejuvenating": {
+        "Name": "Rejuvenating",
+        "Effect": "Gain SPR equal to stacks.",
+        "Upkeep": "After SPR triggers remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Replenishing": {
+        "Name": "Replenishing",
+        "Effect": "Gain MPR equal to stacks.",
+        "Upkeep": "After MPR triggers remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Sickened": {
+        "Name": "Sickened",
+        "Effect": "SP costs are increased by 1. On SP use: lose a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "If no actions taken, remove 1 stack."
+      },
+      "Stupified": {
+        "Name": "Stupified",
+        "Effect": "MP costs are increased by 1. On MP use: lose a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "If no actions taken, remove 1 stack."
+      },
+      "Injured": {
+        "Name": "Injured",
+        "Effect": "Lose HPR equal to stacks.",
+        "Upkeep": "After HPR triggers remove 1 stack.",
+        "EndofTurn": "N/A"
+      }
+    },
+    "Combat_Enhancement_Effects": {
+      "Alert": {
+        "Name": "Alert",
+        "Effect": "Gain +4 to Block and Dodge. After Blocking or Dodging, remove a stack.",
+        "Upkeep": "If no defend action taken since last End of Turn, remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Blessed": {
+        "Name": "Blessed",
+        "Effect": "Double healing received. Remove a stack per 1 HP lost.",
+        "Upkeep": "If healed since last End of Turn, gain 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Blinded": {
+        "Name": "Blinded",
+        "Effect": "-4 to melee attacks and -8 to ranged attacks. -10 to defend actions if reliant on sight.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Defiled": {
+        "Name": "Defiled",
+        "Effect": "Reduce healing received by stacks. Remove a stack per 1 HP healed.",
+        "Upkeep": "If not healed since last End of Turn, gain 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Disoriented": {
+        "Name": "Disoriented",
+        "Effect": "-4 to attacks.  After attacking, remove 1 stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Distracted": {
+        "Name": "Distracted",
+        "Effect": "-4 to defends.  After defending, remove 1 stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Exploit": {
+        "Name": "Exploit",
+        "Effect": "Gain +1 Damage per stack on unblocked attacks. After attacking, remove 1 stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Remove 1 stack."
+      },
+      "Leverage": {
+        "Name": "Leverage",
+        "Effect": "Gain +4 to attacks and abilities. After attacking, remove 1 stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Remove 1 stack."
+      },
+      "Foresight": {
+        "Name": "Foresight",
+        "Effect": "Gain +4 to Dodge and Deflect. After defending, remove 1 stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Prone": {
+        "Name": "Prone",
+        "Effect": "1 AP to stand.  Reduce ranged attack rolls against this character by 2 and increase melee attack rolls against this character by 4.",
+        "Upkeep": "N/A",
+        "EndofTurn": "N/A"
+      },
+      "Sanctified": {
+        "Name": "Sanctified",
+        "Effect": "Increase healing received by stacks. Lose a stack per 1 HP healed.",
+        "Upkeep": "If healed since last End of Turn, gain 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Wounded": {
+        "Name": "Wounded",
+        "Effect": "Halve healing received. Remove a stack per 1 HP healed.",
+        "Upkeep": "If not healed since last End of Turn, gain 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Sluggish": {
+        "Name": "Sluggish",
+        "Effect": "-4 to Dodge and Deflect. After defending, remove 1 stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Staggered": {
+        "Name": "Staggered",
+        "Effect": "Can't perform more than one attack per turn or somatic spell components.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "If no actions taken, remove 1 stack."
+      }
+    },
+    "Damage_Modifier_Effects": {
+      "Barrier": {
+        "Name": "Barrier",
+        "Effect": "When Hit: Reduce physical damage by stacks, then lose stacks equal to Damage reduced by this effect. Prevents on-hit effects if damage is reduced to 0 by Barrier stacks.",
+        "Upkeep": "N/A",
+        "EndofTurn": "N/A"
+      },
+      "Vile Mark": {
+        "Name": "Vile Mark",
+        "Effect": "When void damage taken: take extra Void damage equal to stacks, then lose that many stacks.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Lose a stack then take damage equal to the remaining stacks."
+      },
+      "Brittle": {
+        "Name": "Brittle",
+        "Effect": "When physical damage taken: take double damage, then lose a stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Burned": {
+        "Name": "Burned",
+        "Effect": "When fire damage taken: take extra fire damage equal to stacks, then lose that many stacks.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Lose a stack then take damage equal to the remaining stacks."
+      },
+      "Chilled": {
+        "Name": "Chilled",
+        "Effect": "When cold damage taken: take extra cold damage equal to stacks, then lose that many stacks.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Lose a stack then take damage equal to the remaining stacks."
+      },
+      "Crushed": {
+        "Name": "Crushed",
+        "Effect": "When bludgeoning damage taken: take extra damage equal to stacks, then lose that many stacks.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Lose a stack then take damage equal to the remaining stacks."
+      },
+      "Cursed": {
+        "Name": "Cursed",
+        "Effect": "When shadow damage taken: take extra damage equal to stacks, then lose that many stacks.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Lose a stack then take damage equal to the remaining stacks."
+      },
+      "Empowered": {
+        "Name": "Empowered",
+        "Effect": "On hit: Double damage BONUSES, then lose a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "If an attack missed this turn, remove 1 stack."
+      },
+      "Enraged": {
+        "Name": "Enraged",
+        "Effect": "+2 attack and -4 defense per stack.  When this character Hits remove 1 stack.  When this character is hit or misses an attack, gain 1 stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Grace": {
+        "Name": "Grace",
+        "Effect": "On hit with Light:  Target takes additional damage or healing equal to stacks.  After each attack remove 1 stack.  Upkeep: Lose a stack then take Light healing or damage equal to stacks",
+        "Upkeep": "Remove 1 stack and heal for stacks remaining.",
+        "EndofTurn": "N/A"
+      },
+      "Grit": {
+        "Name": "Grit",
+        "Effect": "When hit: halve physical damage, then lose 1 stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Hardened": {
+        "Name": "Hardened",
+        "Effect": "When hit: Reduce physical damage taken by stacks, the remove that many stacks.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Poisoned": {
+        "Name": "Poisoned",
+        "Effect": "Apply poison",
+        "Upkeep": "Lose HP equal to stacks, then remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Protection": {
+        "Name": "Protection",
+        "Effect": "When hit: Reduce energy damage taken by stacks, the remove that many stacks.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Resistant": {
+        "Name": "Resistant",
+        "Effect": "When hit: Halve energy damage, then lose 1 stack.",
+        "Upkeep": "Remove 1 stack.",
+        "EndofTurn": "N/A"
+      },
+      "Weakened": {
+        "Name": "Weakened",
+        "Effect": "On Hit: Half damage BONUSES, then lose a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "N/A"
+      },
+      "Weathered": {
+        "Name": "Weathered",
+        "Effect": "When slashing damage taken: take extra damage equal to stacks, then remove that many stacks.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Remove a stack then take damage equal to the remaining stacks."
+      },
+      "Voidtouched": {
+        "Name": "Voidtouched",
+        "Effect": "Void damage or healing (undead) on hit: take extra Void damage or healing equal to stacks, then lose a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Remove 1 stack then take damage if creature didn't apply it or if self-applied heal equal to the remaining stacks."
+      },
+      "Vulnerable": {
+        "Name": "Vulnerable",
+        "Effect": "Double affinity BONUS damage taken.  Energy on hit:  Remove a stack.",
+        "Upkeep": "N/A",
+        "EndofTurn": "Remove a stack."
+      }
+    }
+  }
+}

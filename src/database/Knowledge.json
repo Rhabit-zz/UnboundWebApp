@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "File": "Knowledge.json",
+    "version": "0.1",
+    "last_updated": "2026-05-14",
+    "description": "Comprehensive list of knowledge skills for character development and gameplay."
+  },
+  "knowledge_tags": {
+    "Material Tags": {
+      "Shape": {
+        "ore": {
+          "name": "Ore",
+          "subtitle": "Mineral Identification",
+          "tag_type": "mining",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "INT",
+              "value": 1
+            }
+          ],
+          "Tier": {
+            "1": {
+              "effect": "Increase quality in recipes using ore.  Increase ore gather chance."
+            },
+            "2": {
+              "effect": "."
+            },
+            "3": {
+              "effect": "."
+            },
+            "4": {
+              "effect": "."
+            },
+            "5": {
+              "effect": "."
+            }
+          }
+        },
+        "fiber": {
+          "name": "Fiber",
+          "subtitle": "Herb Identification",
+          "tag_type": [
+            "farming",
+            "herbalism"
+          ],
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "INT",
+              "value": 1
+            }
+          ],
+          "Tier": {
+            "1": {
+              "effect": "Increase quality in recipes using Fiber.  Increase fiber gather chance."
+            },
+            "2": {
+              "effect": "."
+            },
+            "3": {
+              "effect": "."
+            },
+            "4": {
+              "effect": "."
+            },
+            "5": {
+              "effect": "."
+            }
+          }
+        }
+      },
+      "Form": {
+        "Iron": {
+          "name": "Iron",
+          "subtitle": "Substance Identifier",
+          "tag_type": "mining",
+          "requirements": [
+            {
+              "type": "stat_min",
+              "stat": "INT",
+              "value": 1
+            }
+          ],
+          "Tier": {
+            "1": {
+              "effect": "Increase quality in recipes using Iron."
+            },
+            "2": {
+              "effect": "."
+            },
+            "3": {
+              "effect": "."
+            },
+            "4": {
+              "effect": "."
+            },
+            "5": {
+              "effect": "."
+            }
+          }
+        }
+      }
+    }
+  }
+}

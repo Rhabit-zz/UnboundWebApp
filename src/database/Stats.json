@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "document": "Stats.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.1-draft",
+    "notes": [
+      "This file defines the various stats, pools, weights, and derivatives that characters can have in the Unbound TTRPG system. Each stat has a name and description. The stats are used to calculate die pools used by nearly all abilities."
+    ]
+  },
+  "stats": [
+    {
+      "name": "Body",
+      "stat": "BDY",
+      "description": "Body represents a character's physical strength and endurance. It is used for tasks that require brute force, such as lifting heavy objects, breaking through barriers, or engaging in melee combat."
+    },
+    {
+      "name": "Spirit",
+      "stat": "SPT",
+      "description": "Spirit represents a character's vitality, energy, and will to survive. It is used for tasks that require perseverance, such as enduring pain, resisting disease, or maintaining focus under pressure."
+    },
+    {
+      "name": "Mind",
+      "stat": "MND",
+      "description": "Mind represents a character's mental acuity, knowledge, and problem-solving abilities. It is used for tasks that require critical thinking, such as solving puzzles, recalling information, or analyzing situations."
+    }
+  ],
+  "resources": [
+    {
+      "name": "Health Pool",
+      "stat": "HP",
+      "regen": "HPR",
+      "description": "When HP is reduced to zero, the character is incapacitated."
+    },
+    {
+      "name": "Stamina Pool",
+      "stat": "SP",
+      "regen": "SPR",
+      "description": "When SP is reduced to zero, the character is exhausted."
+    },
+    {
+      "name": "Mental Pool",
+      "stat": "MP",
+      "regen": "MPR",
+      "description": "When MP is reduced to zero, the character is mentally drained."
+    }
+  ],
+  "encumbrance": [
+    ""
+  ]
+}
