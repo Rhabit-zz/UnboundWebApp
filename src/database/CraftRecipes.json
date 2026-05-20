@@ -1,49 +1,522 @@
 {
-  "meta": {
-    "File": "CraftRecipes.json",
-    "version": "0.1",
-    "last_updated": "2026-05-14",
-    "description": "Comprehensive list of crafting recipes for character development and gameplay."
+  "_meta": {
+    "document": "CraftRecipes.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.1-draft",
+    "source": "Unbound - Recipe Examples.pdf, Unbound - Crafting Rules.pdf",
+    "notes": [
+      "Recipes are organized by era, then by crafting skill.",
+      "crafting_dc: roll 1d6 × skill_level vs this DC. Success = total − DC (added as bonus HP to item).",
+      "skill_level_required: minimum level in the listed skill to attempt this recipe.",
+      "functional_material: the material whose stats (hardness, density, ductility) drive item stat calculations.",
+      "critical_success_effect: bonus applied when roll exceeds DC by 10+.",
+      "materials: list of { id, qty, unit } — id matches keys in ProcessedMaterials.json or Gatherables.json.",
+      "output: what the character receives on success.",
+      "item tiers: common=DC4, uncommon=DC6, rare=DC8, epic=DC10, legendary=DC12+"
+    ]
   },
-  "recipes": {
-    "Processing": {
-      "Mining": {
-        "Crush Stone": {
-          "name": "Crush Stone",
-          "id": "",
-          "description": "A basic recipe for crushing stone into smaller fragments.",
-          "Requirements": [
-            {
-              "type": "item",
-              "item": "hammer",
-              "quantity": 1
-            },
-            {
-              "type": "item",
-              "item": "ore",
-              "quantity": 1
-            }
-          ]
-        }
+  "mundane": {
+    "smithing": {
+      "iron_dagger": {
+        "id": "iron_dagger", "name": "Iron Dagger", "tier": "common",
+        "skill": "smithing", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "iron", "qty": 1, "unit": "lb"}],
+        "tools_required": ["forge", "anvil", "hammer", "tongs"],
+        "time_requirement": "15 minutes",
+        "functional_material": "iron",
+        "output": {"id": "iron_dagger", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+1 Attack or -0.5 lb weight.",
+        "optional_upgrades": ["sharpened_edge", "reinforced_grip"]
       },
-      "Metalworking": {
-        "Smelt": {
-          "name": "Smelt Metal",
-          "id": "",
-          "description": "A basic recipe for smelting ore into metal ingots.",
-          "Requirements": [
-            {
-              "type": "item",
-              "item": "furnace",
-              "quantity": 1
-            },
-            {
-              "type": "item",
-              "item": "ore",
-              "quantity": 1
-            }
-          ]
-        }
+      "iron_sword": {
+        "id": "iron_sword", "name": "Iron Sword", "tier": "common",
+        "skill": "smithing", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "iron", "qty": 2, "unit": "lb"}, {"id": "oak", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["forge", "anvil", "hammer", "tongs"],
+        "time_requirement": "30 minutes",
+        "functional_material": "iron",
+        "output": {"id": "iron_sword", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+1 Attack or apply Bleeding on first hit.",
+        "optional_upgrades": ["sharpened_edge", "reinforced_grip"]
+      },
+      "iron_spear": {
+        "id": "iron_spear", "name": "Iron Spear", "tier": "common",
+        "skill": "smithing", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "iron", "qty": 1, "unit": "lb"}, {"id": "ash", "qty": 1, "unit": "lb"}],
+        "tools_required": ["forge", "anvil", "hammer"],
+        "time_requirement": "20 minutes",
+        "functional_material": "iron",
+        "output": {"id": "iron_spear", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+1 reach (6 ft) or +1 Attack.",
+        "optional_upgrades": ["sharpened_edge"]
+      },
+      "chain_shirt": {
+        "id": "chain_shirt", "name": "Chain Shirt", "tier": "uncommon",
+        "skill": "smithing", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "BDY",
+        "materials": [{"id": "iron", "qty": 6, "unit": "lb"}],
+        "tools_required": ["forge", "anvil", "hammer", "ring_mandrel"],
+        "time_requirement": "4 hours",
+        "functional_material": "iron",
+        "output": {"id": "chain_shirt", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 DR or reduce AP penalty by 1.",
+        "optional_upgrades": ["reinforced_grip", "flexible_weave"]
+      },
+      "steel_sword": {
+        "id": "steel_sword", "name": "Steel Sword", "tier": "uncommon",
+        "skill": "smithing", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "BDY",
+        "materials": [{"id": "steel", "qty": 2, "unit": "lb"}, {"id": "oak", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["forge", "anvil", "hammer", "tongs", "quenching_tank"],
+        "time_requirement": "1 hour",
+        "functional_material": "steel",
+        "output": {"id": "steel_sword", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+1 Attack and +1 damage, or gain Keen (crit range +1).",
+        "optional_upgrades": ["sharpened_edge", "reinforced_grip"]
+      },
+      "plate_breastplate": {
+        "id": "plate_breastplate", "name": "Plate Breastplate", "tier": "rare",
+        "skill": "smithing", "skill_level_required": 3, "crafting_dc": 8,
+        "governing_stat": "BDY",
+        "materials": [{"id": "steel", "qty": 10, "unit": "lb"}, {"id": "iron", "qty": 2, "unit": "lb"}],
+        "tools_required": ["forge", "anvil", "hammer", "planishing_hammer", "leather_lining"],
+        "time_requirement": "1 day",
+        "functional_material": "steel",
+        "output": {"id": "plate_breastplate", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+2 DR or Masterwork: reduce weight by 2 lb.",
+        "optional_upgrades": ["reinforced_grip", "flexible_weave"]
+      }
+    },
+    "carpentry": {
+      "wooden_club": {
+        "id": "wooden_club", "name": "Wooden Club", "tier": "common",
+        "skill": "carpentry", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "SPT",
+        "materials": [{"id": "oak", "qty": 2, "unit": "lb"}],
+        "tools_required": ["saw", "chisel"],
+        "time_requirement": "10 minutes",
+        "functional_material": "oak",
+        "output": {"id": "wooden_club", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+L HP to item or minor Stagger chance.",
+        "optional_upgrades": []
+      },
+      "shortbow": {
+        "id": "shortbow", "name": "Shortbow", "tier": "common",
+        "skill": "carpentry", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "SPT",
+        "materials": [{"id": "yew", "qty": 1.5, "unit": "lb"}, {"id": "linen", "qty": 0.25, "unit": "lb"}],
+        "tools_required": ["saw", "chisel", "drawknife"],
+        "time_requirement": "1 hour",
+        "functional_material": "yew",
+        "output": {"id": "shortbow", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+1 Attack or extend range by 10 ft.",
+        "optional_upgrades": []
+      },
+      "longbow": {
+        "id": "longbow", "name": "Longbow", "tier": "uncommon",
+        "skill": "carpentry", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "SPT",
+        "materials": [{"id": "yew", "qty": 2.5, "unit": "lb"}, {"id": "linen", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["saw", "drawknife", "tillering_stick"],
+        "time_requirement": "2 hours",
+        "functional_material": "yew",
+        "output": {"id": "longbow", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+1 Attack and +5 ft range, or Masterwork quality.",
+        "optional_upgrades": []
+      },
+      "wooden_shield": {
+        "id": "wooden_shield", "name": "Wooden Shield", "tier": "common",
+        "skill": "carpentry", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "SPT",
+        "materials": [{"id": "oak", "qty": 3, "unit": "lb"}, {"id": "linen", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["saw", "plane", "chisel"],
+        "time_requirement": "30 minutes",
+        "functional_material": "oak",
+        "output": {"id": "wooden_shield", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+2 Block HP or gain Braced (immune to Stagger on successful block).",
+        "optional_upgrades": []
+      }
+    },
+    "tailoring": {
+      "linen_robe": {
+        "id": "linen_robe", "name": "Linen Robe", "tier": "common",
+        "skill": "tailoring", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "SPT",
+        "materials": [{"id": "linen", "qty": 3, "unit": "lb"}],
+        "tools_required": ["needle", "thread", "scissors"],
+        "time_requirement": "1 hour",
+        "functional_material": "linen",
+        "output": {"id": "linen_robe", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 max MP or a hidden pocket is built in.",
+        "optional_upgrades": ["flexible_weave"]
+      },
+      "wool_cloak": {
+        "id": "wool_cloak", "name": "Wool Cloak", "tier": "common",
+        "skill": "tailoring", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "SPT",
+        "materials": [{"id": "wool", "qty": 2, "unit": "lb"}],
+        "tools_required": ["needle", "thread", "scissors"],
+        "time_requirement": "45 minutes",
+        "functional_material": "wool",
+        "output": {"id": "wool_cloak", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 cold resistance tier or +1 Stealth in cold environments.",
+        "optional_upgrades": []
+      },
+      "padded_armor": {
+        "id": "padded_armor", "name": "Padded Armor", "tier": "common",
+        "skill": "tailoring", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "SPT",
+        "materials": [{"id": "linen", "qty": 4, "unit": "lb"}, {"id": "wool", "qty": 1, "unit": "lb"}],
+        "tools_required": ["needle", "thread", "scissors"],
+        "time_requirement": "2 hours",
+        "functional_material": "linen",
+        "output": {"id": "padded_armor", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 DR vs bludgeoning, or -0.5 lb weight.",
+        "optional_upgrades": ["flexible_weave"]
+      },
+      "silk_robes": {
+        "id": "silk_robes", "name": "Silk Robes", "tier": "uncommon",
+        "skill": "tailoring", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "SPT",
+        "materials": [{"id": "silk", "qty": 3, "unit": "lb"}],
+        "tools_required": ["needle", "thread", "scissors", "loom"],
+        "time_requirement": "4 hours",
+        "functional_material": "silk",
+        "output": {"id": "silk_robes", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 max MP or the robe gains Arcane Conductivity.",
+        "optional_upgrades": ["flexible_weave", "spell_conductive_core"]
+      }
+    },
+    "leatherworking": {
+      "leather_armor": {
+        "id": "leather_armor", "name": "Leather Armor", "tier": "common",
+        "skill": "leatherworking", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "cowhide", "qty": 4, "unit": "lb"}],
+        "tools_required": ["awl", "leather_knife", "curing_rack"],
+        "time_requirement": "3 hours",
+        "functional_material": "cowhide",
+        "output": {"id": "leather_armor", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 DR or Supple (no AP movement penalty).",
+        "optional_upgrades": ["reinforced_grip"]
+      },
+      "leather_boots": {
+        "id": "leather_boots", "name": "Leather Boots", "tier": "common",
+        "skill": "leatherworking", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "cowhide", "qty": 1.5, "unit": "lb"}],
+        "tools_required": ["awl", "leather_knife"],
+        "time_requirement": "1 hour",
+        "functional_material": "cowhide",
+        "output": {"id": "leather_boots", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 movement tile per AP or +1 Stealth.",
+        "optional_upgrades": []
+      },
+      "boarhide_vest": {
+        "id": "boarhide_vest", "name": "Boarhide Vest", "tier": "uncommon",
+        "skill": "leatherworking", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "BDY",
+        "materials": [{"id": "boarhide", "qty": 4, "unit": "lb"}, {"id": "iron", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["awl", "leather_knife", "stitching_horse"],
+        "time_requirement": "4 hours",
+        "functional_material": "boarhide",
+        "output": {"id": "boarhide_vest", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 DR vs slashing and piercing.",
+        "optional_upgrades": ["reinforced_grip"]
+      }
+    },
+    "alchemy": {
+      "basic_healing_potion": {
+        "id": "basic_healing_potion", "name": "Basic Healing Potion", "tier": "common",
+        "skill": "alchemy", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "MND",
+        "materials": [{"id": "herbal_extract", "qty": 1, "unit": "unit"}, {"id": "vial", "qty": 1, "unit": "unit"}, {"id": "stabilizing_agent", "qty": 1, "unit": "unit"}],
+        "tools_required": ["mortar_pestle", "heat_source", "alchemical_glass"],
+        "time_requirement": "10 minutes",
+        "functional_material": null,
+        "output": {"id": "basic_healing_potion", "qty": 1, "type": "consumable", "effect": "Restore L+4 HP."},
+        "critical_success_effect": "Double healing or extend duration to 2 rounds.",
+        "optional_upgrades": ["calming_agent_sp_restore"]
+      },
+      "mana_draught": {
+        "id": "mana_draught", "name": "Mana Draught", "tier": "common",
+        "skill": "alchemy", "skill_level_required": 1, "crafting_dc": 5,
+        "governing_stat": "MND",
+        "materials": [{"id": "essence_extract", "qty": 1, "unit": "unit"}, {"id": "binder", "qty": 1, "unit": "unit"}, {"id": "vial", "qty": 1, "unit": "unit"}],
+        "tools_required": ["funnel", "condenser"],
+        "time_requirement": "10 minutes",
+        "functional_material": null,
+        "output": {"id": "mana_draught", "qty": 1, "type": "consumable", "effect": "Restore L+4 MP."},
+        "critical_success_effect": "Grants MP regeneration (L per round) for 2 rounds.",
+        "optional_upgrades": ["stimulant_herb_haste"]
+      },
+      "burning_flask": {
+        "id": "burning_flask", "name": "Burning Flask", "tier": "common",
+        "skill": "alchemy", "skill_level_required": 1, "crafting_dc": 6,
+        "governing_stat": "MND",
+        "materials": [{"id": "volatile_reagent", "qty": 1, "unit": "unit"}, {"id": "fuel_base", "qty": 1, "unit": "unit"}, {"id": "basic_glass", "qty": 0.25, "unit": "lb"}],
+        "tools_required": ["distiller", "tongs", "sealing_wax"],
+        "time_requirement": "15 minutes",
+        "functional_material": null,
+        "output": {"id": "burning_flask", "qty": 1, "type": "consumable", "effect": "Deals L+2 fire damage on hit in 5 ft radius. Thrown weapon."},
+        "critical_success_effect": "Applies Burning condition for 1d4 rounds.",
+        "optional_upgrades": ["sticky_resin_lingering_flame"]
+      },
+      "soothing_salve": {
+        "id": "soothing_salve", "name": "Soothing Salve", "tier": "common",
+        "skill": "alchemy", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "MND",
+        "materials": [{"id": "oil_base", "qty": 1, "unit": "unit"}, {"id": "herbal_paste", "qty": 1, "unit": "unit"}, {"id": "stabilizer", "qty": 1, "unit": "unit"}],
+        "tools_required": ["mixing_bowl", "spatula", "container"],
+        "time_requirement": "10 minutes",
+        "functional_material": null,
+        "output": {"id": "soothing_salve", "qty": 1, "type": "consumable", "effect": "Removes Fatigue. Restores L SP."},
+        "critical_success_effect": "Also removes 1 Stress condition.",
+        "optional_upgrades": ["mint_agent_alertness"]
+      },
+      "simple_poison": {
+        "id": "simple_poison", "name": "Simple Poison", "tier": "common",
+        "skill": "alchemy", "skill_level_required": 1, "crafting_dc": 5,
+        "governing_stat": "MND",
+        "materials": [{"id": "toxic_extract", "qty": 1, "unit": "unit"}, {"id": "liquid_carrier", "qty": 1, "unit": "unit"}, {"id": "vial", "qty": 1, "unit": "unit"}],
+        "tools_required": ["funnel", "gloves", "filtered_press"],
+        "time_requirement": "15 minutes",
+        "functional_material": null,
+        "output": {"id": "simple_poison", "qty": 1, "type": "consumable", "effect": "Apply to weapon. On hit: target takes L damage per round for 3 rounds (BDY save negates per round)."},
+        "critical_success_effect": "Extend duration by 1d4 rounds.",
+        "optional_upgrades": ["thickener_contact_application"]
+      },
+      "dual_effect_potion": {
+        "id": "dual_effect_potion", "name": "Dual Effect Potion", "tier": "uncommon",
+        "skill": "alchemy", "skill_level_required": 2, "crafting_dc": 8,
+        "governing_stat": "MND",
+        "materials": [{"id": "primary_essence", "qty": 1, "unit": "unit"}, {"id": "secondary_essence", "qty": 1, "unit": "unit"}, {"id": "medium_base", "qty": 1, "unit": "unit"}],
+        "tools_required": ["essence_separator", "condenser", "alchemical_glass"],
+        "time_requirement": "30 minutes",
+        "functional_material": null,
+        "output": {"id": "dual_effect_potion", "qty": 1, "type": "consumable", "effect": "Grants two simultaneous effects (HP restore + SP restore, or heal + buff)."},
+        "critical_success_effect": "Both effects trigger at full potency.",
+        "optional_upgrades": []
+      }
+    },
+    "fletching": {
+      "arrow_bundle": {
+        "id": "arrow_bundle", "name": "Arrow Bundle (×20)", "tier": "common",
+        "skill": "fletching", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "ash", "qty": 1, "unit": "lb"}, {"id": "iron", "qty": 0.5, "unit": "lb"}, {"id": "linen", "qty": 0.1, "unit": "lb"}],
+        "tools_required": ["fletching_jig", "knife"],
+        "time_requirement": "1 hour",
+        "functional_material": "ash",
+        "output": {"id": "arrow_bundle", "qty": 20, "type": "ammo"},
+        "critical_success_effect": "+1 Attack or arrows gain Keen (+1 crit range).",
+        "optional_upgrades": []
+      },
+      "broadhead_arrows": {
+        "id": "broadhead_arrows", "name": "Broadhead Arrows (×10)", "tier": "uncommon",
+        "skill": "fletching", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "BDY",
+        "materials": [{"id": "ash", "qty": 0.75, "unit": "lb"}, {"id": "steel", "qty": 0.5, "unit": "lb"}, {"id": "linen", "qty": 0.1, "unit": "lb"}],
+        "tools_required": ["fletching_jig", "knife", "small_forge"],
+        "time_requirement": "1 hour",
+        "functional_material": "steel",
+        "output": {"id": "broadhead_arrows", "qty": 10, "type": "ammo"},
+        "critical_success_effect": "Arrows cause Bleeding on first hit.",
+        "optional_upgrades": ["alchemic_infusion"]
+      }
+    },
+    "bonecraft": {
+      "bone_knife": {
+        "id": "bone_knife", "name": "Bone Knife", "tier": "common",
+        "skill": "bonecraft", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "beast_bone", "qty": 1, "unit": "lb"}],
+        "tools_required": ["chisel", "knife", "grinding_stone"],
+        "time_requirement": "20 minutes",
+        "functional_material": "beast_bone",
+        "output": {"id": "bone_knife", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "Item gains Keen or +1 to first attack per encounter.",
+        "optional_upgrades": []
+      },
+      "bone_armor_pieces": {
+        "id": "bone_armor_pieces", "name": "Bone Armor Plates", "tier": "common",
+        "skill": "bonecraft", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "beast_bone", "qty": 4, "unit": "lb"}, {"id": "linen", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["chisel", "knife", "awl"],
+        "time_requirement": "2 hours",
+        "functional_material": "beast_bone",
+        "output": {"id": "bone_armor_pieces", "qty": 1, "type": "armor"},
+        "critical_success_effect": "+1 DR or item gains Primordial (immune to Rust/Corrode).",
+        "optional_upgrades": []
+      }
+    },
+    "cooking": {
+      "field_ration": {
+        "id": "field_ration", "name": "Field Ration", "tier": "common",
+        "skill": "cooking", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "BDY",
+        "materials": [{"id": "any_meat", "qty": 1, "unit": "unit"}, {"id": "any_herb", "qty": 1, "unit": "unit"}],
+        "tools_required": ["fire", "cooking_pot"],
+        "time_requirement": "30 minutes",
+        "functional_material": null,
+        "output": {"id": "field_ration", "qty": 4, "type": "consumable", "effect": "Restores 2 HP per rest period. Prevents Fatigue."},
+        "critical_success_effect": "Also restores 2 SP or grants +1 to first roll of next encounter.",
+        "optional_upgrades": []
+      },
+      "hearty_stew": {
+        "id": "hearty_stew", "name": "Hearty Stew", "tier": "uncommon",
+        "skill": "cooking", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "BDY",
+        "materials": [{"id": "any_meat", "qty": 2, "unit": "unit"}, {"id": "any_vegetable", "qty": 2, "unit": "unit"}, {"id": "salt", "qty": 1, "unit": "unit"}],
+        "tools_required": ["fire", "cooking_pot", "knife"],
+        "time_requirement": "1 hour",
+        "functional_material": null,
+        "output": {"id": "hearty_stew", "qty": 4, "type": "consumable", "effect": "Restores L+2 HP and L SP per rest period."},
+        "critical_success_effect": "Grants temporary +2 max HP for 1 day.",
+        "optional_upgrades": []
+      }
+    }
+  },
+  "industrial": {
+    "engineering": {
+      "bear_trap": {
+        "id": "bear_trap", "name": "Bear Trap", "tier": "common",
+        "skill": "engineering", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "SPT",
+        "materials": [{"id": "iron", "qty": 2, "unit": "lb"}, {"id": "linen", "qty": 0.25, "unit": "lb"}],
+        "tools_required": ["forge", "pliers", "workshop"],
+        "time_requirement": "30 minutes",
+        "functional_material": "iron",
+        "output": {"id": "bear_trap", "qty": 1, "type": "gear"},
+        "critical_success_effect": "Trap triggers silently or deals +1d4 damage.",
+        "optional_upgrades": []
+      },
+      "clockwork_lock": {
+        "id": "clockwork_lock", "name": "Clockwork Lock", "tier": "uncommon",
+        "skill": "engineering", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "SPT",
+        "materials": [{"id": "steel", "qty": 1, "unit": "lb"}, {"id": "brass", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["precision_tools", "workshop", "drafting_board"],
+        "time_requirement": "2 hours",
+        "functional_material": "steel",
+        "output": {"id": "clockwork_lock", "qty": 1, "type": "gear"},
+        "critical_success_effect": "DC to pick increases by +2, or lock resets after 1 minute.",
+        "optional_upgrades": []
+      },
+      "crossbow": {
+        "id": "crossbow", "name": "Crossbow", "tier": "uncommon",
+        "skill": "engineering", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "SPT",
+        "materials": [{"id": "oak", "qty": 2, "unit": "lb"}, {"id": "iron", "qty": 1, "unit": "lb"}, {"id": "linen", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["saw", "forge", "precision_tools"],
+        "time_requirement": "4 hours",
+        "functional_material": "oak",
+        "output": {"id": "crossbow", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "+1 Attack or reload speed improves by 1 AP.",
+        "optional_upgrades": ["alchemic_infusion"]
+      }
+    },
+    "clockworking": {
+      "pocket_timepiece": {
+        "id": "pocket_timepiece", "name": "Pocket Timepiece", "tier": "uncommon",
+        "skill": "clockworking", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "MND",
+        "materials": [{"id": "brass", "qty": 0.5, "unit": "lb"}, {"id": "basic_glass", "qty": 0.1, "unit": "lb"}],
+        "tools_required": ["precision_tools", "loupe"],
+        "time_requirement": "4 hours",
+        "functional_material": "brass",
+        "output": {"id": "pocket_timepiece", "qty": 1, "type": "gear"},
+        "critical_success_effect": "Item is accurate to within 1 minute/day, or gains a hidden compartment.",
+        "optional_upgrades": []
+      },
+      "clockwork_trigger": {
+        "id": "clockwork_trigger", "name": "Clockwork Trigger Mechanism", "tier": "uncommon",
+        "skill": "clockworking", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "MND",
+        "materials": [{"id": "steel", "qty": 0.5, "unit": "lb"}, {"id": "brass", "qty": 0.25, "unit": "lb"}],
+        "tools_required": ["precision_tools"],
+        "time_requirement": "2 hours",
+        "functional_material": "steel",
+        "output": {"id": "clockwork_trigger", "qty": 1, "type": "component"},
+        "critical_success_effect": "Trigger delay is adjustable or mechanism is whisper-quiet.",
+        "optional_upgrades": []
+      }
+    }
+  },
+  "future": {
+    "artificing": {
+      "mana_conduit_rod": {
+        "id": "mana_conduit_rod", "name": "Mana Conduit Rod", "tier": "uncommon",
+        "skill": "artificing", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "MND",
+        "materials": [{"id": "copper", "qty": 1, "unit": "lb"}, {"id": "rock_crystal", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["precision_tools", "arcane_focus", "workshop"],
+        "time_requirement": "3 hours",
+        "functional_material": "copper",
+        "output": {"id": "mana_conduit_rod", "qty": 1, "type": "gear"},
+        "critical_success_effect": "Rod stores 1 extra MP per day, or attunes to caster's affinity.",
+        "optional_upgrades": ["spell_conductive_core"]
+      }
+    },
+    "crystallography": {
+      "mana_storage_crystal": {
+        "id": "mana_storage_crystal", "name": "Mana Storage Crystal", "tier": "uncommon",
+        "skill": "crystallography", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "MND",
+        "materials": [{"id": "rock_crystal", "qty": 1, "unit": "lb"}, {"id": "magicite", "qty": 0.25, "unit": "lb"}],
+        "tools_required": ["crystal_lathe", "focus_calibration_tools"],
+        "time_requirement": "2 hours",
+        "functional_material": "rock_crystal",
+        "output": {"id": "mana_storage_crystal", "qty": 1, "type": "gear", "effect": "Stores up to L×5 MP. Can be discharged as a 1 AP action."},
+        "critical_success_effect": "Crystal is self-recharging (1 MP per rest period).",
+        "optional_upgrades": []
+      }
+    }
+  },
+  "fantasy": {
+    "enchanting": {
+      "fire_emblem": {
+        "id": "fire_emblem", "name": "Fire Emblem (weapon enchant)", "tier": "uncommon",
+        "skill": "enchanting", "skill_level_required": 2, "crafting_dc": 6,
+        "governing_stat": "MND",
+        "materials": [{"id": "emberstone", "qty": 0.5, "unit": "lb"}, {"id": "arcane_glass", "qty": 0.25, "unit": "lb"}, {"id": "any_base_weapon", "qty": 1, "unit": "unit"}],
+        "tools_required": ["enchanting_table", "arcane_focus"],
+        "time_requirement": "2 hours",
+        "functional_material": "emberstone",
+        "output": {"id": "fire_emblem_weapon", "qty": 1, "type": "weapon", "effect": "Base weapon gains fire damage equal to L. On crit: target gains Burning (1 round)."},
+        "critical_success_effect": "Enchantment gains Persistent (does not fade after combat).",
+        "optional_upgrades": ["resonant_inscription"]
+      },
+      "ward_glyph": {
+        "id": "ward_glyph", "name": "Ward Glyph", "tier": "common",
+        "skill": "enchanting", "skill_level_required": 1, "crafting_dc": 4,
+        "governing_stat": "MND",
+        "materials": [{"id": "arcane_glass", "qty": 0.25, "unit": "lb"}, {"id": "linen", "qty": 0.1, "unit": "lb"}],
+        "tools_required": ["enchanting_table", "rune_ink"],
+        "time_requirement": "30 minutes",
+        "functional_material": null,
+        "output": {"id": "ward_glyph", "qty": 1, "type": "consumable", "effect": "Place on a surface. First creature to cross triggers alert or L damage."},
+        "critical_success_effect": "Glyph lasts L days instead of L hours.",
+        "optional_upgrades": []
+      }
+    },
+    "bonecraft": {
+      "wyrm_bone_staff": {
+        "id": "wyrm_bone_staff", "name": "Wyrm Bone Staff", "tier": "rare",
+        "skill": "bonecraft", "skill_level_required": 3, "crafting_dc": 8,
+        "governing_stat": "BDY",
+        "materials": [{"id": "wyrm_bone", "qty": 3, "unit": "lb"}, {"id": "magicite", "qty": 0.5, "unit": "lb"}],
+        "tools_required": ["chisel", "grinding_stone", "arcane_focus"],
+        "time_requirement": "1 day",
+        "functional_material": "wyrm_bone",
+        "output": {"id": "wyrm_bone_staff", "qty": 1, "type": "weapon"},
+        "critical_success_effect": "Staff channels the wyrm's elemental affinity (fire or cold), adding L elemental damage.",
+        "optional_upgrades": ["spell_conductive_core"]
       }
     }
   }

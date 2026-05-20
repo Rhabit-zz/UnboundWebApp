@@ -89,178 +89,244 @@
       "acid_spit": {
         "name": "Acid Spit",
         "category": "anatomy_defense",
+        "tier": 3,
         "effect": "NEEDS_DEFINITION: ranged acid attack, likely deals acid damage on hit."
       },
       "antlers": {
         "name": "Antlers",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Natural weapon. Can be used as a Reach melee attack. May grant bonus to Block or Shove."
       },
       "attuned": {
         "name": "Attuned",
         "category": "anatomy_defense",
+        "tier": 3,
         "effect": "Innate connection to magical energies. Likely grants starting Affinity or bonus to Affinity rolls."
       },
       "blessed": {
         "name": "Blessed",
         "category": "anatomy_defense",
+        "tier": 4,
         "effect": "Divine resonance. Likely grants bonus to saves vs unholy or shadow effects."
       },
       "bristles": {
         "name": "Bristles",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Melee attackers take minor piercing damage on hit. Bonus to resist grapple."
       },
       "cold_blooded": {
         "name": "Cold-Blooded",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Penalty in cold environments. Bonus in warm. NEEDS_DEFINITION: specific modifiers."
       },
       "defense": {
         "name": "Defense",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Passive defensive bonus. NEEDS_DEFINITION: specific value."
       },
       "dense_bones": {
         "name": "Dense Bones",
         "category": "anatomy_defense",
+        "tier": 2,
         "effect": "+BDY to carry capacity calculations. Penalty to swimming. Resistant to knockback."
       },
       "elemental_fire": {
         "name": "Elemental (Fire)",
         "category": "anatomy_defense",
+        "tier": 4,
         "effect": "Innate fire affinity. Likely grants Fire Resistance and access to Fire Affinity without separate purchase."
       },
       "energy_absorbing_heat": {
         "name": "Energy Absorbing (Heat)",
         "category": "anatomy_defense",
+        "tier": 4,
         "effect": "Absorb heat-based damage. NEEDS_DEFINITION: specific absorption formula."
       },
       "exoskeleton": {
         "name": "Exoskeleton",
         "category": "anatomy_defense",
+        "tier": 3,
         "effect": "Natural armor. Grants flat DR vs physical damage. Does not stack with worn heavy armor (replaces instead)."
       },
       "fang_claw": {
         "name": "Fang/Claw",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Natural unarmed weapons. Attacks deal piercing or slashing damage without a weapon. Grants Unarmed Attack proficiency."
       },
       "fur": {
         "name": "Fur",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Cold resistance. Penalty in extreme heat. Cosmetic variation."
       },
       "heat_resist": {
         "name": "Heat Resist",
         "category": "anatomy_defense",
+        "tier": 2,
         "effect": "Reduce fire and heat damage taken. NEEDS_DEFINITION: specific value."
-      },
-      "high_perception": {
-        "name": "High Perception",
-        "category": "anatomy_defense",
-        "effect": "+R to all Awareness and Notice checks. NEEDS_DEFINITION: whether this is a passive or active bonus."
       },
       "hollow_bones": {
         "name": "Hollow Bones",
         "category": "anatomy_defense",
+        "tier": 2,
         "effect": "Reduced body weight for flight calculations. -BDY penalty to resist knockback and grapple."
       },
       "horn": {
         "name": "Horn",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Natural weapon. Bonus to Bash attacks. Can be used as Charge attack."
       },
       "hooves": {
         "name": "Hooves",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Natural weapon (kick). Bonus SPD on open terrain. Penalty to climbing."
       },
       "memory": {
         "name": "Memory",
         "category": "anatomy_defense",
+        "tier": 2,
         "effect": "Enhanced recall. Bonus to remembering locations, faces, information. NEEDS_DEFINITION: mechanical expression."
       },
       "parasitic": {
         "name": "Parasitic",
         "category": "anatomy_defense",
+        "tier": 3,
         "effect": "NEEDS_DEFINITION: feeding mechanic and associated bonuses/penalties."
       },
       "poison_resist": {
         "name": "Poison Resist",
         "category": "anatomy_defense",
+        "tier": 2,
         "effect": "Reduce poison damage and resist Poisoned status application."
       },
       "rapid_regen": {
         "name": "Rapid Regen",
         "category": "anatomy_defense",
+        "tier": 4,
         "effect": "+HPR per rank. Likely doubles baseline HPR or adds flat HPR."
       },
       "scales": {
         "name": "Scales",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Natural armor vs slashing and piercing. Less effective vs bludgeoning."
       },
       "shell": {
         "name": "Shell",
         "category": "anatomy_defense",
+        "tier": 3,
         "effect": "High natural DR. Can retract into shell for defensive stance. NEEDS_DEFINITION: retraction mechanics."
       },
       "thick_hide": {
         "name": "Thick Hide",
         "category": "anatomy_defense",
+        "tier": 2,
         "effect": "Flat DR vs physical damage. Stacks with worn armor up to a limit."
       },
       "tusks": {
         "name": "Tusks",
         "category": "anatomy_defense",
+        "tier": 1,
         "effect": "Natural weapon. Bonus to Bash and Charge attacks."
+      },
+      "warm_blooded": {
+        "name": "Warm-Blooded",
+        "category": "anatomy_defense",
+        "tier": 1,
+        "effect": "Thermoregulatory metabolism maintains constant body temperature. +1 SP regeneration per rest cycle within habitable temperature ranges. Active without environmental penalty in cold conditions; requires greater caloric intake."
+      },
+      "gnawing": {
+        "name": "Gnawing",
+        "category": "anatomy_defense",
+        "tier": 1,
+        "effect": "Continuously growing incisors capable of gnawing through wood, bone, and thin metal. Sustained gnaw can breach barriers over time."
+      },
+      "magic_resistance": {
+        "name": "Magic Resistance",
+        "category": "anatomy_defense",
+        "tier": 2,
+        "effect": "Innate attunement creates passive resistance to magical effects. Bonus to saves against spells and supernatural abilities."
+      },
+      "immortality": {
+        "name": "Immortality",
+        "category": "anatomy_defense",
+        "tier": 3,
+        "effect": "Extreme biological longevity. Not subject to natural death by aging. Maintains physical vitality indefinitely."
+      },
+      "stone_skin": {
+        "name": "Stone Skin",
+        "category": "anatomy_defense",
+        "tier": 2,
+        "effect": "Dense mineral-infused dermis with natural armor properties. Counts as light natural armor. Moderate resistance to blunt and piercing damage."
+      },
+      "perceptive": {
+        "name": "Perceptive",
+        "category": "anatomy_defense",
+        "tier": 2,
+        "effect": "Heightened awareness of subtle cues, subtext, and environmental change. +1 flat to Insight social actions. On success, detects active Deceive attempts and identifies dominant emotional state of target. Innate mammalian alertness in familiar environments.",
+        "social_action": "insight"
       }
     },
     "movement_locomotion": {
       "aerodynamic": {
         "name": "Aerodynamic",
         "category": "movement",
+        "tier": 2,
         "effect": "Reduced air resistance. Bonus to SPD and maneuverability during flight or running."
       },
       "aerokinetic_membranes": {
         "name": "Aerokinetic Membranes",
         "category": "movement",
+        "tier": 3,
         "effect": "Wing-like membranes allowing gliding. NEEDS_DEFINITION: glide ratio and distance."
       },
       "amphibious": {
         "name": "Amphibious",
         "category": "movement",
+        "tier": 2,
         "effect": "Can breathe both air and water. No movement penalty in water."
       },
       "avian_wings": {
         "name": "Avian Wings",
         "category": "movement",
+        "tier": 4,
         "effect": "Full flight capability. SPD in air = Size SPD * FPR. Requires FPR >= 1.0 for sustained flight."
       },
       "burrower": {
         "name": "Burrower",
         "category": "movement",
+        "tier": 2,
         "effect": "Can dig through soft terrain. Movement speed underground at reduced rate. NEEDS_DEFINITION: dig speed."
       },
       "digitigrade": {
         "name": "Digitigrade",
         "category": "movement",
+        "tier": 1,
         "effect": "Walks on toes. +SPD. Unique footwear slot requirement."
       },
       "endurance": {
         "name": "Endurance",
         "category": "movement",
+        "tier": 1,
         "effect": "Reduced SP cost for sustained movement. Bonus to travel speed over long distances."
       },
       "gas_bladder": {
         "name": "Gas Bladder",
         "category": "movement",
+        "tier": 2,
         "effect": "Internal buoyancy organ. Bonus to swimming. Some variants allow limited hovering."
       },
       "heavy_set": {
         "name": "Heavy-Set",
         "category": "movement",
+        "tier": 1,
         "effect": "Increased carry capacity. Penalty to SPD. Bonus to resist knockback and Shove."
       }
     },
@@ -268,200 +334,406 @@
       "groundsense": {
         "name": "Groundsense",
         "category": "sensory",
-        "effect": "Detect vibrations through ground contact. Perceive movement within range even when blind."
+        "tier": 2,
+        "effect": "Detect vibrations through ground contact. Perceive movement within range even when blind.",
+        "sense_type": "touch"
       },
       "heat_vision": {
         "name": "Heat Vision",
         "category": "sensory",
-        "effect": "See heat signatures. No penalty in darkness. Penalty vs cold-blooded or disguised targets."
+        "tier": 3,
+        "effect": "See heat signatures. No penalty in darkness. Penalty vs cold-blooded or disguised targets.",
+        "sense_type": "vision_mode"
       },
       "keen_hearing": {
         "name": "Keen Hearing",
         "category": "sensory",
+        "tier": 1,
         "effect": "+R to Notice checks involving sound. Penalty from loud noise or silence effects."
       },
       "keen_sight": {
         "name": "Keen Sight",
         "category": "sensory",
+        "tier": 1,
         "effect": "+R to Notice checks involving vision. Bonus to ranged attack at long range."
       },
       "keen_smell": {
         "name": "Keen Smell",
         "category": "sensory",
+        "tier": 1,
         "effect": "+R to tracking and detecting hidden creatures. Cannot be fooled by disguise alone."
       },
       "lateral_line": {
         "name": "Lateral Line",
         "category": "sensory",
-        "effect": "Aquatic pressure sense. Detect movement in water within range. Replaces sight in murky water."
+        "tier": 2,
+        "effect": "Aquatic pressure sense. Detect movement in water within range. Replaces sight in murky water.",
+        "sense_type": "hearing"
+      },
+      "vision_monochrome": {
+        "name": "Monochromatic Vision",
+        "category": "sensory",
+        "tier": 1,
+        "sense_type": "vision",
+        "effect": "Perceives light intensity and contrast only. No color discrimination. Heightened motion sensitivity in dim conditions."
+      },
+      "vision_dichromatic": {
+        "name": "Dichromatic Vision",
+        "category": "sensory",
+        "tier": 1,
+        "sense_type": "vision",
+        "effect": "Two-channel color vision covering the blue-yellow spectrum. Limited red-green discrimination."
+      },
+      "vision_trichromatic": {
+        "name": "Trichromatic Vision",
+        "category": "sensory",
+        "tier": 2,
+        "sense_type": "vision",
+        "effect": "Full red-green-blue color spectrum. Detailed hue discrimination across the visible light range."
+      },
+      "vision_tetrachromatic": {
+        "name": "Tetrachromatic Vision",
+        "category": "sensory",
+        "tier": 3,
+        "sense_type": "vision",
+        "effect": "Four color receptor channels including ultraviolet perception. Reveals patterns invisible to most species."
+      },
+      "vision_low_light": {
+        "name": "Low-Light Vision",
+        "category": "sensory",
+        "tier": 1,
+        "sense_type": "vision_mode",
+        "effect": "Tapetum lucidum or enhanced rod density. Treat dim conditions as normal. Bonus in shadowed environments."
+      },
+      "vision_darkvision": {
+        "name": "Darkvision",
+        "category": "sensory",
+        "tier": 2,
+        "sense_type": "vision_mode",
+        "effect": "See in total darkness as dim light at close range. No penalty in lightless environments."
+      },
+      "hearing_echolocation": {
+        "name": "Echolocation",
+        "category": "sensory",
+        "tier": 3,
+        "sense_type": "hearing",
+        "effect": "Emit and detect reflected sound pulses to navigate in darkness and pinpoint precise object locations within range."
+      },
+      "hearing_infrasound": {
+        "name": "Infrasound Sensitivity",
+        "category": "sensory",
+        "tier": 2,
+        "sense_type": "hearing",
+        "effect": "Detect and produce subsonic frequencies below 20 Hz. Long-range communication and seismic event sensing."
+      },
+      "touch_vibration": {
+        "name": "Vibration Tracking",
+        "category": "sensory",
+        "tier": 2,
+        "sense_type": "touch",
+        "effect": "Detect surface and ground-borne vibrations through contact. Sense movement, mass, and structural patterns."
+      },
+      "touch_electroreception": {
+        "name": "Electroreception",
+        "category": "sensory",
+        "tier": 3,
+        "sense_type": "touch",
+        "effect": "Detect weak bioelectric fields from living organisms. Penetrates concealment and functions in total darkness."
+      },
+      "smell_chemoreceptor": {
+        "name": "Chemoreception",
+        "category": "sensory",
+        "tier": 2,
+        "sense_type": "olfaction",
+        "effect": "Track chemical trails, identify pheromones, and detect compounds at trace concentration. Cannot be masked by disguise alone."
+      },
+      "earth_sense": {
+        "name": "Earth Sense",
+        "category": "sensory",
+        "tier": 2,
+        "sense_type": "touch",
+        "effect": "Detect mineral composition, underground passages, and structural features through direct contact with earth or stone."
       }
     },
     "behavioral_special": {
       "aggressive": {
         "name": "Aggressive",
         "category": "behavioral",
+        "tier": 1,
         "effect": "Bonus to initiative and first attack. Penalty to social rolls vs non-aggressive cultures."
       },
       "ambusher": {
         "name": "Ambusher",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Bonus to attacks from stealth or surprise. Crit range expands when undetected."
       },
       "broad_back": {
         "name": "Broad Back",
         "category": "behavioral",
+        "tier": 1,
         "effect": "Increased carry capacity. Bonus to mounted rider stability."
       },
       "camouflage": {
         "name": "Camouflage",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Passive concealment in natural environments. Bonus to Stealth rolls in matching terrain."
       },
       "fearsome_displays": {
         "name": "Fearsome Displays",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Intimidation bonus. May inflict Feared status on failed save. Costs SP or AP."
       },
       "flighty": {
         "name": "Flighty",
         "category": "behavioral",
+        "tier": 1,
         "effect": "Bonus to flee or disengage. Penalty to hold ground or tank roles."
       },
       "herd_mentality": {
         "name": "Herd Mentality",
         "category": "behavioral",
+        "tier": 1,
         "effect": "Bonus when allies are nearby. Penalty when isolated. NEEDS_DEFINITION: specific modifiers."
       },
       "hibernate": {
         "name": "Hibernate",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Can enter deep rest for extended periods. Full HP/SP/MP restore on wake. NEEDS_DEFINITION: in-game duration rules."
       },
       "hive_mind": {
         "name": "Hive-Mind",
         "category": "behavioral",
+        "tier": 4,
         "effect": "Shared sensory information with others of same type within range. NEEDS_DEFINITION: range and scope."
       },
       "ink_cloud": {
         "name": "Ink Cloud",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Release obscuring cloud in water or air. Concealment for self and nearby allies."
       },
       "ki_sight": {
         "name": "Ki-Sight",
         "category": "behavioral",
+        "tier": 4,
         "effect": "Perceive life energy and magical aura. See through illusions. NEEDS_DEFINITION: specific effect."
       },
       "mimicry": {
         "name": "Mimicry",
         "category": "behavioral",
+        "tier": 3,
         "effect": "Copy sounds, voices, or appearances. Bonus to Deception using mimicry."
       },
       "pack_coordination": {
         "name": "Pack Coordination",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Bonus to attacks when flanking with allies. Bonus to group movement."
       },
       "pounce": {
         "name": "Pounce",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Charge attack with bonus damage. Knocks target Prone on hit. NEEDS_DEFINITION: AP/SP cost."
       },
       "rooter": {
         "name": "Rooter",
         "category": "behavioral",
+        "tier": 1,
         "effect": "Can dig for food and materials. Bonus to Foraging. Bonus to finding buried objects."
       },
       "spore_cloud": {
         "name": "Spore Cloud",
         "category": "behavioral",
+        "tier": 3,
         "effect": "Release spores in radius. Effects vary: may cause Confused, Poisoned, or sleep. NEEDS_DEFINITION: specific status."
       },
       "stealthy": {
         "name": "Stealthy",
         "category": "behavioral",
+        "tier": 2,
         "effect": "+R to Stealth rolls. May move at full speed without Stealth penalty."
       },
       "territorial": {
         "name": "Territorial",
         "category": "behavioral",
+        "tier": 1,
         "effect": "Bonus to defense rolls when protecting a claimed area. Penalty to retreat from defended zone."
       },
       "tool_user": {
         "name": "Tool User",
         "category": "behavioral",
-        "effect": "Can use standard equipment and tools. Required for most weapon and armor types. Standard for humanoids."
+        "tier": 1,
+        "effect": "+1 to profession and crafting skill checks. Prerequisite for Jack of All Trades. Enables use of complex tools, mechanisms, and construction tasks beyond raw improvisation."
       },
       "trap_setter": {
         "name": "Trap Setter",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Bonus to setting and detecting traps. Bonus to Engineering or Foraging for trap materials."
       },
       "tribal": {
         "name": "Tribal",
         "category": "behavioral",
+        "tier": 1,
         "effect": "Bonus to social rolls within tribal culture. Access to tribal knowledge networks."
       },
       "trunk": {
         "name": "Trunk",
         "category": "behavioral",
+        "tier": 2,
         "effect": "Prehensile appendage. Can manipulate objects without hands. Bonus to grapple. Separate equipment slot."
       },
       "venomous": {
         "name": "Venomous",
         "category": "behavioral",
+        "tier": 3,
         "effect": "Natural attacks inflict Poisoned on hit. NEEDS_DEFINITION: stack count and save DC."
+      },
+      "social": {
+        "name": "Social",
+        "category": "behavioral_special",
+        "tier": 1,
+        "effect": "+1 to all social skill checks. Spirit Point regeneration (SPR) reduced when spending extended time without companions. Social creatures function best within their group."
+      },
+      "resourceful": {
+        "name": "Resourceful",
+        "category": "behavioral_special",
+        "tier": 1,
+        "effect": "Adaptive problem-solving. Improvise tools and solutions from available materials. Bonus to improvised crafting and scavenging."
+      },
+      "stubborn": {
+        "name": "Stubborn",
+        "category": "behavioral_special",
+        "tier": 1,
+        "effect": "Tenacious will and resistance to external pressure. Bonus to resist mental compulsion and forced movement. Penalty to social persuasion attempts against them."
+      },
+      "shapeshifting": {
+        "name": "Shapeshifting",
+        "category": "behavioral_special",
+        "tier": 3,
+        "effect": "Limited physical form alteration. Minor structural changes over time. Cannot replicate another creature's full anatomy. Reverts under stress."
+      },
+      "jack_of_all_trades": {
+        "name": "Jack of All Trades",
+        "category": "behavioral_special",
+        "tier": 2,
+        "prerequisite": "tool_user",
+        "effect": "Broad cross-domain competency. Once per session, apply +1 to any skill check outside declared primary specialization. Requires Tool User."
+      },
+      "inspiring": {
+        "name": "Inspiring",
+        "category": "behavioral_special",
+        "tier": 1,
+        "social_action": "inspire",
+        "effect": "Natural capacity to motivate and uplift others. +1 flat to Inspire social actions. On success, target gains 1 Inspiration stack. Governs SPT."
+      },
+      "seductive": {
+        "name": "Seductive",
+        "category": "behavioral_special",
+        "tier": 1,
+        "social_action": "seduce",
+        "effect": "Innate personal magnetism. Creates irresistible desire for what is offered — person, idea, or experience. +1 flat to Seduce social actions. On success, apply 1 Enthralled stack."
+      },
+      "persuasive": {
+        "name": "Persuasive",
+        "category": "behavioral_special",
+        "tier": 1,
+        "social_action": "persuade",
+        "effect": "Convincing communicator. +1 flat to Persuade social actions. On success, generate Rapport equal to roll margin. Governs SPT (emotional) or MND (logical)."
+      },
+      "deceptive": {
+        "name": "Deceptive",
+        "category": "behavioral_special",
+        "tier": 1,
+        "social_action": "deceive",
+        "effect": "Instinctive misdirection and concealment of intent. +1 flat to Deceive social actions. On success, apply 1 Disorient stack. Governs MND (construct) or SPT (conceal)."
+      },
+      "intimidating": {
+        "name": "Intimidating",
+        "category": "behavioral_special",
+        "tier": 1,
+        "social_action": "intimidate",
+        "effect": "Dominant physical or social presence. +1 flat to Intimidate social actions. On success, apply 1 Fear stack. Applies Demoralize on critical success. Governs highest of BDY, SPT, or MND."
+      },
+      "investigative": {
+        "name": "Investigative",
+        "category": "behavioral_special",
+        "tier": 1,
+        "social_action": "investigate",
+        "effect": "Methodical search instinct. +1 flat to Investigate social actions. Bias toward active examination of environment and information. Governs MND (methodical) or SPT (intuitive)."
+      },
+      "resolute": {
+        "name": "Resolute",
+        "category": "behavioral_special",
+        "tier": 1,
+        "social_action": "resolve",
+        "effect": "Clarity of conviction under social pressure. +1 flat to Resolve social actions. On success, gain 1 Determination stack. Resists Intimidate, Persuade, and Seduce attempts. Governs SPT or MND."
       }
     },
     "flora_specific": {
       "aerial_roots": {
         "name": "Aerial Roots",
         "category": "flora",
+        "tier": 1,
         "effect": "Can anchor to surfaces. Bonus to climbing and resist knockback."
       },
       "alkaloid_compounds": {
         "name": "Alkaloid Compounds",
         "category": "flora",
+        "tier": 3,
         "effect": "Natural toxins in body. Melee attackers risk Poisoned. May be harvested as alchemical ingredient."
       },
       "capitula": {
         "name": "Flower Head (Capitula)",
         "category": "flora",
+        "tier": 1,
         "effect": "NEEDS_DEFINITION: sensory or social mechanical effect."
       },
       "climbing_vines": {
         "name": "Climbing Vines",
         "category": "flora",
+        "tier": 2,
         "effect": "Can use vine-based grapple or restraint. Bonus to climbing."
       },
       "compound_leaves": {
         "name": "Compound Leaves",
         "category": "flora",
+        "tier": 1,
         "effect": "NEEDS_DEFINITION."
       },
       "hollow_stems": {
         "name": "Hollow Stems",
         "category": "flora",
+        "tier": 1,
         "effect": "Can store liquids internally. Bonus to Alchemy involving liquid reagents."
       },
       "mycorrhizal_symbiosis": {
         "name": "Mycorrhizal Symbiosis",
         "category": "flora",
+        "tier": 3,
         "effect": "Connection to fungal networks. Detect other plant life. Share information through root contact."
       },
       "nitrogen_fixing_roots": {
         "name": "Nitrogen-Fixing Roots",
         "category": "flora",
+        "tier": 2,
         "effect": "Can fertilize terrain. Bonus to growing food or herbs in adjacent area."
       },
       "rapid_growth": {
         "name": "Rapid Growth",
         "category": "flora",
+        "tier": 3,
         "effect": "Heal faster when in sunlight or near water. Accelerated natural regeneration."
       },
       "thorny_stems": {
         "name": "Thorny Stems",
         "category": "flora",
+        "tier": 2,
         "effect": "Melee attackers take piercing damage on grapple or unarmed strike. Natural armor vs grabs."
       }
     }
@@ -469,6 +741,7 @@
   "morphotypes": {
     "humanoid": {
       "name": "Humanoid",
+      "compensation_pool": 12,
       "limbs": "2 legs, 2 arms",
       "locomotion": [
         "walk",
@@ -490,12 +763,19 @@
         "fingers",
         "legs",
         "feet",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "bipedal_beast": {
       "name": "Bipedal Beast",
+      "compensation_pool": 19,
       "limbs": "2 legs, 2 arms (clawed)",
       "locomotion": [
         "walk",
@@ -516,12 +796,19 @@
         "fingers",
         "legs",
         "feet",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "tauric": {
       "name": "Tauric",
+      "compensation_pool": 17,
       "limbs": "4 legs, 2 arms",
       "locomotion": [
         "walk",
@@ -540,12 +827,19 @@
         "wrist",
         "fingers",
         "quadruped_body",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "hexapod": {
       "name": "Hexapod",
+      "compensation_pool": 21,
       "limbs": "4 legs, 2 wings (or arms)",
       "locomotion": [
         "walk",
@@ -562,12 +856,19 @@
         "back_wings",
         "forelegs",
         "hindlegs",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "arachnid": {
       "name": "Arachnid",
+      "compensation_pool": 38,
       "limbs": "8 legs, optional arms",
       "locomotion": [
         "walk",
@@ -583,12 +884,17 @@
         "torso",
         "back",
         "optional_arms",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "olfaction",
+        "touch"
       ]
     },
     "scorpoid": {
       "name": "Scorpoid",
+      "compensation_pool": 36,
       "limbs": "8 legs, 2 claws",
       "locomotion": [
         "walk",
@@ -604,12 +910,17 @@
         "torso",
         "back",
         "claws",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "olfaction",
+        "touch"
       ]
     },
     "serpentine_hybrid": {
       "name": "Serpentine Hybrid",
+      "compensation_pool": 30,
       "limbs": "2 arms, limbless tail",
       "locomotion": [
         "slither",
@@ -629,12 +940,18 @@
         "wrist",
         "fingers",
         "tail",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "quadruped": {
       "name": "Quadruped",
+      "compensation_pool": 31,
       "limbs": "4 legs",
       "locomotion": [
         "walk",
@@ -650,10 +967,18 @@
         "neck",
         "back",
         "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "theropod": {
       "name": "Theropod",
+      "compensation_pool": 20,
       "limbs": "2 legs, small arms",
       "locomotion": [
         "walk_bipedal",
@@ -671,12 +996,18 @@
         "back",
         "small_arms",
         "legs",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch"
       ]
     },
     "serpentine": {
       "name": "Serpentine",
+      "compensation_pool": 43,
       "limbs": "none",
       "locomotion": [
         "slither",
@@ -691,10 +1022,17 @@
         "head",
         "neck",
         "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "amphibian": {
       "name": "Amphibian",
+      "compensation_pool": 39,
       "limbs": "4 legs",
       "locomotion": [
         "walk",
@@ -710,12 +1048,18 @@
         "neck",
         "torso",
         "back",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch"
       ]
     },
     "chelonian": {
       "name": "Chelonian",
+      "compensation_pool": 28,
       "limbs": "4 legs",
       "locomotion": [
         "walk",
@@ -731,10 +1075,17 @@
         "neck",
         "legs",
         "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch"
       ]
     },
     "molluscoid": {
       "name": "Molluscoid",
+      "compensation_pool": 42,
       "limbs": "variable (tentacles)",
       "locomotion": [
         "crawl",
@@ -749,12 +1100,17 @@
         "head",
         "torso_optional",
         "tentacles",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "touch",
+        "olfaction"
       ]
     },
     "crustacean": {
       "name": "Crustacean",
+      "compensation_pool": 36,
       "limbs": "6 or more legs",
       "locomotion": [
         "walk",
@@ -771,10 +1127,18 @@
         "claws",
         "legs",
         "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "pisciform": {
       "name": "Pisciform",
+      "compensation_pool": 44,
       "limbs": "fins",
       "locomotion": [
         "swim"
@@ -789,12 +1153,19 @@
         "neck",
         "torso",
         "fins",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "cetacean": {
       "name": "Cetacean",
+      "compensation_pool": 45,
       "limbs": "flippers",
       "locomotion": [
         "swim"
@@ -809,10 +1180,17 @@
         "neck",
         "torso",
         "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch"
       ]
     },
     "wyvern": {
       "name": "Wyvern",
+      "compensation_pool": 24,
       "limbs": "2 legs, 2 wings",
       "locomotion": [
         "fly",
@@ -830,12 +1208,18 @@
         "back_wings",
         "legs",
         "tail",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch"
       ]
     },
     "true_dragon": {
       "name": "True Dragon",
+      "compensation_pool": 1,
       "limbs": "4 legs, 2 wings",
       "locomotion": [
         "fly",
@@ -853,12 +1237,19 @@
         "forelegs",
         "hindlegs",
         "tail",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "chimeric": {
       "name": "Chimeric",
+      "compensation_pool": 18,
       "limbs": "variable",
       "locomotion": [
         "mixed"
@@ -870,10 +1261,18 @@
       "notes": "Combine abilities of multiple types. Slots determined per species.",
       "equipment_slots": [
         "NEEDS_DEFINITION: per species"
+      ],
+      "sense_organs": [
+        "vision",
+        "hearing",
+        "olfaction",
+        "touch",
+        "taste"
       ]
     },
     "amorphous": {
       "name": "Amorphous",
+      "compensation_pool": 50,
       "limbs": "none fixed",
       "locomotion": [
         "flow",
@@ -886,10 +1285,14 @@
       "notes": "Can pass through gaps. No standard equipment slots.",
       "equipment_slots": [
         "trinket_internal"
+      ],
+      "sense_organs": [
+        "touch"
       ]
     },
     "crystalline": {
       "name": "Crystalline",
+      "compensation_pool": 14,
       "limbs": "variable",
       "locomotion": [
         "walk",
@@ -906,8 +1309,11 @@
         "torso",
         "back",
         "legs",
-        "trinket",
-        "focus"
+        "trinket"
+      ],
+      "sense_organs": [
+        "vision",
+        "touch"
       ]
     }
   },
@@ -924,8 +1330,10 @@
         "diet": "omnivore",
         "core_traits": [
           "tool_user",
-          "high_perception",
-          "social"
+          "perceptive",
+          "social",
+          "warm_blooded",
+          "vision_trichromatic"
         ]
       },
       "canidae": {
@@ -939,7 +1347,11 @@
         "core_traits": [
           "fur",
           "fang_claw",
-          "keen_smell"
+          "keen_smell",
+          "warm_blooded",
+          "vision_dichromatic",
+          "smell_chemoreceptor",
+          "perceptive"
         ]
       },
       "felidae": {
@@ -953,7 +1365,11 @@
         "core_traits": [
           "fur",
           "fang_claw",
-          "keen_sight"
+          "keen_sight",
+          "warm_blooded",
+          "vision_dichromatic",
+          "vision_low_light",
+          "perceptive"
         ]
       },
       "ursidae": {
@@ -968,7 +1384,11 @@
           "fur",
           "fang_claw",
           "thick_hide",
-          "hibernate"
+          "hibernate",
+          "warm_blooded",
+          "vision_dichromatic",
+          "smell_chemoreceptor",
+          "perceptive"
         ]
       },
       "suidae": {
@@ -984,7 +1404,11 @@
           "tusks",
           "thick_hide",
           "rooter",
-          "aggressive"
+          "aggressive",
+          "warm_blooded",
+          "vision_dichromatic",
+          "smell_chemoreceptor",
+          "perceptive"
         ]
       },
       "rodentia": {
@@ -1000,7 +1424,10 @@
           "fang_claw",
           "gnawing",
           "burrower",
-          "resourceful"
+          "resourceful",
+          "warm_blooded",
+          "vision_dichromatic",
+          "perceptive"
         ]
       },
       "mammutidae": {
@@ -1015,7 +1442,12 @@
           "thick_hide",
           "tusks",
           "trunk",
-          "memory"
+          "memory",
+          "warm_blooded",
+          "vision_dichromatic",
+          "hearing_infrasound",
+          "touch_vibration",
+          "perceptive"
         ]
       },
       "rhinoceridae": {
@@ -1029,7 +1461,10 @@
         "core_traits": [
           "thick_hide",
           "horn",
-          "territorial"
+          "territorial",
+          "warm_blooded",
+          "vision_monochrome",
+          "perceptive"
         ]
       },
       "cervidae": {
@@ -1044,7 +1479,10 @@
           "antlers",
           "hooves",
           "keen_hearing",
-          "flighty"
+          "flighty",
+          "warm_blooded",
+          "vision_dichromatic",
+          "perceptive"
         ]
       },
       "equidae": {
@@ -1058,7 +1496,10 @@
         "core_traits": [
           "hooves",
           "endurance",
-          "herd_mentality"
+          "herd_mentality",
+          "warm_blooded",
+          "vision_dichromatic",
+          "perceptive"
         ]
       },
       "bovidae": {
@@ -1073,7 +1514,10 @@
           "hooves",
           "horn",
           "fur",
-          "stubborn"
+          "stubborn",
+          "warm_blooded",
+          "vision_dichromatic",
+          "perceptive"
         ]
       },
       "avian": {
@@ -1087,7 +1531,10 @@
         "core_traits": [
           "avian_wings",
           "hollow_bones",
-          "keen_sight"
+          "keen_sight",
+          "warm_blooded",
+          "vision_trichromatic",
+          "perceptive"
         ]
       },
       "raptor": {
@@ -1103,7 +1550,11 @@
           "keen_sight",
           "avian_wings",
           "ambusher",
-          "stealthy"
+          "stealthy",
+          "warm_blooded",
+          "vision_tetrachromatic",
+          "vision_low_light",
+          "perceptive"
         ]
       },
       "mycetes": {
@@ -1131,7 +1582,9 @@
           "scales",
           "cold_blooded",
           "fang_claw",
-          "heat_vision"
+          "heat_vision",
+          "vision_dichromatic",
+          "smell_chemoreceptor"
         ]
       },
       "amphibian_bio": {
@@ -1144,7 +1597,9 @@
         "diet": "carnivore",
         "core_traits": [
           "amphibious",
-          "rapid_regen"
+          "rapid_regen",
+          "cold_blooded",
+          "vision_dichromatic"
         ]
       },
       "fish": {
@@ -1161,7 +1616,9 @@
         "core_traits": [
           "scales",
           "amphibious",
-          "lateral_line"
+          "lateral_line",
+          "cold_blooded",
+          "vision_trichromatic"
         ]
       },
       "cephalopod": {
@@ -1174,7 +1631,10 @@
         "core_traits": [
           "ink_cloud",
           "camouflage",
-          "keen_sight"
+          "keen_sight",
+          "cold_blooded",
+          "vision_trichromatic",
+          "vision_low_light"
         ]
       },
       "insecta_arachnida": {
@@ -1187,7 +1647,11 @@
         "diet": "carnivore",
         "core_traits": [
           "exoskeleton",
-          "groundsense"
+          "groundsense",
+          "cold_blooded",
+          "vision_monochrome",
+          "touch_vibration",
+          "smell_chemoreceptor"
         ]
       },
       "draconic": {
@@ -1202,7 +1666,10 @@
           "thick_hide",
           "elemental_fire",
           "energy_absorbing_heat",
-          "high_perception"
+          "perceptive",
+          "warm_blooded",
+          "vision_tetrachromatic",
+          "vision_darkvision"
         ]
       },
       "fey": {
@@ -1216,7 +1683,10 @@
         "core_traits": [
           "magic_resistance",
           "immortality",
-          "shapeshifting"
+          "shapeshifting",
+          "warm_blooded",
+          "vision_trichromatic",
+          "vision_low_light"
         ]
       },
       "stonekin": {
@@ -1229,7 +1699,9 @@
         "diet": "herbivore",
         "core_traits": [
           "stone_skin",
-          "earth_sense"
+          "earth_sense",
+          "vision_monochrome",
+          "touch_vibration"
         ]
       }
     },

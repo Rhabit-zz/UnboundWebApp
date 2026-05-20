@@ -1,164 +1,1085 @@
-"social": {
+{
+  "_meta": {
+    "document": "SocialSkills.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.3-draft",
+    "notes": [
+      "Social skill system. Primary source: Unbound_Social_System.pdf.",
+      "Eight base social actions are available to any character with no skill investment. Skills substantially improve these actions.",
+      "Seven Tier 1 novice skills align to the seven-chakra framework. Each covers two base actions.",
+      "Tier 2 skills are specializations branching from each base action. Require Tier 1 Level 2 in relevant skill.",
+      "Tier 3+ partially defined. Leadership is the only confirmed Tier 3 block. Remaining Tier 3-5 flagged for future development.",
+      "Virtue/Vice switching mechanic unlocks at Tier 2 when both expressions of a chakra have been developed.",
+      "Mystical skills preserved in mystical_skills section. They are a parallel track, not part of the social system."
+    ]
+  },
 
-      "charm": {
-        "name": "Charm",
-        "subtitle": "Light-Hearted Appeal Style",
-        "skill_type": "social",
-        "governing_stat": "SPT",
-        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 2 }],
-        "ranks": {
-          "1": { "effect": "+R to sway unfriendly NPCs." },
-          "2": { "effect": "Remove -R from jealousy or rivalry penalties." },
-          "3": { "effect": "Sway multiple targets with a single roll." },
-          "4": { "effect": "Once per session, establish fast trust with a stranger." },
-          "5": { "effect": "Gain a favor from target despite unfavorable odds." }
-        }
-      },
+  "base_actions": {
+    "inspire": {
+      "name": "Inspire",
+      "type": "base_action",
+      "subtitle": "Raw Motivational Force",
+      "governing_stat": "SPT",
+      "action_cost": "1 AP",
+      "resource_cost": "1 SP",
+      "defense_pool": "SP",
+      "basic_effect": "Apply 1 Inspiration stack to target. Target gains SP equal to their next AP spent.",
+      "critical_effect": "Apply 2 Inspiration stacks. Target immediately recovers 2 SP.",
+      "critical_tag": "inspiring",
+      "notes": "Inspiration stacks are consumed when AP is spent. Non-hostile. Cannot exceed target max SP."
+    },
+    "seduce": {
+      "name": "Seduce",
+      "type": "base_action",
+      "subtitle": "Irresistible Desire",
+      "governing_stat": "SPT or BDY",
+      "action_cost": "1 AP",
+      "resource_cost": "1 SP",
+      "defense_pool": "SP",
+      "basic_effect": "Create desire for what is offered — yourself, an idea, an object, or an experience. Apply 1 Enthralled stack on success.",
+      "critical_effect": "Apply 2 Enthralled stacks. Target cannot take actions against the source this round.",
+      "critical_tag": "seductive",
+      "notes": "Seduce is not inherently sexual. A merchant seducing a customer to buy, or a diplomat making a treaty irresistible, are both valid uses. The target of seduction is always what is being offered, not the seducer."
+    },
+    "persuade": {
+      "name": "Persuade",
+      "type": "base_action",
+      "subtitle": "Reasoned or Emotional Conviction",
+      "governing_stat": "SPT (emotional) or MND (logical)",
+      "action_cost": "1 AP",
+      "resource_cost": "1 SP or 1 MP",
+      "defense_pool": "SP or MP",
+      "basic_effect": "Convince target of something or toward a course of action. Generate Rapport equal to roll margin on success.",
+      "critical_effect": "Generate double margin as Rapport. Target is Inspired 1 toward the position argued.",
+      "critical_tag": "persuasive",
+      "notes": "SPT governs emotional appeals. MND governs logical arguments. The attacker chooses governing stat. The defender responds from the same pool."
+    },
+    "deceive": {
+      "name": "Deceive",
+      "type": "base_action",
+      "subtitle": "Manufactured False Impression",
+      "governing_stat": "MND (construct) or SPT (conceal)",
+      "action_cost": "1 AP",
+      "resource_cost": "1 SP or 1 MP",
+      "defense_pool": "MP",
+      "basic_effect": "Create a false impression. Apply 1 Disorient stack on success. If discovered, Rapport decreases by original deception margin plus discovery margin.",
+      "critical_effect": "Apply 2 Disorient stacks. Target believes the deception without further checks for L rounds.",
+      "critical_tag": "deceptive",
+      "notes": "Deception resists clean chakra alignment — it can emerge from Pride, Sloth, Greed, or Lust. Treated as a cross-cutting skill."
+    },
+    "intimidate": {
+      "name": "Intimidate",
+      "type": "base_action",
+      "subtitle": "Dominance Through Power or Consequence",
+      "governing_stat": "highest of BDY, SPT, or MND",
+      "action_cost": "1 AP",
+      "resource_cost": "1 SP",
+      "defense_pool": "SP",
+      "basic_effect": "Apply 1 Fear stack on success. Target must spend AP avoiding confrontation with source.",
+      "critical_effect": "Apply 1 Fear and 1 Demoralize stack. Reduces target Max SP by 2.",
+      "critical_tag": "intimidating",
+      "notes": "BDY governs physical presence. SPT governs personality force. MND governs calculated consequence threats. Attacker chooses."
+    },
+    "insight": {
+      "name": "Insight",
+      "type": "base_action",
+      "subtitle": "Reading What Lies Beneath",
+      "governing_stat": "SPT",
+      "action_cost": "1 AP",
+      "resource_cost": "1 SP",
+      "defense_pool": "MP",
+      "basic_effect": "Detect an active Deceive attempt on success. Identify dominant emotional state of target as a free action.",
+      "critical_effect": "Expose the target's intent or concealed position. Apply 1 Exposed stack.",
+      "critical_tag": "perceptive",
+      "notes": "Insight is primarily defensive and informational. It cannot be used to attack. The Exposed status applies to Deception and Stealth rolls."
+    },
+    "investigate": {
+      "name": "Investigate",
+      "type": "base_action",
+      "subtitle": "Active Search of Immediate Surroundings",
+      "governing_stat": "MND (methodical) or SPT (intuitive)",
+      "action_cost": "1 AP",
+      "resource_cost": "1 MP or 1 SP",
+      "defense_pool": null,
+      "basic_effect": "Active search of immediate surroundings. Find hidden objects, information, traps, concealed people, or anything within close range.",
+      "critical_effect": "Reveal one additional hidden element beyond the primary finding. MND: methodical search. SPT: intuitive sweep.",
+      "critical_tag": "investigative",
+      "notes": "Investigate is primarily environmental, not interpersonal. It is not a social attack. No defense roll available against it."
+    },
+    "resolve": {
+      "name": "Resolve",
+      "type": "base_action",
+      "subtitle": "Social Defense and Conviction",
+      "governing_stat": "SPT or MND",
+      "action_cost": "1 AP (spend to generate Defense Token) or reaction",
+      "resource_cost": "0",
+      "defense_pool": null,
+      "basic_effect": "Hold position under social pressure. Resist Intimidate, Persuade, and Seduce attempts. On success, gain 1 Determination stack — the character's conviction strengthens under pressure.",
+      "critical_effect": "Gain 2 Determination stacks. The attacker's action is reflected — they lose SP equal to their roll margin.",
+      "critical_tag": "resolute",
+      "notes": "Resolve is the primary social defense action. Determination stacks reduce incoming social damage. Works against all non-Insight social attacks."
+    }
+  },
 
-      "deception": {
-        "name": "Deception",
-        "subtitle": "Manipulative Misdirection Style",
-        "skill_type": "social",
-        "governing_stat": "highest",
-        "requirements": [{ "type": "stat_min", "stat": "any", "value": 2, "description": "MND or SPT 2+" }],
-        "ranks": {
-          "1": { "effect": "+R to lie convincingly." },
-          "2": { "effect": "Redirect blame or suspicion with +R advantage." },
-          "3": { "effect": "Mimic speech and mannerisms with 95% accuracy." },
-          "4": { "effect": "Bluff to escape or reroll 1 opposed check." },
-          "5": { "effect": "Enemies believe even conflicting falsehoods." }
-        }
-      },
+  "base_skills": {
+    "_note": "Full T1–T5 skill blocks for the 10 base social actions. Each is a standalone skill with 5 levels. Governing stat is the character's choice where multiple are listed. AP cost design: most social actions have two forms — 1 AP (quick, opportunistic: 1 stack effect, what you throw in with a spare AP) and 2 AP (committed: L stacks + full effect, the dedicated social character's main action). Provoke stays 2 AP at base (true provocation requires commitment). Informational actions (Insight, Investigate) default to 1 AP. Critical threshold: 10+ margin triggers enhanced effect. Status drain rates: Fear/Enthralled = 1 SP or MP per stack per round; Disorient = 1 AP lost per stack on next turn.",
 
-      "diplomacy": {
-        "name": "Diplomacy",
-        "subtitle": "Bridgebuilding Social Style",
-        "skill_type": "social",
-        "governing_stat": "SPT",
-        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 3 }],
-        "ranks": {
-          "1": { "effect": "+R to negotiate between hostile parties." },
-          "2": { "effect": "Increase Rapport by R." },
-          "3": { "effect": "Allies gain +R morale during parley." },
-          "4": { "effect": "Reduce hostility by 1 Rank per day." },
-          "5": { "effect": "Auto-succeed diplomacy vs neutral NPCs." }
-        }
-      },
-
-      "empathy": {
-        "name": "Empathy",
-        "subtitle": "Emotional Insight Style",
-        "skill_type": "social",
-        "governing_stat": "SPT",
-        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 3 }],
-        "ranks": {
-          "1": { "effect": "+R to detect lies or motives." },
-          "2": { "effect": "Reroll a failed social check if the target is emotional." },
-          "3": { "effect": "Counsel reduces 1 ally's mental strain by R." },
-          "4": { "effect": "Shift an NPC's mood by 1 stage." },
-          "5": { "effect": "Allies cannot betray you unless magically compelled." }
-        }
-      },
-
-      "intimidation": {
-        "name": "Intimidation",
-        "subtitle": "Dominance Projection Style",
-        "skill_type": "social",
-        "governing_stat": "highest",
-        "requirements": [{ "type": "stat_min", "stat": "any", "value": 2, "description": "BDY or SPT 2+" }],
-        "ranks": {
-          "1": { "effect": "+R to intimidation rolls." },
-          "2": { "effect": "Intimidated targets suffer -R SPD for 1 round." },
-          "3": { "effect": "+R initiative on intimidation at first contact." },
-          "4": { "effect": "+R defense when still and glaring." },
-          "5": { "effect": "Auto-win contests vs lower-ranked NPCs." }
-        }
-      },
-
-      "leadership": {
-        "name": "Leadership",
-        "subtitle": "Command Presence Style",
-        "skill_type": "social",
-        "governing_stat": "SPT",
-        "requirements": [
-          { "type": "stat_min", "stat": "SPT", "value": 3 },
-          { "type": "skill_min", "skill_category": "any_combat", "minimum_rank": 1 }
-        ],
-        "ranks": {
-          "1": { "effect": "+R to group persuasion." },
-          "2": { "effect": "Allies within 30 ft gain +R morale in danger." },
-          "3": { "effect": "+R to ally follow-up after instructions." },
-          "4": { "ap_cost": 2, "effect": "Allies gain +R AP or MP." },
-          "5": { "uses": "1/day", "effect": "Remove all fear and hesitation from allies." }
-        }
-      },
-
-      "persuasion": {
-        "name": "Persuasion",
-        "subtitle": "Charismatic Negotiation Style",
-        "skill_type": "social",
-        "governing_stat": "SPT",
-        "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 2 }],
-        "ranks": {
-          "1": { "effect": "+R to persuasion checks in 1-on-1 settings." },
-          "2": { "effect": "Reroll 1 failed persuasion check per day." },
-          "3": { "effect": "Allies following your lead gain +R morale." },
-          "4": { "effect": "Influenced targets remain affected for +1d6 rounds." },
-          "5": { "effect": "Once per day, gain a free social favor from a non-hostile NPC." }
-        }
+    "inspire": {
+      "name": "Inspire",
+      "skill_type": "social_skill",
+      "governing_stat": "SPT",
+      "subtitle": "Motivational force that converts emotional presence into stamina",
+      "description": "The ability to light a fire in others — making allies feel capable of more than they thought possible. Works in mundane settings through words and presence; amplified dramatically by Emotional Affinities when both are developed.",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 1 }],
+      "levels": {
+        "1": { "name": "Spark",           "ap_cost": "1", "sp_cost": "1", "effect": "SPT check vs target Resolve. 1 AP (quick): apply 1 Inspiration stack. 2 AP (committed): apply L Inspiration stacks. Inspiration: when the target next spends AP, they recover SP equal to AP spent (each stack consumed on trigger, lasts L rounds). On critical (10+), apply an additional stack (quick) or L additional stacks (committed)." },
+        "2": { "effect": "Max SP +L²; SPR +L." },
+        "3": { "name": "Rally",           "ap_cost": "3", "sp_cost": "2", "effect": "Inspire up to L targets simultaneously with a single check. Each gains L Inspiration stacks. Additionally, remove 1 negative social status stack (Fear, Disorient, or Enthralled) from each target inspired." },
+        "4": { "effect": "Passive: Inspiration stacks you apply last L rounds longer. Targets with 2+ Inspiration stacks gain +L to their next social or combat action roll." },
+        "5": { "name": "Legion's Heart",  "ap_cost": "3", "sp_cost": "2L", "effect": "Inspire all allies in line of sight. Each gains L Inspiration stacks and immediately recovers L SP. For L rounds, any time an ally spends AP, they recover SP equal to AP spent — all stacks persist simultaneously." }
       }
     },
 
-    "mystical": {
-
-      "arcane_theory": {
-        "name": "Arcane Theory",
-        "subtitle": "Foundational Magical Knowledge",
-        "skill_type": "mystical",
-        "governing_stat": "MND",
-        "requirements": [{ "type": "stat_min", "stat": "MND", "value": 2 }],
-        "ranks": {
-          "1": { "effect": "+R to identify spells, glyphs, or wards." },
-          "2": { "effect": "Reduce time to decipher magic scrolls or runes by 50%." },
-          "3": { "effect": "Detect nearby active spells or ambient mana flow." },
-          "4": { "effect": "+R to memorize or counter known spells." },
-          "5": { "effect": "Auto-identify any spell of Rank R or lower with a glance." }
-        }
-      },
-
-      "channeling": {
-        "name": "Channeling",
-        "subtitle": "Energy Focusing Style",
-        "skill_type": "mystical",
-        "governing_stat": "MND",
-        "requirements": [
-          { "type": "stat_min", "stat": "MND", "value": 3 },
-          { "type": "equipment", "description": "Magical Focus Item" }
-        ],
-        "ranks": {
-          "1": { "effect": "+R to maintain or empower ongoing magical effects." },
-          "2": { "effect": "Delay or redirect your own spell activation by 1 round." },
-          "3": { "mp_cost": "R additional", "effect": "Spend +R MP to amplify next spell by +R effect." },
-          "4": { "uses": "1/rest", "effect": "Double range or area for 1 spell." },
-          "5": { "uses": "1/session", "effect": "Ignore max MP limit for 1 spell." }
-        }
-      },
-
-      "elemental_harmony": {
-        "name": "Elemental Harmony",
-        "subtitle": "Balance of the Four",
-        "skill_type": "mystical",
-        "governing_stat": "MND",
-        "requirements": [
-          { "type": "stat_min", "stat": "MND", "value": 2 },
-          { "type": "affinity", "description": "Any Elemental Affinity" }
-        ],
-        "ranks": {
-          "1": { "effect": "+R to resist your primary element." },
-          "2": { "effect": "Use a secondary element's effect at reduced power." },
-          "3": { "effect": "Change element-based abilities to an alternate element." },
-          "4": { "uses": "1/day", "effect": "Retain a spell effect without upkeep." },
-          "5": { "effect": "Channel two elemental effects simultaneously." }
-        }
+    "seduce": {
+      "name": "Seduce",
+      "skill_type": "social_skill",
+      "governing_stat": "SPT or BDY",
+      "subtitle": "Creating irresistible desire — for you, an idea, or an outcome",
+      "description": "Not inherently romantic. A merchant making a deal irresistible, a diplomat making peace the only sensible option, a commander making retreat unthinkable — all are Seduce. The target of desire is always what is being offered. Drains MP as the target's mental focus narrows to a single fixation.",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 1 }],
+      "levels": {
+        "1": { "name": "Lure",                 "ap_cost": "1", "sp_cost": "1", "effect": "SPT or BDY check vs target Resolve. 1 AP (quick): apply 1 Enthralled stack. 2 AP (committed): apply L Enthralled stacks. Each Enthralled stack: drain 1 MP from target at the start of their turn. While Enthralled, target cannot spend MP on actions targeting you. On critical (10+), target also loses their next reaction." },
+        "2": { "effect": "Max SP +L²; SPR +L." },
+        "3": { "name": "Captivating Display",  "ap_cost": "3", "sp_cost": "2", "effect": "Apply 2L Enthralled stacks to one target and immediately drain L MP. While Enthralled L+ stacks: target cannot willingly move away from you and takes -L to all Resolve checks for L rounds." },
+        "4": { "effect": "Passive: Enthralled stacks you apply cannot be self-removed (only Resolve from an ally or Console can cleanse them). Targets with 3+ Enthralled stacks also drain 1 SP per round in addition to MP." },
+        "5": { "name": "Irresistible Presence","ap_cost": "3", "sp_cost": "2L", "effect": "Apply L Enthralled stacks to all visible targets. Each must succeed Resolve (DC = your roll) or be Enthralled. For L rounds, Enthralled targets treat you as an ally; any action targeting you costs double SP." }
       }
     },
+
+    "persuade": {
+      "name": "Persuade",
+      "skill_type": "social_skill",
+      "governing_stat": "SPT or MND",
+      "subtitle": "Building conviction in others — through emotion or logic",
+      "description": "The primary Rapport-building action. Emotional appeals draw on SPT; logical arguments draw on MND. The attacker chooses which governs; the defender responds from the same pool. Persuade is the diplomat's primary tool and the only base action that directly generates Rapport.",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 1 }],
+      "levels": {
+        "1": { "name": "Appeal",           "ap_cost": "1", "sp_cost": "1", "effect": "SPT (emotional) or MND (logical) check vs target Resolve. 1 AP (quick): generate 1 Rapport with the target. 2 AP (committed): generate Rapport equal to roll margin. At Cordial (5+ Rapport) or higher, repeat Persuade actions against this target cost 1 less SP or MP (minimum 0). On critical (10+), target also gains 1 Inspiration stack." },
+        "2": { "effect": "Max SP +L² (SPT governing) or Max MP +L² (MND governing); corresponding regen +L." },
+        "3": { "name": "Compelling Case",  "ap_cost": "3", "sp_cost": "2", "effect": "Persuade check at +L. On success, generate 2× margin as Rapport. On a critical (10+), target acts in accordance with your stated position for the rest of the scene and cannot be counter-persuaded by a lower-skill source this encounter." },
+        "4": { "effect": "Passive: Rapport you generate cannot decay for L sessions after creation. +L to all social checks against targets whose Rapport with you is Friendly (25+) or higher." },
+        "5": { "name": "Universal Appeal", "ap_cost": "3", "sp_cost": "2L", "effect": "Address all witnesses simultaneously. Each makes a Resolve check (DC = your roll) or advances one Rapport tier with you. Hostile or worse targets who fail become Neutral. Cannot force beyond Devoted." }
+      }
+    },
+
+    "deceive": {
+      "name": "Deceive",
+      "skill_type": "social_skill",
+      "governing_stat": "MND or SPT",
+      "subtitle": "Manufactured false impressions — through fabrication or concealment",
+      "description": "Constructing a lie draws on MND; concealing your true intent or expression uses SPT. Applies Disorient stacks which cost the target AP. The social rogue — wins through misdirection rather than direct force. Discovery by Insight deals Rapport damage equal to the original deception margin.",
+      "requirements": [{ "type": "stat_min", "stat": "MND", "value": 1 }],
+      "levels": {
+        "1": { "name": "Misdirect",        "ap_cost": "1", "mp_cost": "1", "effect": "MND (fabricate) or SPT (conceal) check, opposed by target Insight. 1 AP (quick): apply 1 Disorient stack. 2 AP (committed): apply L Disorient stacks. Each stack: target loses 1 AP on their next turn (max AP loss = L). On critical (10+), target also accepts one false belief as true until they succeed an Insight check (DC = your MND + L)." },
+        "2": { "effect": "Max MP +L² (MND governing) or Max SP +L² (SPT governing); corresponding regen +L." },
+        "3": { "name": "Web of Lies",      "ap_cost": "3", "mp_cost": "2", "effect": "Apply L Disorient stacks AND plant a detailed false narrative. Target takes -L to Insight rolls for L rounds. Any social action they take referencing the false narrative automatically fails. Passive unlocked: your Deceive attempts require an active Insight roll to detect." },
+        "4": { "effect": "Passive: Disorient stacks persist 1 additional round. Targets with L+ Disorient stacks lose access to Insight and Investigate actions while Disoriented — they are too confused to perceive clearly." },
+        "5": { "name": "Total Fabrication","ap_cost": "3", "mp_cost": "2L", "effect": "Apply L Disorient stacks to all targets in sight and implant a complete false reality. Targets believe your fabrication until they succeed an Insight check (DC = your MND + L). Even after discovery, the shock deals L MP drain." }
+      }
+    },
+
+    "intimidate": {
+      "name": "Intimidate",
+      "skill_type": "social_skill",
+      "governing_stat": "highest",
+      "subtitle": "Dominance through physical power, force of personality, or calculated consequence",
+      "description": "BDY governs raw physical presence. SPT governs personality force. MND governs deliberate consequence threats. The attacker chooses which governs; the defender uses Resolve. Does NOT generate Rapport — Intimidate produces compliance, not connection. Fear stacks drain SP; Demoralize reduces Max SP.",
+      "requirements": [{ "type": "stat_min", "stat": "BDY", "value": 1 }],
+      "levels": {
+        "1": { "name": "Loom",             "ap_cost": "1", "sp_cost": "1", "effect": "Highest of BDY/SPT/MND check vs target Resolve. 1 AP (quick): apply 1 Fear stack. 2 AP (committed): apply L Fear stacks. Each Fear stack: drain 1 SP from target at the start of their turn; -L to all target rolls. On critical (10+), also apply 1 Demoralize stack (reduce target Max SP by L until end of scene). Does not generate Rapport." },
+        "2": { "effect": "Max SP +L²; SPR +L." },
+        "3": { "name": "Break Their Will", "ap_cost": "3", "sp_cost": "2", "effect": "Apply 2L Fear stacks to all enemies within L×3 spaces. Targets with Fear stacks equal to L or higher are Cowering (cannot take offensive actions this round). On critical, all targets gain 1 Demoralize stack." },
+        "4": { "effect": "Passive: Fear stacks you apply drain 2 SP per round instead of 1. Cowering targets cannot spend MP either — terror shuts down their capability entirely." },
+        "5": { "name": "Absolute Terror",  "ap_cost": "3", "sp_cost": "2L", "effect": "All enemies in line of sight make Resolve (DC = your governing stat + L). Miss by 5+: Flee scene. Fail: Cowering for L rounds and gain 2 Demoralize stacks. Success: still gain L Fear stacks and 1 Demoralize stack." }
+      }
+    },
+
+    "insight": {
+      "name": "Insight",
+      "skill_type": "social_skill",
+      "governing_stat": "SPT",
+      "subtitle": "Reading what lies beneath — emotions, intent, and deception",
+      "description": "Primarily informational and defensive, not a social attack. Free once per scene as passive awareness; active rolls reveal more. Cannot be used to deal status damage directly, but grants bonuses that make all other social actions dramatically more effective. The counter-intelligence function of social combat.",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 1 }],
+      "levels": {
+        "1": { "name": "Read",             "ap_cost": "1", "sp_cost": "1", "effect": "Free (no AP or SP): once per scene, detect whether any target is currently using a social skill on you or your allies. Active (1 AP, 1 SP): SPT check — identify target's dominant emotional state, current Rapport tier feelings, and whether they are using a social skill. On success by 5+: detect all active Deceive attempts in the scene. On critical (10+): also expose one hidden social action — the target cannot hide that action this round." },
+        "2": { "effect": "Max SP +L²; SPR +L." },
+        "3": { "name": "Profile",          "ap_cost": "2", "sp_cost": "2", "effect": "Full social profile of all targets in line of sight: emotional state, current intent, active social skill being used, status stack counts, and primary social vulnerability. +L to all your social action checks against these targets for L rounds." },
+        "4": { "effect": "Passive: your Insight checks cannot be blocked by Deceive of equal or lower rank. Once per round, detect one Deceive attempt as a free action (no AP, no SP). After any successful Insight check, your next social action against the same target this round gains advantage (roll twice, keep higher)." },
+        "5": { "name": "Open Book",        "ap_cost": "2", "sp_cost": "1L", "effect": "Read every target in the scene simultaneously: emotional state, intent, active social skills, status stack counts, social vulnerabilities, and Rapport values with all present. Lasts the entire encounter. No social action can be hidden from you for L rounds." }
+      }
+    },
+
+    "investigate": {
+      "name": "Investigate",
+      "skill_type": "social_skill",
+      "governing_stat": "MND or SPT",
+      "subtitle": "Active search — finding what is hidden in the scene and between the words",
+      "description": "Methodical examination (MND) or intuitive sweep (SPT). Reveals hidden objects, concealed persons, and disguised arrangements. In social encounters, exposes hidden agendas, pre-existing agreements, and concealed loyalties. Successful investigation gives a follow-up bonus against targets whose secrets you have found.",
+      "requirements": [{ "type": "stat_min", "stat": "MND", "value": 1 }],
+      "levels": {
+        "1": { "name": "Search",           "ap_cost": "1", "mp_cost": "1", "effect": "MND (methodical) or SPT (intuitive) check. Locate hidden objects, concealed persons, or disguised threats within L×3 spaces. In social: detect concealed weapons, pre-arranged signals between parties, or one hidden motive of a visible NPC. On success by 5+: also reveal one social arrangement hidden from your group (a bribe, a signal, a pre-agreed position)." },
+        "2": { "effect": "Max MP +L²; MPR +L." },
+        "3": { "name": "Scene Analysis",   "ap_cost": "2", "mp_cost": "2", "effect": "Scan the entire scene: reveal all hidden objects, concealed persons, and disguised threats within L×5 spaces. Expose 1 hidden character (cannot use Stealth or Deceive-based concealment for L rounds). Reveal all concealed agreements and hidden social dynamics in the scene." },
+        "4": { "effect": "Passive: Investigate as a free action once per round (costs 1 MP). After a successful Investigate, your next social action against a target whose hidden information you revealed gains +L and cannot be countered by Deceive — you already know the truth." },
+        "5": { "name": "Full Exposure",    "ap_cost": "2", "mp_cost": "1L", "effect": "Reveal everything of consequence in the scene simultaneously: all hidden persons, objects, agendas, and social arrangements. For the rest of the encounter, concealment attempts against you automatically fail and you cannot be surprised by social or physical ambushes." }
+      }
+    },
+
+    "resolve": {
+      "name": "Resolve",
+      "skill_type": "social_skill",
+      "governing_stat": "SPT or MND",
+      "subtitle": "Holding ground under social pressure — and fortifying those who cannot",
+      "description": "The primary social defense. Determination stacks function as social armor — each stack absorbs 1 incoming status stack applied to you. Resolve has both a proactive form (2 AP, prepare defenses) and a reactive form (free reaction, once per round). At higher levels, Resolve becomes the foundation of group resistance.",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 1 }],
+      "levels": {
+        "1": { "name": "Hold Ground",      "ap_cost": "1", "sp_cost": "0", "effect": "SPT or MND check, opposed by attacker's social action roll. 1 AP (quick): gain 1 Determination stack without blocking. 2 AP (committed): block the social attack (no stacks applied) and gain 1 Determination stack. Determination: each stack absorbs 1 incoming status stack per round (like armor). On critical (10+), reflect L SP drain back to the attacker. Reaction form: once per round, spend 1 SP to oppose one incoming social attack at no AP cost (before rolling)." },
+        "2": { "effect": "Max SP +L²; SPR +L." },
+        "3": { "name": "Rally Defense",    "ap_cost": "2", "sp_cost": "1", "effect": "Build L Determination stacks and extend them to all allies within L×3 spaces. Remove 1 negative social status stack (Fear, Disorient, or Enthralled) from each protected ally." },
+        "4": { "effect": "Passive: Determination stacks you generate last L additional rounds. While you hold any Determination stacks, your Resolve checks cannot critically fail and you cannot be Cowered. At L+ stacks, gain +L to all social action rolls — conviction fuels everything." },
+        "5": { "name": "Unbreakable Will", "ap_cost": "2", "sp_cost": "2L", "effect": "You and all allies within L×3 spaces become immune to social status effects for L rounds. All existing negative stacks are immediately cleansed. Each round active, all protected characters generate 1 Determination stack automatically. Enemies who attempt social attacks against protected targets drain L SP (their attacks bounce)." }
+      }
+    },
+
+    "provoke": {
+      "name": "Provoke",
+      "skill_type": "social_skill",
+      "governing_stat": "BDY or SPT",
+      "subtitle": "Forcing engagement — pulling aggro, drawing fire away from allies",
+      "description": "Mechanically opposite to Intimidate. Fear creates avoidance; Provoke creates forced engagement. A Provoked target must spend AP engaging with you or drain SP each round they resist. Used offensively to protect allies, or to draw out a hidden reaction from an evasive target. BDY governs raw physical challenge; SPT governs personal affront.",
+      "requirements": [{ "type": "stat_min", "stat": "BDY", "value": 1 }],
+      "levels": {
+        "1": { "name": "Taunt",            "ap_cost": "2", "sp_cost": "1", "effect": "BDY or SPT check vs target Resolve. On success, apply L Provoked stacks. Provoked: target must spend at least 1 AP engaging with you per round or drain L SP (the cost of ignoring you). While Provoked, actions targeting anyone other than you cost the target 1 additional SP each. On critical (10+), also apply 1 Enraged stack — target's next action must target you and costs 0 AP but cannot be defensive." },
+        "2": { "effect": "Max SP +L²; SPR +L." },
+        "3": { "name": "Incite",           "ap_cost": "3", "sp_cost": "2", "effect": "Apply 2L Provoked stacks to all enemies within L×3 spaces with one check. Provoked targets also lose access to Insight and Investigate this round — they are too emotionally reactive to perceive clearly. On critical, apply 1 Enraged stack to all targets hit." },
+        "4": { "effect": "Passive: while you have active Provoked targets, gain +L to all defensive social and physical rolls (their focus is on you). Enraged targets from your Provoke also drain 1 MP per round — emotional reactivity is mentally exhausting." },
+        "5": { "name": "Draw All Eyes",    "ap_cost": "3", "sp_cost": "2L", "effect": "All enemies in line of sight are Provoked for L rounds or until you are incapacitated. While active, no ally can be targeted by social attacks — all negative social attention flows to you. Enraged applies to all targets. You gain +L to all rolls for the duration." }
+      }
+    },
+
+    "console": {
+      "name": "Console",
+      "skill_type": "social_skill",
+      "governing_stat": "SPT",
+      "subtitle": "Removing what others put there — the social healer",
+      "description": "Where Inspire adds positive stacks, Console removes negative ones. The dedicated social cleanse. In physical combat terms: a heal that strips debuffs rather than restoring HP. The difference between letting a Feared ally stay in the fight and watching them collapse. Amplified by Emotional Affinities of Loss or Love.",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 1 }],
+      "levels": {
+        "1": { "name": "Comfort",          "ap_cost": "1", "sp_cost": "1", "effect": "SPT check vs DC (typically 8 + number of target's active negative stacks). 1 AP (quick): remove 1 negative social status stack from one target. 2 AP (committed): remove L negative status stacks (Fear, Disorient, Enthralled, or Demoralize) from one target, and target recovers L SP from the relief. Does not generate Rapport directly, but your next Inspire targeting this character gains +L." },
+        "2": { "effect": "Max SP +L²; SPR +L." },
+        "3": { "name": "Safe Harbor",      "ap_cost": "3", "sp_cost": "2", "effect": "Remove all negative social status stacks from up to L allies simultaneously with one check. Each cleansed ally recovers L SP. Apply 1 Inspiration stack to each ally whose stacks were fully cleared — the relief becomes motivation." },
+        "4": { "effect": "Passive: once per round, remove 1 negative social status stack from any ally as a free action (no AP cost, no SP cost). Allies you Console cannot receive that specific status effect again this round." },
+        "5": { "name": "Peace of Mind",    "ap_cost": "3", "sp_cost": "2L", "effect": "Cleanse all negative social status stacks from all allies in line of sight. For L rounds, cleansed allies are immune to social status effects. Apply L Inspiration stacks to each ally. Counts as an Inspire check for all related passives and prerequisites." }
+      }
+    }
+  },
+
+  "rapport_scale": {
+    "description": "Rapport is a property of the relationship between two specific characters, not a character stat. It belongs to neither party but to the connection between them. Tracked on the relationship record. Modified by social roll margins — a successful roll adds margin as Rapport; a critical failure (-10 or more) reduces Rapport by 5.",
+    "modification_rules": {
+      "successful_roll": "Add roll margin to Rapport with target.",
+      "critical_failure": "Reduce Rapport by 5.",
+      "discovered_deception": "Reduce Rapport by original deception margin plus discovery margin.",
+      "rapport_building_actions": "Inspire, Persuade (emotional) generate Rapport directly.",
+      "result_getting_actions": "Intimidate, Consequence do not generate Rapport. Produce immediate outcomes at cost of relationship."
+    },
+    "positive_tiers": {
+      "cordial":  { "threshold": 5,    "label": "Cordial",  "description": "Polite and mildly interested. Basic goodwill.",                            "roll_modifier": 0  },
+      "friendly": { "threshold": 25,   "label": "Friendly", "description": "Actively willing to help when convenient.",                                "roll_modifier": 1  },
+      "warm":     { "threshold": 125,  "label": "Warm",     "description": "Genuinely likes and favors you. Will go out of their way.",                "roll_modifier": 1  },
+      "trusted":  { "threshold": 625,  "label": "Trusted",  "description": "Deep respect. Will take real risks on your behalf.",                       "roll_modifier": 2  },
+      "devoted":  { "threshold": 3125, "label": "Devoted",  "description": "Loyal and emotionally attached. Extraordinary bond.",                      "roll_modifier": 4  }
+    },
+    "neutral": { "threshold": 0, "label": "Neutral", "description": "No preconceptions. The starting point for strangers.", "roll_modifier": 0 },
+    "negative_tiers": {
+      "wary":       { "threshold": -5,    "label": "Wary",       "description": "Slightly guarded or skeptical.",                             "roll_modifier": -1 },
+      "cold":       { "threshold": -25,   "label": "Cold",       "description": "Distrustful or disinterested.",                             "roll_modifier": -2 },
+      "hostile":    { "threshold": -125,  "label": "Hostile",    "description": "Oppositional. Will actively undermine.",                    "roll_modifier": -3 },
+      "enemy":      { "threshold": -625,  "label": "Enemy",      "description": "Openly antagonistic. Will act against you.",               "roll_modifier": -4 },
+      "mortal_foe": { "threshold": -3125, "label": "Mortal Foe", "description": "Hatred. Will dedicate resources to your harm.",            "roll_modifier": -8 }
+    }
+  },
+
+  "tier_1_skills": {
+    "survival": {
+      "name": "Survival",
+      "subtitle": "Foundation of Necessity",
+      "type": "skill",
+      "tier": 1,
+      "skill_type": "social",
+      "chakra": "root",
+      "chakra_bridge": "loss",
+      "virtue": "charity",
+      "vice": "gluttony",
+      "domain": "Basic necessities, what you do with what you have, generosity versus hoarding. What you have can be lost — that possibility is why it matters.",
+      "covers": ["resolve", "investigate"],
+      "governing_stat": "SPT",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 2 }],
+      "levels": {
+        "1": { "effect": "+L flat bonus to Resolve and Investigate social actions." },
+        "2": { "effect": "Increase Max SP by 4. Passive threat detection — become aware of surveillance or hidden hostility once per scene without rolling." },
+        "3": { "effect": "Succeed on Resolve against SPT-equal or lower attackers without rolling, once per encounter. Investigation reveals concealed intent as well as hidden objects." },
+        "4": { "effect": "Use Investigate as a free action once per round. Environmental hazards are detected before they trigger." },
+        "5": { "effect": "Immune to Fear status effect. Once per session, automatically succeed on one Resolve or Investigate roll of your choice." }
+      }
+    },
+    "desire": {
+      "name": "Desire",
+      "subtitle": "The Engine of Change",
+      "type": "skill",
+      "tier": 1,
+      "skill_type": "social",
+      "chakra": "sacral",
+      "chakra_bridge": "change",
+      "virtue": "chastity",
+      "vice": "lust",
+      "domain": "The generative current. What you want and how you pursue or restrain it. Seduction of all kinds. Change is inevitable and both virtue and vice are responses to it.",
+      "covers": ["seduce", "resolve"],
+      "governing_stat": "SPT or BDY",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 2 }],
+      "levels": {
+        "1": { "effect": "+L flat bonus to Seduce and Resolve social actions." },
+        "2": { "effect": "Increase Max SP by 4. Enthralled stacks applied by your Seduce actions last 1 additional round." },
+        "3": { "effect": "Target multiple people with a single Seduce action (up to L targets, at -L penalty). Resolve grants Determination stacks equal to margin, not just 1." },
+        "4": { "effect": "Resistance to Seduce attempts against you is reduced by L. Once per scene, apply Enthralled 1 to a neutral target without a roll." },
+        "5": { "effect": "Once per session, a Seduce action auto-succeeds against a non-hostile target regardless of roll. Your own Resolve cannot be broken by social effects of lower tier." }
+      }
+    },
+    "willpower": {
+      "name": "Willpower",
+      "subtitle": "Protection and Extraction",
+      "type": "skill",
+      "tier": 1,
+      "skill_type": "social",
+      "chakra": "solar_plexus",
+      "chakra_bridge": "will",
+      "virtue": "temperance",
+      "vice": "greed",
+      "domain": "Power — the body's battery. Temperance flows from genuine sufficiency. Greed is the signal of an empty or uncertain battery. Will is the force that acts on the world.",
+      "covers": ["persuade", "inspire"],
+      "governing_stat": "SPT",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 3 }],
+      "levels": {
+        "1": { "effect": "+L flat bonus to Persuade and Inspire social actions." },
+        "2": { "effect": "Increase Max SP by 4. Rapport generated from Persuade is increased by L." },
+        "3": { "effect": "Persuade can target groups of up to L individuals simultaneously at no penalty. Inspire bonus applies to any ally within 30 ft." },
+        "4": { "effect": "Once per scene, Persuade or Inspire with double margin effect. Inspiration stacks from your Inspire actions grant +1 AP to targets." },
+        "5": { "effect": "Once per session, a failed Persuade or Inspire roll becomes a success. Targets persuaded by you cannot be counter-persuaded by a lower-rank character this scene." }
+      }
+    },
+    "courage": {
+      "name": "Courage",
+      "subtitle": "To Forgive or to Avenge",
+      "type": "skill",
+      "tier": 1,
+      "skill_type": "social",
+      "chakra": "heart",
+      "chakra_bridge": "love",
+      "virtue": "forgiveness",
+      "vice": "wrath",
+      "domain": "Love — the center. Forgiveness is Love's restorative force. Wrath is Love's corrective force — the feedback that sometimes has to hurt to help. Both are expressions of the same center.",
+      "covers": ["inspire", "intimidate"],
+      "governing_stat": "SPT",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 2 }],
+      "levels": {
+        "1": { "effect": "+L flat bonus to Inspire and Intimidate social actions." },
+        "2": { "effect": "Increase Max SP by 4. Fear stacks you apply last 1 additional round. Inspiration stacks you apply grant +1 to morale checks." },
+        "3": { "effect": "Use Inspire and Intimidate in the same turn once per encounter. Demoralize from your Intimidate reduces target Max SP by L instead of 2." },
+        "4": { "effect": "Fear effects you apply ignore L points of target resistance. Inspire removes 1 Fear or Demoralize stack from an ally as a free action." },
+        "5": { "effect": "Once per session, a single Intimidate auto-succeeds against a non-boss target. Allies who have received your Inspire cannot be Intimidated by lower-rank sources." }
+      }
+    },
+    "discovery": {
+      "name": "Discovery",
+      "subtitle": "Finding Truth and Deciding What to Do With It",
+      "type": "skill",
+      "tier": 1,
+      "skill_type": "social",
+      "chakra": "throat",
+      "chakra_bridge": "truth",
+      "virtue": "diligence",
+      "vice": "sloth",
+      "domain": "Finding truth and deciding whether to reveal or conceal it. Active search. Standing firm on what you have found.",
+      "covers": ["investigate", "resolve"],
+      "governing_stat": "MND",
+      "requirements": [{ "type": "stat_min", "stat": "MND", "value": 2 }],
+      "levels": {
+        "1": { "effect": "+L flat bonus to Investigate and Resolve social actions." },
+        "2": { "effect": "Increase Max MP by 4. Detect active concealment or Deceive attempts within L×10 ft passively once per scene." },
+        "3": { "effect": "Resolve succeeds automatically against Deceive-based attacks of equal or lower MND rank, once per encounter. Investigate reveals the motivation behind a concealed object or trap, not just its existence." },
+        "4": { "effect": "Investigate as a free action once per round. Successful Resolve applies Exposed 1 to the attacker whose social action you resist." },
+        "5": { "effect": "Cannot be fooled by Misrepresentation or illusions from sources of lower tier. Once per session, Investigate reveals one secret the scene contains, chosen by the GM." }
+      }
+    },
+    "observation": {
+      "name": "Observation",
+      "subtitle": "Noticing What Others Miss",
+      "type": "skill",
+      "tier": 1,
+      "skill_type": "social",
+      "chakra": "third_eye",
+      "chakra_bridge": "fate",
+      "virtue": "kindness",
+      "vice": "envy",
+      "domain": "Noticing what others miss. Detecting surveillance. Threat sensing. Perceiving at distance through sound, smell, motion. Compassion born from genuinely perceiving the threads of fate on another.",
+      "covers": ["insight", "investigate"],
+      "governing_stat": "SPT",
+      "requirements": [{ "type": "stat_min", "stat": "SPT", "value": 3 }],
+      "levels": {
+        "1": { "effect": "+L flat bonus to Insight and Investigate social actions." },
+        "2": { "effect": "Increase Max MP by 4. Read dominant emotional state of any visible creature as a free action once per round." },
+        "3": { "effect": "Detect all active surveillance, watching, or pursuit within L×30 ft without rolling. Insight reveals the target's immediate intent, not just emotional state." },
+        "4": { "effect": "Threat awareness extends to L×60 ft. Detect concealed weapons, hidden persons, or prepared ambushes within that range." },
+        "5": { "effect": "Once per encounter, predict a target's next social or combat action before they take it. The GM reveals the action type. You may respond first." }
+      }
+    },
+    "wisdom": {
+      "name": "Wisdom",
+      "subtitle": "Learning From Others and Projecting What You Know",
+      "type": "skill",
+      "tier": 1,
+      "skill_type": "social",
+      "chakra": "crown",
+      "chakra_bridge": "memory",
+      "virtue": "humility",
+      "vice": "pride",
+      "domain": "Memory — Humility remembers the limits of what you know. Pride is the assurance of what you do know. Both are valid. Wisdom is knowing which the moment calls for.",
+      "covers": ["insight", "persuade"],
+      "governing_stat": "MND",
+      "requirements": [{ "type": "stat_min", "stat": "MND", "value": 3 }],
+      "levels": {
+        "1": { "effect": "+L flat bonus to Insight and Persuade social actions." },
+        "2": { "effect": "Increase Max MP by 4. Recall relevant social, cultural, or personal history about a target without rolling, once per scene." },
+        "3": { "effect": "Persuade that accurately reflects Insight of the target gains +L bonus. Accumulated knowledge can substitute for Rapport with known contacts." },
+        "4": { "effect": "Reduce target's social defense by L when Persuading using demonstrated knowledge of their position or values." },
+        "5": { "effect": "Once per session, automatically succeed on a Persuade roll against a known contact by drawing on shared history. Cannot be refused if Rapport is Warm or higher." }
+      }
+    }
+  },
+
+  "tier_2_skills": {
+
+    "inspiring": {
+      "name": "Inspiring",
+      "subtitle": "Motivational Leadership Before Formal Command",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "inspire",
+      "parent_tier1": "willpower or courage",
+      "domain": "General motivational leadership before formal command structure. The sergeant has Inspiring. The lieutenant requires Leadership built on top of it.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or courage", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Inspire actions in leadership and motivational contexts. Allies within 30 ft gain +1 morale on all rolls while receiving your active direction." },
+        "2": { "effect": "Remove 1 Fear or Demoralize stack from up to L allies with a single Inspire action." },
+        "3": { "effect": "Inspiring speech applies to combat turns. When you Inspire an ally, their next attack roll gains +L." },
+        "4": { "effect": "Once per scene, a rallying declaration gives all allies within 30 ft 1 Inspiration stack simultaneously." },
+        "5": { "effect": "Allies under your active direction cannot receive Demoralize from sources of lower rank than you. Prerequisite for Leadership (Tier 3)." }
+      }
+    },
+
+    "string_instruments": {
+      "name": "String Instruments",
+      "subtitle": "Inspire Through String Performance",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "inspire",
+      "parent_tier1": "willpower or courage",
+      "domain": "Lutes, lyres, harps, bowed strings. Each instrument family is its own Tier 2 branch. Performance as a vehicle for the Inspire action.",
+      "governing_stat": "SPT or MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or courage", "tier": 1, "minimum_rank": 2 },
+        { "type": "equipment", "description": "A string instrument" }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Inspire through string performance. Inspire actions made through music affect all listeners within hearing range." },
+        "2": { "effect": "Sustained performance maintains Inspiration stacks without requiring repeated actions. One Inspire action sustains for L rounds." },
+        "3": { "effect": "Musical Inspire can target specific emotional states. Name the emotional response — listeners experience it as long as you play." },
+        "4": { "effect": "Performance Inspire can be maintained as a background action while taking other actions. -L to performance roll if doing so." },
+        "5": { "effect": "Once per session, a completed performance generates Rapport equal to your roll with every listener present simultaneously." }
+      }
+    },
+
+    "percussion_instruments": {
+      "name": "Percussion Instruments",
+      "subtitle": "Inspire Through Rhythm and Percussive Performance",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "inspire",
+      "parent_tier1": "willpower or courage",
+      "domain": "Drums, bells, struck instruments. Inspire through rhythm. Particularly effective in combat contexts.",
+      "governing_stat": "BDY or SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or courage", "tier": 1, "minimum_rank": 2 },
+        { "type": "equipment", "description": "A percussion instrument" }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Inspire through rhythmic percussion. Inspire actions in combat gain +L when accompanied by drumming." },
+        "2": { "effect": "Allies who can hear the beat gain +1 to initiative and movement actions each round." },
+        "3": { "effect": "Sustained battle rhythm removes 1 Slow stack from any ally who moves on beat each round." },
+        "4": { "effect": "War drum performance Inspires all allies within 60 ft simultaneously. Each gains 1 Inspiration stack." },
+        "5": { "effect": "Once per session, a crescendo performance grants all allies a free reaction token. Fear effects are suppressed for L rounds in all who hear it." }
+      }
+    },
+
+    "wind_instruments": {
+      "name": "Wind Instruments",
+      "subtitle": "Inspire Through Breath and Wind Performance",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "inspire",
+      "parent_tier1": "willpower or courage",
+      "domain": "Flutes, horns, pipes, reeds. Inspire through breath and wind performance. Signals, ceremony, and emotional resonance.",
+      "governing_stat": "SPT or MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or courage", "tier": 1, "minimum_rank": 2 },
+        { "type": "equipment", "description": "A wind instrument" }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Inspire through wind performance. Horn calls and signal playing can communicate Inspire effects across long distances without close range." },
+        "2": { "effect": "Ceremonial playing adds +L to ritual or formal social events attended. Inspire actions in formal contexts are treated as one tier higher." },
+        "3": { "effect": "Extended wind performance can reach targets out of normal social range. Inspire affects anyone who can hear the sound." },
+        "4": { "effect": "A specific musical phrase becomes a recognized signal. Allies who know the phrase gain +1 to their next action when they hear it." },
+        "5": { "effect": "Once per session, a solo performance can shift the emotional tenor of a crowd or formal gathering. The GM adjusts collective NPC mood by one stage in the direction you play toward." }
+      }
+    },
+
+    "choreography": {
+      "name": "Choreography",
+      "subtitle": "Inspire Through Movement and Physical Performance",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "inspire",
+      "parent_tier1": "willpower or courage",
+      "domain": "Dance and physical performance. Inspire through movement. The body as expressive instrument. SPT for grace, BDY for force.",
+      "governing_stat": "SPT or BDY",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or courage", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Inspire through physical performance. Inspire actions made through movement or dance affect all visible observers." },
+        "2": { "effect": "Physical performance can accompany combat actions. Choreographed movement grants +L dodge to allies who mirror your movements." },
+        "3": { "effect": "Ritual movement generates Rapport with observers equal to roll margin in addition to Inspire effect." },
+        "4": { "effect": "Combat choreography: when you succeed on a social Inspire through movement in combat, all allies gain +1 AP next round." },
+        "5": { "effect": "Once per session, a complete performance piece changes the emotional state of the scene. Observers experience the intended emotion as real for L rounds." }
+      }
+    },
+
+    "storytelling": {
+      "name": "Storytelling",
+      "subtitle": "Inspire Through Oral Narrative",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "inspire",
+      "parent_tier1": "willpower or courage",
+      "domain": "Oral narrative tradition. Inspire through story. The oldest performance form. Knowledge becomes living through the act of telling.",
+      "governing_stat": "SPT or MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or courage", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Inspire through narrative. Stories that reference accurate historical, cultural, or personal knowledge gain an additional +L." },
+        "2": { "effect": "A told story creates shared Rapport between all listeners equal to half roll margin. Listeners feel connected to each other through the shared narrative." },
+        "3": { "effect": "Embed a suggestion into a story. Listeners who fail a Resolve roll find the embedded idea difficult to dismiss. Not Deceive — the story is true." },
+        "4": { "effect": "Once per scene, a well-told story removes Hostile or lower negative Rapport by up to L tiers with a group simultaneously." },
+        "5": { "effect": "Once per session, a defining story about a target uses their own values to shift their behavior. They act in accordance with the story's implication for L days." }
+      }
+    },
+
+    "social_seduction": {
+      "name": "Social Seduction",
+      "subtitle": "Making Yourself Irresistible",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "seduce",
+      "parent_tier1": "desire",
+      "domain": "Charm, allure, personal magnetism in social contexts. Making yourself the most compelling presence in the room.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "desire", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Seduce using personal magnetism. Bonus to establishing first impressions with unfamiliar contacts." },
+        "2": { "effect": "Remove -L from jealousy, rivalry, or competing interest penalties on social rolls. Your presence manages social competition." },
+        "3": { "effect": "Enthralled targets under social seduction remain affected for L additional rounds after source leaves the scene." },
+        "4": { "effect": "Once per scene, establish immediate favorable impression with any stranger regardless of prior context. Rapport starts at Cordial (5)." },
+        "5": { "effect": "Once per session, gain a social favor from a target despite unfavorable circumstances. They act in your interest once without Persuade or Intimidate." }
+      }
+    },
+
+    "intellectual_seduction": {
+      "name": "Intellectual Seduction",
+      "subtitle": "Making Ideas Irresistible",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "seduce",
+      "parent_tier1": "desire",
+      "domain": "Presenting a concept so compellingly that the other party wants to believe it or act on it. The philosopher, the visionary, the demagogue.",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "desire", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Seduce when the target of desire is an idea, vision, or course of action rather than a person." },
+        "2": { "effect": "Intellectual Seduce applies to groups. All listeners with lower MND than your roll become Enthralled toward the idea presented." },
+        "3": { "effect": "Ideas you have successfully seduced targets toward persist for L days without reinforcement. They continue to find the idea compelling." },
+        "4": { "effect": "Combine Intellectual Seduction with a Persuade action for no additional AP. The seduction primes the target; the persuasion closes the argument." },
+        "5": { "effect": "Once per session, plant an idea that becomes self-reinforcing. The target actively seeks supporting evidence. The GM tracks this as a campaign element." }
+      }
+    },
+
+    "aesthetic_seduction": {
+      "name": "Aesthetic Seduction",
+      "subtitle": "Making Experiences and Objects Irresistible",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "seduce",
+      "parent_tier1": "desire",
+      "domain": "The artist, the designer, the chef, the merchant. Making what you create, sell, or present impossible to resist. Seduction directed at craft and experience.",
+      "governing_stat": "SPT or MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "desire", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Seduce when the target of desire is an object, service, or crafted experience. Aesthetic presentation raises perceived value by L." },
+        "2": { "effect": "Successful Aesthetic Seduce increases the price a target will pay for the offered item by L×10% without resistance." },
+        "3": { "effect": "Create Enthralled 1 toward an object or service through presentation alone, without direct interaction." },
+        "4": { "effect": "Once per scene, present something so compellingly that a group purchase or agreement becomes socially expected. Individuals who refuse feel social pressure from peers." },
+        "5": { "effect": "Once per session, a crafted or curated experience generates Rapport equal to roll margin with everyone present simultaneously. The memory of it persists." }
+      }
+    },
+
+    "debate": {
+      "name": "Debate",
+      "subtitle": "Structured Intellectual Exchange",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "persuade",
+      "parent_tier1": "willpower or wisdom",
+      "domain": "One-on-one or small group. Logic, evidence, and structured counter-argument. Knowledge Tags in the relevant topic create floors and ceilings on effectiveness.",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or wisdom", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Persuade in structured argument contexts. Knowledge Tags in the debated topic provide +L per relevant Tag tier." },
+        "2": { "effect": "Reroll one failed Debate Persuade check per scene. The second roll uses the better result." },
+        "3": { "effect": "Successfully counter an opponent's argument: after blocking their Persuade, immediately make a free Persuade action against them." },
+        "4": { "effect": "Intellectual dismantling: a winning Debate margin of 10+ applies 1 Confuse stack to the target as their position fractures under logical pressure." },
+        "5": { "effect": "Once per session, a definitively won debate shifts target's fundamental position. They adopt your stance and defend it. Not Deceive — you won honestly." }
+      }
+    },
+
+    "negotiate": {
+      "name": "Negotiate",
+      "subtitle": "Mutual Concession Finding",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "persuade",
+      "parent_tier1": "willpower or wisdom",
+      "domain": "Political exchange. Finding terms both parties can accept. Requires both parties willing to engage. Produces binding social agreements when successful.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower or wisdom", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Persuade when negotiating terms between parties. Successful negotiation generates Rapport with all parties equal to roll margin." },
+        "2": { "effect": "Increase Rapport with all negotiating parties by L during the session of negotiation." },
+        "3": { "effect": "Allies present during your negotiation gain +L morale. Hostile parties reduce hostility by 1 Rapport tier during active parley." },
+        "4": { "effect": "Reduce a hostile party's antagonism by 1 Rapport tier per day of sustained negotiation. The improvement persists unless actively reversed." },
+        "5": { "effect": "Auto-succeed on Negotiate Persuade against neutral parties. Agreements made under your negotiation carry social weight — breaking them costs the breaching party -25 Rapport with all witnesses." }
+      }
+    },
+
+    "rhetoric": {
+      "name": "Rhetoric",
+      "subtitle": "Crowd-Scale Persuasion",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "persuade",
+      "parent_tier1": "willpower",
+      "domain": "Public speaking, oratory, the ability to move large groups. Generates Rapport with multiple targets simultaneously. The senator, the general addressing troops, the preacher.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "willpower", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Persuade when addressing groups. A single Persuade action affects all listeners whose SPT is equal to or less than your roll." },
+        "2": { "effect": "Generate Rapport equal to half roll margin with every listener simultaneously. The crowd begins moving in the same emotional direction." },
+        "3": { "effect": "Allies following your rhetorical lead gain +L morale during the scene. Crowd emotions become partially contagious — emotional states spread without your direct action." },
+        "4": { "effect": "Influenced groups maintain the persuaded position for L days after the speech without reinforcement." },
+        "5": { "effect": "Once per session, a defining speech shifts a group's collective position on a significant matter. The GM implements this as a faction or campaign event." }
+      }
+    },
+
+    "concealment": {
+      "name": "Concealment",
+      "subtitle": "Omission, Misdirection, and Strategic Silence",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "deceive",
+      "parent_tier1": "survival or discovery",
+      "domain": "What you don't say. What you make invisible. Silence as a form of deception. Hiding objects, people, or information in plain sight without lying directly.",
+      "governing_stat": "MND or SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "survival or discovery", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Deceive actions that rely on omission, redirection, or misdirection rather than direct falsehood." },
+        "2": { "effect": "Hide objects or people in plain sight. Any Investigate roll targeting concealed items takes -L penalty." },
+        "3": { "effect": "Conversations you direct can conceal topics from passive listeners without Insight detecting the absence." },
+        "4": { "effect": "Strategic silence: successfully withhold information from a scene's entire Insight pool once per scene without triggering detection." },
+        "5": { "effect": "Once per session, cause a specific piece of information, object, or person to be functionally invisible to a scene. Even active search finds nothing for L rounds." }
+      }
+    },
+
+    "lying": {
+      "name": "Lying",
+      "subtitle": "Direct False Statement Delivered Convincingly",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "deceive",
+      "parent_tier1": "survival or discovery",
+      "domain": "Direct false statements delivered convincingly. The construction and maintenance of a specific false belief in the target.",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "survival or discovery", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Deceive when delivering direct false statements. Lies become harder to distinguish from truth — Insight checks take -L penalty against your lies." },
+        "2": { "effect": "Redirect blame or suspicion with +L advantage. Successfully identify another as the source of a problem or action." },
+        "3": { "effect": "Mimic speech patterns, mannerisms, and communication style of a known individual with 95% accuracy after L rounds of study." },
+        "4": { "effect": "Once per scene, bluff to escape or force a reroll on one opposed check. The bluff does not need to be plausible — only delivered with conviction." },
+        "5": { "effect": "Maintain contradictory lies simultaneously. Targets who have received conflicting information from you believe both, or believe neither — GM's choice based on their psychology." }
+      }
+    },
+
+    "misrepresentation": {
+      "name": "Misrepresentation",
+      "subtitle": "Truth Distorted Rather Than Replaced",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "deceive",
+      "parent_tier1": "survival or discovery",
+      "domain": "Disguise, theatre, exaggeration, understatement. Altering how something true appears. The actor, the spy with a cover identity, the salesperson who exaggerates benefits.",
+      "governing_stat": "SPT or MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "survival or discovery", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Deceive through physical disguise, theatrical presentation, or distortion of true information." },
+        "2": { "effect": "Maintain a cover identity with +L to all social rolls while in character. Physical disguise holds for L days without re-application." },
+        "3": { "effect": "Exaggeration or understatement: reframe any true fact to produce an opposite impression. Target believes the distortion without Insight check if margin ≥ 5." },
+        "4": { "effect": "Shift apparent identity convincingly enough to fool Insight checks of equal rank. The performance is the truth, for all practical purposes, in this scene." },
+        "5": { "effect": "Once per session, establish a false identity so complete that even background investigation supports it. The GM confirms cover identity has no obvious vulnerabilities." }
+      }
+    },
+
+    "presence": {
+      "name": "Presence",
+      "subtitle": "Physical Power That the Body Communicates",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "intimidate",
+      "parent_tier1": "courage",
+      "domain": "The barbarian. Power that comes from what the body communicates. Effective anywhere the body is visible. Governed by BDY. Raw authority without title or position.",
+      "governing_stat": "BDY",
+      "requirements": [
+        { "type": "skill_min", "skill": "courage", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Intimidate using physical size, bearing, and demonstrated capability. Fear stacks from Presence last 1 additional round." },
+        "2": { "effect": "Intimidated targets suffer -L to movement-adjacent actions for 1 round. Physical presence makes escape feel impossible." },
+        "3": { "effect": "+L to initiative when Intimidating at first contact in a scene. The first impression of your physical capability lands before opposition organizes." },
+        "4": { "effect": "+L defense when standing still and focusing physical presence on a single target. The controlled stillness reads as danger." },
+        "5": { "effect": "Auto-succeed Presence Intimidate against any single non-boss NPC with lower BDY rank. They do not resist." }
+      }
+    },
+
+    "authority": {
+      "name": "Authority",
+      "subtitle": "Power Granted by Social Structure",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "intimidate",
+      "parent_tier1": "courage",
+      "domain": "The king. Power from what the social structure grants. Effective within the domain of that authority. Loses leverage outside it. Title Tags amplify significantly.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "courage", "tier": 1, "minimum_rank": 2 },
+        { "type": "knowledge_tag", "description": "Any Title or Position Tag" }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Intimidate within your domain of authority. Title Tags provide +L per tier when exercising authority within their domain." },
+        "2": { "effect": "Authority Intimidate applies Demoralize to targets who recognize your position rather than just Fear." },
+        "3": { "effect": "Extended authority: exercise authority-based Intimidate one domain level beyond your current position. The reach is temporary but effective." },
+        "4": { "effect": "Once per scene, invoke institutional backing to make a demand. The target must Resolve or comply — the demand arrives with the weight of the entire structure behind it." },
+        "5": { "effect": "Your authority within its domain cannot be socially undermined by lower-rank sources. Challenges to your position must come from equivalent or higher authority." }
+      }
+    },
+
+    "consequence": {
+      "name": "Consequence",
+      "subtitle": "Demonstrated Ability to Follow Through",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "intimidate",
+      "parent_tier1": "courage",
+      "domain": "The stage director. Power from controlling something the target needs. Effective specifically against people who need what is being threatened. Useless against those who do not care.",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "courage", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Intimidate when the threat involves demonstrated control over something the target values. Effectiveness scales with target's dependence, not your physical power." },
+        "2": { "effect": "Threat delivery applies Confuse 1 in addition to Fear 1 — the target becomes uncertain about how to respond." },
+        "3": { "effect": "Once per scene, present a consequence so precisely calibrated to a target's specific vulnerability that they cannot dismiss it without a MND roll equal to your rank." },
+        "4": { "effect": "Delivered consequences that are later followed through upgrade all future Consequence Intimidate against that target by +L permanently." },
+        "5": { "effect": "Once per session, issue an ultimatum that the target must act on or face the stated consequence. The GM implements the stated consequence if the target does not comply within the scene." }
+      }
+    },
+
+    "shame": {
+      "name": "Shame",
+      "subtitle": "Making the Gap Between Claimed and Actual Self Visible",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "insight",
+      "parent_tier1": "observation or wisdom",
+      "domain": "Seeing the gap between who a target claims to be and who they actually are, then making it visible. Requires Insight to identify the gap. Requires Intimidate or Deceive to leverage it.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "observation or wisdom", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Insight when reading the gap between claimed identity and actual behavior. Applies Embarrassed 1 on success." },
+        "2": { "effect": "Successful Shame applies Embarrassed and Exposed simultaneously. The target's position is weakened on both social and physical defense." },
+        "3": { "effect": "Shame delivered in front of witnesses applies Embarrassed 2 rather than 1. The social context amplifies the effect." },
+        "4": { "effect": "Targeted shame: identify a specific self-image the target is protecting. Any attack on that self-image deals double Embarrassed stacks for L rounds." },
+        "5": { "effect": "Once per session, the revelation of a target's fundamental self-contradiction breaks their social defense for the scene. They cannot use social skills offensively while Embarrassed." }
+      }
+    },
+
+    "inner_resolve": {
+      "name": "Inner Resolve",
+      "subtitle": "Self-Knowledge as Social Defense",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "insight",
+      "parent_tier1": "observation or survival",
+      "domain": "Knowing your own position so clearly that social pressure slides off. The character who has examined their own beliefs resists attempts to destabilize them.",
+      "governing_stat": "SPT or MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "observation or survival", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Resolve social actions. Clarity of internal position reduces the impact of Deceive, Seduce, and Shame attempts by L." },
+        "2": { "effect": "Increase Max MP by 4. Attempts to Confuse you take -L penalty." },
+        "3": { "effect": "Determination stacks you generate through Resolve cannot be removed except by your own choice." },
+        "4": { "effect": "Once per encounter, convert incoming MP damage from a social attack into Determination stacks instead." },
+        "5": { "effect": "Immune to Confuse status effect. Social attacks that fail against you provide no information about your actual position to the attacker." }
+      }
+    },
+
+    "observe": {
+      "name": "Observe",
+      "subtitle": "Passive Wider-Lange Perception",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "investigate",
+      "parent_tier1": "survival or observation",
+      "domain": "Scanning rather than searching. Noticing what changes in the environment without active effort. Threat detection at range. Sound, smell, motion, distant features.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "survival or observation", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to passive Investigate checks. Become aware of changes in environmental state without actively looking. Ranges treated as one category larger." },
+        "2": { "effect": "Detect surveillance — know when you are being watched within L×30 ft without a roll." },
+        "3": { "effect": "Environmental sweep as a free action once per round. Identify all moving objects or persons within range regardless of concealment." },
+        "4": { "effect": "Ambient awareness: you are never surprised by social or environmental changes within your Observe range. Ambush conditions are detected early." },
+        "5": { "effect": "Once per session, a full environmental Observe of a location reveals its significant secrets — hidden passages, concealed persons, emotional residue. GM determines specifics." }
+      }
+    },
+
+    "search": {
+      "name": "Search",
+      "subtitle": "Active Close-Lange Investigation",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "investigate",
+      "parent_tier1": "survival or discovery",
+      "domain": "Methodical examination. Finding hidden objects, concealed passages, planted evidence, traps. Close range. Active effort required.",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "survival or discovery", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Investigate when actively searching a specific area. Concealed objects take -L to their effective concealment against your Search." },
+        "2": { "effect": "Search time reduced by half. A thorough search that would take L rounds takes L/2 rounds (minimum 1)." },
+        "3": { "effect": "Find secondary concealed elements alongside the primary target. Each successful Search reveals one additional hidden element at GM's discretion." },
+        "4": { "effect": "Planted evidence is flagged as planted on a successful Search rather than found as real. Traps are identified with context — who set them and how long ago." },
+        "5": { "effect": "Nothing stays hidden from a complete Search. Once per scene, a thorough examination of a defined area reveals everything of mechanical consequence the GM has placed there." }
+      }
+    },
+
+    "appraise": {
+      "name": "Appraise",
+      "subtitle": "Determining True Value, Quality, or Nature",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "investigate",
+      "parent_tier1": "discovery or wisdom",
+      "domain": "Active examination to understand what something actually is versus what it appears to be. Close range. Requires knowing what you are looking at.",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "skill_min", "skill": "discovery or wisdom", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Investigate when determining the true value, authenticity, or nature of an object, agreement, or situation." },
+        "2": { "effect": "Appraise forgeries and counterfeits without reference materials. Detect quality tier of materials or craftsmanship at a glance." },
+        "3": { "effect": "Appraise social situations: determine whether an agreement, offer, or relationship is genuine. Social Appraise cannot be fooled by Lying of equal or lower rank." },
+        "4": { "effect": "Knowledge Tags in the appraised domain provide +L per tier. Appraise provides craft-level evaluation — what is it, what is it worth, what is it for." },
+        "5": { "effect": "Once per session, a complete Appraise of any object or situation reveals its true nature without ambiguity. If deception was present, the deceiver is identified." }
+      }
+    },
+
+    "track": {
+      "name": "Track",
+      "subtitle": "Following Evidence of Passage Over Distance and Time",
+      "type": "skill",
+      "tier": 2,
+      "skill_type": "social",
+      "parent_action": "investigate",
+      "parent_tier1": "survival or observation",
+      "domain": "Reading signs left behind. Crosses into Hunting profession territory — requires both Investigate and knowledge of what you are tracking.",
+      "governing_stat": "MND or SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "survival or observation", "tier": 1, "minimum_rank": 2 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to Investigate when following trails of evidence. Track creature or person movement up to L days old on viable terrain." },
+        "2": { "effect": "Identify the number, type, and condition of tracked subjects from signs alone. Age of trail estimated with ±L hours accuracy." },
+        "3": { "effect": "Track through difficult terrain (rain, crowds, water) at -L penalty rather than being stopped. Social tracking — follow a rumor or information trail — uses same mechanics." },
+        "4": { "effect": "Ambush preparation: when you reach the end of a track, you are not surprised by what you find. The preparation time is the tracking time." },
+        "5": { "effect": "Once per session, follow a trail through any conditions regardless of difficulty. If a trail exists, you find it and follow it. GM cannot say the trail is lost." }
+      }
+    }
+  },
+
+  "tier_3_skills": {
+    "leadership": {
+      "name": "Leadership",
+      "subtitle": "Coordinated Group Direction and Command Structure",
+      "type": "skill",
+      "tier": 3,
+      "skill_type": "social",
+      "parent_tier2": "inspiring",
+      "domain": "Tactical coordination of multiple people toward a shared goal. Command structure. The lieutenant, the general, the guild master. Requires demonstrated ability to inspire before command structure is earned.",
+      "governing_stat": "SPT",
+      "requirements": [
+        { "type": "skill_min", "skill": "inspiring", "tier": 2, "minimum_rank": 2 },
+        { "type": "skill_min", "skill_category": "any_combat", "minimum_rank": 1 }
+      ],
+      "levels": {
+        "1": { "effect": "+L to all group Persuade and coordination actions. Allies following explicit tactical direction gain +L morale on follow-through actions." },
+        "2": { "effect": "Allies within 30 ft gain +L morale in dangerous situations while under your active command. Demoralize stacks directed at allies under your Leadership are reduced by L." },
+        "3": { "effect": "+L to ally follow-up actions taken immediately after your direction. Tactical relay: your commands grant allies +L to the first action taken each round while coordinated." },
+        "4": { "ap_cost": 2, "effect": "Spend 2 AP to grant L allies +1 AP or +4 MP for their next action. Coordinated command extends your resource pool to your unit." },
+        "5": { "effect": "Once per session, a defining command removes all Fear and hesitation from allies within range. Demoralize, Fear, and Confuse stacks are cleared. The effect lasts L rounds." }
+      }
+    }
+  },
+
+  "mystical_skills": {
+    "_note": "These skills are a parallel track to social skills, not part of the social system. Social skills and Emotional Affinities develop the same chakra channels through different means. Preserved here pending a dedicated Mystical system document.",
+
+    "arcane_theory": {
+      "name": "Arcane Theory",
+      "subtitle": "Foundational Magical Knowledge",
+      "skill_type": "mystical",
+      "governing_stat": "MND",
+      "requirements": [{ "type": "stat_min", "stat": "MND", "value": 2 }],
+      "levels": {
+        "1": { "effect": "+L to identify spells, glyphs, or wards." },
+        "2": { "effect": "Reduce time to decipher magic scrolls or runes by 50%." },
+        "3": { "effect": "Detect nearby active spells or ambient mana flow." },
+        "4": { "effect": "+L to memorize or counter known spells." },
+        "5": { "effect": "Auto-identify any spell of Rank L or lower with a glance." }
+      }
+    },
+
+    "channeling": {
+      "name": "Channeling",
+      "subtitle": "Energy Focusing Style",
+      "skill_type": "mystical",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "stat_min", "stat": "MND", "value": 3 },
+        { "type": "equipment", "description": "Magical Focus Item" }
+      ],
+      "levels": {
+        "1": { "effect": "+L to maintain or empower ongoing magical effects." },
+        "2": { "effect": "Delay or redirect your own spell activation by 1 round." },
+        "3": { "mp_cost": "L additional", "effect": "Spend +L MP to amplify next spell by +L effect." },
+        "4": { "effect": "Double range or area for 1 spell." },
+        "5": { "effect": "Ignore max MP limit for 1 spell." }
+      }
+    },
+
+    "elemental_harmony": {
+      "name": "Elemental Harmony",
+      "subtitle": "Balance of the Four",
+      "skill_type": "mystical",
+      "governing_stat": "MND",
+      "requirements": [
+        { "type": "stat_min", "stat": "MND", "value": 2 },
+        { "type": "affinity", "description": "Any Elemental Affinity" }
+      ],
+      "levels": {
+        "1": { "effect": "+L to resist your primary element." },
+        "2": { "effect": "Use a secondary element's effect at reduced power." },
+        "3": { "effect": "Change element-based abilities to an alternate element." },
+        "4": { "effect": "Retain a spell effect without upkeep." },
+        "5": { "effect": "Channel two elemental effects simultaneously." }
+      }
+    }
+  }
+}

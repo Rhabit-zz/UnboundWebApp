@@ -1,725 +1,756 @@
 {
   "_meta": {
-    "document": "professions.json",
+    "document": "CraftSkills.json",
     "system": "Unbound TTRPG",
     "studio": "RHabit Game Development",
-    "version": "0.1-draft",
-    "source": "Unbound Knowledge Crafting and Profession Systems document.",
+    "version": "0.2-draft",
+    "source": "Unbound Crafting Skill Examples, Crafting Rules, Medieval Job Descriptions, Industrial Era Professions.",
     "notes": [
       "Profession Skills use the same XP pool as combat skills.",
-      "level cost: R+1 XP to raise from R to R+1. (R1=1, R2=2, R3=3, R4=4, R5=5 = 15 XP total to max.)",
+      "level cost: L+1 XP to raise from L to L+1. (L1=1, L2=2, L3=3, L4=4, L5=5 = 15 XP total to max.)",
       "Skill level may never exceed the governing stat level.",
       "Recipe memory: level squared (crafting recipes). level cubed (tool recipes).",
-      "Missing tags can be bridged by skill level: R1=10%, R2=20%, R3=30%, R4=40%, R5=50% of recipe tags.",
+      "Missing tags can be bridged by skill level: L1=10%, L2=20%, L3=30%, L4=40%, L5=50% of recipe tags.",
       "Affinity Styles function as Profession Skills for spell formula work.",
       "Knowledge Tags are earned through play — not purchased with XP.",
-      "Tag tiers: T1=common, T2=uncommon, T3=rare, T4=epic, T5=world-unique."
+      "Tag tiers: T1=common, T2=uncommon, T3=rare, T4=epic, T5=world-unique.",
+      "Skills organized by era of origin: mundane (ancient-medieval), industrial (Renaissance-steam), future (modern-sci-fi), fantasy (magical/mythological)."
     ]
   },
   "level_framework": {
-    "1": {
-      "title": "Novice",
-      "tier_access": "common",
-      "tag_bridge_percent": 10,
-      "pattern_writing": false,
-      "recipe_memory": 1,
-      "tool_memory": 1
+    "1": { "title": "Novice",      "tag_bridge_percent": 10, "pattern_writing": false,      "recipe_memory": 1,  "tool_memory": 1   },
+    "2": { "title": "Apprentice",  "tag_bridge_percent": 20, "pattern_writing": "common",   "recipe_memory": 4,  "tool_memory": 8   },
+    "3": { "title": "Journeyman",  "tag_bridge_percent": 30, "pattern_writing": "uncommon", "recipe_memory": 9,  "tool_memory": 27  },
+    "4": { "title": "Master",      "tag_bridge_percent": 40, "pattern_writing": "epic",     "recipe_memory": 16, "tool_memory": 64  },
+    "5": { "title": "Artisan",     "tag_bridge_percent": 50, "pattern_writing": "legendary","recipe_memory": 25, "tool_memory": 125 }
+  },
+  "mundane": {
+    "alchemy": {
+      "name": "Alchemy",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Potions, bombs, enhancers, poisons, and reagents.",
+      "associated_crafter_style": "consumable_crafter_style",
+      "required_tools": ["alembic","mortar_pestle","alchemist_supplies","flame_source"],
+      "output_categories": ["potions","bombs","enhancers","poisons","reagents"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Brew common potions and reagents. Identify basic ingredients. Salvage components." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Brew uncommon formulas. Reduce brew time by 50%. Stack 1 effect modifier." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Brew rare formulas. Combine two reagent types. Reduce material cost by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Multi-profession crafting. Custom Formula Templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Legendary formulas. Field-ready without lab. Signature properties. DC -2." }
+      }
     },
-    "2": {
-      "title": "Skilled",
-      "tier_access": "uncommon",
-      "tag_bridge_percent": 20,
-      "pattern_writing": "common",
-      "recipe_memory": 4,
-      "tool_memory": 8
+    "apothecary": {
+      "name": "Apothecary",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Medicines, tinctures, bandages, antidotes, and disease treatments.",
+      "associated_crafter_style": "consumable_crafter_style",
+      "required_tools": ["mortar_pestle","drying_rack","clean_bandages","vials"],
+      "output_categories": ["medicines","antidotes","bandages","tinctures","salves"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Prepare common medicines and bandages. Identify medicinal herbs. Treat minor wounds and common ailments." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Prepare uncommon remedies and tinctures. Treat infections and fevers. Apply 1 condition-cure modifier." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Prepare rare antidotes and treatments. Combine cure types. Reduce condition duration by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Prepare treatments for epidemic-scale conditions. Custom antidote templates. 1 reroll per treatment project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Legendary cures. Reverse permanent conditions. Field-ready without apothecary station. Signature healing compounds. DC -2." }
+      }
     },
-    "3": {
-      "title": "Professional",
-      "tier_access": "rare",
-      "tag_bridge_percent": 30,
-      "pattern_writing": "uncommon",
-      "recipe_memory": 9,
-      "tool_memory": 27
+    "bonecraft": {
+      "name": "Bonecraft",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","fantasy"],
+      "description": "Crafting tools, weapons, armor, and ornaments from bone, antler, chitin, and shell.",
+      "associated_crafter_style": "weapon_crafter_style",
+      "required_tools": ["carving_tools","grinding_stone","awl","heat_source"],
+      "output_categories": ["bone_weapons","bone_armor","chitin_armor","shell_ornaments","bone_tools"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common bone tools and ornaments. Clean and prepare bones. Identify bone and chitin quality." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon bone items. Reinforce and laminate bone layers. Apply 1 Modular Upgrade." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare bone and chitin armor. Combine material types. Reduce material waste by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Craft epic bone constructs. Custom bone-craft templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary bone artifacts. Field bone crafting without workshop. Instill signature traits. DC -2." }
+      }
     },
-    "4": {
-      "title": "Master",
-      "tier_access": "epic",
-      "tag_bridge_percent": 40,
-      "pattern_writing": "epic",
-      "recipe_memory": 16,
-      "tool_memory": 64
+    "bookbinding": {
+      "name": "Bookbinding",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Spellbooks, codices, recipe collections, and tome assembly.",
+      "associated_crafter_style": null,
+      "required_tools": ["binding_press","paper_materials","ink","needle_thread"],
+      "output_categories": ["spellbooks","recipe_books","codices","scrolls"],
+      "special_rules": "Master Codex is a high-tier crafted item providing organization bonuses and reduced recipe lookup time.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Bind common books and journals. Create basic recipe collections." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Bind uncommon tomes. Create organized profession journals with index tabs." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Bind rare codices. Reduce recipe lookup time. Waterproof and reinforce bindings." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Create unified codex volumes combining multiple professions. Apply organization bonuses." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Create Master Codex. Maximum organization bonus. Bind legendary tomes with permanent enchantment-ready pages. DC -2." }
+      }
     },
-    "5": {
-      "title": "Artisan",
-      "tier_access": "legendary",
-      "tag_bridge_percent": 50,
-      "pattern_writing": "legendary",
-      "recipe_memory": 25,
-      "tool_memory": 125
+    "carpentry": {
+      "name": "Carpentry",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Wooden gear, bows, furniture, and structures.",
+      "associated_crafter_style": "projectile_crafter_style",
+      "required_tools": ["saw","chisel","plane","hammer"],
+      "learned_actions": ["cut","carve","notch","polish"],
+      "output_categories": ["weapons_wood","bows","furniture","structures_wood"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common wood items. Use basic tools. Identify timber quality. Salvage lumber." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon items. Reduce craft time by 50%. Repair wooden items. Apply 1 Modular Upgrade." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare items. Combine wood types. Apply 2 Modular Upgrades. Reduce material cost by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft epic items. Field-ready crafting. Instill signature traits. DC -2." }
+      }
+    },
+    "ceramics": {
+      "name": "Ceramics",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Pottery, tiles, ceramic vessels, and structural clay work.",
+      "associated_crafter_style": null,
+      "required_tools": ["pottery_wheel","kiln","clay_tools","glaze_materials"],
+      "output_categories": ["vessels","tiles","ceramic_armor","building_materials","containers"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Throw and fire common ceramic vessels. Identify clay types and quality. Basic glazing." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon ceramics. Apply decorative glazes. Reduce firing failures by 50%." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare ceramic items including laminated armor tiles. Combine clay techniques." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Craft epic ceramic structures and composite armor. Custom ceramic templates. 1 reroll per firing." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Legendary ceramics resistant to heat and magic. Field firing using improvised kiln. DC -2." }
+      }
+    },
+    "cooking": {
+      "name": "Cooking",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Food preparation, field rations, feast meals, and curative cooking.",
+      "associated_crafter_style": "consumable_crafter_style",
+      "required_tools": ["cookware","flame_source","cutting_tools","storage_vessels"],
+      "output_categories": ["meals","rations","feast_items","curative_food","preserved_provisions"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Prepare common meals and field rations. Identify food quality and spoilage. Preserve basic ingredients." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Prepare uncommon dishes with stat recovery effects. Extend food preservation. Apply 1 meal modifier." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Prepare rare delicacies with temporary stat boosts. Combine cuisine styles. Reduce prep time." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Prepare epic feast meals with party-wide effects. Custom recipe templates. 1 reroll per session meal." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Legendary culinary creations with lasting effects. Field cooking without kitchen. Signature dish effects. DC -2." }
+      }
+    },
+    "fletching": {
+      "name": "Fletching",
+      "governing_stat": "SPT",
+      "era": ["mundane","industrial","fantasy"],
+      "description": "Arrows, bolts, darts, and other projectile ammunition.",
+      "associated_crafter_style": "projectile_crafter_style",
+      "required_tools": ["fletching_jig","shaft_tools","binding_materials","tip_tools"],
+      "output_categories": ["arrows","bolts","darts","javelins","specialty_ammo"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common arrows and bolts. Identify shaft and fletching quality. Basic tip attachment." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon projectiles. Apply 1 tip modification (broadhead, blunt, barbed). Increase consistency." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare specialized ammunition. Combine wood, metal, and bone components. Reduce material waste." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Craft epic projectile sets with compound effects. Custom ammunition templates. 1 reroll per batch." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary ammunition. Field crafting without tools. Signature projectile properties. DC -2." }
+      }
+    },
+    "gardening": {
+      "name": "Gardening",
+      "governing_stat": "SPT",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Herb cultivation, reagent farming, and botanical garden management.",
+      "associated_crafter_style": null,
+      "required_tools": ["garden_tools","seed_storage","watering_vessel","planting_medium"],
+      "output_categories": ["herbs","reagents","food_crops","rare_botanicals","cultivated_fungi"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Maintain common herb gardens. Plant and harvest basic crops. Identify soil and growing conditions." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Cultivate uncommon plants. Accelerate growth cycles. Control pests and diseases." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Cultivate rare specimens. Control microenvironments. Produce consistent reagent yields." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Cultivate epic flora. Hybridize species. Grow plants outside their native climate." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Grow legendary botanical specimens. Field cultivation anywhere. Accelerate growth to hours. DC -2." }
+      }
+    },
+    "gem_crafting": {
+      "name": "Gem Crafting",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Gem cutting, polishing, and setting into jewelry or functional items.",
+      "associated_crafter_style": null,
+      "required_tools": ["gem_lathe","polishing_tools","loupe","setting_tools"],
+      "output_categories": ["cut_gems","gem_settings","focus_gems","ornamental_gems","gem_components"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Cut and polish common gemstones. Identify gem quality and inclusions. Basic prong settings." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Cut uncommon gems. Create bezel and channel settings. Apply 1 enhancement cut." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Cut rare gems with multi-facet precision. Combine gems in composite settings." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Cut epic gems with maximum clarity. Custom master settings. 1 reroll per gem project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Cut legendary gems. Instill signature light-refracting properties. Field gem work without lathe. DC -2." }
+      }
+    },
+    "glassblowing": {
+      "name": "Glassblowing",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Glass vessels, lenses, windows, and precision optical components.",
+      "associated_crafter_style": null,
+      "required_tools": ["glass_blowpipe","furnace","shaping_tools","annealing_oven"],
+      "output_categories": ["glass_vessels","lenses","windows","optical_components","glass_components"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Blow common glass vessels and containers. Identify glass quality and clarity." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Blow uncommon glass items. Apply color treatments. Reduce material waste by 50%." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Blow rare optical components (lenses, prisms). Combine glass techniques for layered effects." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Blow epic glass structures and windows. Custom mold templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Blow legendary glass constructs. Field glassblowing with portable furnace. Signature clarity properties. DC -2." }
+      }
+    },
+    "inscription": {
+      "name": "Inscription",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Transcription, illumination, and reproduction of documents, maps, and scrolls.",
+      "associated_crafter_style": null,
+      "required_tools": ["quill_pen","quality_ink","parchment","ruling_tools"],
+      "output_categories": ["copied_documents","maps","scrolls","illuminated_manuscripts","contract_copies"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Copy common documents accurately. Basic calligraphy. Prepare simple maps and scroll sheets." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Produce illuminated documents. Copy uncommon magical texts without loss. Create accurate local maps." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Copy rare arcane texts without transcription errors. Regional cartography. Reduce copy time by 50%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Create master-copy manuscripts. Encode hidden information in inscribed documents. Custom inscription templates." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Legendary manuscripts that preserve magical intent. Perfect reproduction of any text. Signature illumination style. DC -2." }
+      }
+    },
+    "jewelrycraft": {
+      "name": "Jewelrycraft",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Rings, necklaces, bracelets, crowns, and wearable ornaments.",
+      "associated_crafter_style": null,
+      "required_tools": ["jeweler_bench","wire_tools","soldering_tools","loupe"],
+      "output_categories": ["rings","necklaces","bracelets","crowns","wearable_accessories"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common jewelry in base metals. Set common gemstones. Identify metal and gem quality." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon jewelry with complex settings. Apply decorative techniques." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare ornaments. Combine precious metals. Secure rare gem settings without damage." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Craft epic jewelry with functional properties. Custom ornament templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary jewelry. Instill signature aesthetic and functional traits. Field jewelry work. DC -2." }
+      }
+    },
+    "leatherworking": {
+      "name": "Leatherworking",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Leather armor, straps, belts, pouches, and bindings.",
+      "associated_crafter_style": "armor_crafter_style",
+      "required_tools": ["awl","leather_knife","stitching_horse","curing_rack"],
+      "output_categories": ["armor_leather","straps","bindings","pouches_leather"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common leather items. Basic repair. Identify and grade hides." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon items. Reduce craft time by 50%. Apply 1 Modular Upgrade." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare items. Combine hide types. Reduce material cost by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary leather goods. Field crafting. Instill signature traits. DC -2." }
+      }
+    },
+    "masonry": {
+      "name": "Masonry",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Stone cutting, wall construction, fortifications, and structural stonework.",
+      "associated_crafter_style": null,
+      "required_tools": ["chisels","mallet","mortar_tools","lifting_equipment"],
+      "output_categories": ["walls","fortifications","flooring","stone_objects","monuments"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Lay common stone walls and floors. Identify stone quality and load bearing. Basic mortar work." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Build uncommon masonry structures. Reduce material waste. Cut stone to precision." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Build rare fortifications and arched structures. Combine stone techniques for structural strength." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Build epic structures. Custom structural templates. 1 reroll per major construction phase." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Build legendary edifices. Field masonry without mortar mixing equipment. Instill structural properties. DC -2." }
+      }
+    },
+    "musical_craft": {
+      "name": "Musical Craft",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Instruments, resonators, and acoustic devices.",
+      "associated_crafter_style": null,
+      "required_tools": ["woodworking_tools","string_materials","tuning_fork","binding_materials"],
+      "output_categories": ["string_instruments","wind_instruments","percussion","resonators","magical_instruments"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common instruments. Identify material tonal quality. Basic tuning and repair." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon instruments with fine resonance. Reduce tonal defects. Apply 1 acoustic modifier." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare instruments. Combine material types for unique tonal profiles. Precision tuning systems." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Craft epic instruments with resonant properties. Custom acoustic templates. 1 reroll per instrument." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary instruments. Instill signature tonal qualities with persistent magical effects. DC -2." }
+      }
+    },
+    "painting": {
+      "name": "Painting",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Pigment creation, artistic painting, cartography, and surface treatment.",
+      "associated_crafter_style": null,
+      "required_tools": ["pigments","brushes","canvas_or_surface","fixative"],
+      "output_categories": ["artwork","maps","pigment_compounds","surface_treatments","painted_items"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Mix common pigments. Create basic paintings, diagrams, and maps. Identify material surfaces." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Mix uncommon pigments. Produce professional-quality artwork. Accurate local cartography." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Mix rare pigments with special properties. Regional cartography with elevation and feature detail." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Create epic artworks that convey information with supernatural clarity. Custom pigment formulas." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Legendary paintings with lasting visual presence. Signature style recognized across regions. DC -2." }
+      }
+    },
+    "smithing": {
+      "name": "Smithing",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Weapons, armor, metal tools, and structural metalwork.",
+      "associated_crafter_style": "weapon_crafter_style",
+      "required_tools": ["forge","anvil","hammer","tongs"],
+      "learned_actions": ["pound","quench","pour","grind","polish","repair_metal"],
+      "output_categories": ["weapons_metal","armor_metal","tools_metal"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common metal items. Use basic toolkits. Identify quality and materials. Salvage basic components." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon items. Reduce craft time by 50%. Repair damaged items. Apply 1 Modular Upgrade." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare items. Combine two material types. Apply 2 Modular Upgrades. Reduce material cost by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Multi-profession crafting (secondary at level 2+). Apply 3 Modular Upgrades. Create Custom Templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft epic items (legendary if assisted). Field-ready crafting without workshop. Instill signature traits. DC -2." }
+      }
+    },
+    "tailoring": {
+      "name": "Tailoring",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Cloth armor, robes, pouches, garments, and fitted attire.",
+      "associated_crafter_style": "armor_crafter_style",
+      "required_tools": ["needle","thread","scissors","loom"],
+      "learned_actions": ["sew","hem","measure","cut"],
+      "output_categories": ["armor_cloth","robes","pouches","bags"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Gain Cut, Sew, and Measure Knowledge Tags at T1. Craft common cloth garments and light armor. +L when crafting with Weaved materials." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon fitted garments and padded armor. Apply 1 Modular Upgrade. Reduce craft time by 50%." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare cloth armor and specialty garments. Combine fabric types. Reduce material cost by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Multi-profession crafting. Custom Pattern Templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary garments. Field-ready crafting. Instill signature traits and enchantment-ready weaves. DC -2." }
+      }
+    },
+    "weaving": {
+      "name": "Weaving",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Cloth production, net making, rope braiding, and textile preparation.",
+      "associated_crafter_style": null,
+      "required_tools": ["loom","shuttle","spinning_wheel","fiber_materials"],
+      "output_categories": ["woven_cloth","nets","rope","tapestries","specialty_textiles"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Weave common cloth and ropes. Identify fiber quality. Spin raw fiber into thread." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Weave uncommon textiles with pattern work. Reduce loom time by 50%. Create nets and bags." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Weave rare cloth types with special properties. Combine fiber techniques for unique results." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Weave epic textiles. Custom pattern templates. 1 reroll per weaving project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Weave legendary cloth with embedded properties. Field-ready weaving without loom. DC -2." }
+      }
     }
   },
-  "professions": {
-    "physical_crafting": {
-      "smithing": {
-        "name": "Smithing",
-        "governing_stat": "BDY",
-        "category": "physical_crafting",
-        "description": "Weapons, armor, metal tools.",
-        "associated_crafter_style": "weapon_crafter_style",
-        "required_tools": [
-          "forge",
-          "anvil",
-          "hammer",
-          "tongs"
-        ],
-        "learned_actions": [
-          "pound",
-          "quench",
-          "pour",
-          "grind",
-          "polish",
-          "repair_metal"
-        ],
-        "output_categories": [
-          "weapons_metal",
-          "armor_metal",
-          "tools_metal"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Craft common metal items. Use basic toolkits. Identify quality and materials. Salvage basic components."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Craft uncommon items. Reduce mundane craft time by 50%. Repair damaged items. Apply 1 Modular Upgrade."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Craft rare items. Combine two material types. Apply 2 Modular Upgrades. Reduce material cost by 25%."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Multi-profession crafting (secondary at level 2+). Apply 3 Modular Upgrades. Create Custom Templates. 1 reroll per project."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Craft epic items (legendary if assisted). Field-ready crafting without workshop. Instill signature traits. Reduce DC by 2 for all related checks."
-          }
-        }
-      },
-      "carpentry": {
-        "name": "Carpentry",
-        "governing_stat": "BDY",
-        "category": "physical_crafting",
-        "description": "Wooden gear, bows, furniture.",
-        "associated_crafter_style": "projectile_crafter_style",
-        "required_tools": [
-          "saw",
-          "chisel",
-          "plane",
-          "hammer"
-        ],
-        "learned_actions": [
-          "cut",
-          "carve",
-          "notch",
-          "polish"
-        ],
-        "output_categories": [
-          "weapons_wood",
-          "bows",
-          "furniture",
-          "structures_wood"
-        ],
-        "levels": {
-          "1": {
-            "capabilities": "Craft common wood items. Basic tools. Identify timber quality. Salvage lumber."
-          },
-          "2": {
-            "capabilities": "Craft uncommon items. Reduce craft time by 50%. Repair wooden items. Apply 1 Modular Upgrade."
-          },
-          "3": {
-            "capabilities": "Craft rare items. Combine wood types. Apply 2 Modular Upgrades. Reduce material cost by 25%."
-          },
-          "4": {
-            "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project."
-          },
-          "5": {
-            "capabilities": "Craft epic items. Field-ready. Instill signature traits. DC -2."
-          }
-        }
-      },
-      "tailoring": {
-        "name": "Tailoring",
-        "governing_stat": "MND",
-        "category": "physical_crafting",
-        "description": "Cloth armor, robes, pouches.",
-        "associated_crafter_style": "armor_crafter_style",
-        "required_tools": [
-          "needle",
-          "thread",
-          "scissors",
-          "loom"
-        ],
-        "learned_actions": [
-          "sew",
-          "hem",
-          "measure",
-          "cut"
-        ],
-        "output_categories": [
-          "armor_cloth",
-          "robes",
-          "pouches",
-          "bags"
-        ],
-        "levels": {
-          "1": {
-            "Description": "Gain the Cut, Sew, and Measure Knowledge Tags at Tier 1. Gain +L when crafting with Weaved material"
-          },
-          "2": {},
-          "3": {},
-          "4": {},
-          "5": {}
-        }
-      },
-      "leatherworking": {
-        "name": "Leatherworking",
-        "governing_stat": "BDY",
-        "category": "physical_crafting",
-        "description": "Leather armor, straps, bindings.",
-        "associated_crafter_style": "armor_crafter_style",
-        "required_tools": [
-          "awl",
-          "leather_knife",
-          "stitching_horse",
-          "curing_rack"
-        ],
-        "output_categories": [
-          "armor_leather",
-          "straps",
-          "bindings",
-          "pouches_leather"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Craft common leather items. Basic repair. Identify hides."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Craft uncommon items. Reduce craft time by 50%. Apply 1 Modular Upgrade."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Craft rare items. Combine hide types. Reduce material cost by 25%."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Legendary leather goods. Field crafting. Signature traits. DC -2."
-          }
-        }
-      },
-      "engineering": {
-        "name": "Engineering",
-        "governing_stat": "MND",
-        "category": "physical_crafting",
-        "description": "Traps, machines, crossbows.",
-        "associated_crafter_style": "projectile_crafter_style",
-        "required_tools": [
-          "precision_tools",
-          "drafting_board",
-          "workshop"
-        ],
-        "output_categories": [
-          "traps",
-          "machines",
-          "crossbows",
-          "mechanical_devices"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Build simple traps and basic mechanisms. Identify mechanical components."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Build uncommon devices. Reduce craft time by 50%. Repair mechanisms. Apply 1 Modular Upgrade."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Build rare devices. Combine mechanism types. Reduce material cost by 25%."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Build epic machines. Field assembly. Signature traits. DC -2."
-          }
-        }
-      },
-      "enchanting": {
-        "name": "Enchanting",
-        "governing_stat": "MND",
-        "category": "physical_crafting",
-        "description": "Adds magical properties to base items. Requires a base item.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "enchanting_table",
-          "arcane_focus",
-          "base_item"
-        ],
-        "output_categories": [
-          "enchanted_weapons",
-          "enchanted_armor",
-          "enchanted_accessories"
-        ],
-        "special_rules": "Requires base item. Enchantment quality is capped by the base item tier and the crafter's level.",
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Apply minor enchantments to common items. Identify existing enchantments."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Apply uncommon enchantments. Repair faded enchantments. Stack 1 effect."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Apply rare enchantments. Combine two effect types. Reduce material cost by 25%."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Apply epic enchantments. Custom enchantment templates. 1 reroll per project."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Apply legendary enchantments. Instill unique properties. DC -2."
-          }
-        }
+  "industrial": {
+    "clockworking": {
+      "name": "Clockworking",
+      "governing_stat": "MND",
+      "era": ["industrial","future"],
+      "description": "Precision clockwork mechanisms, timers, and gear-based devices.",
+      "associated_crafter_style": null,
+      "required_tools": ["precision_tools","loupe","gear_stock","mainspring_tools"],
+      "output_categories": ["timepieces","clockwork_mechanisms","timer_devices","gear_assemblies"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Assemble common clockwork mechanisms. Identify gear quality. Basic clock repair." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Assemble uncommon precision timepieces. Reduce assembly time by 50%. Repair complex gear trains." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Assemble rare precision instruments and multi-function mechanisms. Combine gear types." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Assemble epic timekeeping and triggered devices. Custom mechanism templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Assemble legendary clockwork. Miniaturize any mechanism to watch-scale. Instill self-winding properties. DC -2." }
       }
     },
-    "alchemical_magical": {
-      "alchemy": {
-        "name": "Alchemy",
-        "governing_stat": "MND",
-        "category": "alchemical_magical",
-        "description": "Potions, bombs, enhancers.",
-        "associated_crafter_style": "consumable_crafter_style",
-        "required_tools": [
-          "alembic",
-          "mortar_pestle",
-          "alchemist_supplies",
-          "flame_source"
-        ],
-        "output_categories": [
-          "potions",
-          "bombs",
-          "enhancers",
-          "poisons",
-          "reagents"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Brew common potions and reagents. Identify basic ingredients. Salvage components."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Brew uncommon formulas. Reduce brew time by 50%. Stack 1 effect modifier."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Brew rare formulas. Combine two reagent types. Reduce material cost by 25%."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Multi-profession crafting. Custom Formula Templates. 1 reroll per project."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Legendary formulas. Field-ready without lab. Signature properties. DC -2."
-          }
-        }
-      },
-      "crystallography": {
-        "name": "Crystallography",
-        "governing_stat": "MND",
-        "category": "alchemical_magical",
-        "description": "Crystal cutting, mana storage, focus items.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "crystal_lathe",
-          "focus_calibration_tools",
-          "mana_meter"
-        ],
-        "output_categories": [
-          "focus_items",
-          "mana_crystals",
-          "crystal_components",
-          "arcane_storage"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Cut and identify common crystals. Craft basic focus items."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Craft mana storage crystals. Reduce craft time by 50%."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Craft rare focus items. Attune crystals to specific affinities."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Craft epic resonance items. Custom crystal templates. 1 reroll per project."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Legendary focus items. Field-ready. Signature attunement. DC -2."
-          }
-        }
-      },
-      "bookbinding": {
-        "name": "Bookbinding",
-        "governing_stat": "MND",
-        "category": "alchemical_magical",
-        "description": "Spellbooks, codices, recipe collections.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "binding_press",
-          "paper_materials",
-          "ink",
-          "needle_thread"
-        ],
-        "output_categories": [
-          "spellbooks",
-          "recipe_books",
-          "codices",
-          "scrolls"
-        ],
-        "special_rules": "Master Codex is a high-tier crafted item that provides organization bonuses and reduced lookup time.",
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Bind common books. Create basic recipe journals."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Bind uncommon tomes. Create organized profession journals."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Bind rare codices. Reduce recipe lookup time."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Create unified codex volumes. Apply organization bonuses."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Create Master Codex. Maximum organization bonus. Legendary tome properties."
-          }
-        }
-      },
-      "runic_scribing": {
-        "name": "Runic Scribing",
-        "governing_stat": null,
-        "governing_stat_options": [
-          "MND",
-          "SPT"
-        ],
-        "category": "alchemical_magical",
-        "description": "Rune inscription for items and structures.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "scribing_tools",
-          "runic_ink",
-          "stable_surface"
-        ],
-        "output_categories": [
-          "runed_items",
-          "runed_structures",
-          "ward_glyphs",
-          "enchanted_surfaces"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Inscribe common runes on surfaces. Identify existing runes."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Inscribe uncommon runes. Runes persist longer."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Inscribe rare runes. Combine two rune effects."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Inscribe epic rune sets. Create custom rune templates."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Inscribe legendary runes. Permanent structural wards. DC -2."
-          }
-        }
+    "engineering": {
+      "name": "Engineering",
+      "governing_stat": "MND",
+      "era": ["industrial","future"],
+      "description": "Traps, machines, crossbows, and complex mechanical devices.",
+      "associated_crafter_style": "projectile_crafter_style",
+      "required_tools": ["precision_tools","drafting_board","workshop"],
+      "output_categories": ["traps","machines","crossbows","mechanical_devices"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Build simple traps and basic mechanisms. Identify mechanical components." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Build uncommon devices. Reduce craft time by 50%. Repair mechanisms. Apply 1 Modular Upgrade." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Build rare devices. Combine mechanism types. Reduce material cost by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Multi-profession crafting. Custom Templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Build epic machines. Field assembly without workshop. Instill signature traits. DC -2." }
       }
     },
-    "gathering": {
-      "foraging": {
-        "name": "Foraging",
-        "governing_stat": "SPT",
-        "category": "gathering",
-        "description": "Herbs, plants, forest materials.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "gathering_kit",
-          "herb_pouch"
-        ],
-        "output_categories": [
-          "herbs",
-          "plants",
-          "forest_materials",
-          "fungi"
-        ],
-        "knowledge_tag_examples": [
-          "Herb Identification",
-          "Toxin Handling",
-          "Wood Working"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Gather common plants and herbs. Identify basic materials."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Gather uncommon materials. Identify quality variations."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Gather rare materials. Reduce gather time. Identify exceptional specimens."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Gather epic tier materials. Cultivate rare specimens in field."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Gather legendary materials. Field cultivation of any material. DC -2."
-          }
-        }
-      },
-      "mining": {
-        "name": "Mining",
-        "governing_stat": "BDY",
-        "category": "gathering",
-        "description": "Ores, gems, underground materials.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "pickaxe",
-          "chisel",
-          "lantern"
-        ],
-        "output_categories": [
-          "ores",
-          "gems",
-          "stone",
-          "underground_materials"
-        ],
-        "knowledge_tag_examples": [
-          "Iron Working",
-          "Stone Working",
-          "Gem Cutting",
-          "Arcane Crystal Conductivity"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Mine common ores and stone. Identify basic minerals."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Mine uncommon materials. Identify gem quality."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Mine rare materials. Identify exceptional veins."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Mine epic tier materials. Locate hidden deposits."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Mine legendary materials. Sense deposits through terrain. DC -2."
-          }
-        }
-      },
-      "hunting": {
-        "name": "Hunting",
-        "governing_stat": null,
-        "governing_stat_options": [
-          "BDY",
-          "SPT"
-        ],
-        "category": "gathering",
-        "description": "Animal materials, tracking, field dressing.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "hunting_weapon",
-          "field_dressing_kit"
-        ],
-        "output_categories": [
-          "hides",
-          "bones",
-          "meat",
-          "animal_components",
-          "monster_parts"
-        ],
-        "knowledge_tag_examples": [
-          "Field Dressing",
-          "Toxin Handling",
-          "Bone Crafting"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Hunt common animals. Basic field dressing. Identify animal tracks."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Hunt uncommon creatures. Preserve quality materials."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Hunt rare beasts. Extract rare components without damage."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Hunt epic creatures. Extract exceptional parts."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Hunt legendary creatures. Full extraction of all materials. DC -2."
-          }
-        }
-      },
-      "fishing": {
-        "name": "Fishing",
-        "governing_stat": "SPT",
-        "category": "gathering",
-        "description": "Aquatic materials, rare water-based components.",
-        "associated_crafter_style": null,
-        "required_tools": [
-          "fishing_rod",
-          "net",
-          "bait"
-        ],
-        "output_categories": [
-          "fish",
-          "aquatic_materials",
-          "water_components",
-          "rare_catches"
-        ],
-        "knowledge_tag_examples": [
-          "Aquatic Biology",
-          "Net Weaving",
-          "Bait Crafting"
-        ],
-        "levels": {
-          "1": {
-            "title": "Novice",
-            "dc": 4,
-            "capabilities": "Catch common fish. Identify basic aquatic materials."
-          },
-          "2": {
-            "title": "Skilled",
-            "dc": 6,
-            "capabilities": "Catch uncommon aquatic life. Identify quality variations."
-          },
-          "3": {
-            "title": "Professional",
-            "dc": 8,
-            "capabilities": "Catch rare aquatic creatures. Extract rare components."
-          },
-          "4": {
-            "title": "Master",
-            "dc": 10,
-            "capabilities": "Catch epic aquatic life. Access deep-water materials."
-          },
-          "5": {
-            "title": "Artisan",
-            "dc": 12,
-            "capabilities": "Catch legendary aquatic creatures. DC -2."
-          }
-        }
+    "harmonics": {
+      "name": "Harmonics",
+      "governing_stat": "MND",
+      "era": ["industrial","future","fantasy"],
+      "description": "Resonant frequency devices, acoustic amplifiers, and harmonic weaponry.",
+      "associated_crafter_style": null,
+      "required_tools": ["tuning_apparatus","resonance_chamber","calibration_tools","wave_medium"],
+      "output_categories": ["resonance_devices","acoustic_amplifiers","harmonic_weapons","frequency_tools"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Build common resonant devices. Identify acoustic properties of materials. Basic frequency tuning." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Build uncommon acoustic instruments and amplifiers. Calibrate resonance to precise frequencies." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Build rare harmonic amplifiers. Combine resonance techniques for layered frequency effects." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Build epic resonance arrays capable of structural vibration. Custom harmonic templates. 1 reroll per build." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Build legendary harmonic devices. Signature resonant qualities with persistent effects. DC -2." }
+      }
+    },
+    "perfuming": {
+      "name": "Perfuming",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","future"],
+      "description": "Perfumes, incense, aromatic compounds, and scent-based alchemical agents.",
+      "associated_crafter_style": "consumable_crafter_style",
+      "required_tools": ["distillation_apparatus","fixative_materials","vials","aromatic_stock"],
+      "output_categories": ["perfumes","incense","scent_compounds","aromatic_agents","pheromone_distillates"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Distill common scents and incense. Identify aromatic compounds. Basic fixative application." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Distill uncommon fragrances. Apply 1 aromatic effect modifier. Blend complementary scents." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Distill rare perfumes. Combine aromatic families for complex profiles. Create scent-triggered effects." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Create epic signature scents with lasting behavioral effects. Custom aromatic templates. 1 reroll per batch." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Create legendary fragrances with permanent olfactory presence. Signature scent recognized anywhere. DC -2." }
+      }
+    },
+    "runesmith": {
+      "name": "Runesmith",
+      "governing_stat": "MND",
+      "era": ["industrial","fantasy"],
+      "description": "Runic inscription applied to metal, mechanisms, and firearms for functional or protective effects.",
+      "associated_crafter_style": null,
+      "required_tools": ["runic_chisels","engraving_tools","stabilizing_compound","metal_surface"],
+      "output_categories": ["runed_weapons","runed_armor","runed_mechanisms","runed_structures"],
+      "special_rules": "Applies practical rune effects to physical objects. Runic Scribing (fantasy) handles spell-logic rune work.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Inscribe common utility runes on metal. Identify existing rune effects and quality." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Inscribe uncommon functional runes. Extend rune duration. Repair faded inscriptions." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Inscribe rare rune arrays. Combine two rune effects on a single item." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Inscribe epic rune complexes. Custom rune templates for repeated application. 1 reroll per inscription." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Inscribe legendary rune systems. Permanent metal wards. Instill self-maintaining rune networks. DC -2." }
+      }
+    },
+    "tinkering": {
+      "name": "Tinkering",
+      "governing_stat": "MND",
+      "era": ["industrial","future"],
+      "description": "Improvised gadgets, small devices, item modifications, and field repairs.",
+      "associated_crafter_style": null,
+      "required_tools": ["tinker_tools","scrap_parts","wire","adhesive"],
+      "output_categories": ["gadgets","modifications","improvised_devices","small_mechanisms","field_repairs"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Build common improvised devices. Identify and modify existing items. Field-patch basic mechanisms." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Build uncommon gadgets from scrap. Reduce required parts. Apply 1 functional modification to existing items." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Build rare precision gadgets. Combine device types in a single assembly. Salvage rare components." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Build epic multi-function devices. Custom gadget templates. 1 reroll per build project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Build legendary contraptions from minimal materials. Field assembly without shop. Signature device properties. DC -2." }
+      }
+    }
+  },
+  "future": {
+    "aether_weaving": {
+      "name": "Aether Weaving",
+      "governing_stat": "MND",
+      "era": ["future","fantasy"],
+      "description": "Weaving aetheric energy into physical fabric to create empowered textiles and energy-infused constructs.",
+      "associated_crafter_style": null,
+      "required_tools": ["aetheric_loom","resonance_anchors","energy_threads","stabilization_field"],
+      "output_categories": ["aetheric_cloth","empowered_garments","energy_bindings","aetheric_components"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Weave common aetheric threads. Identify aetheric resonance in materials. Basic energy binding." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Weave uncommon aetheric patterns. Stack 1 energy effect. Stabilize volatile threads." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Weave rare aetheric configurations. Combine energy types in single fabric. Reduce energy dissipation." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Weave epic aetheric arrays with multi-layer effects. Custom weave templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Weave legendary aetheric constructs. Signature energy patterns that persist indefinitely. DC -2." }
+      }
+    },
+    "artificing": {
+      "name": "Artificing",
+      "governing_stat": "MND",
+      "era": ["future","fantasy"],
+      "description": "Creating complex arcane-mechanical hybrid devices, construct cores, and automated systems.",
+      "associated_crafter_style": null,
+      "required_tools": ["artificing_bench","arcane_circuits","precision_tools","power_source"],
+      "output_categories": ["arcane_devices","construct_cores","automated_systems","arcane_weapons","arcane_armor"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Assemble common arcane-mechanical devices. Identify device components and power sources." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Assemble uncommon hybrid items. Repair arcane circuits. Integrate 1 automated function." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Assemble rare hybrid devices combining arcane and mechanical functions. Reduce power consumption." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Assemble epic arcane constructs with autonomous behavior. Custom device templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Assemble legendary arcane machines. Field assembly without workshop. Instill self-learning behavior. DC -2." }
+      }
+    },
+    "crystallography": {
+      "name": "Crystallography",
+      "governing_stat": "MND",
+      "era": ["future","fantasy"],
+      "description": "Crystal cutting, mana storage, focus items, and arcane crystal calibration.",
+      "associated_crafter_style": null,
+      "required_tools": ["crystal_lathe","focus_calibration_tools","mana_meter"],
+      "output_categories": ["focus_items","mana_crystals","crystal_components","arcane_storage"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Cut and identify common crystals. Craft basic focus items. Measure crystal charge capacity." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft mana storage crystals. Reduce charge bleed by 50%. Calibrate to specific affinities." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare focus items. Attune crystals to specific affinities. Combine crystal types in arrays." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Craft epic resonance items. Custom crystal templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary focus items. Field-ready crystal work. Instill signature attunement properties. DC -2." }
+      }
+    },
+    "psionic_imprinting": {
+      "name": "Psionic Imprinting",
+      "governing_stat": "MND",
+      "era": ["future"],
+      "description": "Encoding psionic commands and behavioral patterns into objects and constructs.",
+      "associated_crafter_style": null,
+      "required_tools": ["psionic_focus","resonance_medium","command_slate","stabilizing_field"],
+      "output_categories": ["imprinted_objects","command_constructs","psionic_weapons","trigger_devices"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Imprint common psionic commands into objects. Identify existing imprints and their triggers." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Imprint uncommon psionic patterns. Layer 1 conditional command. Stabilize volatile imprints." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Imprint rare psionic arrays with branching logic. Combine command types in sequence." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Imprint epic psionic complexes with autonomous decision trees. Custom imprint templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Imprint legendary psionic systems. Permanent imprint that persists through item damage. DC -2." }
+      }
+    },
+    "umbrawork": {
+      "name": "Umbrawork",
+      "governing_stat": "SPT",
+      "era": ["future","fantasy"],
+      "description": "Crafting shadow-infused items using umbral energy — cloaks, weapons, armor, and dimensional anchors.",
+      "associated_crafter_style": null,
+      "required_tools": ["shadow_catalyst","dark_medium","binding_seal","obsidian_tools"],
+      "output_categories": ["shadow_weapons","shadow_armor","umbral_accessories","dimensional_anchors","shadow_components"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Infuse common items with minor shadow energy. Identify shadow properties in materials." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Infuse uncommon items. Extend shadow duration. Apply 1 umbral effect modifier." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Infuse rare items with shadow arrays. Combine umbral techniques for layered effects." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Create epic shadow-bound items with active umbral properties. Custom shadow templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Create legendary shadow constructs. Instill signature shadow traits that interact with light. DC -2." }
+      }
+    }
+  },
+  "fantasy": {
+    "beastcraft": {
+      "name": "Beastcraft",
+      "governing_stat": "BDY",
+      "era": ["fantasy"],
+      "description": "Crafting from monster and creature components — fangs, scales, organs, and magical beast parts.",
+      "associated_crafter_style": "weapon_crafter_style",
+      "required_tools": ["beast_tools","ritual_salts","binding_materials","carving_tools"],
+      "output_categories": ["beast_weapons","beast_armor","creature_components","monster_trophies","beast_accessories"],
+      "special_rules": "Beastcraft items inherit passive properties of the source creature. Functional material is the creature's primary component.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Craft common items from beast materials. Identify creature components and their properties." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Craft uncommon beast-crafted items. Preserve rare components during extraction. Apply 1 creature property." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Craft rare beast-constructed items. Combine components from two creature types. Reduce decay loss." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Craft epic beast-bound items with active creature abilities. Custom beastcraft templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Craft legendary beast constructs. Instill a living echo of the creature's traits in the item. Field beastcraft. DC -2." }
+      }
+    },
+    "binding_sealing": {
+      "name": "Binding & Sealing",
+      "governing_stat": "SPT",
+      "era": ["fantasy"],
+      "description": "Containment seals, ward crafting, and binding constructs for magical entities.",
+      "associated_crafter_style": null,
+      "required_tools": ["binding_circle_materials","spirit_ink","silver_nails","anchor_stones"],
+      "output_categories": ["containment_seals","ward_constructs","binding_objects","entity_anchors","protective_circles"],
+      "special_rules": "Binding checks are contested by the entity's SPT or MND. A failed binding may release the entity.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Create common containment seals. Identify binding materials and their potency. Secure minor spirits." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Create uncommon binding wards. Reinforce existing seals. Bind lesser elementals or shades." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Create rare binding arrays. Combine seal types for multi-layered containment. Bind mid-tier entities." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Create epic binding complexes for powerful entities. Custom seal templates. 1 reroll per binding attempt." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Create legendary seals. Permanent entity containment. Bind legendary creatures and elder spirits. DC -2." }
+      }
+    },
+    "biomancy_crafting": {
+      "name": "Biomancy",
+      "governing_stat": "MND",
+      "era": ["fantasy"],
+      "description": "Shaping and cultivating living biological matter into tools, armor, and constructs.",
+      "associated_crafter_style": null,
+      "required_tools": ["growth_medium","shaping_tools","vital_reagents","living_framework"],
+      "output_categories": ["living_armor","organic_weapons","living_constructs","bio_components","cultivated_organs"],
+      "special_rules": "Biomancy items are living and require periodic nourishment or they decay at 1 HP per day without care.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Shape common biological structures. Identify living materials and their growth potential." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Shape uncommon living constructs. Accelerate growth cycles. Prevent decay in worked materials." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Shape rare living items with active biological properties. Combine biological techniques." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Shape epic living constructs with semi-autonomous behavior. Custom biomancy templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Shape legendary living creations. Instill independent regenerative growth. Items maintain themselves. DC -2." }
+      }
+    },
+    "enchanting": {
+      "name": "Enchanting",
+      "governing_stat": "MND",
+      "era": ["fantasy"],
+      "description": "Adds magical properties to base items. Requires a base item to enchant.",
+      "associated_crafter_style": null,
+      "required_tools": ["enchanting_table","arcane_focus","base_item"],
+      "output_categories": ["enchanted_weapons","enchanted_armor","enchanted_accessories"],
+      "special_rules": "Enchantment quality is capped by the base item tier and the crafter's level.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Apply minor enchantments to common items. Identify existing enchantments and their properties." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Apply uncommon enchantments. Repair faded enchantments. Stack 1 effect on a base item." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Apply rare enchantments. Combine two effect types. Reduce material cost by 25%." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Apply epic enchantments. Custom enchantment templates. 1 reroll per project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Apply legendary enchantments. Instill unique properties unavailable from any other source. DC -2." }
+      }
+    },
+    "meteorics": {
+      "name": "Meteorics",
+      "governing_stat": "BDY",
+      "era": ["mundane","fantasy"],
+      "description": "Working with meteoric metals, primal ores, and sky-fallen materials with inherent magical properties.",
+      "associated_crafter_style": "weapon_crafter_style",
+      "required_tools": ["specialized_forge","heat_resistant_tools","ritual_quench","meteorite_tongs"],
+      "output_categories": ["meteoric_weapons","meteoric_armor","primal_components","sky_metal_tools"],
+      "special_rules": "Meteoric materials require specialized forges. Standard forges impose DC +4 when working meteoric ore.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Identify and prepare common meteoric materials. Basic smelting of sky-fallen ores. Recognize primal properties." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Work uncommon meteoric alloys. Reduce impurity loss. Preserve innate material properties during forging." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Work rare meteoric configurations. Combine primal material types. Apply natural enchantment from the material." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Work epic meteoric arrays. Custom meteoric templates. 1 reroll per forging project." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Work legendary meteoric materials. Instill primal properties into non-meteoric items via meteoric catalyst. DC -2." }
+      }
+    },
+    "mycology": {
+      "name": "Mycology",
+      "governing_stat": "MND",
+      "era": ["mundane","industrial","fantasy"],
+      "description": "Cultivating and crafting with fungi, spores, and mycelium networks.",
+      "associated_crafter_style": "consumable_crafter_style",
+      "required_tools": ["cultivation_jars","spore_tools","growth_medium","harvesting_kit"],
+      "output_categories": ["medicinal_fungi","toxic_fungi","alchemical_spores","mycelium_constructs","cultivated_reagents"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Harvest and identify common fungi. Prepare basic fungal materials and simple reagents." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Cultivate uncommon fungi. Accelerate spore cycles. Identify medicinal vs. toxic varieties." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Cultivate rare fungal varieties. Combine mycological techniques. Develop mycelium networks as tools." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Cultivate epic fungal constructs with active properties. Custom mycology templates. 1 reroll per batch." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Cultivate legendary fungi in any environment. Field cultivation without growing medium. DC -2." }
+      }
+    },
+    "runic_scribing": {
+      "name": "Runic Scribing",
+      "governing_stat_options": ["MND","SPT"],
+      "era": ["fantasy"],
+      "description": "Magical rune inscription for items, structures, and spell logic encoding.",
+      "associated_crafter_style": null,
+      "required_tools": ["scribing_tools","runic_ink","stable_surface"],
+      "output_categories": ["runed_items","runed_structures","ward_glyphs","enchanted_surfaces","spell_matrices"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Inscribe common runes on surfaces. Identify existing runes and their activation conditions." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Inscribe uncommon runes. Extend duration. Runes activate reliably on correct trigger." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Inscribe rare runes with conditional logic. Combine two rune effects on a single surface." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Inscribe epic rune sets. Create custom rune templates. Link rune networks across multiple surfaces." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Inscribe legendary runes. Permanent structural wards. Rune networks self-maintain and repair. DC -2." }
+      }
+    },
+    "soulbinding": {
+      "name": "Soulbinding",
+      "governing_stat": "SPT",
+      "era": ["fantasy"],
+      "description": "Binding souls, spirits, and spiritual fragments to objects to create living artifacts.",
+      "associated_crafter_style": null,
+      "required_tools": ["soul_vessel","binding_ritual_materials","spirit_resonator","containment_seal"],
+      "output_categories": ["soul_weapons","soul_armor","living_artifacts","spirit_anchors","bound_constructs"],
+      "special_rules": "Soulbound items require the bound entity's cooperation or a contested SPT check. Forced binding risks item instability.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Bind common spirit fragments. Identify soulbound items and their bound entity. Create basic soul vessels." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Bind uncommon spiritual patterns. Stabilize soul anchors. Communicate with bound entities." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Bind rare spirit configurations. Combine binding approaches for compound effects. Negotiate entity cooperation." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Bind epic soul arrays. Custom binding templates. Force-bind lesser entities without consent. 1 reroll per binding." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Bind legendary souls. Create truly living artifacts with autonomous will. Instill soul-resonant properties. DC -2." }
+      }
+    },
+    "tattooing": {
+      "name": "Tattooing",
+      "governing_stat": "MND",
+      "era": ["fantasy"],
+      "description": "Magical tattoo inscription — runes, sigils, and power marks applied directly to living skin.",
+      "associated_crafter_style": null,
+      "required_tools": ["tattoo_needles","magical_inks","sterilizing_agents","pattern_stencils"],
+      "output_categories": ["runic_tattoos","sigil_marks","power_tattoos","ward_marks","cosmetic_tattoos"],
+      "special_rules": "Tattoos occupy Body Zones. A zone holds marks equal to the recipient's BDY level.",
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Inscribe common utility tattoos. Identify existing tattoo marks and their effects. Apply cosmetic designs." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Inscribe uncommon functional tattoos. Extend mark activation duration. Repair faded tattoo inks." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Inscribe rare tattoo arrays. Combine mark types in linked configurations. Layered activation conditions." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Inscribe epic tattoo complexes. Custom tattoo templates. 1 reroll per inscription." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Inscribe legendary tattoo systems. Marks become permanent and self-maintain their magical integrity. DC -2." }
+      }
+    }
+  },
+  "gathering": {
+    "fishing": {
+      "name": "Fishing",
+      "governing_stat": "SPT",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Aquatic materials, rare water-based components.",
+      "associated_crafter_style": null,
+      "required_tools": ["fishing_rod","net","bait"],
+      "output_categories": ["fish","aquatic_materials","water_components","rare_catches"],
+      "knowledge_tag_examples": ["Aquatic Biology","Net Weaving","Bait Crafting"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Catch common fish. Identify basic aquatic materials." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Catch uncommon aquatic life. Identify quality variations." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Catch rare aquatic creatures. Extract rare components." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Catch epic aquatic life. Access deep-water materials." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Catch legendary aquatic creatures. DC -2." }
+      }
+    },
+    "foraging": {
+      "name": "Foraging",
+      "governing_stat": "SPT",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Herbs, plants, forest materials, and surface-gathered reagents.",
+      "associated_crafter_style": null,
+      "required_tools": ["gathering_kit","herb_pouch"],
+      "output_categories": ["herbs","plants","forest_materials","fungi"],
+      "knowledge_tag_examples": ["Herb Identification","Toxin Handling","Wood Working"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Gather common plants and herbs. Identify basic materials." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Gather uncommon materials. Identify quality variations." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Gather rare materials. Reduce gather time. Identify exceptional specimens." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Gather epic tier materials. Cultivate rare specimens in field." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Gather legendary materials. Field cultivation of any material. DC -2." }
+      }
+    },
+    "hunting": {
+      "name": "Hunting",
+      "governing_stat_options": ["BDY","SPT"],
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Animal materials, tracking, and field dressing.",
+      "associated_crafter_style": null,
+      "required_tools": ["hunting_weapon","field_dressing_kit"],
+      "output_categories": ["hides","bones","meat","animal_components","monster_parts"],
+      "knowledge_tag_examples": ["Field Dressing","Toxin Handling","Bone Crafting"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Hunt common animals. Basic field dressing. Identify animal tracks." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Hunt uncommon creatures. Preserve quality materials." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Hunt rare beasts. Extract rare components without damage." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Hunt epic creatures. Extract exceptional parts." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Hunt legendary creatures. Full extraction of all materials. DC -2." }
+      }
+    },
+    "mining": {
+      "name": "Mining",
+      "governing_stat": "BDY",
+      "era": ["mundane","industrial","future","fantasy"],
+      "description": "Ores, gems, stone, and underground materials.",
+      "associated_crafter_style": null,
+      "required_tools": ["pickaxe","chisel","lantern"],
+      "output_categories": ["ores","gems","stone","underground_materials"],
+      "knowledge_tag_examples": ["Iron Working","Stone Working","Gem Cutting","Arcane Crystal Conductivity"],
+      "levels": {
+        "1": { "title": "Novice",     "dc": 4,  "capabilities": "Mine common ores and stone. Identify basic minerals." },
+        "2": { "title": "Apprentice", "dc": 6,  "capabilities": "Mine uncommon materials. Identify gem quality." },
+        "3": { "title": "Journeyman", "dc": 8,  "capabilities": "Mine rare materials. Identify exceptional veins." },
+        "4": { "title": "Master",     "dc": 10, "capabilities": "Mine epic tier materials. Locate hidden deposits." },
+        "5": { "title": "Artisan",    "dc": 12, "capabilities": "Mine legendary materials. Sense deposits through terrain. DC -2." }
       }
     }
   },
@@ -727,141 +758,53 @@
     "weapon_crafter_style": {
       "name": "Weapon Crafter Style",
       "governing_stat": "BDY",
-      "associated_professions": [
-        "smithing",
-        "carpentry",
-        "engineering"
-      ],
+      "associated_professions": ["smithing","carpentry","engineering"],
       "notes": "Bonus scales with associated Profession Skill level, not Style level alone.",
       "levels": {
-        "1": {
-          "name": "Weapon Intuition",
-          "effect": "+level to attack rolls with weapons in associated profession categories."
-        },
-        "2": {
-          "name": "Stress Reading",
-          "effect": "Once per round, identify a structural weakness. Next attack against that target deals +Profession level bonus damage."
-        },
-        "3": {
-          "name": "Edge Knowledge",
-          "effect": "Critical hit range expands by 1 with self-category weapons. Critical success triggers the weapon's crafted critical bonus if applicable."
-        },
-        "4": {
-          "name": "Breaking Point",
-          "ap_cost": 3,
-          "sp_cost": "2R",
-          "effect": "Strike targeting a held item or armor piece. Inflict Structural Flaw on a failed BDY save."
-        },
-        "5": {
-          "name": "Master's Touch",
-          "effect": "While wielding a weapon in associated category, gain +Profession level to all attack and damage rolls. Field repair any weapon in associated category as a 2 AP action."
-        }
+        "1": { "name": "Weapon Intuition",  "effect": "+level to attack rolls with weapons in associated profession categories." },
+        "2": { "name": "Stress Reading",    "effect": "Once per round, identify a structural weakness. Next attack against that target deals +Profession level bonus damage." },
+        "3": { "name": "Edge Knowledge",    "effect": "Critical hit range expands by 1 with self-category weapons. Critical success triggers the weapon's crafted critical bonus if applicable." },
+        "4": { "name": "Breaking Point",    "ap_cost": 3, "sp_cost": "2L", "effect": "Strike targeting a held item or armor piece. Inflict Structural Flaw on a failed BDY save." },
+        "5": { "name": "Master's Touch",    "effect": "While wielding a weapon in associated category, gain +Profession level to all attack and damage rolls. Field repair any weapon in associated category as a 2 AP action." }
       }
     },
     "armor_crafter_style": {
       "name": "Armor Crafter Style",
-      "governing_stat": null,
-      "governing_stat_options": [
-        "BDY",
-        "MND"
-      ],
-      "associated_professions": [
-        "smithing",
-        "tailoring",
-        "leatherworking"
-      ],
+      "governing_stat_options": ["BDY","MND"],
+      "associated_professions": ["smithing","tailoring","leatherworking"],
       "notes": "Bonus scales with associated Profession Skill level.",
       "levels": {
-        "1": {
-          "name": "Construction Awareness",
-          "effect": "+level to Defense rolls while wearing armor in associated profession categories."
-        },
-        "2": {
-          "name": "Load Management",
-          "effect": "Reduce AP penalty from armor weight by Profession level."
-        },
-        "3": {
-          "name": "Stress Distribution",
-          "effect": "When armor takes a critical hit, reduce damage by Profession level. May trigger once per round."
-        },
-        "4": {
-          "name": "Field Repair",
-          "ap_cost": 2,
-          "sp_cost": "1R",
-          "effect": "Restore Profession level HP to worn armor between or during combat. Requires basic tools."
-        },
-        "5": {
-          "name": "Second Skin",
-          "effect": "Armor in associated category no longer imposes movement penalties. Gain +Profession level to all Defense rolls while wearing associated armor."
-        }
+        "1": { "name": "Construction Awareness", "effect": "+level to Defense rolls while wearing armor in associated profession categories." },
+        "2": { "name": "Load Management",        "effect": "Reduce AP penalty from armor weight by Profession level." },
+        "3": { "name": "Stress Distribution",    "effect": "When armor takes a critical hit, reduce damage by Profession level. May trigger once per round." },
+        "4": { "name": "Field Repair",           "ap_cost": 2, "sp_cost": "1L", "effect": "Restore Profession level HP to worn armor between or during combat. Requires basic tools." },
+        "5": { "name": "Second Skin",            "effect": "Armor in associated category no longer imposes movement penalties. Gain +Profession level to all Defense rolls while wearing associated armor." }
       }
     },
     "consumable_crafter_style": {
       "name": "Consumable Crafter Style",
       "governing_stat": "MND",
-      "associated_professions": [
-        "alchemy",
-        "cooking"
-      ],
+      "associated_professions": ["alchemy","cooking"],
       "notes": "Bonus scales with associated Profession Skill level.",
       "levels": {
-        "1": {
-          "name": "Precise Application",
-          "effect": "Potions and oils in associated category restore or deal +Profession level bonus effect value."
-        },
-        "2": {
-          "name": "Efficient Dosing",
-          "effect": "Reduce AP cost of applying consumables in associated category by 1 (minimum 1)."
-        },
-        "3": {
-          "name": "Optimized Timing",
-          "effect": "May delay a consumable effect by up to level rounds. Triggering the delay costs 0 AP."
-        },
-        "4": {
-          "name": "Compound Effect",
-          "effect": "When applying two consumables in the same round, the second costs 0 AP. Both effects apply."
-        },
-        "5": {
-          "name": "Master Formulator",
-          "effect": "Consumables in associated category last +Profession level rounds, or have their effect multiplied by 1.5. Choose per item at time of use."
-        }
+        "1": { "name": "Precise Application", "effect": "Potions and oils in associated category restore or deal +Profession level bonus effect value." },
+        "2": { "name": "Efficient Dosing",    "effect": "Reduce AP cost of applying consumables in associated category by 1 (minimum 1)." },
+        "3": { "name": "Optimized Timing",    "effect": "May delay a consumable effect by up to L rounds. Triggering the delay costs 0 AP." },
+        "4": { "name": "Compound Effect",     "effect": "When applying two consumables in the same round, the second costs 0 AP. Both effects apply." },
+        "5": { "name": "Master Formulator",   "effect": "Consumables in associated category last +Profession level rounds, or have their effect multiplied by 1.5. Choose per item at time of use." }
       }
     },
     "projectile_crafter_style": {
       "name": "Projectile Crafter Style",
-      "governing_stat": null,
-      "governing_stat_options": [
-        "MND",
-        "BDY"
-      ],
-      "associated_professions": [
-        "engineering",
-        "carpentry",
-        "smithing"
-      ],
+      "governing_stat_options": ["MND","BDY"],
+      "associated_professions": ["engineering","carpentry","smithing"],
       "notes": "Bonus scales with associated Profession Skill level.",
       "levels": {
-        "1": {
-          "name": "Trajectory Knowledge",
-          "effect": "+level to ranged attack rolls with projectile weapons in associated categories."
-        },
-        "2": {
-          "name": "Material Optimization",
-          "effect": "Ammunition in associated categories gains +Profession level to penetration (reduces target armor DR)."
-        },
-        "3": {
-          "name": "Precision Construction",
-          "effect": "Once per round, designate a shot as a Precision Strike. Deal Profession level bonus damage and ignore cover bonuses."
-        },
-        "4": {
-          "name": "Custom Load",
-          "ap_cost": 1,
-          "effect": "Apply a prepared material coating to ammunition (fire, acid, paralytic, etc.) without breaking action economy."
-        },
-        "5": {
-          "name": "Master Fletcher",
-          "effect": "Ranged attacks with associated category weapons may apply the weapon's crafted critical bonus on any hit that exceeds target Defense by Profession level or more."
-        }
+        "1": { "name": "Trajectory Knowledge",    "effect": "+level to ranged attack rolls with projectile weapons in associated categories." },
+        "2": { "name": "Material Optimization",   "effect": "Ammunition in associated categories gains +Profession level to penetration (reduces target armor DR)." },
+        "3": { "name": "Precision Construction",  "effect": "Once per round, designate a shot as a Precision Strike. Deal Profession level bonus damage and ignore cover bonuses." },
+        "4": { "name": "Custom Load",             "ap_cost": 1, "effect": "Apply a prepared material coating to ammunition (fire, acid, paralytic, etc.) without breaking action economy." },
+        "5": { "name": "Master Fletcher",         "effect": "Ranged attacks with associated category weapons may apply the weapon's crafted critical bonus on any hit that exceeds target Defense by Profession level or more." }
       }
     }
   },
@@ -870,77 +813,23 @@
     "domains": {
       "material": {
         "description": "Working knowledge of a substance — what it is, how it behaves, how it responds to tools, heat, alchemical processes, or magical forces.",
-        "examples": [
-          "Iron Working",
-          "Toxin Handling",
-          "Arcane Crystal Conductivity",
-          "Void Tempering"
-        ]
+        "examples": ["Iron Working","Toxin Handling","Arcane Crystal Conductivity","Void Tempering"]
       },
       "technique": {
         "description": "Working knowledge of a process or method — how to shape, combine, or encode something.",
-        "examples": [
-          "Edge Geometry",
-          "Distillation",
-          "Thermal Infusion",
-          "Sympathetic Resonance"
-        ]
+        "examples": ["Edge Geometry","Distillation","Thermal Infusion","Sympathetic Resonance"]
       },
       "formula": {
         "description": "Working knowledge of a specific magical structure or spell logic. Applies to Affinity Style practitioners writing or analyzing spell formulas.",
-        "examples": [
-          "Combustion Logic",
-          "Planar Binding Structure",
-          "Temporal Loop"
-        ]
+        "examples": ["Combustion Logic","Planar Binding Structure","Temporal Loop"]
       }
     },
     "tag_tiers": {
-      "T1": {
-        "name": "Common",
-        "access": "Village trainers, common gathering, basic recipes",
-        "examples": [
-          "Iron Working",
-          "Herb Identification",
-          "Basic Combustion"
-        ]
-      },
-      "T2": {
-        "name": "Uncommon",
-        "access": "Guild trainers, uncommon materials, exploration",
-        "examples": [
-          "Alloy Tempering",
-          "Toxin Concentration",
-          "Elemental Binding"
-        ]
-      },
-      "T3": {
-        "name": "Rare",
-        "access": "Specialist trainers (Rapport required), rare materials, dungeon content",
-        "examples": [
-          "Mythril Resonance",
-          "Soul Ash Refinement",
-          "Planar Ignition"
-        ]
-      },
-      "T4": {
-        "name": "Epic",
-        "access": "Grandmaster access or unique discovery only",
-        "examples": [
-          "Void Tempering",
-          "Celestial Formula Structure",
-          "Living Metal Weaving"
-        ]
-      },
-      "T5": {
-        "name": "Legendary",
-        "access": "World-unique. Found in isolated cultures, lost ruins, boss-tier content",
-        "examples": [
-          "Kulthari War-Forging",
-          "Aetheric Core Inscription",
-          "Dragon-Breath Distillation"
-        ]
-      }
+      "T1": { "name": "Common",    "access": "Village trainers, common gathering, basic recipes",                              "examples": ["Iron Working","Herb Identification","Basic Combustion"] },
+      "T2": { "name": "Uncommon",  "access": "Guild trainers, uncommon materials, exploration",                               "examples": ["Alloy Tempering","Toxin Concentration","Elemental Binding"] },
+      "T3": { "name": "Rare",      "access": "Specialist trainers (Rapport required), rare materials, dungeon content",       "examples": ["Mythril Resonance","Soul Ash Refinement","Planar Ignition"] },
+      "T4": { "name": "Epic",      "access": "Grandmaster access or unique discovery only",                                   "examples": ["Void Tempering","Celestial Formula Structure","Living Metal Weaving"] },
+      "T5": { "name": "Legendary", "access": "World-unique. Found in isolated cultures, lost ruins, boss-tier content",       "examples": ["Kulthari War-Forging","Aetheric Core Inscription","Dragon-Breath Distillation"] }
     },
     "how_gained": [
       "Completing a recipe or formula that contains tags not yet possessed — craft must fully succeed.",
@@ -975,38 +864,6 @@
       "level_3": "May write patterns for Uncommon and Rare-tier items.",
       "level_4": "May write patterns for Epic-tier items.",
       "level_5": "May write patterns for Legendary-tier items."
-    }
-  },
-  "npc_trainer_archetypes": {
-    "village_craftsperson": {
-      "name": "Village Craftsperson",
-      "access": "Open. No Rapport required.",
-      "offers": "T1-T2 tags and recipes. Basic materials.",
-      "notes": "The entry point. Limited stock but reliable."
-    },
-    "guild_trainer": {
-      "name": "Guild Trainer",
-      "access": "Guild membership or fee.",
-      "offers": "T2-T3 tags and recipes. Demonstration crafts.",
-      "notes": "Consistent breadth expansion. Materials cost extra."
-    },
-    "rapport_gated_specialist": {
-      "name": "Rapport-Gated Specialist",
-      "access": "Minimum Opinion value required.",
-      "offers": "T3 tags. Techniques unavailable elsewhere in region.",
-      "notes": "Higher Rapport unlocks higher tier offerings."
-    },
-    "recipe_vendor": {
-      "name": "Recipe Vendor",
-      "access": "Open. Coin only.",
-      "offers": "Sells recipes without teaching tags.",
-      "notes": "Tags must be gained through successful crafting from the recipe."
-    },
-    "grandmaster": {
-      "name": "Grandmaster",
-      "access": "High Rapport required. May require quest.",
-      "offers": "T4-T5 tags. Unique techniques. Commission work.",
-      "notes": "Teaching method is personal. Some teach only through proximity to their work."
     }
   }
 }

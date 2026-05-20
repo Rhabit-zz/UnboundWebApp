@@ -1,1777 +1,1282 @@
 {
   "_meta": {
-    "document": "skills.json",
+    "document": "CombatStyles.json",
     "system": "Unbound TTRPG",
     "studio": "RHabit Game Development",
-    "version": "0.1-draft",
+    "version": "0.2-draft",
     "notes": [
-      "Transcribed from Unbound Game Data Roughdrafter and Knowledge Crafting System documents.",
       "L in all effect text refers to the current Level of this skill.",
-      "Level 2 of most skills follows the pattern: pool expansion + regen bonus for its governing stat pool.",
-      "governing_stat: the stat whose rank caps this skill's rank. If null, uses highest stat.",
-      "requirements: array of prerequisite objects. type: 'stat_min' | 'skill_min' | 'trait' | 'equipment' | 'affinity'",
-      "pool_bonus at Level 2 follows formula: Max [pool] + L squared; [pool]L + L per level.",
-      "skill_type: 'weapon' | 'armor' | 'combat_style' | 'perception' | 'social' | 'mobility' | 'mystical' | 'profession'"
+      "Rank 2 typically follows the pattern: pool expansion + passive regen for the governing stat pool.",
+      "governing_stat: the stat whose rank caps this skill's rank.",
+      "Setting partitions: mundane (ancient–medieval), industrial (early modern–steam age), future (modern–sci-fi), fantasy (magic/mythological).",
+      "requirements type options: stat_min | skill_min | trait | equipment | affinity | style | proficiency"
     ]
   },
-  "skills": {
-    "weapon": {
-      "small_weapons_training": {
-        "name": "Small Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with small weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "-1 SP to small weapon attacks. +R attack vs targets attacking another ally."
-          },
-          "4": {
-            "effect": "Crits inflict Bleeding for R turns."
-          },
-          "5": {
-            "effect": "On Crit gain 1 AP. Attacks ignore half of parry bonus."
-          }
+  "template": {
+    "name_of_style": {
+      "name": "name_of_style",
+      "subtitle": "One-line description of the style",
+      "skill_type": "combat_style",
+      "governing_stat": "highest | BDY | SPT | MND",
+      "description": "Historical/cultural origin and what makes this style mechanically unique. This is the only place for flavor.",
+      "requirements": [
+        {
+          "type": "stat_min | skill_min | trait | equipment | affinity | style | proficiency",
+          "description": "list of available requirement types"
         }
-      },
-      "medium_weapons_training": {
-        "name": "Medium Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with medium weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "+R to Block or Dodge. Reaction: Melee attack vs attacker who missed."
-          },
-          "4": {
-            "effect": "+R attack vs enemies who did not target you last turn."
-          },
-          "5": {
-            "effect": "Attacks cause 5-ft knockback. If blocked, deal R damage."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "",
+          "ap_cost": 2,
+          "effect": "Basic attack or active ability."
+        },
+        "2": {
+          "name": "",
+          "effect": "Pool expansion + regen bonus, or strong passive."
+        },
+        "3": {
+          "name": "",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Power attack, AOE, or utility skill."
+        },
+        "4": {
+          "name": "",
+          "effect": "Passive augment or synergy bonus."
+        },
+        "5": {
+          "name": "",
+          "effect": "Signature ultimate defining the style's identity."
         }
-      },
-      "reach_weapons_training": {
-        "name": "Reach Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "BDY",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "BDY",
-            "value": 1
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with reach weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "+5 ft reach. +R attack vs enemies more than 5 ft away."
-          },
-          "4": {
-            "effect": "When an enemy enters reach, make a free attack (once per turn)."
-          },
-          "5": {
-            "effect": "+R damage outside 5 ft. Reach attacks cost -1 AP."
-          }
+      }
+    }
+  },
+  "mundane": {
+    "pankration": {
+      "name": "Pankration",
+      "subtitle": "Ancient Greek No-Holds-Barred Wrestling",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The first recorded Olympic combat sport, combining boxing and wrestling with almost no restrictions. Practiced throughout ancient Greece and the Mediterranean world, it trained warriors to fight on their feet and on the ground using strikes, chokes, joint locks, and throws.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks"
+        },
+        {
+          "type": "equipment",
+          "description": "Light or no armor"
         }
-      },
-      "heavy_weapons_training": {
-        "name": "Heavy Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "BDY",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "BDY",
-            "value": 2
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with heavy weapons."
-          },
-          "2": {
-            "effect": "Max HP + R²; HPR +R.",
-            "pool_bonus": {
-              "pool": "HP",
-              "formula": "R_squared",
-              "regen": "HPR"
-            }
-          },
-          "3": {
-            "effect": "+1 AP, +R SP to heavy weapon attack: gain +2R damage on hit."
-          },
-          "4": {
-            "effect": "+R to Block vs enemies you attacked last turn."
-          },
-          "5": {
-            "effect": "Crush: Ignore R DR. Target armor gains R stacks of Crushed."
-          }
-        }
-      },
-      "throwing_weapon_training_light": {
-        "name": "Throwing Weapon Training (Light)",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with light thrown weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "-1 SP to thrown attacks."
-          },
-          "4": {
-            "effect": "Once per round, free throw if AP was used to move."
-          },
-          "5": {
-            "effect": "Crits inflict Stagger (1 round). PLACEHOLDER: source text incomplete."
-          }
-        }
-      },
-      "throwing_weapon_training_large": {
-        "name": "Large Throwing Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with large thrown weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "+R damage if target is within 10 ft."
-          },
-          "4": {
-            "effect": "Area throw: 5-ft radius."
-          },
-          "5": {
-            "effect": "Thrown hit = Stagger (target loses 1 AP)."
-          }
-        }
-      },
-      "throwing_weapon_training_exotic": {
-        "name": "Exotic Thrown Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with exotic thrown weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "Weapon returns to hand on hit."
-          },
-          "4": {
-            "effect": "+R damage to flying or airborne targets."
-          },
-          "5": {
-            "effect": "+1 Crit Range. -1 AP to abilities."
-          }
-        }
-      },
-      "light_ranged_weapons_training": {
-        "name": "Light Ranged Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with light ranged weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "No reaction provoked when firing."
-          },
-          "4": {
-            "effect": "Snap Shot: Once per round, shoot as a reaction."
-          },
-          "5": {
-            "effect": "+1 movement tile per AP while wielding."
-          }
-        }
-      },
-      "medium_ranged_weapons_training": {
-        "name": "Medium Ranged Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with medium ranged weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "-1 AP to the first attack made with a medium ranged weapon per turn."
-          },
-          "4": {
-            "effect": "If target moved last turn: +R damage."
-          },
-          "5": {
-            "effect": "Ignore up to R Cover when aiming."
-          }
-        }
-      },
-      "large_ranged_weapons_training": {
-        "name": "Large Ranged Weapons Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with large ranged weapons."
-          },
-          "2": {
-            "effect": "Max HP + R²; HPR +R.",
-            "pool_bonus": {
-              "pool": "HP",
-              "formula": "R_squared",
-              "regen": "HPR"
-            }
-          },
-          "3": {
-            "effect": "+2R damage vs targets in cover."
-          },
-          "4": {
-            "effect": "If you have not moved this turn: +R Crit Range."
-          },
-          "5": {
-            "effect": "Crush: Ignore R armor DR. Apply Crushed."
-          }
-        }
-      },
-      "magic_weapon_training": {
-        "name": "Magic Weapon Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "notes": "Covers Wands, Rods, Firearms, Staves.",
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with magic focus weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "Attack applies -R defense debuff (lasts 1 round)."
-          },
-          "4": {
-            "effect": "-1 SP to channeled spells."
-          },
-          "5": {
-            "effect": "Prepare 1 spell as a Reaction."
-          }
-        }
-      },
-      "melee_siege_weapon_training": {
-        "name": "Melee Siege Weapon Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with melee siege weapons."
-          },
-          "2": {
-            "effect": "Max HP + R²; HPR +R.",
-            "pool_bonus": {
-              "pool": "HP",
-              "formula": "R_squared",
-              "regen": "HPR"
-            }
-          },
-          "3": {
-            "effect": "+2R damage to structures."
-          },
-          "4": {
-            "effect": "+R attack if you have not moved this turn."
-          },
-          "5": {
-            "effect": "Crush: Ignore all DR. Double damage to fortifications."
-          }
-        }
-      },
-      "ranged_siege_weapon_training": {
-        "name": "Ranged Siege Weapon Training",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to attacks with ranged siege weapons."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "+1 tile radius to attacks."
-          },
-          "4": {
-            "effect": "-1 turn reload time."
-          },
-          "5": {
-            "effect": "+R splash damage to adjacent targets."
-          }
-        }
-      },
-      "weapon_mastery": {
-        "name": "Weapon Mastery",
-        "skill_type": "weapon",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "skill_min",
-            "skill_count": 3,
-            "minimum_rank": 3,
-            "skill_category": "weapon"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to all trained weapon attacks."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "+1 Crit Range to all weapon attacks."
-          },
-          "4": {
-            "effect": "+1 Reaction per round with a trained weapon."
-          },
-          "5": {
-            "effect": "Once per turn, a hit grants a second attack at -2R."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "Clinch Strike",
+          "ap_cost": 2,
+          "effect": "Grapple a target and immediately strike for L damage. The grapple check and attack happen simultaneously."
+        },
+        "2": {
+          "name": "Iron Conditioning",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L to BDY saves vs knockdown and Prone."
+        },
+        "3": {
+          "name": "Stranglehold",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Apply a choke on a Grappled target: they are Immobilized and take L damage per round until they escape (BDY DC L+2)."
+        },
+        "4": {
+          "name": "Ground Mastery",
+          "effect": "While Grappling, your target loses 1 AP per round. Gain +L to all attacks against Grappled targets."
+        },
+        "5": {
+          "name": "Pankratiast's Fury",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Strike up to L targets in melee range; each hit applies Bleeding and Weakened. Grappled targets take double damage."
         }
       }
     },
-    "armor": {
-      "light_armor_training": {
-        "name": "Light Armor Training",
-        "skill_type": "armor",
-        "governing_stat": "highest",
-        "requirements": [],
-        "ranks": {
-          "1": {
-            "effect": "+R to Dodge with a Light Load."
-          },
-          "2": {
-            "effect": "Max SP + R²; SPR +R.",
-            "pool_bonus": {
-              "pool": "SP",
-              "formula": "R_squared",
-              "regen": "SPR"
-            }
-          },
-          "3": {
-            "effect": "If unarmored or in Light Armor: may take 2 move actions before SP penalties apply."
-          },
-          "4": {
-            "effect": "On successful Dodge: +R to next attack this round."
-          },
-          "5": {
-            "effect": "After first successful dodge per round, gain 3 DT."
-          }
+    "kenjutsu": {
+      "name": "Kenjutsu",
+      "subtitle": "Classical Japanese Sword Art",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "The umbrella term for Japanese swordsmanship schools (ryū) that preceded modern kendo. Focuses on practical technique: drawing, cutting, footwork, and situational awareness. Traditions like Tenshin Shōden Katori Shintō-ryū shaped samurai warfare for centuries.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "One-handed or two-handed slashing weapon (no ranged weapons)"
         }
-      },
-      "medium_armor_training": {
-        "name": "Medium Armor Training",
-        "skill_type": "armor",
-        "governing_stat": "BDY",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "BDY",
-            "value": 1
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to Block with a Medium load."
-          },
-          "2": {
-            "effect": "Max HP + R²; HPR +R.",
-            "pool_bonus": {
-              "pool": "HP",
-              "formula": "R_squared",
-              "regen": "HPR"
-            }
-          },
-          "3": {
-            "effect": "+R to Block if in Medium Armor."
-          },
-          "4": {
-            "effect": "Braced: +2R DR if unmoved for 1 round."
-          },
-          "5": {
-            "effect": "A Block that fully prevents damage restores R HP."
-          }
-        }
-      },
-      "heavy_armor_training": {
-        "name": "Heavy Armor Training",
-        "skill_type": "armor",
-        "governing_stat": "BDY",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "BDY",
-            "value": 2
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "-3R slashing damage taken, -2R piercing, -R bashing."
-          },
-          "2": {
-            "effect": "Max HP + R²; HPR +R.",
-            "pool_bonus": {
-              "pool": "HP",
-              "formula": "R_squared",
-              "regen": "HPR"
-            }
-          },
-          "3": {
-            "effect": "-2R physical and force damage taken; -R magic damage. (Increases to -3R at Rank 5.)"
-          },
-          "4": {
-            "effect": "Attacks that deal less than 5 damage after DR reflect R damage to attacker."
-          },
-          "5": {
-            "effect": "Immovable: Immune to shove and reposition effects."
-          }
-        }
-      },
-      "shield_mastery": {
-        "name": "Shield Mastery",
-        "skill_type": "armor",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Shield or block-capable weapon"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "Block costs -1 SP per R."
-          },
-          "2": {
-            "effect": "Max HP + R²; HPR +R.",
-            "pool_bonus": {
-              "pool": "HP",
-              "formula": "R_squared",
-              "regen": "HPR"
-            }
-          },
-          "3": {
-            "effect": "A Block that fully prevents damage restores R SP."
-          },
-          "4": {
-            "effect": "If Block total exceeds threshold by more than 10, attacker loses 1 AP."
-          },
-          "5": {
-            "effect": "1 extra Block per round that does not consume a Reaction."
-          }
-        }
-      },
-      "armor_synergy": {
-        "name": "Armor Synergy",
-        "skill_type": "armor",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "skill_min",
-            "skill_count": 2,
-            "minimum_rank": 3,
-            "skill_category": "armor"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to defense rolls while wearing armor."
-          },
-          "2": {
-            "effect": "Max HP + R²; HPR +R.",
-            "pool_bonus": {
-              "pool": "HP",
-              "formula": "R_squared",
-              "regen": "HPR"
-            }
-          },
-          "3": {
-            "effect": "+1 DR vs crits."
-          },
-          "4": {
-            "effect": "Allies within 5 ft gain half your armor bonus."
-          },
-          "5": {
-            "effect": "Redirect 1 attack per round from an adjacent ally to yourself. Roll Block or Dodge."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "Precision Cut",
+          "ap_cost": 2,
+          "effect": "+L to hit on Slash attacks. May reroll one damage die and keep the higher result."
+        },
+        "2": {
+          "name": "Focused Blade",
+          "effect": "Max SP +4L. Gain L² SP regen per round. +L Dodge when you have not attacked yet this turn."
+        },
+        "3": {
+          "name": "Iaijutsu Draw",
+          "ap_cost": 2,
+          "sp_cost": "1L",
+          "effect": "If your weapon was sheathed at the start of your turn, draw and strike for 3L damage before the target can react (no Dodge or Block allowed)."
+        },
+        "4": {
+          "name": "Read the Blade",
+          "effect": "After a successful hit, predict the target's next action type. Gain +L Dodge vs that predicted action until your next turn."
+        },
+        "5": {
+          "name": "Perfect Form",
+          "ap_cost": 2,
+          "sp_cost": "2L",
+          "effect": "A flawless cut that cannot be Blocked or Dodged; deal 3L damage and apply Bleeding."
         }
       }
     },
-    "combat_style": {
-      "blood_chain": {
-        "name": "Blood Chain",
-        "subtitle": "Martial Vampiric Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity",
-            "description": "Shadow or Life Drain ability"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Leech Strike",
-            "effect": "+R to attacks vs Bleeding enemies."
-          },
-          "2": {
-            "name": "Vital Spark",
-            "effect": "Heal R HP when downing a foe in melee."
-          },
-          "3": {
-            "name": "Chain of Hunger",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Lash enemies in 10-ft burst; if any are Bleeding, pull 1 adjacent enemy."
-          },
-          "4": {
-            "name": "Bloodline Ward",
-            "effect": "Gain +R DR while Bleeding and HP is above 50%."
-          },
-          "5": {
-            "name": "Crimson Cycle",
-            "effect": "When healing from damage dealt, restore R SP."
-          }
+    "naginata_jutsu": {
+      "name": "Naginata-jutsu",
+      "subtitle": "Japanese Polearm Tradition",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The art of the naginata (a bladed polearm), practiced by Buddhist warrior monks (sōhei) and samurai women defending the home. Emphasizes reach control, sweeping strikes, and zone maintenance to hold off multiple opponents.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Reach weapon (polearm, spear, or staff-blade)"
         }
-      },
-      "bonegrip": {
-        "name": "Bonegrip",
-        "subtitle": "Savage Melee Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Light or no armor, bludgeon preferred"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Bloody Smash",
-            "ap_cost": 2,
-            "effect": "Bash for BDY + R. On hit apply R stacks of Bleeding."
-          },
-          "2": {
-            "name": "Blood Sense",
-            "effect": "+R to attacks vs Bleeding targets."
-          },
-          "3": {
-            "name": "Spinal Crush",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Deal 3(R) damage. Immobilize if target is Staggered."
-          },
-          "4": {
-            "name": "Pain Threshold",
-            "effect": "Spend 1 SP to ignore Stagger."
-          },
-          "5": {
-            "name": "Grudge Strike",
-            "effect": "+R damage to the last attacker that harmed you."
-          }
-        }
-      },
-      "dervish_gale": {
-        "name": "Dervish Gale",
-        "subtitle": "Twinblade Whirlwind Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Dual Wield, Slashing Focus"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Swirling Slash",
-            "effect": "+R to attacks when Flanking or Flanked."
-          },
-          "2": {
-            "name": "Wind Flourish",
-            "effect": "+R SPD when landing 2 melee hits in a turn."
-          },
-          "3": {
-            "name": "Cyclone Dance",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Spin attack; 360-degree AOE for 2(R) damage."
-          },
-          "4": {
-            "name": "Blurstep",
-            "effect": "Move 1 tile before and after each melee attack."
-          },
-          "5": {
-            "name": "Eye of the Storm",
-            "effect": "While SP is above 50%, immune to Opportunity Attacks."
-          }
-        }
-      },
-      "echo_fang": {
-        "name": "Echo Fang",
-        "subtitle": "Shadow Clone Striker",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity",
-            "description": "Shadow"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Mirror Feint",
-            "effect": "+R to hit if target is marked by a clone."
-          },
-          "2": {
-            "name": "Shifting Strike",
-            "ap_cost": 1,
-            "sp_cost": "1R",
-            "effect": "Teleport to clone, then strike."
-          },
-          "3": {
-            "name": "Phantom Bloom",
-            "ap_cost": 3,
-            "mp_cost": "2R",
-            "effect": "Exploding clones deal R damage + Blind in 10-ft radius."
-          },
-          "4": {
-            "name": "Cloakbind",
-            "effect": "+R Dodge if within 10 ft of a clone."
-          },
-          "5": {
-            "name": "Splinter Swarm",
-            "effect": "Create 1 clone per enemy hit last round, maximum 3."
-          }
-        }
-      },
-      "ember_claw": {
-        "name": "Ember Claw",
-        "subtitle": "Fire Element Unarmed Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity",
-            "description": "Fire"
-          },
-          {
-            "type": "trait",
-            "description": "Unarmed Attacks"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Heated Knuckles",
-            "effect": "+R to Unarmed attacks; inflict Burned on hit."
-          },
-          "2": {
-            "name": "Fistflare",
-            "ap_cost": 1,
-            "sp_cost": "1R",
-            "effect": "5-ft burst, R Fire damage."
-          },
-          "3": {
-            "name": "Blazing Grasp",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Grapple target + inflict Burned for 3 rounds."
-          },
-          "4": {
-            "name": "Flameguard",
-            "effect": "Fire Resist +R. On melee hit, reflect R Fire damage."
-          },
-          "5": {
-            "name": "Infernal Grip",
-            "effect": "Grappled target cannot Dodge. Deal 3(R) damage if they do not escape."
-          }
-        }
-      },
-      "ember_pike": {
-        "name": "Ember Pike",
-        "subtitle": "Reach Weapon Cavalry Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Reach Weapon; Mounted if possible"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Thrust and Sweep",
-            "effect": "+R to Stab attacks. If charging, sweep adjacent targets."
-          },
-          "2": {
-            "name": "Rider's Control",
-            "sp_cost": 1,
-            "effect": "Redirect charge mid-move."
-          },
-          "3": {
-            "name": "Flamepoint",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Line stab; ignite all struck for R rounds."
-          },
-          "4": {
-            "name": "Retaliation Point",
-            "effect": "Make a counter-stab after a successful Dodge or Block."
-          },
-          "5": {
-            "name": "War Banner Spear",
-            "effect": "Allies within 5 ft of your target gain +R to hit that target."
-          }
-        }
-      },
-      "frost_needle": {
-        "name": "Frost Needle",
-        "subtitle": "Precision Ice Magic Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity",
-            "description": "Water, Celestial, or Void — Ice Spells; Ranged Focused"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Cold Pinpoint",
-            "effect": "+R to hit enemies that are Slowed or Frozen."
-          },
-          "2": {
-            "name": "Chilling Mark",
-            "ap_cost": 1,
-            "mp_cost": "1R",
-            "effect": "Mark target; next Ice spell against them deals +R."
-          },
-          "3": {
-            "name": "Ice Lance",
-            "ap_cost": 3,
-            "mp_cost": "2R",
-            "effect": "Line hit. Apply Slowed + 2(R) damage."
-          },
-          "4": {
-            "name": "Freezing Focus",
-            "effect": "+R to next Ice spell when Slowing an enemy."
-          },
-          "5": {
-            "name": "Heartpiercer",
-            "effect": "Triple damage to Frozen enemies."
-          }
-        }
-      },
-      "frostguard": {
-        "name": "Frostguard",
-        "subtitle": "Cold Element Defensive Mage",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity",
-            "description": "Water, Void, or Celestial — Cold Spells"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Chill Aura",
-            "effect": "+R DR while concentrating on Cold magic."
-          },
-          "2": {
-            "name": "Ice Trap",
-            "ap_cost": 2,
-            "mp_cost": "1R",
-            "effect": "Freeze terrain; enemies take -R SPD."
-          },
-          "3": {
-            "name": "Glacial Wall",
-            "ap_cost": 3,
-            "mp_cost": "2R",
-            "effect": "Wall absorbs R×2 damage."
-          },
-          "4": {
-            "name": "Hardened Heart",
-            "effect": "Ice effects grant +R vs Fear and Charm saves."
-          },
-          "5": {
-            "name": "Frost Shatter",
-            "effect": "Shatter a Frozen enemy: deal 3(R) damage + shard AOE."
-          }
-        }
-      },
-      "ghost_step": {
-        "name": "Ghost Step",
-        "subtitle": "Agile Striker / Rogue Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Light Armor; Melee or Ranged Weapon"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Feinting Flow",
-            "effect": "+R to attacks vs targets not facing you."
-          },
-          "2": {
-            "name": "Fade Step",
-            "effect": "After an attack, move 1 tile without provoking Reactions."
-          },
-          "3": {
-            "name": "Heartpierce",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "3(R) damage to flanked or surprised targets."
-          },
-          "4": {
-            "name": "Unseen Killer",
-            "effect": "May Dodge area attacks."
-          },
-          "5": {
-            "name": "Death Dance",
-            "effect": "On kill: gain +1 AP and +1 SP."
-          }
-        }
-      },
-      "gravitys_edge": {
-        "name": "Gravity's Edge",
-        "subtitle": "Two-Handed Weight Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Heavy Weapon"
-          },
-          {
-            "type": "stat_min",
-            "stat": "BDY",
-            "value": 2
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Grounded Stance",
-            "effect": "+R Bash while stationary."
-          },
-          "2": {
-            "name": "Heavy Follow",
-            "effect": "A missed attack grants +R to the next attack that round."
-          },
-          "3": {
-            "name": "Weight Collapse",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Target SPD -R; deal 2(R) damage."
-          },
-          "4": {
-            "name": "Unflinching",
-            "effect": "+R DR if you have not moved this turn."
-          },
-          "5": {
-            "name": "Earthsplitter",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Strike all adjacent enemies; each loses 1 AP."
-          }
-        }
-      },
-      "iron_serpent": {
-        "name": "Iron Serpent",
-        "subtitle": "Chain / Whip Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Flexible Weapon"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Coiling Lash",
-            "effect": "+R to hit at 10-15 ft range."
-          },
-          "2": {
-            "name": "Wrap and Rip",
-            "ap_cost": 1,
-            "sp_cost": "1R",
-            "effect": "Target loses 1 SPD."
-          },
-          "3": {
-            "name": "Chainbreaker",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Line hit; pull the last enemy in the line 1 tile."
-          },
-          "4": {
-            "name": "Tangle Bind",
-            "effect": "2 hits in 1 round = target gains Rooted."
-          },
-          "5": {
-            "name": "Crack of Doom",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "4(R) damage to all Rooted enemies."
-          }
-        }
-      },
-      "iron_tempest": {
-        "name": "Iron Tempest",
-        "subtitle": "Great Weapon Fighter Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Heavy Melee Weapon"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Swing Through",
-            "effect": "+R to Slash or Bash attacks."
-          },
-          "2": {
-            "name": "Momentum Carry",
-            "effect": "-1 AP to Bash or Stab after a Slash."
-          },
-          "3": {
-            "name": "Overhead Cleave",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "3-tile cone; 2(R) damage + Stagger."
-          },
-          "4": {
-            "name": "Muscle Through",
-            "effect": "-1 AP to Shove or break objects."
-          },
-          "5": {
-            "name": "Shockwave",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "R damage + Prone to all adjacent enemies."
-          }
-        }
-      },
-      "shield_wall": {
-        "name": "Shield Wall",
-        "subtitle": "Tank / Defender Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Shield; Heavy or Medium Armor"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Guarded Advance",
-            "effect": "+R Block while moving 1 tile or fewer."
-          },
-          "2": {
-            "name": "Fortify",
-            "effect": "+R DR vs ranged attacks."
-          },
-          "3": {
-            "name": "Linebreaker",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Bash all enemies in front row; push 1 tile; deal R damage."
-          },
-          "4": {
-            "name": "Interpose",
-            "effect": "Once per round, intercept 1 attack targeting an adjacent ally."
-          },
-          "5": {
-            "name": "Bulwark",
-            "effect": "While unmoved and shielded, gain Immovable; reflect R damage on Block."
-          }
-        }
-      },
-      "slice_and_dice": {
-        "name": "Slice and Dice",
-        "subtitle": "Dual Wielding Rogue Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Melee Slashing Weapon in both hands"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Slice",
-            "effect": "+R to Slash attacks."
-          },
-          "2": {
-            "name": "Dice",
-            "ap_cost": 1,
-            "sp_cost": "1R",
-            "effect": "Make an off-hand Slash after main-hand attack."
-          },
-          "3": {
-            "name": "Sever",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "If both Slice and Dice hit, deal 3(R) to same or nearby target."
-          },
-          "4": {
-            "name": "Momentum",
-            "effect": "After Slice and Dice combo, gain +R Dodge."
-          },
-          "5": {
-            "name": "Flurry",
-            "effect": "May make a 3rd off-hand attack at -R SP (stacking cost applies)."
-          }
-        }
-      },
-      "smoke_fang": {
-        "name": "Smoke Fang",
-        "subtitle": "Assassin / Poison Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Light Weapon"
-          },
-          {
-            "type": "skill_min",
-            "skill_category": "any",
-            "description": "Alchemy or Stealth Skill"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Fang Jab",
-            "effect": "+R to attacks if unseen."
-          },
-          "2": {
-            "name": "Toxin Blend",
-            "effect": "First poison used per combat gains +1 stack."
-          },
-          "3": {
-            "name": "Venom Surge",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Poison strike; inflict -2R HP over time."
-          },
-          "4": {
-            "name": "Ghost Pulse",
-            "effect": "While hidden, deal +R true damage."
-          },
-          "5": {
-            "name": "Death Whisper",
-            "uses": "1/combat",
-            "effect": "A Poisoned target below R HP drops to 1 HP."
-          }
-        }
-      },
-      "soul_reap": {
-        "name": "Soul Reap",
-        "subtitle": "Darkblade Mage Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity",
-            "description": "Shadow, Abyss, or Void — Necrotic or Shadow Spells"
-          },
-          {
-            "type": "equipment",
-            "description": "Melee weapon"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Death Touch",
-            "effect": "+R to attacks vs targets below 50% HP."
-          },
-          "2": {
-            "name": "Drain Essence",
-            "effect": "+R SP gained on damage to cursed or hexed enemies."
-          },
-          "3": {
-            "name": "Reaper's Slash",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Arc strike; 2(R) damage. Target loses 1 SP."
-          },
-          "4": {
-            "name": "Wither Shield",
-            "effect": "On Block or Dodge: target loses R SPD."
-          },
-          "5": {
-            "name": "Soul Shatter",
-            "effect": "On melee spell kill: nearby enemies take 1(R) damage and become Weakened."
-          }
-        }
-      },
-      "searing_bolt": {
-        "name": "Searing Bolt",
-        "subtitle": "Fire Mage Blaster Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity",
-            "description": "Fire, Chaos, or Radiant — Fire Spells"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Spark Shot",
-            "effect": "+R damage vs flammable or organic enemies."
-          },
-          "2": {
-            "name": "Kindle",
-            "effect": "Gain +1 Burned stack when targeting the same enemy again."
-          },
-          "3": {
-            "name": "Blaze Storm",
-            "ap_cost": 3,
-            "mp_cost": "2R",
-            "effect": "Fire line AOE + inflict Burned."
-          },
-          "4": {
-            "name": "Sear to Ash",
-            "effect": "Burning enemies take +R Fire damage."
-          },
-          "5": {
-            "name": "Inferno Core",
-            "effect": "Burned stacks deal +1 damage per turn. Max Burned stack limit +2."
-          }
-        }
-      },
-      "spellweaver": {
-        "name": "Spellweaver",
-        "subtitle": "Arcane Combat Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Magic Weapon or Focus"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Infused Strikes",
-            "effect": "+R to melee or ranged attacks using a magical focus."
-          },
-          "2": {
-            "name": "Arcane Echo",
-            "effect": "Once per turn: regain R SP after a spell causes damage."
-          },
-          "3": {
-            "name": "Mana Burst",
-            "ap_cost": 3,
-            "mp_cost": "2R",
-            "effect": "Short-range magic blast; 2(R) damage + push."
-          },
-          "4": {
-            "name": "Spellweave Dodge",
-            "effect": "On successful Dodge of ranged attack: next spell costs -1 SP."
-          },
-          "5": {
-            "name": "Arc Surge",
-            "effect": "Casting a Rank 3 or higher spell triggers a free Rank 1 spell."
-          }
-        }
-      },
-      "tempest_step": {
-        "name": "Tempest Step",
-        "subtitle": "Wind Mobility Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity_or_stat",
-            "description": "Air Magic (Wind or Lightning Affinity) or SPD 3+"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Breeze Rush",
-            "effect": "+R Dodge if you moved 2 or more tiles this turn."
-          },
-          "2": {
-            "name": "Cyclone Spin",
-            "ap_cost": 1,
-            "sp_cost": "1R",
-            "effect": "Redirect an incoming attack to an adjacent foe."
-          },
-          "3": {
-            "name": "Gale Kick",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Knockback all adjacent foes; deal R damage."
-          },
-          "4": {
-            "name": "Echo Move",
-            "effect": "Casting a Wind spell grants a free 1-tile Dash."
-          },
-          "5": {
-            "name": "Dance of the Storm",
-            "effect": "Move up to 5 tiles; ignore Reaction attacks during movement."
-          }
-        }
-      },
-      "thunder_step": {
-        "name": "Thunder Step",
-        "subtitle": "Lightning Reflex Duelist",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "affinity_or_stat",
-            "description": "Lightning or Wind Affinity, or SPD 3+"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Sparked Reflexes",
-            "effect": "+R Dodge if you moved this round."
-          },
-          "2": {
-            "name": "Jolt Riposte",
-            "ap_cost": 1,
-            "sp_cost": "1R",
-            "effect": "On Dodge, shock attacker for R damage."
-          },
-          "3": {
-            "name": "Thunder Rush",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Dash up to 3 tiles; shock all passed foes."
-          },
-          "4": {
-            "name": "Static Momentum",
-            "effect": "After a Lightning spell, gain +R SPD next turn."
-          },
-          "5": {
-            "name": "Bolt Crash",
-            "effect": "Strike all adjacent enemies; teleport to an empty tile within 15 ft."
-          }
-        }
-      },
-      "war_chant": {
-        "name": "War Chant",
-        "subtitle": "Battle Bard Style",
-        "skill_type": "combat_style",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Instrument or Vocal; Melee or Ranged Weapon"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "name": "Rousing Verse",
-            "effect": "Allies gain +R to Morale and Fear saves."
-          },
-          "2": {
-            "name": "Skald's Rebuff",
-            "ap_cost": 1,
-            "effect": "Interrupt a spell targeting an ally within 5 ft."
-          },
-          "3": {
-            "name": "Courage Anthem",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Allies gain +R to attack rolls."
-          },
-          "4": {
-            "name": "Dueling Chorus",
-            "uses": "1/combat",
-            "effect": "Swap initiative with an ally."
-          },
-          "5": {
-            "name": "Unyielding Song",
-            "effect": "While singing, gain Mental Resistance and immunity to Silence."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "Sweeping Strike",
+          "ap_cost": 2,
+          "effect": "+L to Slash and Bash attacks. If two or more enemies are adjacent, the strike hits all of them."
+        },
+        "2": {
+          "name": "Defensive Reach",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L Block while wielding a reach weapon."
+        },
+        "3": {
+          "name": "Spiral Thrust",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Pierce in a line up to 3 tiles; deal 2L damage to all targets hit and apply Staggered."
+        },
+        "4": {
+          "name": "Zone of Steel",
+          "effect": "Enemies entering your reach zone trigger a free Reaction attack at no AP cost."
+        },
+        "5": {
+          "name": "Circle of Heaven",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Spin attack hitting all adjacent and reach-range enemies; deal 2L damage each. Targets hit by two arcs are knocked Prone."
         }
       }
     },
-    "perception_combat_style": {
-      "anima_trace": {
-        "name": "Anima Trace",
-        "subtitle": "Emotion-Reading Style",
-        "skill_type": "perception",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "trait",
-            "description": "Empathic Sense"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to hit agitated or fearful foes."
-          },
-          "2": {
-            "effect": "+R SPD if an ally is downed within 15 ft."
-          },
-          "3": {
-            "ap_cost": 2,
-            "effect": "Stun 1 foe failing a morale check."
-          },
-          "4": {
-            "effect": "Remove 1 negative status from an ally within 10 ft."
-          },
-          "5": {
-            "effect": "Emotionally unstable foes lose 1 AP if struck."
-          }
+    "escrima": {
+      "name": "Escrima",
+      "subtitle": "Filipino Stick and Blade Fighting (Arnis/Kali)",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "The national martial art of the Philippines. A weapons-first system built around sticks, bladed weapons, and empty hands, emphasizing fluid transitions between armed and unarmed combat. Historically used by Filipino warriors against Spanish colonizers.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Light melee weapon or unarmed; may use both simultaneously"
         }
-      },
-      "sixth_sense": {
-        "name": "Sixth Sense",
-        "subtitle": "Awareness and Counter-Surprise",
-        "skill_type": "perception",
-        "governing_stat": "SPT",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "SPT",
-            "value": 1
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to Perception vs Stealth."
-          },
-          "2": {
-            "ap_cost": 1,
-            "effect": "Rotate to face threat vs surprise; gain +R Dodge."
-          },
-          "3": {
-            "ap_cost": 3,
-            "effect": "Predict action type. If correct: +2R defense."
-          },
-          "4": {
-            "effect": "Act during Surprise Rounds."
-          },
-          "5": {
-            "effect": "Detect invisible or hidden foes within 10 ft if they take an action."
-          }
-        }
-      },
-      "keen_eye": {
-        "name": "Keen Eye",
-        "subtitle": "Precision Marksmanship Style",
-        "skill_type": "perception",
-        "governing_stat": "SPT",
-        "requirements": [
-          {
-            "type": "equipment",
-            "description": "Ranged weapon"
-          },
-          {
-            "type": "stat_min",
-            "stat": "SPT",
-            "value": 2
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to hit vs targets at full HP."
-          },
-          "2": {
-            "ap_cost": 1,
-            "effect": "Mark target; next ranged attack deals +R damage."
-          },
-          "3": {
-            "ap_cost": 3,
-            "effect": "Careful Shot: 2R damage, ignore half DR."
-          },
-          "4": {
-            "effect": "Reduce penalties from cover and concealment by R."
-          },
-          "5": {
-            "effect": "Crits apply a random status effect (Bleeding, Blind, or Weakened)."
-          }
-        }
-      },
-      "mirror_reflex": {
-        "name": "Mirror Reflex",
-        "subtitle": "Perceptual Counter-Fighting Style",
-        "skill_type": "perception",
-        "governing_stat": "highest",
-        "requirements": [
-          {
-            "type": "skill_min",
-            "skill_category": "any_combat",
-            "description": "Any Combat Skill"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R Dodge if attacked last turn."
-          },
-          "2": {
-            "effect": "+R SPD after a successful Block."
-          },
-          "3": {
-            "ap_cost": 2,
-            "effect": "Mimic the last attack used against you for half damage."
-          },
-          "4": {
-            "effect": "+R to hit vs enemies who missed you."
-          },
-          "5": {
-            "effect": "If reduced to 0 HP, deal 2R damage to the attacker."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "Flow Strike",
+          "ap_cost": 2,
+          "effect": "+L to hit. On any hit, switch grip or stance for free (armed to unarmed or vice versa)."
+        },
+        "2": {
+          "name": "Steel Rhythm",
+          "effect": "Max SP +4L. Gain L² SP regen per round. +L to attacks when you struck this target last turn."
+        },
+        "3": {
+          "name": "Defang the Snake",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Strike the target's weapon arm: deal L damage and force a BDY save or they drop their weapon and lose 1 AP."
+        },
+        "4": {
+          "name": "Pressure Chain",
+          "effect": "After each hit on the same target this turn, gain +1 to the next attack roll (up to +L maximum)."
+        },
+        "5": {
+          "name": "Maestro's Flow",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Strike up to 3 times against one or more targets; each hit reduces that target's Dodge by L for the rest of combat."
         }
       }
     },
-    "mystical": {
-      "arcane_theory": {
-        "name": "Arcane Theory",
-        "subtitle": "Foundational Magical Knowledge",
-        "skill_type": "mystical",
-        "governing_stat": "MND",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "MND",
-            "value": 2
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to identify spells, glyphs, or wards."
-          },
-          "2": {
-            "effect": "Reduce time to decipher magic scrolls or runes by 50%."
-          },
-          "3": {
-            "effect": "Detect nearby active spells or ambient mana flow."
-          },
-          "4": {
-            "effect": "+R to memorize or counter known spells."
-          },
-          "5": {
-            "effect": "Auto-identify any spell of Rank R or lower with a glance."
-          }
+    "muay_thai": {
+      "name": "Muay Thai",
+      "subtitle": "Thai Eight-Limb Kickboxing",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The national combat sport of Thailand, developed over centuries from the battlefield art of Muay Boran. Uses fists, elbows, knees, and kicks — the eight weapons — along with clinch techniques. Renowned for conditioning, raw power, and relentless forward pressure.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks"
+        },
+        {
+          "type": "equipment",
+          "description": "Light or no armor"
         }
-      },
-      "channeling": {
-        "name": "Channeling",
-        "subtitle": "Energy Focusing Style",
-        "skill_type": "mystical",
-        "governing_stat": "MND",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "MND",
-            "value": 3
-          },
-          {
-            "type": "equipment",
-            "description": "Magical Focus Item"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to maintain or empower ongoing magical effects."
-          },
-          "2": {
-            "effect": "Delay or redirect your own spell activation by 1 round."
-          },
-          "3": {
-            "mp_cost": "R additional",
-            "effect": "Spend +R MP to amplify next spell by +R effect."
-          },
-          "4": {
-            "uses": "1/rest",
-            "effect": "Double range or area for 1 spell."
-          },
-          "5": {
-            "uses": "1/session",
-            "effect": "Ignore max MP limit for 1 spell."
-          }
-        }
-      },
-      "elemental_harmony": {
-        "name": "Elemental Harmony",
-        "subtitle": "Balance of the Four",
-        "skill_type": "mystical",
-        "governing_stat": "MND",
-        "requirements": [
-          {
-            "type": "stat_min",
-            "stat": "MND",
-            "value": 2
-          },
-          {
-            "type": "affinity",
-            "description": "Any Elemental Affinity"
-          }
-        ],
-        "ranks": {
-          "1": {
-            "effect": "+R to resist your primary element."
-          },
-          "2": {
-            "effect": "Use a secondary element's effect at reduced power."
-          },
-          "3": {
-            "effect": "Change element-based abilities to an alternate element."
-          },
-          "4": {
-            "uses": "1/day",
-            "effect": "Retain a spell effect without upkeep."
-          },
-          "5": {
-            "effect": "Channel two elemental effects simultaneously."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "Eight Limbs",
+          "ap_cost": 2,
+          "effect": "+L to unarmed attacks. Each hit has a 1-in-6 chance to apply Stagger."
+        },
+        "2": {
+          "name": "Iron Clinch",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L to Grapple and clinch checks."
+        },
+        "3": {
+          "name": "Knee Burst",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Clinch and deliver a knee strike: 3L damage that ignores armor DR. Target is Staggered on hit."
+        },
+        "4": {
+          "name": "Teep Wall",
+          "effect": "As a Reaction, push kick an approaching enemy back 1 tile and cancel their advance."
+        },
+        "5": {
+          "name": "Muay Mat Rush",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Deliver 3 consecutive unarmed strikes against one target for 3 AP total; each hit applies a random status (Stagger, Bleeding, or Weakened)."
         }
       }
     },
-    "crafter_combat_styles": {
-      "weapon_crafter_style": {
-        "name": "Weapon Crafter Style",
-        "governing_stat": "BDY",
-        "associated_professions": [
-          "smithing",
-          "carpentry",
-          "engineering"
-        ],
-        "notes": "Bonus scales with associated Profession Skill level, not Style level alone.",
-        "levels": {
-          "1": {
-            "name": "Weapon Intuition",
-            "effect": "+level to attack rolls with weapons in associated profession categories."
-          },
-          "2": {
-            "name": "Stress Reading",
-            "effect": "Once per round, identify a structural weakness. Next attack against that target deals +Profession level bonus damage."
-          },
-          "3": {
-            "name": "Edge Knowledge",
-            "effect": "Critical hit range expands by 1 with self-category weapons. Critical success triggers the weapon's crafted critical bonus if applicable."
-          },
-          "4": {
-            "name": "Breaking Point",
-            "ap_cost": 3,
-            "sp_cost": "2R",
-            "effect": "Strike targeting a held item or armor piece. Inflict Structural Flaw on a failed BDY save."
-          },
-          "5": {
-            "name": "Master's Touch",
-            "effect": "While wielding a weapon in associated category, gain +Profession level to all attack and damage rolls. Field repair any weapon in associated category as a 2 AP action."
-          }
+    "roman_legionary": {
+      "name": "Roman Legionary",
+      "subtitle": "Roman Close-Formation Warfare",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The fighting system of the Roman legions, combining gladius technique, large rectangular scutum use, and close-formation tactics. Drilled for unit cohesion, the legionary fought as part of a line rather than as an individual, using the shield offensively as well as defensively.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Shield equipped and one-handed melee weapon"
         }
-      },
-      "armor_crafter_style": {
-        "name": "Armor Crafter Style",
-        "governing_stat": null,
-        "governing_stat_options": [
-          "BDY",
-          "MND"
-        ],
-        "associated_professions": [
-          "smithing",
-          "tailoring",
-          "leatherworking"
-        ],
-        "notes": "Bonus scales with associated Profession Skill level.",
-        "levels": {
-          "1": {
-            "name": "Construction Awareness",
-            "effect": "+level to Defense rolls while wearing armor in associated profession categories."
-          },
-          "2": {
-            "name": "Load Management",
-            "effect": "Reduce AP penalty from armor weight by Profession level."
-          },
-          "3": {
-            "name": "Stress Distribution",
-            "effect": "When armor takes a critical hit, reduce damage by Profession level. May trigger once per round."
-          },
-          "4": {
-            "name": "Field Repair",
-            "ap_cost": 2,
-            "sp_cost": "1R",
-            "effect": "Restore Profession level HP to worn armor between or during combat. Requires basic tools."
-          },
-          "5": {
-            "name": "Second Skin",
-            "effect": "Armor in associated category no longer imposes movement penalties. Gain +Profession level to all Defense rolls while wearing associated armor."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "Scutum Wall",
+          "ap_cost": 2,
+          "effect": "+L Block. When adjacent to at least one shielded ally, also gain +L to attacks."
+        },
+        "2": {
+          "name": "Soldier's Will",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L to saves vs Fear and Morale effects."
+        },
+        "3": {
+          "name": "Testudo Push",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Shield-bash all enemies directly ahead; push each 1 tile and deal L damage. Enemies who hit an obstacle are knocked Prone."
+        },
+        "4": {
+          "name": "Close Order",
+          "effect": "When adjacent to 2 or more shielded allies, melee attacks against you have disadvantage."
+        },
+        "5": {
+          "name": "Legionary's Advance",
+          "ap_cost": 2,
+          "effect": "Move up to 3 tiles; all adjacent shielded allies may move the same distance at no AP cost. Enemies in your path take L damage."
         }
-      },
-      "consumable_crafter_style": {
-        "name": "Consumable Crafter Style",
-        "governing_stat": "MND",
-        "associated_professions": [
-          "alchemy",
-          "cooking"
-        ],
-        "notes": "Bonus scales with associated Profession Skill level.",
-        "levels": {
-          "1": {
-            "name": "Precise Application",
-            "effect": "Potions and oils in associated category restore or deal +Profession level bonus effect value."
-          },
-          "2": {
-            "name": "Efficient Dosing",
-            "effect": "Reduce AP cost of applying consumables in associated category by 1 (minimum 1)."
-          },
-          "3": {
-            "name": "Optimized Timing",
-            "effect": "May delay a consumable effect by up to level rounds. Triggering the delay costs 0 AP."
-          },
-          "4": {
-            "name": "Compound Effect",
-            "effect": "When applying two consumables in the same round, the second costs 0 AP. Both effects apply."
-          },
-          "5": {
-            "name": "Master Formulator",
-            "effect": "Consumables in associated category last +Profession level rounds, or have their effect multiplied by 1.5. Choose per item at time of use."
-          }
+      }
+    },
+    "mongolian_archery": {
+      "name": "Mongolian Archery",
+      "subtitle": "Steppe Composite Bow Tradition",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "The mounted archery tradition of the Mongol steppe warriors, using short recurve composite bows designed for use at full gallop. Mongol horse archers could fire accurately while riding in any direction — including directly behind them (the Parthian shot) — making them virtually uncatchable in open terrain.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Bow (ranged weapon)"
         }
-      },
-      "projectile_crafter_style": {
-        "name": "Projectile Crafter Style",
-        "governing_stat": null,
-        "governing_stat_options": [
-          "MND",
-          "BDY"
-        ],
-        "associated_professions": [
-          "engineering",
-          "carpentry",
-          "smithing"
-        ],
-        "notes": "Bonus scales with associated Profession Skill level.",
-        "levels": {
-          "1": {
-            "name": "Trajectory Knowledge",
-            "effect": "+level to ranged attack rolls with projectile weapons in associated categories."
-          },
-          "2": {
-            "name": "Material Optimization",
-            "effect": "Ammunition in associated categories gains +Profession level to penetration (reduces target armor DR)."
-          },
-          "3": {
-            "name": "Precision Construction",
-            "effect": "Once per round, designate a shot as a Precision Strike. Deal Profession level bonus damage and ignore cover bonuses."
-          },
-          "4": {
-            "name": "Custom Load",
-            "ap_cost": 1,
-            "effect": "Apply a prepared material coating to ammunition (fire, acid, paralytic, etc.) without breaking action economy."
-          },
-          "5": {
-            "name": "Master Fletcher",
-            "effect": "Ranged attacks with associated category weapons may apply the weapon's crafted critical bonus on any hit that exceeds target Defense by Profession level or more."
-          }
+      ],
+      "levels": {
+        "1": {
+          "name": "Parthian Shot",
+          "ap_cost": 2,
+          "effect": "+L to hit when mounted or when you moved this turn. No accuracy penalty for moving before attacking."
+        },
+        "2": {
+          "name": "Draw Discipline",
+          "effect": "Max SP +4L. Gain L² SP regen per round. Ranged attacks cost -1 AP (minimum 1)."
+        },
+        "3": {
+          "name": "Rain of Arrows",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Loose a volley into a 3-tile radius zone; all targets take L damage and are Slowed until their next turn."
+        },
+        "4": {
+          "name": "Cavalry Precision",
+          "effect": "While mounted, ranged attacks deal +L damage and ignore half cover bonuses."
+        },
+        "5": {
+          "name": "Steppe Ghost",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Loose two arrows at any targets within range; if the first arrow hits, the second costs 0 AP."
+        }
+      }
+    }
+  },
+  "industrial": {
+    "bartitsu": {
+      "name": "Bartitsu",
+      "subtitle": "Edwardian Eclectic Self-Defense System",
+      "skill_type": "combat_style",
+      "governing_stat": "MND",
+      "description": "Developed in London in 1899 by Edward Barton-Wright, the world's first deliberately synthesized martial art. Combines English boxing, French savate footwork, Swiss wrestling, and Japanese jujutsu. Designed for educated gentlemen who might face street violence, it emphasizes improvised weapons, redirection, and tactical awareness over raw strength.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Walking stick, cane, or umbrella (or unarmed)"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Gentleman's Guard",
+          "ap_cost": 2,
+          "effect": "+L Dodge. When armed with a cane, parry melee attacks for +L Block as a free Reaction once per round."
+        },
+        "2": {
+          "name": "Scientific Approach",
+          "effect": "Max MP +4L. Gain L² MP regen per round. Once per turn, one attack or defensive action costs -1 AP."
+        },
+        "3": {
+          "name": "Redirect and Throw",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Disarm a melee attacker and throw them: target drops their weapon, is knocked Prone, and takes L damage."
+        },
+        "4": {
+          "name": "Studied Opponent",
+          "effect": "After observing an enemy attack twice, predict their strike type. Gain +L defense vs that attack type for the rest of combat."
+        },
+        "5": {
+          "name": "Grand Synthesis",
+          "ap_cost": 3,
+          "mp_cost": "2L",
+          "effect": "Make a combined attack and counter simultaneously: deal 2L damage and counter-throw for L additional damage. Both effects apply even if the initial attack is blocked."
+        }
+      }
+    },
+    "savate": {
+      "name": "Savate",
+      "subtitle": "French Scientific Kickboxing",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "Developed in early 19th century France, savate (boxe française) treats the foot as a precision weapon. Unlike most kicking arts, savate practitioners traditionally fought in shoes, allowing harder impacts. Sailors and street fighters in Marseille and Paris developed the style before it was refined into a competitive sport.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks"
+        },
+        {
+          "type": "equipment",
+          "description": "Light or no armor"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Chassé",
+          "ap_cost": 2,
+          "effect": "+L to kick attacks. Kicks deal one damage tier higher than unarmed punches."
+        },
+        "2": {
+          "name": "French Footwork",
+          "effect": "Max SP +4L. Gain L² SP regen per round. +L Dodge when you moved before attacking this turn."
+        },
+        "3": {
+          "name": "Fouetté Tournant",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Spinning heel kick: deal 3L damage and apply Stagger. If target is already Staggered, knock them Prone instead."
+        },
+        "4": {
+          "name": "Measure Control",
+          "effect": "Kicks made against targets entering your zone deal +L damage and deny their melee attack that action."
+        },
+        "5": {
+          "name": "Coup de Grâce",
+          "ap_cost": 2,
+          "sp_cost": "1L",
+          "effect": "A precision kick to a vital point: deal 3L damage ignoring half DR. Targets below 25% HP are automatically Staggered."
+        }
+      }
+    },
+    "naval_cutlass": {
+      "name": "Naval Cutlass",
+      "subtitle": "Age of Sail Boarding Combat",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The fighting art of naval boarding actions during the Age of Sail (17th–19th century). Sailors and marines trained with the cutlass for close-quarters combat in the confined, unstable environment of a ship deck. Emphasizes aggressive forward pressure, short powerful cuts, and off-hand use for balance and pistol work.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "One-handed slashing weapon; light or medium armor"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Boarding Rush",
+          "ap_cost": 2,
+          "effect": "+L to hit when charging. Charge distance is extended by 1 tile."
+        },
+        "2": {
+          "name": "Salt Air Grit",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L to saves vs environmental hazards (falling, difficult terrain, weather)."
+        },
+        "3": {
+          "name": "Press Gang Shove",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Powerful bull-rush: deal 2L damage and shove target up to 2 tiles. Target falls Prone if they collide with an obstacle."
+        },
+        "4": {
+          "name": "Reckless Cut",
+          "effect": "May sacrifice defense for offense: gain +L damage on all attacks, but attacks against you have +L to hit until your next turn."
+        },
+        "5": {
+          "name": "No Quarter",
+          "ap_cost": 1,
+          "effect": "When any adjacent enemy drops below L HP, gain a free bonus attack against them at no additional AP cost."
+        }
+      }
+    },
+    "classical_boxing": {
+      "name": "Classical Boxing",
+      "subtitle": "Marquess of Queensberry Rules",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The gentleman's sport of the Victorian industrial era, codified by the Marquess of Queensberry rules in 1867. Built around padded gloves, rounds, and prohibitions on wrestling, classical boxing emphasizes footwork, punch accuracy, and guard management as a complete self-defense system.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks"
+        },
+        {
+          "type": "equipment",
+          "description": "No weapons in hand"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Jab",
+          "ap_cost": 1,
+          "effect": "+L to unarmed attacks. Once per round, the first unarmed attack costs 1 AP instead of 2."
+        },
+        "2": {
+          "name": "Guard Up",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L Block vs unarmed and light weapon attacks."
+        },
+        "3": {
+          "name": "Cross-Hook Combo",
+          "ap_cost": 3,
+          "sp_cost": "1L",
+          "effect": "A two-punch combination: the cross lowers target defense by L, and the following hook deals 3L damage."
+        },
+        "4": {
+          "name": "Slip and Step",
+          "effect": "Once per round, step out of melee range without provoking Reaction attacks after making an attack."
+        },
+        "5": {
+          "name": "Knockout Artist",
+          "ap_cost": 2,
+          "sp_cost": "1L",
+          "effect": "When target is Staggered, the next punch is an automatic critical hit and applies Prone."
+        }
+      }
+    },
+    "bayonet_fighting": {
+      "name": "Bayonet Fighting",
+      "subtitle": "Military Rifle and Blade Drill",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The regulated system of bayonet drill taught to infantry from the 18th through early 20th centuries. A practical system for when firearms are empty or close combat is unavoidable, combining thrusting, clubbing with the rifle butt, and footwork from fencing. Used extensively from the Napoleonic Wars through World War I.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Two-handed piercing weapon or rifle with bayonet (spear, pike, or equivalent)"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Fixed Bayonet",
+          "ap_cost": 2,
+          "effect": "+L to Stab attacks. Charge attacks deal +L bonus damage."
+        },
+        "2": {
+          "name": "Soldier's Endurance",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L to saves vs fatigue and forced march penalties."
+        },
+        "3": {
+          "name": "Butt Strike",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Bash with the weapon's butt end: deal 2L damage and apply Stagger. This attack ignores shields."
+        },
+        "4": {
+          "name": "Hold the Line",
+          "effect": "While stationary, opportunity attacks against approaching enemies gain +L damage."
+        },
+        "5": {
+          "name": "Sergeant's Form",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Stab and immediately follow with a butt strike as one action. If both hit, the target is knocked Prone."
+        }
+      }
+    },
+    "la_canne": {
+      "name": "La Canne",
+      "subtitle": "French Athletic Cane Fighting",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "A French martial art developed in the 19th century that treats the walking cane as a sporting weapon, emphasizing speed, agility, and economy of motion. Developed in the same Paris sporting culture as savate, la canne de combat remains a competitive art today with its distinctive upright guard and angled striking patterns.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Staff, cane, club, or light bludgeoning weapon"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Cane Guard",
+          "ap_cost": 2,
+          "effect": "+L to both attack rolls and Dodge. The weapon counts as both offensive and defensive simultaneously."
+        },
+        "2": {
+          "name": "Athletic Flow",
+          "effect": "Max SP +4L. Gain L² SP regen per round. +L to acrobatic movement and balance checks."
+        },
+        "3": {
+          "name": "Redoublement",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Two rapid strikes at different target locations: each deals L damage. If both hit, apply Stagger."
+        },
+        "4": {
+          "name": "Bind and Break",
+          "effect": "On a successful Block, immediately attempt to disarm the attacker as a free Reaction. On success, attacker drops their weapon and is Staggered."
+        },
+        "5": {
+          "name": "Passé Supérieur",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Move through an enemy's space in one fluid step, striking from behind. Target cannot Dodge. Deal 3L damage and apply Bleeding."
+        }
+      }
+    }
+  },
+  "future": {
+    "krav_maga": {
+      "name": "Krav Maga",
+      "subtitle": "Israeli Military Self-Defense System",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "Developed by Imi Lichtenfeld for the Israeli Defense Forces, Krav Maga ('contact combat' in Hebrew) is a threat-neutralization system built for real-world violence rather than sport. Draws from boxing, wrestling, judo, and aikido, stripped to the most efficient techniques. Core philosophy: finish the fight as quickly and decisively as possible.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Unarmed or light weapon"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Threat Neutralize",
+          "ap_cost": 2,
+          "effect": "The first attack each combat deals +L damage and cannot be Blocked. Ignore the first Stagger applied to yourself per combat."
+        },
+        "2": {
+          "name": "Combat Conditioning",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L to saves vs pain-based status effects (Stagger, Weakened)."
+        },
+        "3": {
+          "name": "Aggressive Counter",
+          "ap_cost": 2,
+          "effect": "On any successful Block or Dodge, immediately counter-strike for L damage at 0 additional AP cost."
+        },
+        "4": {
+          "name": "Weapon Strip",
+          "ap_cost": 1,
+          "effect": "Attempt to disarm an enemy as a 1 AP action. On success, take their weapon and may use it this turn."
+        },
+        "5": {
+          "name": "Kill Switch",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "A rapid sequence of disabling strikes: apply Stagger and Immobilized simultaneously. Target cannot use Reactions until end of their next turn."
+        }
+      }
+    },
+    "combat_sambo": {
+      "name": "Combat Sambo",
+      "subtitle": "Soviet Military Grappling-Striking Hybrid",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "Sambo (SAMozashchita Bez Oruzhiya — self-defense without weapons) was developed by the Soviet Red Army in the 1920s, drawing from judo, wrestling, and Slavic fighting traditions. Combat Sambo retains strikes, headbutts, and weapons defense. It is the foundation of Russian special forces training and the backbone of many modern MMA competitors.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks"
+        },
+        {
+          "type": "equipment",
+          "description": "Light or no armor"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Throw Entry",
+          "ap_cost": 2,
+          "effect": "+L to Grapple checks. After any successful Dodge, immediately attempt a free Grapple or throw."
+        },
+        "2": {
+          "name": "Wrestler's Build",
+          "effect": "Max HP +4L. Gain L² HP regen per round. +L to BDY saves vs knockdown and Prone."
+        },
+        "3": {
+          "name": "Slam Down",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Lift and body-slam the target: deal 3L damage and apply Prone and Staggered simultaneously."
+        },
+        "4": {
+          "name": "Arm Lock",
+          "effect": "While Grappling, lock a limb: target loses 1 AP per round and cannot use two-handed attacks until the Grapple is broken."
+        },
+        "5": {
+          "name": "Ground and Pound",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "While target is Prone or Grappled, deal L damage per AP spent in strikes, up to 3 hits. Each hit costs 1 AP."
+        }
+      }
+    },
+    "brazilian_jiu_jitsu": {
+      "name": "Brazilian Jiu-Jitsu",
+      "subtitle": "Ground Grappling and Submission Art",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "Developed by the Gracie family in Brazil from Mitsuyo Maeda's judo. BJJ proved that ground-fighting and submission holds could neutralize larger, stronger opponents. Practitioners are trained to be comfortable — even dominant — in the most unfavorable positions on the ground.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks"
+        },
+        {
+          "type": "equipment",
+          "description": "Light or no armor"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Guard Pull",
+          "ap_cost": 2,
+          "effect": "+L to Grapple checks. May enter a defensive Grapple (guard) that prevents the enemy from attacking others while you hold them."
+        },
+        "2": {
+          "name": "Mat Sense",
+          "effect": "Max HP +4L. Gain L² HP regen per round. While Prone or Grappled, gain +L to all defensive rolls."
+        },
+        "3": {
+          "name": "Submission Lock",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Lock a joint or apply a choke: target is Immobilized and takes L damage per round until they escape (BDY save DC L+3)."
+        },
+        "4": {
+          "name": "Inversion Guard",
+          "effect": "While Prone or Grappled, attacks against you cost the attacker +1 AP. Enemies must spend 2 AP to disengage from your guard."
+        },
+        "5": {
+          "name": "Tap or Snap",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Increase Submission Lock damage to 2L per round. Escape requires 4 AP. On a critical fail to escape, target gains Weakened for the rest of combat."
+        }
+      }
+    },
+    "tactical_cqc": {
+      "name": "Tactical CQC",
+      "subtitle": "Modern Military Close Quarters Combat",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "Close Quarters Combat doctrine as taught to modern special operations forces worldwide. Integrates firearms, blade, and empty-hand techniques with threat assessment and immediate action in confined spaces such as buildings, vehicles, and ships. Associated with units like Delta Force, SAS, and GSG-9.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Light weapon, firearm, or unarmed"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Target Acquisition",
+          "ap_cost": 2,
+          "effect": "+L to hit at close range (within 10 ft). No accuracy penalty for switching targets in the same turn."
+        },
+        "2": {
+          "name": "Situational Awareness",
+          "effect": "Max SP +4L. Gain L² SP regen per round. +L to Perception checks during combat; cannot be Surprised."
+        },
+        "3": {
+          "name": "Dynamic Entry",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Move up to 3 tiles and attack every target in your path; deal L damage to each. Movement does not provoke Reactions."
+        },
+        "4": {
+          "name": "Cover to Cover",
+          "ap_cost": 1,
+          "effect": "Dash between two pieces of cover using 1 AP; gain +L Dodge until your next turn."
+        },
+        "5": {
+          "name": "Lethal Efficiency",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Whenever you reduce a target to 0 HP this turn, all remaining attack AP costs are reduced by 1 for the rest of that turn."
+        }
+      }
+    },
+    "mixed_martial_arts": {
+      "name": "Mixed Martial Arts",
+      "subtitle": "Modern Multi-Discipline Combat Sport",
+      "skill_type": "combat_style",
+      "governing_stat": "highest",
+      "description": "Formalized through the UFC and refined across thousands of professional bouts, modern MMA converges on wrestling for takedowns, BJJ for ground-fighting, and Muay Thai or boxing for striking. Top-level practitioners are complete fighters able to dominate at any range or position.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks"
+        },
+        {
+          "type": "equipment",
+          "description": "Light or no armor"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Complete Fighter",
+          "ap_cost": 2,
+          "effect": "+L to both unarmed strikes and Grapple checks. No penalty for switching between striking and grappling in the same turn."
+        },
+        "2": {
+          "name": "Fight Conditioning",
+          "effect": "Max HP +4L. Gain L² HP regen per round. Reduce duration of Stagger and Weakened applied to you by 1 round (minimum 1)."
+        },
+        "3": {
+          "name": "Takedown or KO",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Choose: Takedown (2L damage + Prone + Grapple) or Overhand (2L damage + Stagger). Both options cost the same AP."
+        },
+        "4": {
+          "name": "Damage Adaptation",
+          "effect": "After being hit, gain +1 to all defenses until end of your next turn (cumulative, up to +L maximum)."
+        },
+        "5": {
+          "name": "Full Fight Mode",
+          "ap_cost": 2,
+          "sp_cost": "2L",
+          "effect": "Activate for 3 rounds: gain +L to all attacks, defenses, and damage. Cannot be Staggered while active."
+        }
+      }
+    },
+    "systema": {
+      "name": "Systema",
+      "subtitle": "Russian Intelligence Body Movement Art",
+      "skill_type": "combat_style",
+      "governing_stat": "MND",
+      "description": "A Russian martial art associated with Spetsnaz, developed from Cossack warrior traditions and systematized in the Soviet era. Unlike sport martial arts, systema focuses on natural body movement, breath control under stress, and adaptive principles rather than fixed techniques — making it highly effective against any style or weapon.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Unarmed or any weapon"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Natural Movement",
+          "ap_cost": 2,
+          "effect": "+L Dodge. Moving toward an enemy does not provoke Reaction attacks."
+        },
+        "2": {
+          "name": "Breathing Mastery",
+          "effect": "Max SP +4L. Gain L² SP regen per round. At the start of each turn, remove one Stagger applied to yourself."
+        },
+        "3": {
+          "name": "Redirection",
+          "ap_cost": 2,
+          "effect": "As a Reaction to a melee attack, redirect it into an adjacent target: the attacker's strike hits a target of your choice adjacent to you."
+        },
+        "4": {
+          "name": "Flow State",
+          "effect": "After 3 consecutive successful Dodges or Blocks, gain +L to attacks and +L damage until you take damage."
+        },
+        "5": {
+          "name": "Formless",
+          "ap_cost": 1,
+          "sp_cost": "2L",
+          "effect": "For 1 round, become immune to attack types you have already successfully Dodged or Blocked this combat."
+        }
+      }
+    }
+  },
+  "fantasy": {
+    "war_monk": {
+      "name": "War Monk",
+      "subtitle": "Monastic Temple Guardian Tradition",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "The fighting tradition of temple guardians and warrior monks who believe combat is an extension of devotion. Drawing from monastic traditions across cultures — Shaolin, Templar Knights, Yamabushi — war monks train body and spirit together, channeling inner stillness into devastating precision.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Unarmed Attacks or Simple Weapon proficiency"
+        },
+        {
+          "type": "equipment",
+          "description": "Light or no armor; no heavy weapons"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Disciplined Strike",
+          "ap_cost": 2,
+          "effect": "+L to unarmed or simple weapon attacks. Once per turn, add MND rank to damage on one attack."
+        },
+        "2": {
+          "name": "Meditative Fortitude",
+          "effect": "Max SP +4L. Gain L² SP regen per round. While SP is above half, immune to Fear effects."
+        },
+        "3": {
+          "name": "Stunning Palm",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "A precise strike to a vital point: deal 2L damage. Target must pass a MND save (DC L+2) or be Stunned for 1 round."
+        },
+        "4": {
+          "name": "Step Between Worlds",
+          "ap_cost": 1,
+          "effect": "Once per round, teleport 1 tile before or after an attack. Does not provoke Reactions."
+        },
+        "5": {
+          "name": "Perfect Stillness",
+          "ap_cost": 2,
+          "sp_cost": "2L",
+          "effect": "For 1 round, become immune to all damage. Any attack that would have hit you is countered for 3L damage."
+        }
+      }
+    },
+    "duellists_code": {
+      "name": "Duellist's Code",
+      "subtitle": "Classical Fantasy Honor Dueling",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "An ancient tradition of formalized single combat practiced by noble houses, champion warriors, and wandering swordmasters. The duellist's art treats combat as ceremony — a test of perfect technique, composure, and absolute mastery of a single blade. Those who break the Code's unspoken rules of engagement find the tradition itself seems to turn against them.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "One-handed melee weapon; no shield; light or medium armor only"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "En Garde",
+          "ap_cost": 2,
+          "effect": "+L to both attacks and Dodge when fighting a single target. If two or more enemies attack you in one round, this bonus is lost until your next turn."
+        },
+        "2": {
+          "name": "Steel Composure",
+          "effect": "Max SP +4L. Gain L² SP regen per round. +L to saves vs Intimidation, Fear, and mental effects."
+        },
+        "3": {
+          "name": "Fleche",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "A lightning thrust: dash up to 2 tiles and strike for 3L damage. Apply Bleeding on hit."
+        },
+        "4": {
+          "name": "Riposte",
+          "effect": "As a Reaction after a successful Dodge, immediately deal L damage to the attacker at no AP cost."
+        },
+        "5": {
+          "name": "Final Flourish",
+          "ap_cost": 2,
+          "sp_cost": "2L",
+          "effect": "Declare a formal duel: both you and your named target may only attack each other until one falls. Gain +L to all attack and defense rolls for the duration. If your target flees, they take 2L damage and gain Weakened."
+        }
+      }
+    },
+    "berserker_path": {
+      "name": "Berserker Path",
+      "subtitle": "Ancient Rage Warrior Tradition",
+      "skill_type": "combat_style",
+      "governing_stat": "BDY",
+      "description": "The tradition of the berserkr — the Old Norse warrior who fought in a trance-like fury, heedless of wounds, inspired by the bear or wolf spirit they wore. Practiced in saga cultures across the world, the berserker path rejects technique in favor of overwhelming violence and supernatural endurance, fueling power from pain and bloodshed.",
+      "requirements": [
+        {
+          "type": "equipment",
+          "description": "Melee weapon; light or no armor preferred"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Battle Fury",
+          "ap_cost": 2,
+          "effect": "+L damage when HP is below half. Immune to Morale penalties and Frightened."
+        },
+        "2": {
+          "name": "Blood Surge",
+          "effect": "Max HP +4L. Gain L² HP regen per round. Each time you deal damage, regain 1 HP."
+        },
+        "3": {
+          "name": "Reckless Charge",
+          "ap_cost": 3,
+          "sp_cost": "1L",
+          "effect": "Charge up to 4 tiles, dealing 3L damage on impact. You take L damage yourself — this fuels your fury."
+        },
+        "4": {
+          "name": "Unyielding",
+          "effect": "Once per round, when damage would reduce you to 0 HP, remain at 1 HP instead and gain +L to all attacks until end of your next turn."
+        },
+        "5": {
+          "name": "Ulfhednar's Form",
+          "ap_cost": 2,
+          "sp_cost": "2L",
+          "effect": "Enter a battle trance: gain +2L to all attacks, damage, and BDY saves for 5 rounds. When the trance ends, gain Weakened and Staggered from exhaustion."
+        }
+      }
+    },
+    "shadow_step": {
+      "name": "Shadow Step",
+      "subtitle": "Phantom Assassin's Tradition",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "The killing art of assassin orders and shadow cults who have learned to use darkness as weapon and shield. Where mundane rogues merely hide in shadows, shadow step practitioners have merged their movement with darkness — slipping between shaded spaces, striking from concealment, and vanishing before the body hits the ground.",
+      "requirements": [
+        {
+          "type": "affinity",
+          "description": "Shadow or Void affinity"
+        },
+        {
+          "type": "equipment",
+          "description": "Light weapon; light or no armor"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Shade Step",
+          "ap_cost": 2,
+          "effect": "+L to attacks from concealment or when unseen. As a 1 AP action, enter Stealth if shadows or dim light are present."
+        },
+        "2": {
+          "name": "Veil of Silence",
+          "effect": "Max SP +4L. Gain L² SP regen per round. +L to Stealth checks made during combat."
+        },
+        "3": {
+          "name": "Mark and Vanish",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Strike from concealment for 2L damage, then immediately re-enter Stealth as part of the same action."
+        },
+        "4": {
+          "name": "Death from Nowhere",
+          "effect": "Your first attack from Stealth each round is an automatic critical hit and does not break Stealth if the target survives."
+        },
+        "5": {
+          "name": "Phantom",
+          "ap_cost": 2,
+          "sp_cost": "2L",
+          "effect": "Merge with shadows for 3 rounds: gain full invisibility. Attacks do not break invisibility unless you miss."
+        }
+      }
+    },
+    "arcane_bladework": {
+      "name": "Arcane Bladework",
+      "subtitle": "Spell-Sword Melee Magic Integration",
+      "skill_type": "combat_style",
+      "governing_stat": "MND",
+      "description": "The tradition of warrior-mages who refuse to choose between blade and spell. Where most magical traditions demand stillness and focus, arcane bladework trains the practitioner to cast while moving, striking, and taking hits — weaving spells into weapon swings and delivering them on contact. Most mages consider it wasteful. Most warriors consider it showing off.",
+      "requirements": [
+        {
+          "type": "stat_min",
+          "stat": "MND",
+          "value": 2
+        },
+        {
+          "type": "affinity",
+          "description": "Any magical affinity"
+        },
+        {
+          "type": "equipment",
+          "description": "Any melee weapon"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Spell-Forged Strikes",
+          "ap_cost": 2,
+          "effect": "+L to weapon attacks. Deals +L elemental damage matching your primary affinity on each hit."
+        },
+        "2": {
+          "name": "Mana Flow",
+          "effect": "Max MP +4L. Gain L² MP regen per round. Casting spells no longer interrupts melee stance or costs additional AP."
+        },
+        "3": {
+          "name": "Runic Slash",
+          "ap_cost": 3,
+          "mp_cost": "2L",
+          "effect": "Charge the blade with spell energy; deliver on next hit for +2L elemental damage plus the status effect associated with your affinity."
+        },
+        "4": {
+          "name": "Counter-Weave",
+          "effect": "On a successful Dodge vs a magical or ranged attack, absorb L MP from the spell or projectile."
+        },
+        "5": {
+          "name": "Convergence",
+          "ap_cost": 3,
+          "mp_cost": "2L",
+          "effect": "Simultaneously make a weapon attack and cast a Rank 3 or higher spell at the same target. Both resolve at full power as a single action."
+        }
+      }
+    },
+    "divine_guardian": {
+      "name": "Divine Guardian",
+      "subtitle": "Sacred Warrior of Faith",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "The martial tradition of those sworn to a divine power — paladins, templar knights, warrior-priests, and sacred defenders. Divine guardians do not merely fight for their god; they become instruments of divine will in combat. The tradition teaches that the highest expression of faith is an unbroken shield wall between the innocent and the darkness.",
+      "requirements": [
+        {
+          "type": "trait",
+          "description": "Faith or Divine Bond (deity/sworn order)"
+        },
+        {
+          "type": "affinity",
+          "description": "Radiant or Holy affinity"
+        },
+        {
+          "type": "equipment",
+          "description": "Melee weapon and shield or heavy armor"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Sacred Ward",
+          "ap_cost": 2,
+          "effect": "+L Block and +L to saves vs undead and demonic effects. Weapon deals +L Radiant damage vs unholy targets."
+        },
+        "2": {
+          "name": "Blessed Endurance",
+          "effect": "Max HP +4L. Gain L² HP regen per round. Heal L HP on each successful Block."
+        },
+        "3": {
+          "name": "Holy Smite",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Call divine power into a strike: deal 3L Radiant damage. Undead and Demons take double damage from this attack."
+        },
+        "4": {
+          "name": "Lay on Hands",
+          "ap_cost": 1,
+          "effect": "Heal an adjacent ally for 2L HP. May be used once per round as a 1 AP action."
+        },
+        "5": {
+          "name": "Divine Bulwark",
+          "ap_cost": 2,
+          "sp_cost": "2L",
+          "effect": "Invoke divine protection for 3 rounds: you and all adjacent allies gain +L DR and immunity to Fear."
+        }
+      }
+    },
+    "spellslinger": {
+      "name": "Spellslinger",
+      "subtitle": "Ranged Affinity Delivery — Bolt Style",
+      "skill_type": "combat_style",
+      "governing_stat": "MND",
+      "description": "A caster trained to project any known Affinity as a high-velocity piercing bolt. Spellslingers channel whatever energies they have attuned into fast, accurate ranged strikes. A Fire 1 / Water 1 / Steam 1 Spellslinger can throw any of three bolt types, adapting to the situation. Informally called glass cannons.",
+      "requirements": [
+        {
+          "type": "affinity",
+          "description": "Any Affinity at L1+"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Bolt",
+          "ap_cost": 2,
+          "mp_cost": "L",
+          "effect": "Cast any known Affinity as a bolt: deal L [piercing] damage at 3L spaces range and apply L stacks of that Affinity status."
+        },
+        "2": {
+          "name": "Arcane Reserve",
+          "effect": "Max MP +L². MPR +L."
+        },
+        "3": {
+          "name": "Scatter Shot",
+          "ap_cost": 3,
+          "mp_cost": "2L",
+          "effect": "Fire L bolts that may each target a different enemy within 3L spaces: deal L [piercing + Affinity] damage per bolt and apply L stacks of [Affinity Status] to each target hit."
+        },
+        "4": {
+          "name": "Penetrating Charge",
+          "effect": "Bolts that hit a target already at maximum [Affinity Status] stacks deal bonus L [Affinity] damage and reset stacks to L."
+        },
+        "5": {
+          "name": "Singularity",
+          "ap_cost": 3,
+          "mp_cost": "2L",
+          "effect": "Fire a hyper-condensed bolt of [Affinity] energy: deal 5L [piercing + Affinity] damage. Ignores all resistances. Applies L² stacks of [Affinity Status]."
+        }
+      }
+    },
+    "battlemage": {
+      "name": "Battlemage",
+      "subtitle": "Affinity-Infused Melee Style",
+      "skill_type": "combat_style",
+      "governing_stat": "SPT",
+      "description": "Warriors who channel attuned Affinities directly into weapons and strikes, fusing elemental or emotional energy with close-quarters combat.",
+      "requirements": [
+        {
+          "type": "affinity",
+          "description": "Any Affinity at L1+"
+        },
+        {
+          "type": "equipment",
+          "description": "Melee weapon"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Charged Strike",
+          "ap_cost": 2,
+          "sp_cost": "L",
+          "effect": "Strike with a weapon infused with [Affinity] energy: deal weapon damage + L [Affinity] damage. Apply L stacks of [Affinity Status] on hit."
+        },
+        "2": {
+          "name": "Battle Temper",
+          "effect": "Max SP +L². SPR +L. +L to BDY saves vs knockdown while in melee."
+        },
+        "3": {
+          "name": "Runic Burst",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Release stored [Affinity] energy in a devastating strike: deal 3L [Affinity] damage and apply [Affinity Status] to all within L tiles of your target."
+        },
+        "4": {
+          "name": "Energy Return",
+          "effect": "Each melee hit that applies [Affinity Status] restores L SP. While your [Affinity] level is at or above this Style level, weapon strikes deal +L [Affinity] damage."
+        },
+        "5": {
+          "name": "Runic Annihilation",
+          "ap_cost": 3,
+          "sp_cost": "2L",
+          "effect": "Channel all [Affinity Status] stacks on your target into a catastrophic strike: deal 5L [Affinity] damage. Each stack consumed adds +L bonus damage."
+        }
+      }
+    },
+    "channeler": {
+      "name": "Channeler",
+      "subtitle": "Sustained Affinity Aura — Field Control Style",
+      "skill_type": "combat_style",
+      "governing_stat": "MND",
+      "description": "Casters who project Affinity energy as a sustained emanating field rather than targeted strikes. Channelers reshape the battlefield through continuous energy exposure.",
+      "requirements": [
+        {
+          "type": "affinity",
+          "description": "Any Affinity at L2+"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Energy Veil",
+          "ap_cost": 1,
+          "mp_cost": "L",
+          "effect": "Project [Affinity] energy as a sustained aura centered on yourself for L rounds. Allies within L tiles gain +L to [relevant stat]. Enemies who begin their turn in the aura take L [Affinity] damage."
+        },
+        "2": {
+          "name": "Deep Current",
+          "effect": "Max MP +L². MPR +L. Aura abilities cost 1 less MP (min 1) while you have more than half your MP."
+        },
+        "3": {
+          "name": "Resonance Field",
+          "ap_cost": 2,
+          "mp_cost": "2L",
+          "effect": "Expand your aura to L×2 tile radius for L rounds. Allies gain +L to all rolls. Enemies in the field lose L [stat] for the duration."
+        },
+        "4": {
+          "name": "Attunement Surge",
+          "effect": "Your aura persists at half cost (round up) when you have more than half your MP. Allies starting their turn in your aura may reroll one die on their next roll."
+        },
+        "5": {
+          "name": "Avatar Form",
+          "ap_cost": 2,
+          "mp_cost": "2L",
+          "effect": "Fully manifest [Affinity] energy for L rounds: aura covers the entire encounter area. Allies double all aura bonuses. Enemies suffer [Affinity Status] at maximum potency each round."
+        }
+      }
+    },
+    "warden": {
+      "name": "Warden",
+      "subtitle": "Elemental Barrier — Defensive Casting Style",
+      "skill_type": "combat_style",
+      "governing_stat": "MND",
+      "description": "Casters who manifest Affinity energy as barriers and reactive shields. Every attack absorbed becomes an opportunity to retaliate.",
+      "requirements": [
+        {
+          "type": "affinity",
+          "description": "Any Affinity at L1+"
+        }
+      ],
+      "levels": {
+        "1": {
+          "name": "Elemental Guard",
+          "ap_cost": 1,
+          "mp_cost": "L",
+          "effect": "Raise an [Affinity] barrier: gain +L to Block or Dodge for L rounds. When the barrier absorbs a hit, deal L [Affinity] damage to the attacker as a Reaction."
+        },
+        "2": {
+          "name": "Fortified Reserve",
+          "effect": "Max MP +L². MPR +L. +L to saves vs [Affinity] damage."
+        },
+        "3": {
+          "name": "Barrier Pulse",
+          "ap_cost": 3,
+          "mp_cost": "2L",
+          "effect": "Release your barrier as a shockwave: deal 2L [Affinity] damage in a L-tile radius and push all hit targets back L tiles. Barrier resets to full strength."
+        },
+        "4": {
+          "name": "Passive Shield",
+          "effect": "Your barrier rebuilds at the start of each of your turns (restores L barrier HP, max L²). Attacks against targets you are blocking deal +L [Affinity] damage."
+        },
+        "5": {
+          "name": "Absolute Aegis",
+          "ap_cost": 2,
+          "mp_cost": "2L",
+          "effect": "Raise an impenetrable [Affinity] barrier for L rounds. You and adjacent allies cannot take damage from sources you choose. When it expires, it detonates for 3L [Affinity] damage to all enemies in the area."
         }
       }
     }

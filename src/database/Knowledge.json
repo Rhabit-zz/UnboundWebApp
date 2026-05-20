@@ -1,106 +1,310 @@
 {
-  "meta": {
-    "File": "Knowledge.json",
-    "version": "0.1",
-    "last_updated": "2026-05-14",
-    "description": "Comprehensive list of knowledge skills for character development and gameplay."
+  "_meta": {
+    "document": "Knowledge.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.2-draft",
+    "notes": [
+      "Knowledge Tags represent earned working understanding of materials, techniques, and magical structures.",
+      "Tags are never purchased with XP — earned through gathering, crafting, training, and discovery.",
+      "Three domains: material (substance knowledge), technique (process knowledge), formula (spell logic).",
+      "Five tiers: T1=common, T2=uncommon, T3=rare, T4=epic, T5=world-unique.",
+      "tag_id values must match knowledge_tags_earned in Gatherables.json and required_tags in CraftRecipes.json.",
+      "Skill level bridges missing tags: 10% per level (max 50% at L5). Full tags still required for legendary recipes."
+    ]
   },
-  "knowledge_tags": {
-    "Material Tags": {
-      "Shape": {
-        "ore": {
-          "name": "Ore",
-          "subtitle": "Mineral Identification",
-          "tag_type": "mining",
-          "requirements": [
-            {
-              "type": "stat_min",
-              "stat": "INT",
-              "value": 1
-            }
-          ],
-          "Tier": {
-            "1": {
-              "effect": "Increase quality in recipes using ore.  Increase ore gather chance."
-            },
-            "2": {
-              "effect": "."
-            },
-            "3": {
-              "effect": "."
-            },
-            "4": {
-              "effect": "."
-            },
-            "5": {
-              "effect": "."
-            }
-          }
-        },
-        "fiber": {
-          "name": "Fiber",
-          "subtitle": "Herb Identification",
-          "tag_type": [
-            "farming",
-            "herbalism"
-          ],
-          "requirements": [
-            {
-              "type": "stat_min",
-              "stat": "INT",
-              "value": 1
-            }
-          ],
-          "Tier": {
-            "1": {
-              "effect": "Increase quality in recipes using Fiber.  Increase fiber gather chance."
-            },
-            "2": {
-              "effect": "."
-            },
-            "3": {
-              "effect": "."
-            },
-            "4": {
-              "effect": "."
-            },
-            "5": {
-              "effect": "."
-            }
-          }
-        }
-      },
-      "Form": {
-        "Iron": {
-          "name": "Iron",
-          "subtitle": "Substance Identifier",
-          "tag_type": "mining",
-          "requirements": [
-            {
-              "type": "stat_min",
-              "stat": "INT",
-              "value": 1
-            }
-          ],
-          "Tier": {
-            "1": {
-              "effect": "Increase quality in recipes using Iron."
-            },
-            "2": {
-              "effect": "."
-            },
-            "3": {
-              "effect": "."
-            },
-            "4": {
-              "effect": "."
-            },
-            "5": {
-              "effect": "."
-            }
-          }
-        }
-      }
+  "material": {
+    "iron_working": {
+      "name": "Iron Working",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Grain structure, heat behavior, carbon content, corrosion patterns, and optimal forging temperatures for iron.",
+      "how_gained": ["Mine or gather iron ore", "Complete a smithing recipe using iron", "Blacksmith training"],
+      "enables_recipes": ["iron_sword","iron_dagger","iron_shield","iron_helm","chain_shirt"]
+    },
+    "metalworking": {
+      "name": "Metalworking",
+      "domain": "material",
+      "tier": "T1",
+      "description": "General metal properties — ductility, hardness, conductivity, and smelting requirements across common metals (copper, lead, bronze).",
+      "how_gained": ["Mine copper or lead ore", "Complete any smithing recipe", "Guild metalworker instruction"],
+      "enables_recipes": ["copper_tools","bronze_fittings","lead_weights"]
+    },
+    "woodworking": {
+      "name": "Woodworking",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Timber species, grain direction, moisture content, splitting tendencies, and best uses of common and uncommon woods.",
+      "how_gained": ["Gather oak, ash, or yew wood", "Complete a carpentry recipe", "Village carpenter instruction"],
+      "enables_recipes": ["wooden_club","shortbow","longbow","wooden_shield","furniture_basic"]
+    },
+    "fletching": {
+      "name": "Fletching",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Arrow shaft selection, feather vane properties, spine flex, and tip attachment materials for different projectile applications.",
+      "how_gained": ["Gather ash or yew wood for shafts", "Complete a fletching recipe", "Archer or fletcher training"],
+      "enables_recipes": ["standard_arrows","bodkin_bolts","hunting_arrows"]
+    },
+    "textile_working": {
+      "name": "Textile Working",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Plant fiber properties — linen, cotton, and reed: thread count, weave density, tear resistance, and dye absorption.",
+      "how_gained": ["Gather linen or cotton", "Complete a weaving or tailoring recipe", "Weaver training"],
+      "enables_recipes": ["linen_shirt","cotton_robe","padded_armor","cloth_pouch","basic_rope"]
+    },
+    "wool_working": {
+      "name": "Wool Working",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Wool fiber properties: crimp structure, felting behavior, lanolin content, washing requirements, and spinning for yarn production.",
+      "how_gained": ["Gather wool", "Complete a weaving recipe using wool", "Shepherd or weaver instruction"],
+      "enables_recipes": ["wool_cloak","felt_padding","wool_gambeson"]
+    },
+    "leatherworking": {
+      "name": "Leatherworking",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Hide grades, tanning methods (bark vs. mineral), thickness, moisture resistance, and tooling surface quality.",
+      "how_gained": ["Gather deerskin or boarhide", "Complete a leatherworking recipe", "Tanner guild instruction"],
+      "enables_recipes": ["leather_armor","leather_gloves","leather_pouch","leather_harness"]
+    },
+    "tanning": {
+      "name": "Tanning",
+      "domain": "material",
+      "tier": "T1",
+      "description": "The hide curing and tanning process — bark tannin ratios, salt curing, de-hairing, and fat-liquoring for supple finished leather.",
+      "how_gained": ["Gather deerskin or boarhide", "Complete a leatherworking recipe that includes tanning", "Village tanner instruction"],
+      "enables_recipes": ["leather_armor","vambraces","leather_boots","saddle"]
+    },
+    "bonecraft": {
+      "name": "Bonecraft",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Bone density, stress fracture lines, chitin plate structure, and shell lamination — how to work each material without cracking.",
+      "how_gained": ["Gather beast bone, insect chitin, or crab shell", "Complete a bonecraft recipe", "Hunter or tribal crafter instruction"],
+      "enables_recipes": ["bone_knife","bone_arrow_tips","chitin_armor","shell_buckler","bone_needle"]
+    },
+    "glassblowing": {
+      "name": "Glassblowing",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Glass composition, melting temperature, gather viscosity, annealing rates, and the properties of clear vs. colored glass.",
+      "how_gained": ["Gather glass sand or quartz sand", "Complete a glassblowing recipe", "Glass guild instruction"],
+      "enables_recipes": ["glass_vial","glass_bottle","glass_lens_basic","window_pane"]
+    },
+    "gem_crafting": {
+      "name": "Gem Crafting",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Gem hardness scales, cleavage planes, inclusion types, and the relationship between cut quality and optical properties.",
+      "how_gained": ["Mine or gather quartz or rock crystal", "Complete a gem crafting recipe", "Jeweler guild instruction"],
+      "enables_recipes": ["quartz_pendant","rock_crystal_focus","gem_setting_basic"]
+    },
+    "crystallography": {
+      "name": "Crystallography",
+      "domain": "material",
+      "tier": "T2",
+      "description": "Mana-conducting crystal lattice structures — which crystal types hold charges, resonance frequencies, and optimal cut geometries for arcane focus.",
+      "how_gained": ["Mine magicite or rock crystal", "Complete a crystallography recipe", "Arcane college instruction"],
+      "enables_recipes": ["mana_crystal_shard","arcane_focus_stone","crystal_capacitor","resonance_gem"]
+    },
+    "masonry": {
+      "name": "Masonry",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Stone load-bearing capacity, mortar mix ratios, keystone arch mechanics, and which stone types cut clean vs. rough.",
+      "how_gained": ["Gather stoneheart vein material", "Complete a masonry recipe", "Guild mason instruction"],
+      "enables_recipes": ["stone_wall_section","arch_keystone","foundation_block","grinding_wheel"]
+    },
+    "meteorics": {
+      "name": "Meteorics",
+      "domain": "material",
+      "tier": "T3",
+      "description": "Meteoric iron and primal ore properties — unique crystalline matrix, inherent elemental charge, resistance to standard forging, and ritual quench requirements.",
+      "how_gained": ["Gather stoneheart, emberstone, or stormcore", "Complete a meteorics recipe", "Rare forge-master instruction"],
+      "enables_recipes": ["meteoric_blade","stormcore_edge","emberstone_ingot","primal_armor_plate"]
+    },
+    "silk_working": {
+      "name": "Silk Working",
+      "domain": "material",
+      "tier": "T2",
+      "description": "Sea silk and spider silk properties — tensile strength, water resistance, magical conductivity, and specialized tools needed to work them without damage.",
+      "how_gained": ["Gather sea silk or spider silk", "Complete a tailoring or weaving recipe using silk"],
+      "enables_recipes": ["silk_robe","spider_silk_gloves","silk_cord","sea_silk_vest"]
+    },
+    "exotic_tanning": {
+      "name": "Exotic Tanning",
+      "domain": "material",
+      "tier": "T3",
+      "description": "Processing magical creature hides — drakehide flame-resistance treatment, shadowhide umbral preservation, and the alchemical baths required to prevent magical decay.",
+      "how_gained": ["Gather drakehide or shadowhide", "Complete a leatherworking recipe using exotic hides"],
+      "enables_recipes": ["drakehide_armor","shadowhide_cloak","exotic_leather_cuirass"]
+    },
+    "alloy_tempering": {
+      "name": "Alloy Tempering",
+      "domain": "material",
+      "tier": "T2",
+      "description": "Alloy compositions — steel carbon ratios, bronze tin percentages, brass zinc content — and the tempering cycles that produce target hardness/ductility profiles.",
+      "how_gained": ["Complete an advanced smithing recipe producing steel or bronze", "Forge master guild instruction"],
+      "enables_recipes": ["steel_sword","bronze_spear","tempered_buckler","steel_breastplate"]
+    },
+    "apothecary": {
+      "name": "Apothecary",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Medicinal herb identification, preparation methods (infusion vs. decoction vs. poultice), dosage ranges, and known interactions.",
+      "how_gained": ["Gather wyrmroot bark, bloodvine, or common herbs", "Complete an apothecary recipe", "Village healer instruction"],
+      "enables_recipes": ["healing_salve","fever_tincture","antitoxin_poultice","bandage_kit"]
+    },
+    "alchemy": {
+      "name": "Alchemy",
+      "domain": "material",
+      "tier": "T1",
+      "description": "Reagent properties, solubility, volatility, exothermic reactions, and safe mixing orders for common alchemical compounds.",
+      "how_gained": ["Gather bloodvine or wyrmroot bark", "Complete an alchemy recipe", "Alchemist guild instruction"],
+      "enables_recipes": ["healing_potion","fire_flask","smoke_bomb","alchemist_fire","acid_vial"]
+    },
+    "enchanting": {
+      "name": "Enchanting",
+      "domain": "material",
+      "tier": "T2",
+      "description": "Arcane material interaction — which base materials accept enchantments, how to identify enchantable items, and the mana bleed patterns of improperly bound enchantments.",
+      "how_gained": ["Complete an enchanting recipe", "Arcane college enchantment course"],
+      "enables_recipes": ["enchanted_sword","minor_protection_ring","mana_storing_focus","enchanted_cloak"]
+    },
+    "umbrawork": {
+      "name": "Umbrawork",
+      "domain": "material",
+      "tier": "T3",
+      "description": "Shadow energy material properties — umbral absorption rates in different materials, decay patterns in light, and which materials best anchor shadow infusion.",
+      "how_gained": ["Gather shadowhide", "Complete an umbrawork recipe", "Shadow-guild instruction"],
+      "enables_recipes": ["shadowhide_cloak","umbral_dagger","shadow_bound_armor"]
+    },
+    "exotic_crafting": {
+      "name": "Exotic Crafting",
+      "domain": "material",
+      "tier": "T3",
+      "description": "Working with rare creature components — dragon bone grain direction, scaled-material tooling, and the preservation rituals needed to prevent magical decay during construction.",
+      "how_gained": ["Gather dragon bone", "Complete a beastcraft recipe using T4 materials"],
+      "enables_recipes": ["dragon_bone_staff","dragonscale_cuirass","dragon_fang_dagger"]
+    }
+  },
+  "technique": {
+    "smithing": {
+      "name": "Smithing",
+      "domain": "technique",
+      "tier": "T1",
+      "description": "Hammer, anvil, and heat cycle — proper striking angles, quench timing, scale removal, and working temperature recognition.",
+      "how_gained": ["Complete a smithing recipe at L1", "Village blacksmith apprenticeship"],
+      "enables_recipes": ["iron_sword","iron_dagger","chain_shirt","iron_helm","iron_buckler"]
+    },
+    "weaving": {
+      "name": "Weaving",
+      "domain": "technique",
+      "tier": "T1",
+      "description": "Loom operation, shuttle passing, warp tension management, and pattern threading for plain, twill, and satin weaves.",
+      "how_gained": ["Complete a weaving recipe", "Village weaver instruction"],
+      "enables_recipes": ["woven_cloth","rope","basic_net","linen_wrap"]
+    },
+    "edge_geometry": {
+      "name": "Edge Geometry",
+      "domain": "technique",
+      "tier": "T2",
+      "description": "Blade angle theory — convex vs. flat vs. hollow grinds, cutting applications, sharpening progressions, and the relationship between edge angle and material.",
+      "how_gained": ["Complete a smithing recipe of uncommon tier or higher", "Bladesmith guild master instruction"],
+      "enables_recipes": ["razor_sword","hunting_knife","master_blade","precision_scalpel"]
+    },
+    "distillation": {
+      "name": "Distillation",
+      "domain": "technique",
+      "tier": "T1",
+      "description": "Alembic operation, temperature graduation, fraction collection, and reflux technique for purifying reagents and concentrating active compounds.",
+      "how_gained": ["Complete an alchemy or apothecary recipe", "Alchemist instruction"],
+      "enables_recipes": ["concentrated_reagent","pure_essence","distilled_acid","refined_alcohol"]
+    },
+    "thermal_infusion": {
+      "name": "Thermal Infusion",
+      "domain": "technique",
+      "tier": "T2",
+      "description": "Applying magical energy through heat — the temperature windows and quench fluids that allow a spell-effect to bond to metal or crystal during the cooling phase.",
+      "how_gained": ["Complete an enchanting or meteorics recipe", "Arcane smith instruction"],
+      "enables_recipes": ["flaming_blade","frost_dagger","heated_armor_plate","thermally_bound_gem"]
+    },
+    "runic_inscription": {
+      "name": "Runic Inscription",
+      "domain": "technique",
+      "tier": "T2",
+      "description": "The physical act of rune drawing — ink viscosity per surface, stroke order, line continuity, and breath control needed to maintain stable magical current during inscription.",
+      "how_gained": ["Complete a runesmith or runic scribing recipe", "Rune-guild instruction"],
+      "enables_recipes": ["runed_shield","ward_glyph_basic","runed_door","runic_charm"]
+    },
+    "sympathetic_resonance": {
+      "name": "Sympathetic Resonance",
+      "domain": "technique",
+      "tier": "T3",
+      "description": "Creating a magical link between two items so effects applied to one transfer to the other — requires compatible material base and matching rune anchors.",
+      "how_gained": ["Complete a rare-tier enchanting or crystallography recipe", "Arcane master workshop instruction"],
+      "enables_recipes": ["twin_bound_blades","resonant_focus_pair","linked_ward_stones"]
+    }
+  },
+  "formula": {
+    "combustion_logic": {
+      "name": "Combustion Logic",
+      "domain": "formula",
+      "tier": "T2",
+      "description": "Spell-logic structure underlying fire-type effects — oxidation trigger chains, heat concentration geometry, and the termination anchor that prevents runaway burn.",
+      "how_gained": ["Complete a fire-affinity enchanting recipe", "Pyromancy Affinity Style L2 or higher", "Fire mage instruction"],
+      "enables_recipes": ["flaming_blade","fire_rune_scroll","ignition_bomb","forge_enhancement_ritual"]
+    },
+    "elemental_binding": {
+      "name": "Elemental Binding",
+      "domain": "formula",
+      "tier": "T2",
+      "description": "Formula structure for locking an elemental force into a physical container — binding nodes, force directionality, and the containment seal that holds the element without suppressing it.",
+      "how_gained": ["Complete an enchanting or crystallography recipe with elemental focus", "Elemental affinity instruction"],
+      "enables_recipes": ["elemental_focus_gem","bound_elemental_armor","storm_crystal","frost_rune_seal"]
+    },
+    "planar_binding_structure": {
+      "name": "Planar Binding Structure",
+      "domain": "formula",
+      "tier": "T3",
+      "description": "Multi-layered formula for anchoring an entity from another plane — dimensional tethering logic, counter-resonance buffer, and fail-safe collapse that releases the entity safely if the seal breaks.",
+      "how_gained": ["Complete a binding & sealing recipe of rare tier", "Planar scholar instruction (Rapport required)"],
+      "enables_recipes": ["planar_seal","entity_anchor_stone","containment_circle_permanent","summoning_focus"]
+    },
+    "planar_ignition": {
+      "name": "Planar Ignition",
+      "domain": "formula",
+      "tier": "T3",
+      "description": "Cross-planar energy formulas that pull destructive force from an adjacent plane — requires a stable planar window and channeling lattice to prevent blowback.",
+      "how_gained": ["Discover in dungeon or boss-tier content", "Rare arcane text deconstruction"],
+      "enables_recipes": ["void_fire_flask","planar_weapon_imbuing","dimensional_bomb"]
+    },
+    "temporal_loop": {
+      "name": "Temporal Loop",
+      "domain": "formula",
+      "tier": "T4",
+      "description": "Self-referencing time formula creating a local pocket of repeating duration — used in legendary item construction to give items a reset state or lingering repeat effect.",
+      "how_gained": ["World-unique discovery — specific content encounter required"],
+      "enables_recipes": ["returning_throwing_weapon","reset_ward_stone","time_locked_container"]
+    },
+    "celestial_formula_structure": {
+      "name": "Celestial Formula Structure",
+      "domain": "formula",
+      "tier": "T4",
+      "description": "Divine or celestial magic formula framework — harmonic alignment patterns, purification logic, and the resonance architecture used in holy weapons and sacred ward construction.",
+      "how_gained": ["Grandmaster cleric or paladin instruction", "Sacred text deconstruction at bookbinding L4+"],
+      "enables_recipes": ["holy_sword","sacred_ward_stone","divine_armor_blessing","celestial_focus_item"]
+    },
+    "aetheric_core_inscription": {
+      "name": "Aetheric Core Inscription",
+      "domain": "formula",
+      "tier": "T5",
+      "description": "Core-level formula forming the heart of a legendary arcane construct — defines autonomous power routing, self-repair logic, and the soul-compatible interface layer.",
+      "how_gained": ["World-unique. Found only in lost ruins, ancient construct remains, or defeated Tier 5 artificial beings."],
+      "enables_recipes": ["legendary_arcane_construct","living_golem_core","autonomous_magic_engine"]
     }
   }
 }

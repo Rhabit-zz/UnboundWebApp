@@ -1,689 +1,133 @@
 {
-    "meta" :{
-        "Version": 0.1,
-        "Author": "Your Name",
-        "Description": "A collection of materials for various plants."
+  "_meta": {
+    "document": "Gatherables.json",
+    "system": "Unbound TTRPG",
+    "studio": "RHabit Game Development",
+    "version": "0.2-draft",
+    "notes": [
+      "Zone-based gathering. Each zone has a primary gathering skill and a DC per material.",
+      "gather_dc: difficulty of the skill check to successfully gather this material.",
+      "yield: quantity range obtained on success (e.g. '1d4' lb or units).",
+      "knowledge_tags_earned: tags the character gains on first successful gather of this material.",
+      "secondary_skill: an alternate skill that can also gather this material (usually at -2 DC).",
+      "era: which setting periods this material is found in."
+    ]
+  },
+  "zones": {
+    "forest": {
+      "name": "Temperate Forest",
+      "description": "Dense deciduous woodland. Reliable source of timber, herbs, fungi, and small game.",
+      "primary_skill": "foraging",
+      "secondary_skill": "hunting",
+      "era": ["mundane","industrial","future","fantasy"],
+      "materials": [
+        { "id": "oak",        "name": "Oak Wood",       "category": "wood",    "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["woodworking"] },
+        { "id": "ash",        "name": "Ash Wood",       "category": "wood",    "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["woodworking","fletching"] },
+        { "id": "yew",        "name": "Yew Wood",       "category": "wood",    "tier": 1, "gather_dc": 5,  "yield": "1d4", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["woodworking","fletching"] },
+        { "id": "linen",      "name": "Flax Fiber",     "category": "cloth",   "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["weaving","textile_working"] },
+        { "id": "cotton",     "name": "Cotton",         "category": "cloth",   "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["weaving","textile_working"] },
+        { "id": "wool",       "name": "Wool",           "category": "cloth",   "tier": 1, "gather_dc": 5,  "yield": "1d4", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["weaving","wool_working"] },
+        { "id": "deerskin",   "name": "Deerskin",       "category": "leather", "tier": 1, "gather_dc": 5,  "yield": "1d4", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["leatherworking","tanning"] },
+        { "id": "boarhide",   "name": "Boarhide",       "category": "leather", "tier": 1, "gather_dc": 6,  "yield": "1d4", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["leatherworking","tanning"] },
+        { "id": "beast_bone", "name": "Beast Bone",     "category": "bone",    "tier": 1, "gather_dc": 5,  "yield": "1d6", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["bonecraft"] },
+        { "id": "insect_chitin","name":"Insect Chitin",  "category": "chitin",  "tier": 1, "gather_dc": 6,  "yield": "1d4", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["bonecraft"] },
+        { "id": "whisperwood","name": "Whisperwood",    "category": "wood",    "tier": 3, "gather_dc": 12, "yield": "1d3", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["enchanting","woodworking"] }
+      ]
     },
-    "Material Tags":{
-        "Fiber":{
-            "Tier 1": ["Common Fiber"],
-            "Tier 2": ["Uncommon Fiber"],
-            "Tier 3": ["Rare Fiber"],
-            "Tier 4": ["Exceptional Fiber"],
-            "Tier 5": ["Epic Fiber"]
-        },
-        "Wood":{
-            "Tier 1": ["Common Wood"],
-            "Tier 2": ["Uncommon Wood"],
-            "Tier 3": ["Rare Wood"],
-            "Tier 4": ["Exceptional Wood"],
-            "Tier 5": ["Epic Wood"]
-        },
-        "Bark":{
-            "Tier 1": ["Common Bark"],
-            "Tier 2": ["Uncommon Bark"],
-            "Tier 3": ["Rare Bark"],
-            "Tier 4": ["Exceptional Bark"],
-            "Tier 5": ["Epic Bark"]
-        },
-        "Leaf":{
-            "Tier 1": ["Common Leaf"],
-            "Tier 2": ["Uncommon Leaf"],
-            "Tier 3": ["Rare Leaf"],
-            "Tier 4": ["Exceptional Leaf"],
-            "Tier 5": ["Epic Leaf"]
-        },
-        "Root":{
-            "Tier 1": ["Common Root"],
-            "Tier 2": ["Uncommon Root"],
-            "Tier 3": ["Rare Root"],
-            "Tier 4": ["Exceptional Root"],
-            "Tier 5": ["Epic Root"]
-        },
-        "Flower":{
-            "Tier 1": ["common Flower"],
-            "Tier 2": ["Uncommon Flower"],
-            "Tier 3": ["Rare Flower"],
-            "Tier 4": ["Exceptional Flower"],
-            "Tier 5": ["Epic Flower"]
-        },
-        "Fruit":{
-            "Tier 1": ["Common Fruit"],
-            "Tier 2": ["Uncommon Fruit"],
-            "Tier 3": ["Rare Fruit"],
-            "Tier 4": ["Exceptional Fruit"],
-            "Tier 5": ["Epic Fruit"]
-        },
-        "Seed":{
-            "Tier 1": ["Common Seed"],
-            "Tier 2": ["Uncommon Seed"],
-            "Tier 3": ["Rare Seed"],
-            "Tier 4": ["Exceptional Seed"],
-            "Tier 5": ["Epic Seed"]
-        },
-        "Sap":{
-            "Tier 1": ["Common Sap"],
-            "Tier 2": ["Uncommon Sap"],
-            "Tier 3": ["Rare Sap"],
-            "Tier 4": ["Exceptional Sap"],
-            "Tier 5": ["Epic Sap"]
-        },
-        "Pollen":{
-            "Tier 1": ["Common Pollen"],
-            "Tier 2": ["Uncommon Pollen"],
-            "Tier 3": ["Rare Pollen"],
-            "Tier 4": ["Exceptional Pollen"],
-            "Tier 5": ["Epic Pollen"]
-        },
-        "Resin":{
-            "Tier 1": ["Common Resin"],
-            "Tier 2": ["Uncommon Resin"],
-            "Tier 3": ["Rare Resin"],
-            "Tier 4": ["Exceptional Resin"],
-            "Tier 5": ["Epic Resin"]
-        },
-        "Gum":{
-            "Tier 1": ["Common Gum"],
-            "Tier 2": ["Uncommon Gum"],
-            "Tier 3": ["Rare Gum"],
-            "Tier 4": ["Exceptional Gum"],
-            "Tier 5": ["Epic Gum"]
-        },
-        "Latex":{
-            "Tier 1": ["Common Latex"],
-            "Tier 2": ["Uncommon Latex"],
-            "Tier 3": ["Rare Latex"],
-            "Tier 4": ["Exceptional Latex"],
-            "Tier 5": ["Epic Latex"]
-        },
-        "Moss":{
-            "Tier 1": ["Common Moss"],
-            "Tier 2": ["Uncommon Moss"],
-            "Tier 3": ["Rare Moss"],
-            "Tier 4": ["Exceptional Moss"],
-            "Tier 5": ["Epic Moss"]
-        },
-        "Lichen":{
-            "Tier 1": ["Common Lichen"],
-            "Tier 2": ["Uncommon Lichen"],
-            "Tier 3": ["Rare Lichen"],
-            "Tier 4": ["Exceptional Lichen"],
-            "Tier 5": ["Epic Lichen"]
-        },
-        "Algae":{
-            "Tier 1": ["Common Algae"],
-            "Tier 2": ["Uncommon Algae"],
-            "Tier 3": ["Rare Algae"],
-            "Tier 4": ["Exceptional Algae"],
-            "Tier 5": ["Epic Algae"]
-        },
-        "Fungus":{
-            "Tier 1": ["Common Fungus"],
-            "Tier 2": ["Uncommon Fungus"],
-            "Tier 3": ["Rare Fungus"],
-            "Tier 4": ["Exceptional Fungus"],
-            "Tier 5": ["Epic Fungus"]
-        },
-        "Vine":{
-            "Tier 1": ["Common Vine"],
-            "Tier 2": ["Uncommon Vine"],
-            "Tier 3": ["Rare Vine"],
-            "Tier 4": ["Exceptional Vine"],
-            "Tier 5": ["Epic Vine"]
-        },
-        "Thorn":{
-            "Tier 1": ["Common Thorn"],
-            "Tier 2": ["Uncommon Thorn"],
-            "Tier 3": ["Rare Thorn"],
-            "Tier 4": ["Exceptional Thorn"],
-            "Tier 5": ["Epic Thorn"]
-        },
-        "Spore":{
-            "Tier 1": ["Common Spore"],
-            "Tier 2": ["Uncommon Spore"],
-            "Tier 3": ["Rare Spore"],
-            "Tier 4": ["Exceptional Spore"],
-            "Tier 5": ["Epic Spore"]
-        },
-        "Meat":{
-            "Tier 1": ["Common Meat"],
-            "Tier 2": ["Uncommon Meat"],
-            "Tier 3": ["Rare Meat"],
-            "Tier 4": ["Epic Meat"],
-            "Tier 5": ["Legendary Meat"]
-        },
-        "Skin":{
-            "Tier 1": ["Common Skin"],
-            "Tier 2": ["Uncommon Skin"],
-            "Tier 3": ["Rare Skin"],
-            "Tier 4": ["Epic Skin"],
-            "Tier 5": ["Legendary Skin"]
-        },
-        "Scale":{
-            "Tier 1": ["Common Scale"],
-            "Tier 2": ["Uncommon Scale"],
-            "Tier 3": ["Rare Scale"],
-            "Tier 4": ["Epic Scale"],
-            "Tier 5": ["Legendary Scale"]
-        },
-        "Fur":{
-            "Tier 1": ["Common Fur"],
-            "Tier 2": ["Uncommon Fur"],
-            "Tier 3": ["Rare Fur"],
-            "Tier 4": ["Epic Fur"],
-            "Tier 5": ["Legendary Fur"]
-        },
-        "Wool":{
-            "Tier 1": ["Common Wool"],
-            "Tier 2": ["Uncommon Wool"],
-            "Tier 3": ["Rare Wool"],
-            "Tier 4": ["Epic Wool"],
-            "Tier 5": ["Legendary Wool"]
-        },
-        "Hair":{
-            "Tier 1": ["Common Hair"],
-            "Tier 2": ["Uncommon Hair"],
-            "Tier 3": ["Rare Hair"],
-            "Tier 4": ["Epic Hair"],
-            "Tier 5": ["Legendary Hair"]
-        },
-        "Webbing":{
-            "Tier 1": ["Common Webbing"],
-            "Tier 2": ["Uncommon Webbing"],
-            "Tier 3": ["Rare Webbing"],
-            "Tier 4": ["Epic Webbing"],
-            "Tier 5": ["Legendary Webbing"]
-        },
-        "Bone":{
-            "Tier 1": ["Common Bone"],
-            "Tier 2": ["Uncommon Bone"],
-            "Tier 3": ["Rare Bone"],
-            "Tier 4": ["Epic Bone"],
-            "Tier 5": ["Legendary Bone"]
-        },
-        "Organ":{
-            "Tier 1": ["Common Organ"],
-            "Tier 2": ["Uncommon Organ"],
-            "Tier 3": ["Rare Organ"],
-            "Tier 4": ["Epic Organ"],
-            "Tier 5": ["Legendary Organ"]
-        },
-        "Exoskeleton":{
-            "Tier 1": ["Common Exoskeleton"],
-            "Tier 2": ["Uncommon Exoskeleton"],
-            "Tier 3": ["Rare Exoskeleton"],
-            "Tier 4": ["Epic Exoskeleton"],
-            "Tier 5": ["Legendary Exoskeleton"]
-        },
-        "Feather":{
-            "Tier 1": ["Common Feather"],
-            "Tier 2": ["Uncommon Feather"],
-            "Tier 3": ["Rare Feather"],
-            "Tier 4": ["Epic Feather"],
-            "Tier 5": ["Legendary Feather"]
-        },
-        "Horn":{
-            "Tier 1": ["Common Horn"],
-            "Tier 2": ["Uncommon Horn"],
-            "Tier 3": ["Rare Horn"],
-            "Tier 4": ["Epic Horn"],
-            "Tier 5": ["Legendary Horn"]
-        },
-        "Claw":{
-            "Tier 1": ["Common Claw"],
-            "Tier 2": ["Uncommon Claw"],
-            "Tier 3":["Rare Claw"],
-            "Tier 4":["Epic Claw"],
-            "Tier 5":["Legendary Claw"]
-        },
-        "Tooth":{
-            "Tier 1": ["Common Tooth"],
-            "Tier 2": ["Uncommon Tooth"],
-            "Tier 3": ["Rare Tooth"],
-            "Tier 4": ["Epic Tooth"],
-            "Tier 5": ["Legendary Tooth"]
-        },
-        "Pincer":{
-            "Tier 1": ["Common Pincer"],
-            "Tier 2": ["Uncommon Pincer"],
-            "Tier 3": ["Rare Pincer"],
-            "Tier 4": ["Epic Pincer"],
-            "Tier 5": ["Legendary Pincer"]
-        },
-        "Fang":{
-            "Tier 1": ["Common Fang"],
-            "Tier 2": ["Uncommon Fang"],
-            "Tier 3": ["Rare Fang"],
-            "Tier 4": ["Epic Fang"],
-            "Tier 5": ["Legendary Fang"]
-        },
-        "Shell":{
-            "Tier 1": ["Common Shell"],
-            "Tier 2": ["Uncommon Shell"],
-            "Tier 3": ["Rare Shell"],
-            "Tier 4": ["Epic Shell"],
-            "Tier 5": ["Legendary Shell"]
-        },
-        "Fin":{
-            "Tier 1": ["Common Fin"],
-            "Tier 2": ["Uncommon Fin"],
-            "Tier 3": ["Rare Fin"],
-            "Tier 4": ["Epic Fin"],
-            "Tier 5": ["Legendary Fin"]
-        },
-        "Eye":{
-            "Tier 1": ["Common Eye"],
-            "Tier 2": ["Uncommon Eye"],
-            "Tier 3": ["Rare Eye"],
-            "Tier 4": ["Epic Eye"],
-            "Tier 5": ["Legendary Eye"]
-        },
-        "Ear":{
-            "Tier 1": ["Common Ear"],
-            "Tier 2": ["Uncommon Ear"],
-            "Tier 3": ["Rare Ear"],
-            "Tier 4": ["Epic Ear"],
-            "Tier 5": ["Legendary Ear"]
-        },
-        "Nose":{
-            "Tier 1": ["Common Nose"],
-            "Tier 2": ["Uncommon Nose"],
-            "Tier 3": ["Rare Nose"],
-            "Tier 4": ["Epic Nose"],
-            "Tier 5": ["Legendary Nose"]
-        },
-        "Gland":{
-            "Tier 1": ["Common Gland"],
-            "Tier 2": ["Uncommon Gland"],
-            "Tier 3": ["Rare Gland"],
-            "Tier 4": ["Epic Gland"],
-            "Tier 5": ["Legendary Gland"]
-        },
-        "Sinew":{
-            "Tier 1": ["Common Sinew"],
-            "Tier 2": ["Uncommon Sinew"],
-            "Tier 3": ["Rare Sinew"],
-            "Tier 4": ["Epic Sinew"],
-            "Tier 5": ["Legendary Sinew"]
-        },
-        "Tendon":{
-            "Tier 1": ["Common Tendon"],
-            "Tier 2": ["Uncommon Tendon"],
-            "Tier 3": ["Rare Tendon"],
-            "Tier 4": ["Epic Tendon"],
-            "Tier 5": ["Legendary Tendon"]
-        },
-        "Cartilage":{
-            "Tier 1": ["Common Cartilage"],
-            "Tier 2": ["Uncommon Cartilage"],
-            "Tier 3": ["Rare Cartilage"],
-            "Tier 4": ["Epic Cartilage"],
-            "Tier 5": ["Legendary Cartilage"]
-        },
-        "Marrow":{
-            "Tier 1": ["Common Marrow"],
-            "Tier 2": ["Uncommon Marrow"],
-            "Tier 3": ["Rare Marrow"],
-            "Tier 4": ["Epic Marrow"],
-            "Tier 5": ["Legendary Marrow"]
-        },
-        "Fecis":{
-            "Tier 1": ["Common Fecis"],
-            "Tier 2": ["Uncommon Fecis"],
-            "Tier 3": ["Rare Fecis"],
-            "Tier 4": ["Epic Fecis"],
-            "Tier 5": ["Legendary Fecis"]
-        },
-        "Ashes":{
-            "Tier 1": ["Common Ashes"],
-            "Tier 2": ["Uncommon Ashes"],
-            "Tier 3": ["Rare Ashes"],
-            "Tier 4": ["Epic Ashes"],
-            "Tier 5": ["Legendary Ashes"]
-        },
-        "Liver":{
-            "Tier 1": ["Common Liver"],
-            "Tier 2": ["Uncommon Liver"],
-            "Tier 3": ["Rare Liver"],
-            "Tier 4": ["Epic Liver"],
-            "Tier 5": ["Legendary Liver"]
-        },
-        "Heart":{
-            "Tier 1": ["Common Heart"],
-            "Tier 2": ["Uncommon Heart"],
-            "Tier 3": ["Rare Heart"],
-            "Tier 4": ["Epic Heart"],
-            "Tier 5": ["Legendary Heart"]
-        },
-        "Brain":{
-            "Tier 1": ["Common Brain"],
-            "Tier 2": ["Uncommon Brain"],
-            "Tier 3": ["Rare Brain"],
-            "Tier 4": ["Epic Brain"],
-            "Tier 5": ["Legendary Brain"]
-        },
-        "Lung":{
-            "Tier 1": ["Common Lung"],
-            "Tier 2": ["Uncommon Lung"],
-            "Tier 3": ["Rare Lung"],
-            "Tier 4": ["Epic Lung"],
-            "Tier 5": ["Legendary Lung"]
-        },
-        "Gill":{
-            "Tier 1": ["Common Gill"],
-            "Tier 2": ["Uncommon Gill"],
-            "Tier 3": ["Rare Gill"],
-            "Tier 4": ["Epic Gill"],
-            "Tier 5": ["Legendary Gill"]
-        },
-        "Kidney":{
-            "Tier 1": ["Common Kidney"],
-            "Tier 2": ["Uncommon Kidney"],
-            "Tier 3": ["Rare Kidney"],
-            "Tier 4": ["Epic Kidney"],
-            "Tier 5": ["Legendary Kidney"]
-        },
-        "Intestine":{
-            "Tier 1": ["Common Intestine"],
-            "Tier 2": ["Uncommon Intestine"],
-            "Tier 3": ["Rare Intestine"],
-            "Tier 4": ["Epic Intestine"],
-            "Tier 5": ["Legendary Intestine"]
-        },
-        "Stomach":{
-            "Tier 1": ["Common Stomach"],
-            "Tier 2": ["Uncommon Stomach"],
-            "Tier 3": ["Rare Stomach"],
-            "Tier 4": ["Epic Stomach"],
-            "Tier 5": ["Legendary Stomach"]
-        },
-        "Bladder":{
-            "Tier 1": ["Common Bladder"],
-            "Tier 2": ["Uncommon Bladder"],
-            "Tier 3": ["Rare Bladder"],
-            "Tier 4": ["Epic Bladder"],
-            "Tier 5": ["Legendary Bladder"]
-        },
-        "Uterus":{
-            "Tier 1": ["Common Uterus"],
-            "Tier 2": ["Uncommon Uterus"],
-            "Tier 3": ["Rare Uterus"],
-            "Tier 4": ["Epic Uterus"],
-            "Tier 5": ["Legendary Uterus"]
-        },
-        "Testes":{
-            "Tier 1": ["Common Testes"],
-            "Tier 2": ["Uncommon Testes"],
-            "Tier 3": ["Rare Testes"],
-            "Tier 4": ["Epic Testes"],
-            "Tier 5": ["Legendary Testes"]
-        },
-        "Pancreas":{
-            "Tier 1": ["Common Pancreas"],
-            " Tier 2": ["Uncommon Pancreas"],
-            " Tier 3": ["Rare Pancreas"],
-            " Tier 4": ["Epic Pancreas"],
-            " Tier 5": ["Legendary Pancreas"]
-        },
-        "Spleen":{
-            " Tier 1": ["Common Spleen"],
-            " Tier 2": ["Uncommon Spleen"],
-            " Tier 3": ["Rare Spleen"],
-            " Tier 4": ["Epic Spleen"],
-            " Tier 5": ["Legendary Spleen"]
-        },
-        "Cerebrum":{
-            "Tier 1": ["Common Cerebrum"],
-            "Tier 2": ["Uncommon Cerebrum"],
-            "Tier 3": ["Rare Cerebrum"],
-            "Tier 4": ["Epic Cerebrum"],
-            "Tier 5": ["Legendary Cerebrum"]
-        },
-        "Spinal Cord":{
-            "Tier 1": ["Common Spinal Cord"],
-            "Tier 2": ["Uncommon Spinal Cord"],
-            "Tier 3": ["Rare Spinal Cord"],
-            "Tier 4": ["Epic Spinal Cord"],
-            "Tier 5": ["Legendary Spinal Cord"]
-        },
-        "Nerve":{
-            "Tier 1": ["Common Nerve"],
-            "Tier 2": ["Uncommon Nerve"],
-            "Tier 3": ["Rare Nerve"],
-            "Tier 4": ["Epic Nerve"],
-            "Tier 5": ["Legendary Nerve"]
-        },
-        "Blood Vessel":{
-            "Tier 1": ["Common Blood Vessel"],
-            "Tier 2": ["Uncommon Blood Vessel"],
-            "Tier 3": ["Rare Blood Vessel"],
-            "Tier 4": ["Epic Blood Vessel"],
-            "Tier 5": ["Legendary Blood Vessel"]
-        },
-        "Blood":{
-            "Tier 1": ["Common Blood"],
-            "Tier 2": ["Uncommon Blood"],
-            "Tier 3": ["Rare Blood"],
-            "Tier 4": ["Epic Blood"],
-            "Tier 5": ["Legendary Blood"]
-        },
-        "Milk":{
-            "Tier 1": ["Common Milk"],
-            "Tier 2": ["Uncommon Milk"],
-            "Tier 3": ["Rare Milk"],
-            "Tier 4": ["Epic Milk"],
-            "Tier 5": ["Legendary Milk"]
-        },
-        "Venom":{
-            "Tier 1": ["Common Venom"],
-            "Tier 2": ["Uncommon Venom"],
-            "Tier 3": ["Rare Venom"],
-            "Tier 4": ["Epic Venom"],
-            "Tier 5": ["Legendary Venom"]
-        },
-        "Saliva":{
-            "Tier 1": ["Common Saliva"],
-            "Tier 2": ["Uncommon Saliva"],
-            "Tier 3": ["Rare Saliva"],
-            "Tier 4": ["Epic Saliva"],
-            "Tier 5": ["Legendary Saliva"]
-        },
-        "Urine":{
-            "Tier 1": ["Common Urine"],
-            "Tier 2": ["Uncommon Urine"],
-            "Tier 3": ["Rare Urine"],
-            "Tier 4": ["Epic Urine"],
-            "Tier 5": ["Legendary Urine"]
-        },
-        "Sweat":{
-            "Tier 1": ["Common Sweat"],
-            "Tier 2": ["Uncommon Sweat"],
-            "Tier 3": ["Rare Sweat"],
-            "Tier 4": ["Epic Sweat"],
-            "Tier 5": ["Legendary Sweat"]
-        },
-        "Tears":{
-            "Tier 1": ["Common Tears"],
-            "Tier 2": ["Uncommon Tears"],
-            "Tier 3": ["Rare Tears"],
-            "Tier 4": ["Epic Tears"],
-            "Tier 5": ["Legendary Tears"]
-        },
-        "Mucus":{
-            "Tier 1": ["Common Mucus"],
-            "Tier 2": ["Uncommon Mucus"],
-            "Tier 3": ["Rare Mucus"],
-            "Tier 4": ["Epic Mucus"],
-            "Tier 5": ["Legendary Mucus"]
-        },
-        "Breath":{
-            "Tier 1": ["Common Breath"],
-            "Tier 2": ["Uncommon Breath"],
-            "Tier 3": ["Rare Breath"],
-            "Tier 4": ["Epic Breath"],
-            "Tier 5": ["Legendary Breath"]
-        },
-        "Vocalization":{
-            "Tier 1": ["Common Vocalization"],
-            "Tier 2": ["Uncommon Vocalization"],
-            "Tier 3": ["Rare Vocalization"],
-            "Tier 4": ["Epic Vocalization"],
-            "Tier 5": ["Legendary Vocalization"]
-        },
-        "Scent":{
-            "Tier 1": ["Common Scent"],
-            "Tier 2": ["Uncommon Scent"],
-            "Tier 3": ["Rare Scent"],
-            "Tier 4": ["Epic Scent"],
-            "Tier 5": ["Legendary Scent"]
-        },
-        "Pheromones":{
-            "Tier 1": ["Common Pheromones"],
-            "Tier 2": ["Uncommon Pheromones"],
-            "Tier 3": ["Rare Pheromones"],
-            "Tier 4": ["Epic Pheromones"],
-            "Tier 5": ["Legendary Pheromones"]
-        },
-        "Toxic Fume":{
-            "Tier 1": ["Common Toxic Fume"],
-            "Tier 2": ["Uncommon Toxic Fume"],
-            "Tier 3": ["Rare Toxic Fume"],
-            "Tier 4": ["Epic Toxic Fume"],
-            "Tier 5": ["Legendary Toxic Fume"]
-        },
-        "Stone":{
-            "Tier 1": ["Common Stone"],
-            "Tier 2": ["Uncommon Stone"],
-            "Tier 3": ["Rare Stone"],
-            "Tier 4": ["Exceptional Stone"],
-            "Tier 5": ["Epic Stone"]
-        },
-        "Ore":{
-            "Tier 1": ["Common Ore"],
-            "Tier 2": ["Uncommon Ore"],
-            "Tier 3": ["Rare Ore"],
-            "Tier 4": ["Exceptional Ore"],
-            "Tier 5": ["Epic Ore"]
-        },
-        "Gemstone":{
-            
-            "Tier 1": ["Common Gemstone"],
-            "Tier 2": ["Uncommon Gemstone"],
-            "Tier 3": ["Rare Gemstone"],
-            "Tier 4": ["Exceptional Gemstone"],
-            "Tier 5": ["Epic Gemstone"]
-        }
+    "mountain": {
+      "name": "Mountain Highlands",
+      "description": "Rocky peaks and alpine terrain. Rich in ore veins, stone, and cold-resistant herbs.",
+      "primary_skill": "mining",
+      "secondary_skill": "foraging",
+      "era": ["mundane","industrial","future","fantasy"],
+      "materials": [
+        { "id": "iron",          "name": "Iron Ore",        "category": "metal",    "tier": 1, "gather_dc": 5,  "yield": "1d6", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","iron_working"] },
+        { "id": "copper",        "name": "Copper Ore",      "category": "metal",    "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","metalworking"] },
+        { "id": "lead",          "name": "Lead Ore",        "category": "metal",    "tier": 1, "gather_dc": 4,  "yield": "1d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","metalworking"] },
+        { "id": "basic_glass",   "name": "Raw Quartz Sand", "category": "glass",    "tier": 1, "gather_dc": 4,  "yield": "2d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["glassblowing"] },
+        { "id": "rock_crystal",  "name": "Rock Crystal",    "category": "crystal",  "tier": 1, "gather_dc": 6,  "yield": "1d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["crystallography"] },
+        { "id": "quartz",        "name": "Quartz",          "category": "gemstone", "tier": 2, "gather_dc": 8,  "yield": "1d3", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["gem_crafting","crystallography"] },
+        { "id": "amethyst",      "name": "Amethyst",        "category": "gemstone", "tier": 2, "gather_dc": 10, "yield": "1d2", "unit": "unit","skill": "mining",   "knowledge_tags_earned": ["gem_crafting"] },
+        { "id": "stoneheart",    "name": "Stoneheart Vein", "category": "primal",   "tier": 3, "gather_dc": 12, "yield": "1d3", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["masonry","meteorics"] },
+        { "id": "beast_bone",    "name": "Beast Bone",      "category": "bone",     "tier": 1, "gather_dc": 5,  "yield": "1d4", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["bonecraft"] }
+      ]
     },
-    "Weaver_Materials":{
-        "Seed_Fibers": {
-            "requires": ["Ginning", "Weaving"],
-            "examples": ["Cotton", "Milkweed", "Kapok"]
-        },
-        "Bast_Fibers":{
-            "requires": ["Retting", "weaving"],
-            "examples": ["Wild Flax", "Hemp", "Nettle", "Jute", "Sunnhemp"]
-        },
-        "Leaf_Fibers":{ 
-            "requires": "Weaving",
-            "examples": ["Wild Pineapple", "Agave"]
-        },
-        "Wool_Fibers":{
-            "requires": ["Sheering", "Weaving"],
-            "examples": ["Sheep"]
-        },
-        "Hair_Fibers":{
-            "requires": ["Sheering", "weaving"],
-            "examples": ["Alpace","Llama", "Goat", "Rabbit", "Camel", "Yak", "Qiviut"]
-        },
-        "Silk_Fibers":{
-            "requires": ["Degumming", "Reeling", "weaving"],
-            "examples": ["Silk Worms", "Silk Spider", "Byssus Mullusk"]
-        }
+    "swamp": {
+      "name": "Swamp & Wetlands",
+      "description": "Murky marshland. Source of alchemical ingredients, toxins, amphibians, and rare organic matter.",
+      "primary_skill": "foraging",
+      "secondary_skill": "fishing",
+      "era": ["mundane","industrial","future","fantasy"],
+      "materials": [
+        { "id": "linen",       "name": "Reed Fiber",       "category": "cloth",   "tier": 1, "gather_dc": 4,  "yield": "2d4", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["weaving"] },
+        { "id": "insect_chitin","name":"Insect Chitin",     "category": "chitin",  "tier": 1, "gather_dc": 5,  "yield": "1d4", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["bonecraft"] },
+        { "id": "crab_shell",  "name": "Crab Shell",       "category": "chitin",  "tier": 1, "gather_dc": 6,  "yield": "1d4", "unit": "lb", "skill": "fishing",  "knowledge_tags_earned": ["bonecraft"] },
+        { "id": "beast_bone",  "name": "Amphibian Bone",   "category": "bone",    "tier": 1, "gather_dc": 5,  "yield": "1d4", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["bonecraft","apothecary"] },
+        { "id": "bloodvine",   "name": "Bloodvine",        "category": "living",  "tier": 3, "gather_dc": 10, "yield": "1d3", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["apothecary","alchemy"] },
+        { "id": "wyrmroot_bark","name":"Wyrmroot Bark",     "category": "living",  "tier": 3, "gather_dc": 12, "yield": "1d2", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["alchemy","apothecary"] }
+      ]
     },
-    "Tanning_Materials": {
-        "Animal_Hide": {
-            "requires": ["Scrape", "Dehair", "Ferment", "Oil", "Salts"],
-            "examples": ["Mammals", "Reptiles", "Amphibians", "Birds"]
-        },
-        "Scaled_Hides": {
-            "requires": ["Boil", "Striping", "Shaping", "Perforation"],
-            "examples": ["Dragons", "Fish", "Reptiles"]
-        },
-        "Bone_and_Horn": {
-            "requires": ["Degrease", "Bending", "Bleaching"],
-            "examples": ["Bones", "Horns", "Antlers"]
-        },
-        "Hair_Removal":{
-            "requires": ["scouring", "felting", "sorting"],
-            "examples": ["wool", "furs", "bristles"]
-        },
-        "Adhesives":{
-            "requires": "boil",
-            "examples": ["hooves", "skin", "tissue"]
-        },
-        "Cordage":{
-            "requires": ["clean", "dry", "shreding"],
-            "examples": ["intestines", "sinew"]
-        },
-        "Vellum":{
-            "requires": ["stretching", "scraping"],
-            "examples": ["skins"]
-        },
-        "Gas_bags": {
-            "requires": ["stretching", "preserving"],
-            "examples": ["bladders"]
-        }
+    "desert": {
+      "name": "Desert & Badlands",
+      "description": "Arid wasteland. Yields glass sand, mineral salts, bones, and heat-resistant materials.",
+      "primary_skill": "foraging",
+      "secondary_skill": "mining",
+      "era": ["mundane","industrial","future","fantasy"],
+      "materials": [
+        { "id": "basic_glass",    "name": "Glass Sand",       "category": "glass",   "tier": 1, "gather_dc": 4,  "yield": "2d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["glassblowing"] },
+        { "id": "obsidian_glass", "name": "Volcanic Obsidian","category": "glass",   "tier": 2, "gather_dc": 8,  "yield": "1d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["glassblowing","masonry"] },
+        { "id": "beast_bone",     "name": "Sun-bleached Bone","category": "bone",    "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["bonecraft"] },
+        { "id": "lead",           "name": "Mineral Salt",     "category": "metal",   "tier": 1, "gather_dc": 4,  "yield": "1d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","alchemy"] },
+        { "id": "emberstone",     "name": "Emberstone",       "category": "primal",  "tier": 3, "gather_dc": 12, "yield": "1d2", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["meteorics","smithing"] }
+      ]
     },
-    "Metalurgy":{
-        "Ingots":{
-            "requires": ["alloying", "reduction"],
-            "examples": ["ore", "coal"],
-            "note": "may produce slag"
-        },
-        "Foil": {
-            "requires": [],
-            "examples": ["ingot"]
-        },
-        "Tubes": {
-            "requires": ["mold"],
-            "examples": ["ore"]
-        },
-        "Wiring": {
-            "requires": ["Drawing"],
-            "examples": ["ore"]
-        },
-        "Bolts_Rivets": {
-            "requires": ["riveter"],
-            "examples": ["ingot"]
-        }
+    "underground": {
+      "name": "Underground & Caverns",
+      "description": "Deep cave networks. Contains rare ores, magical crystals, fungi, and primal stone.",
+      "primary_skill": "mining",
+      "secondary_skill": "foraging",
+      "era": ["mundane","industrial","future","fantasy"],
+      "materials": [
+        { "id": "iron",         "name": "Deep Iron Vein",   "category": "metal",    "tier": 1, "gather_dc": 6,  "yield": "2d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","iron_working"] },
+        { "id": "bronze",       "name": "Copper-Tin Vein",  "category": "metal",    "tier": 1, "gather_dc": 6,  "yield": "1d6", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","metalworking"] },
+        { "id": "rock_crystal", "name": "Cave Crystal",     "category": "crystal",  "tier": 1, "gather_dc": 6,  "yield": "1d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["crystallography"] },
+        { "id": "magicite",     "name": "Magicite Vein",    "category": "crystal",  "tier": 2, "gather_dc": 10, "yield": "1d3", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["crystallography","enchanting"] },
+        { "id": "obsidian",     "name": "Obsidian Deposit", "category": "gemstone", "tier": 2, "gather_dc": 8,  "yield": "1d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["gem_crafting","glassblowing"] },
+        { "id": "amethyst",     "name": "Amethyst Cluster", "category": "gemstone", "tier": 2, "gather_dc": 10, "yield": "1d3", "unit": "unit","skill": "mining",   "knowledge_tags_earned": ["gem_crafting"] },
+        { "id": "moonstone",    "name": "Moonstone",        "category": "gemstone", "tier": 3, "gather_dc": 12, "yield": "1d2", "unit": "unit","skill": "mining",   "knowledge_tags_earned": ["gem_crafting","enchanting"] },
+        { "id": "stoneheart",   "name": "Stoneheart",       "category": "primal",   "tier": 3, "gather_dc": 12, "yield": "1d2", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["masonry","meteorics"] }
+      ]
     },
-    "Woodworking": {
-        "Timber": {
-            "skills": [],
-            "materials": ["wood"]
-        } 
+    "coastal": {
+      "name": "Coast & Open Water",
+      "description": "Sea shores and open ocean. Yields fish, shells, salt, and aquatic creature parts.",
+      "primary_skill": "fishing",
+      "secondary_skill": "foraging",
+      "era": ["mundane","industrial","future","fantasy"],
+      "materials": [
+        { "id": "crab_shell",  "name": "Crab Shell",        "category": "chitin",   "tier": 1, "gather_dc": 5,  "yield": "1d4", "unit": "lb", "skill": "fishing",  "knowledge_tags_earned": ["bonecraft"] },
+        { "id": "basic_glass", "name": "Sea Glass Sand",    "category": "glass",    "tier": 1, "gather_dc": 3,  "yield": "2d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["glassblowing"] },
+        { "id": "refined_silver","name":"Salt Crystal",     "category": "metal",    "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["alchemy","cooking"] },
+        { "id": "beast_bone",  "name": "Fish Bone",         "category": "bone",     "tier": 1, "gather_dc": 4,  "yield": "1d6", "unit": "lb", "skill": "fishing",  "knowledge_tags_earned": ["bonecraft","cooking"] },
+        { "id": "silk",        "name": "Sea Silk",          "category": "cloth",    "tier": 2, "gather_dc": 10, "yield": "1d2", "unit": "lb", "skill": "fishing",  "knowledge_tags_earned": ["weaving","silk_working"] }
+      ]
+    },
+    "magical": {
+      "name": "Magical Zones & Creature Lairs",
+      "description": "Corrupted, charged, or mythic locations. Yields high-tier magical materials from powerful creatures.",
+      "primary_skill": "hunting",
+      "secondary_skill": "mining",
+      "era": ["fantasy","future"],
+      "materials": [
+        { "id": "drakehide",    "name": "Drakehide",         "category": "leather",  "tier": 3, "gather_dc": 12, "yield": "1d4", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["leatherworking","exotic_tanning"] },
+        { "id": "dragon_bone",  "name": "Dragon Bone",       "category": "bone",     "tier": 4, "gather_dc": 16, "yield": "1d3", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["bonecraft","exotic_crafting"] },
+        { "id": "spider_silk",  "name": "Spider Silk",       "category": "cloth",    "tier": 3, "gather_dc": 12, "yield": "1d3", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["weaving","silk_working"] },
+        { "id": "magicite",     "name": "Raw Magicite",      "category": "crystal",  "tier": 2, "gather_dc": 10, "yield": "1d4", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["crystallography","enchanting"] },
+        { "id": "mithril",      "name": "Mithril Vein",      "category": "metal",    "tier": 4, "gather_dc": 18, "yield": "1d2", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","meteorics"] },
+        { "id": "stormcore",    "name": "Stormcore",         "category": "primal",   "tier": 3, "gather_dc": 14, "yield": "1d2", "unit": "lb", "skill": "mining",   "knowledge_tags_earned": ["smithing","crystallography"] },
+        { "id": "shadowhide",   "name": "Shadowhide",        "category": "leather",  "tier": 4, "gather_dc": 16, "yield": "1d2", "unit": "lb", "skill": "hunting",  "knowledge_tags_earned": ["umbrawork","leatherworking"] },
+        { "id": "bloodvine",    "name": "Bloodvine",         "category": "living",   "tier": 3, "gather_dc": 12, "yield": "1d3", "unit": "lb", "skill": "foraging", "knowledge_tags_earned": ["alchemy","apothecary"] }
+      ]
     }
-    "Cooking": {
-        "Filet": {
-
-        },
-        "Butcher": {
-
-        },
-        "Puree": {
-
-        },
-        "Bake": {
-
-        },
-        "Cook": {
-
-        },
-        ""
-
-    }
-
-
-
-    }    
+  }
 }

@@ -1,0 +1,499 @@
+{
+    "_meta": {
+        "document": "CraftSkills.json",
+        "system": "Unbound TTRPG",
+        "studio": "RHabit Game Development",
+        "version": "0.1-draft",
+        "source": "Unbound Knowledge Crafting and Profession Systems document.",
+        "notes": [
+          "Profession Skills use the same XP pool as combat skills.",
+          "level cost: L+1 XP to raise from L to L+1. (L1=1, L2=2, L3=3, L4=4, L5=5 = 15 XP total to max.)",
+          "Skill level may never exceed the governing stat level.",
+          "Recipe memory: level squared (crafting recipes). level cubed (tool recipes).",
+          "Missing tags can be bridged by skill level: L1=10%, L2=20%, L3=30%, L4=40%, L5=50% of recipe tags.",
+          "Affinity Styles function as Profession Skills for spell formula work.",
+          "Knowledge Tags are earned through play — not purchased with XP.",
+          "Tag tiers: T1=common, T2=uncommon, T3=rare, T4=epic, T5=world-unique."
+        ]
+    },    
+    "weapon": {
+      "small_weapons_training": {
+        "name": "Small Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with small weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "-1 SP to small weapon attacks. +L attack vs targets attacking another ally."
+          },
+          "4": {
+            "effect": "Crits inflict Bleeding for L turns."
+          },
+          "5": {
+            "effect": "On Crit gain 1 AP. Attacks ignore half of parry bonus."
+          }
+        }
+      },
+      "medium_weapons_training": {
+        "name": "Medium Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with medium weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "+L to Block or Dodge. Reaction: Melee attack vs attacker who missed."
+          },
+          "4": {
+            "effect": "+L attack vs enemies who did not target you last turn."
+          },
+          "5": {
+            "effect": "Attacks cause 5-ft knockback. If blocked, deal L damage."
+          }
+        }
+      },
+      "reach_weapons_training": {
+        "name": "Reach Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "BDY",
+        "requirements": [
+          {
+            "type": "stat_min",
+            "stat": "BDY",
+            "value": 1
+          }
+        ],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with reach weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "+5 ft reach. +L attack vs enemies more than 5 ft away."
+          },
+          "4": {
+            "effect": "When an enemy enters reach, make a free attack (once per turn)."
+          },
+          "5": {
+            "effect": "+L damage outside 5 ft. Reach attacks cost -1 AP."
+          }
+        }
+      },
+      "heavy_weapons_training": {
+        "name": "Heavy Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "BDY",
+        "requirements": [
+          {
+            "type": "stat_min",
+            "stat": "BDY",
+            "value": 2
+          }
+        ],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with heavy weapons."
+          },
+          "2": {
+            "effect": "Max HP + L²; HPR +L."
+          },
+          "3": {
+            "effect": "+1 AP, +L SP to heavy weapon attack: gain +2L damage on hit."
+          },
+          "4": {
+            "effect": "+L to Block vs enemies you attacked last turn."
+          },
+          "5": {
+            "effect": "Crush: Ignore L DR. Target armor gains L stacks of Crushed."
+          }
+        }
+      },
+      "throwing_weapon_training_light": {
+        "name": "Throwing Weapon Training (Light)",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with light thrown weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "-1 SP to thrown attacks."
+          },
+          "4": {
+            "effect": "Once per round, free throw if AP was used to move."
+          },
+          "5": {
+            "effect": "Crits inflict Stagger (1 round). PLACEHOLDER: source text incomplete."
+          }
+        }
+      },
+      "throwing_weapon_training_large": {
+        "name": "Large Throwing Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with large thrown weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "+L damage if target is within 10 ft."
+          },
+          "4": {
+            "effect": "Area throw: 5-ft radius."
+          },
+          "5": {
+            "effect": "Thrown hit = Stagger (target loses 1 AP)."
+          }
+        }
+      },
+      "throwing_weapon_training_exotic": {
+        "name": "Exotic Thrown Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with exotic thrown weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "Weapon returns to hand on hit."
+          },
+          "4": {
+            "effect": "+L damage to flying or airborne targets."
+          },
+          "5": {
+            "effect": "+1 Crit Range. -1 AP to abilities."
+          }
+        }
+      },
+      "light_ranged_weapons_training": {
+        "name": "Light Ranged Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with light ranged weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "No reaction provoked when firing."
+          },
+          "4": {
+            "effect": "Snap Shot: Once per round, shoot as a reaction."
+          },
+          "5": {
+            "effect": "+1 movement tile per AP while wielding."
+          }
+        }
+      },
+      "medium_ranged_weapons_training": {
+        "name": "Medium Ranged Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with medium ranged weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "-1 AP to the first attack made with a medium ranged weapon per turn."
+          },
+          "4": {
+            "effect": "If target moved last turn: +L damage."
+          },
+          "5": {
+            "effect": "Ignore up to L Cover when aiming."
+          }
+        }
+      },
+      "large_ranged_weapons_training": {
+        "name": "Large Ranged Weapons Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with large ranged weapons."
+          },
+          "2": {
+            "effect": "Max HP + L²; HPR +L."
+          },
+          "3": {
+            "effect": "+2L damage vs targets in cover."
+          },
+          "4": {
+            "effect": "If you have not moved this turn: +L Crit Range."
+          },
+          "5": {
+            "effect": "Crush: Ignore L armor DR. Apply Crushed."
+          }
+        }
+      },
+      "magic_weapon_training": {
+        "name": "Magic Weapon Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "notes": "Covers Wands, Rods, Firearms, Staves.",
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with magic focus weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "Attack applies -L defense debuff (lasts 1 round)."
+          },
+          "4": {
+            "effect": "-1 SP to channeled spells."
+          },
+          "5": {
+            "effect": "Prepare 1 spell as a Reaction."
+          }
+        }
+      },
+      "melee_siege_weapon_training": {
+        "name": "Melee Siege Weapon Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with melee siege weapons."
+          },
+          "2": {
+            "effect": "Max HP + L²; HPR +L."
+          },
+          "3": {
+            "effect": "+2L damage to structures."
+          },
+          "4": {
+            "effect": "+L attack if you have not moved this turn."
+          },
+          "5": {
+            "effect": "Crush: Ignore all DR. Double damage to fortifications."
+          }
+        }
+      },
+      "ranged_siege_weapon_training": {
+        "name": "Ranged Siege Weapon Training",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to attacks with ranged siege weapons."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "+1 tile radius to attacks."
+          },
+          "4": {
+            "effect": "-1 turn reload time."
+          },
+          "5": {
+            "effect": "+L splash damage to adjacent targets."
+          }
+        }
+      },
+      "weapon_mastery": {
+        "name": "Weapon Mastery",
+        "skill_type": "weapon",
+        "governing_stat": "highest",
+        "requirements": [
+          {"type": "skill_min", "skill_count": 3, "minimum_rank": 3, "skill_category": "weapon"}
+        ],
+        "levels": {
+          "1": {
+            "effect": "+L to all trained weapon attacks."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "+1 Crit Range to all weapon attacks."
+          },
+          "4": {
+            "effect": "+1 Reaction per round with a trained weapon."
+          },
+          "5": {
+            "effect": "Once per turn, a hit grants a second attack at -2L."
+          }
+        }
+      }
+    },
+    "armor": {
+      "light_armor_training": {
+        "name": "Light Armor Training",
+        "skill_type": "armor",
+        "governing_stat": "highest",
+        "requirements": [],
+        "levels": {
+          "1": {
+            "effect": "+L to Dodge with a Light Load."
+          },
+          "2": {
+            "effect": "Max SP + L²; SPR +L."
+          },
+          "3": {
+            "effect": "If unarmored or in Light Armor: may take 2 move actions before SP penalties apply."
+          },
+          "4": {
+            "effect": "On successful Dodge: +L to next attack this round."
+          },
+          "5": {
+            "effect": "After first successful dodge per round, gain 3 DT."
+          }
+        }
+      },
+      "medium_armor_training": {
+        "name": "Medium Armor Training",
+        "skill_type": "armor",
+        "governing_stat": "BDY",
+        "requirements": [
+          {
+            "type": "stat_min",
+            "stat": "BDY",
+            "value": 1
+          }
+        ],
+        "levels": {
+          "1": {
+            "effect": "+L to Block with a Medium load."
+          },
+          "2": {
+            "effect": "Max HP + L²; HPR +L."
+          },
+          "3": {
+            "effect": "+L to Block if in Medium Armor."
+          },
+          "4": {
+            "effect": "Braced: +2L DR if unmoved for 1 round."
+          },
+          "5": {
+            "effect": "A Block that fully prevents damage restores L HP."
+          }
+        }
+      },
+      "heavy_armor_training": {
+        "name": "Heavy Armor Training",
+        "skill_type": "armor",
+        "governing_stat": "BDY",
+        "requirements": [
+          {
+            "type": "stat_min",
+            "stat": "BDY",
+            "value": 2
+          }
+        ],
+        "levels": {
+          "1": {
+            "effect": "-3L slashing damage taken, -2L piercing, -L bashing."
+          },
+          "2": {
+            "effect": "Max HP + L²; HPR +L."
+          },
+          "3": {
+            "effect": "-2L physical and force damage taken; -L magic damage. (Increases to -3L at Rank 5.)"
+          },
+          "4": {
+            "effect": "Attacks that deal less than 5 damage after DR reflect L damage to attacker."
+          },
+          "5": {
+            "effect": "Immovable: Immune to shove and reposition effects."
+          }
+        }
+      },
+      "shield_mastery": {
+        "name": "Shield Mastery",
+        "skill_type": "armor",
+        "governing_stat": "highest",
+        "requirements": [
+          {
+            "type": "equipment",
+            "description": "Shield or block-capable weapon"
+          }
+        ],
+        "levels": {
+          "1": {
+            "effect": "Block costs -1 SP per L."
+          },
+          "2": {
+            "effect": "Max HP + L²; HPR +L."
+          },
+          "3": {
+            "effect": "A Block that fully prevents damage restores L SP."
+          },
+          "4": {
+            "effect": "If Block total exceeds threshold by more than 10, attacker loses 1 AP."
+          },
+          "5": {
+            "effect": "1 extra Block per round that does not consume a Reaction."
+          }
+        }
+      },
+      "armor_synergy": {
+        "name": "Armor Synergy",
+        "skill_type": "armor",
+        "governing_stat": "highest",
+        "requirements": [
+          {
+            "type": "skill_min",
+            "skill_count": 2,
+            "minimum_rank": 3,
+            "skill_category": "armor"
+          }
+        ],
+        "levels": {
+          "1": {
+            "effect": "+L to defense rolls while wearing armor."
+          },
+          "2": {
+            "effect": "Max HP + L²; HPR +L."
+          },
+          "3": {
+            "effect": "+1 DR vs crits."
+          },
+          "4": {
+            "effect": "Allies within 5 ft gain half your armor bonus."
+          },
+          "5": {
+            "effect": "Redirect 1 attack per round from an adjacent ally to yourself. Roll Block or Dodge."
+          }
+        }
+      }
+    }
+}

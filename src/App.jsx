@@ -12,6 +12,7 @@ import MarketPage from "./pages/market.jsx";
 import AdminPage from "./pages/admin.jsx";
 import ProfilePage from "./pages/profile.jsx";
 import ReferencesPage from "./pages/reference.jsx";
+import WorkshopPage from "./pages/workshop.jsx";
 
 export default function App() {
   return (
@@ -26,15 +27,16 @@ export default function App() {
           </div>
           
           <nav className="flex flex-col gap-1 text-sm font-medium">
-            <Link to="/" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Dashboard Home</Link>
-            <Link to="/profile" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Character Hub</Link>
-            <Link to="/characters" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Manage Sheets</Link>
-            <Link to="/species" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Species Builder</Link>
-            <Link to="/gathering" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Forage & Gather</Link>
-            <Link to="/crafting" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Workshop Crafting</Link>
-            <Link to="/market" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Vendor Market</Link>
-            <Link to="/arena" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Combat Arena</Link>
+            <Link to="/" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Dashboard</Link>
             <Link to="/references" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Game Reference</Link>
+            <Link to="/workshop" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Skill Workshop</Link>
+            <Link to="/species" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Species Builder</Link>
+            <Link to="/characters" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Characters</Link>
+            <Link to="/gathering" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Gathering</Link>
+            <Link to="/crafting" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Crafting</Link>
+            <Link to="/market" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Market</Link>
+            <Link to="/arena" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Arena</Link>
+            <Link to="/profile" className="px-3 py-2 rounded hover:bg-zinc-800 hover:text-yellow-400 transition">Profile</Link>
             <Link to="/admin" className="px-3 py-2 mt-6 rounded bg-red-950/20 border border-red-900/30 text-red-400 hover:bg-red-900/30 transition">Admin Controls</Link>
           </nav>
         </aside>
@@ -52,6 +54,7 @@ export default function App() {
             <Route path="/market" element={<MarketPage />} />
             <Route path="/arena" element={<ArenaPage />} />
             <Route path="/references" element={<ReferencesPage />} />
+            <Route path="/workshop" element={<WorkshopPage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
